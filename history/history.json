@@ -199,5 +199,3017 @@
         "operations": [],
         "status": "success",
         "error": null
+    },
+    {
+        "id": "f31d4f89-12f3-4c9d-ae84-8b144c8bb9be",
+        "timestamp": "2026-10-06 00:53:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Apple-iPhone-15.jpg",
+        "output": "test_data\\output\\all_processing\\Apple-iPhone-15.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "23c04895-f34c-4e4c-b1de-d4d54b87eb8f",
+        "timestamp": "2026-10-06 00:53:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Apple-iPhone-15-Black.jpg",
+        "output": "test_data\\output\\all_processing\\Apple-iPhone-15-Black.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4efbd355-8462-4c80-8f05-204a0e334112",
+        "timestamp": "2026-10-06 00:53:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\file_example_JPG_100kB.jpg",
+        "output": "test_data\\output\\all_processing\\file_example_JPG_100kB.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ee75c847-9591-4907-88c8-ce3d3b17403e",
+        "timestamp": "2026-10-06 00:59:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "1b842a1d-af4f-4a5c-89f7-f4177430863a",
+        "timestamp": "2026-10-06 00:59:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "d3622aa6-599d-4e2c-9486-9c85a84dc490",
+        "timestamp": "2026-10-06 00:59:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "0331a546-4234-4aef-bbad-81515476cfac",
+        "timestamp": "2026-10-06 00:59:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "5d74c480-9b67-4ee1-a269-561e1f0440ae",
+        "timestamp": "2026-10-06 00:59:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "6f8fa2de-4c1f-4825-872e-16f13bc4c5a5",
+        "timestamp": "2026-10-06 00:59:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-6.jpg",
+        "output": "test_data\\output\\all_processing\\image-6.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "ef89b916-2e72-4888-9257-5a4af5840c4c",
+        "timestamp": "2026-10-06 00:59:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-7.jpg",
+        "output": "test_data\\output\\all_processing\\image-7.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "636796fb-daf6-442e-93b7-8e1ff25d211c",
+        "timestamp": "2026-10-06 00:59:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-8.jpg",
+        "output": "test_data\\output\\all_processing\\image-8.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "5c8bd5f6-9462-45f4-ab4f-e7bf25d2b632",
+        "timestamp": "2026-10-06 00:59:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-9.jpg",
+        "output": "test_data\\output\\all_processing\\image-9.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "2766dcf1-b6ac-4d5b-9601-097048e08790",
+        "timestamp": "2026-10-06 00:59:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-10.jpg",
+        "output": "test_data\\output\\all_processing\\image-10.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "b523ecb9-6032-469b-b1bf-6fdd37e389cd",
+        "timestamp": "2026-10-06 01:00:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "4fe233e8-98d9-460b-8dbe-b51ddfbb0f32",
+        "timestamp": "2026-10-06 01:00:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "95911f14-1933-4798-83df-c5068834e2e0",
+        "timestamp": "2026-10-06 01:00:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "8810b3a6-107a-4a04-bb75-c71de2a61bd2",
+        "timestamp": "2026-10-06 01:00:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "0b59b404-d846-4f6c-9ff0-cdd82693065f",
+        "timestamp": "2026-10-06 01:00:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "4b516556-4b97-4201-9b10-b9a726fe3e85",
+        "timestamp": "2026-10-06 01:00:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-6.jpg",
+        "output": "test_data\\output\\all_processing\\image-6.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "4fa89426-e42c-4ded-b041-562784603d39",
+        "timestamp": "2026-10-06 01:00:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-7.jpg",
+        "output": "test_data\\output\\all_processing\\image-7.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "d7f2c323-9c21-49da-8a96-fbe8f232af4c",
+        "timestamp": "2026-10-06 01:00:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-8.jpg",
+        "output": "test_data\\output\\all_processing\\image-8.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "7e2d79cf-646e-42f4-98a2-52875717fd6c",
+        "timestamp": "2026-10-06 01:00:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-9.jpg",
+        "output": "test_data\\output\\all_processing\\image-9.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "3ea6cac8-bad6-4464-a9e1-9f2168fe3a62",
+        "timestamp": "2026-10-06 01:00:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-10.jpg",
+        "output": "test_data\\output\\all_processing\\image-10.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "1:1"
+            },
+            {
+                "type": "transform",
+                "rotation": "270",
+                "flip": "horizontal"
+            },
+            {
+                "type": "compression",
+                "quality": 50
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "7bc58ae1-8a74-4b50-bc94-b685356bd002",
+        "timestamp": "2026-10-06 01:07:05",
+        "source": "C:\\Users\\yohan\\Downloads\\sample.jpg",
+        "output": "test_data\\output\\all_processing\\sample.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "6c7588a8-ac69-48eb-bff5-6daa2712b476",
+        "timestamp": "2026-10-06 01:07:44",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "19de5310-06e4-41a3-8f9d-582791fb5d69",
+        "timestamp": "2026-10-06 01:07:44",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8fba9a52-b404-40e4-9ed8-4602bf21cbf7",
+        "timestamp": "2026-10-06 01:07:45",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b3a70e63-2e1a-429a-b64f-73bb95cae5a2",
+        "timestamp": "2026-10-06 01:07:45",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "275f7b2c-5281-4e3e-8f99-2022a3d54b17",
+        "timestamp": "2026-10-06 01:07:45",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "53e03842-4278-4299-9423-b50859701003",
+        "timestamp": "2026-10-06 01:09:46",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "value": 1920,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "993b5281-56af-4f7b-8521-b84e7beaba7a",
+        "timestamp": "2026-10-06 01:09:47",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "value": 1920,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3220059f-7563-4a5d-a7c5-5e3456caeee3",
+        "timestamp": "2026-10-06 01:09:48",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "value": 1920,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b6299ae6-4d8b-4621-990a-30384b66e04c",
+        "timestamp": "2026-10-06 01:09:49",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "value": 1920,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "28bbbba0-e490-4de5-8686-68dccbc63de4",
+        "timestamp": "2026-10-06 01:09:49",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "value": 1920,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5713b2ca-e357-4b60-b5ee-8714154ba9db",
+        "timestamp": "2026-10-06 01:11:31",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 30,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "fc367910-37c7-46dd-aa3a-dda63cb7f9d9",
+        "timestamp": "2026-10-06 01:11:31",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 30,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b2a41122-842e-4ebe-aadb-ec9eba240c7c",
+        "timestamp": "2026-10-06 01:11:31",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 30,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "05f93608-d236-45bd-9fc8-f225f37e19fe",
+        "timestamp": "2026-10-06 01:11:31",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 30,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ca7b1a13-e42b-4e17-b84b-0da2296b15a6",
+        "timestamp": "2026-10-06 01:11:31",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 30,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b2c14d2c-ca1a-4358-a56c-2a395395f861",
+        "timestamp": "2026-10-06 01:11:45",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1_002.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 30,
+                "keep_ratio": false
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5c60f39a-2673-4cfe-89ef-1e0bcde0ede0",
+        "timestamp": "2026-10-06 01:11:46",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2_002.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 30,
+                "keep_ratio": false
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b71953a8-bae6-45a2-8c45-b1ef3a9df1e5",
+        "timestamp": "2026-10-06 01:11:46",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3_002.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 30,
+                "keep_ratio": false
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "54c4d312-20ae-41c9-9ce0-60f0c6fb91b0",
+        "timestamp": "2026-10-06 01:11:46",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4_002.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 30,
+                "keep_ratio": false
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "64d3980f-c73c-4325-b542-1b77b2c72c94",
+        "timestamp": "2026-10-06 01:11:46",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5_002.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 30,
+                "keep_ratio": false
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "34f605cd-57b5-45ce-9dca-17eee913c5c5",
+        "timestamp": "2026-10-06 01:12:04",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1_003.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "36b16ab7-e9e5-4e53-a36f-556b5f826db3",
+        "timestamp": "2026-10-06 01:12:04",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2_003.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e282c5af-c5ca-4a2e-9888-6d09314b43f3",
+        "timestamp": "2026-10-06 01:12:04",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3_003.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "85d96e0e-9b89-44e2-a06b-e5736cfacd66",
+        "timestamp": "2026-10-06 01:12:04",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4_003.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9d8045e0-acfd-45c6-b3bf-0eff853fc2e4",
+        "timestamp": "2026-10-06 01:12:05",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5_003.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "43869d75-5824-4b2b-9c60-6ff7fc36a7cf",
+        "timestamp": "2026-10-06 01:12:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1_004.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0694bc4c-ed12-46bb-9ee2-6a741e585191",
+        "timestamp": "2026-10-06 01:12:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2_004.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a7654dd6-04ec-4f1d-bccd-84aff10bb691",
+        "timestamp": "2026-10-06 01:12:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3_004.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f4f734f6-9ffd-4479-afef-cca184e07f23",
+        "timestamp": "2026-10-06 01:12:42",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4_004.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "93a714c3-e867-441e-b924-2baf2c7206e8",
+        "timestamp": "2026-10-06 01:12:43",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5_004.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "50030aed-fdc2-44f9-84d8-ae8e28443dd1",
+        "timestamp": "2026-10-06 01:13:07",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1_005.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "88f47c94-c5a7-4d66-8e58-90fb0d2cd272",
+        "timestamp": "2026-10-06 01:13:07",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2_005.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "39909550-05de-4d11-b35a-57133726f123",
+        "timestamp": "2026-10-06 01:13:07",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3_005.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "07f8a406-cdb0-4857-af88-5eb9bee90071",
+        "timestamp": "2026-10-06 01:13:07",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4_005.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4293a49e-c1e5-4cc3-9567-9d9f7d4f575c",
+        "timestamp": "2026-10-06 01:13:07",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5_005.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "72a4ea80-1845-47ef-89c9-0c54f8f97fc0",
+        "timestamp": "2026-10-06 01:13:39",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "de509c16-b208-4a91-8317-b5bb30b6542a",
+        "timestamp": "2026-10-06 01:13:39",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e2f46d54-95e2-4534-87e3-1862e23416ba",
+        "timestamp": "2026-10-06 01:13:39",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b2a334bb-184f-4961-abf6-5200d96aea3b",
+        "timestamp": "2026-10-06 01:13:39",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "34a32b36-8838-482c-806e-f32eb955b817",
+        "timestamp": "2026-10-06 01:13:39",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5b17fc8e-eae9-4976-aff0-ee9c8f2d65ec",
+        "timestamp": "2026-10-06 01:14:01",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1_001.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "eaca2bcf-f77b-4a35-b787-54b78c2ccc36",
+        "timestamp": "2026-10-06 01:14:02",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2_001.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5dbf3912-e725-4ade-9eea-7c29adfd3bb7",
+        "timestamp": "2026-10-06 01:14:02",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3_001.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a771bfe4-3066-480d-8c45-2770b15546a9",
+        "timestamp": "2026-10-06 01:14:02",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4_001.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4eba7382-3ac7-4333-bd80-b5ef2cf8d0b7",
+        "timestamp": "2026-10-06 01:14:02",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5_001.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5e287cd6-4ab3-449d-890f-46d78586a583",
+        "timestamp": "2026-10-06 01:15:22",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1_002.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "83dc4b10-0c05-4151-893b-cb2f3a2e090f",
+        "timestamp": "2026-10-06 01:15:22",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2_002.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "463a79ae-e74c-45a4-9f6f-edd4c34b81b0",
+        "timestamp": "2026-10-06 01:15:22",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3_002.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a3556e69-6fb9-4180-9643-f3c870d61be2",
+        "timestamp": "2026-10-06 01:15:22",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4_002.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "fe3a982e-e9c9-49af-81da-2a091a774b70",
+        "timestamp": "2026-10-06 01:15:23",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5_002.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8f6c111c-9700-4078-a513-dc72614c6304",
+        "timestamp": "2026-10-06 01:15:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            },
+            {
+                "type": "metadata",
+                "mode": "all"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "1071f27a-c6b1-4891-9d8f-d1adb12d2ec5",
+        "timestamp": "2026-10-06 01:15:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            },
+            {
+                "type": "metadata",
+                "mode": "all"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "c16c4f43-c7cc-4ab6-aaa8-3056f5fcb6aa",
+        "timestamp": "2026-10-06 01:15:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            },
+            {
+                "type": "metadata",
+                "mode": "all"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "d729b612-966b-4c26-9e88-ccbb540f1c21",
+        "timestamp": "2026-10-06 01:15:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            },
+            {
+                "type": "metadata",
+                "mode": "all"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "c86d12a7-2c0c-476a-961b-ce5641f6ed56",
+        "timestamp": "2026-10-06 01:15:58",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            },
+            {
+                "type": "metadata",
+                "mode": "all"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "1667a18e-f4c9-4b4a-80e9-a2384f1827bc",
+        "timestamp": "2026-10-06 01:16:09",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "8b792f0b-3ce4-4bc9-9eb2-ce4687bd8b80",
+        "timestamp": "2026-10-06 01:16:09",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "b3350251-dea5-42a6-80dc-f52f9933714c",
+        "timestamp": "2026-10-06 01:16:09",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "b7383dfd-2699-4eb4-9721-05d4df76cebd",
+        "timestamp": "2026-10-06 01:16:09",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "82fedeec-c043-4396-a60d-4c824c25a674",
+        "timestamp": "2026-10-06 01:16:09",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "f696188c-0a2a-48da-88e7-e8e38e368b83",
+        "timestamp": "2026-10-06 01:16:16",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "abd6763a-578e-4a4f-86b2-32ad63900324",
+        "timestamp": "2026-10-06 01:16:16",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "f4f8e00a-c84f-4f77-a95c-44ed28dcadd8",
+        "timestamp": "2026-10-06 01:16:16",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "d28de78d-196a-4e4f-adde-94f66e1c8f32",
+        "timestamp": "2026-10-06 01:16:16",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "40269349-1c56-459d-917f-d4f17d165146",
+        "timestamp": "2026-10-06 01:16:16",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            },
+            {
+                "type": "colorspace",
+                "target": "sRGB"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "cf776ccb-ab9b-4030-b808-71d079b11339",
+        "timestamp": "2026-10-06 01:16:23",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "27bdd09d-c861-4272-b40e-b07ca349a810",
+        "timestamp": "2026-10-06 01:16:23",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "34787491-ab75-4ad5-ab17-d90dadffa5f0",
+        "timestamp": "2026-10-06 01:16:23",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "a65405db-d36a-46b4-b394-c1d1421dc5a5",
+        "timestamp": "2026-10-06 01:16:23",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "1078231f-9d80-4bf7-a89d-d5d5df95534c",
+        "timestamp": "2026-10-06 01:16:23",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            },
+            {
+                "type": "dpi",
+                "value": 300
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "4998a2d5-63d3-4395-bf82-11ed3802d932",
+        "timestamp": "2026-10-06 01:16:27",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "cd9e79cd-232b-4ba4-ac1d-c2c9c5e64747",
+        "timestamp": "2026-10-06 01:16:27",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "8faf0748-d4dc-46f2-bfc3-bcb96c99202b",
+        "timestamp": "2026-10-06 01:16:27",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "79fc2acf-b69d-4d42-bae2-bacc6052a23a",
+        "timestamp": "2026-10-06 01:16:27",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "9f1e7e07-0243-4ebf-a2b7-752ca8bfd1aa",
+        "timestamp": "2026-10-06 01:16:27",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            },
+            {
+                "type": "compression",
+                "quality": 85
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "f3ad3dae-d471-438c-b487-2a85daf9df06",
+        "timestamp": "2026-10-06 01:16:29",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "551e201f-1063-4836-abe4-79c4a7a6e042",
+        "timestamp": "2026-10-06 01:16:29",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "04c43ad4-79fc-42a0-89c1-6593b5c41683",
+        "timestamp": "2026-10-06 01:16:29",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "4e5cbbb1-d3a1-4e11-88f1-a74ab6e2a49a",
+        "timestamp": "2026-10-06 01:16:29",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "c56192d7-768d-4ed9-9a0e-4556e2e17145",
+        "timestamp": "2026-10-06 01:16:29",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            },
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "none"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "79f388ec-319f-4bda-a3c3-6ad171aff564",
+        "timestamp": "2026-10-06 01:16:33",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "677fe780-7932-4a39-ab5a-f8886a0f1b21",
+        "timestamp": "2026-10-06 01:16:33",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "8c558f25-eadc-4d3b-859e-c429fe38e8fa",
+        "timestamp": "2026-10-06 01:16:33",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "6bede4f7-5537-4b21-bb3a-b7cbf95dc689",
+        "timestamp": "2026-10-06 01:16:33",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "1c7e39bc-14a3-406c-a070-d65918f6bfbb",
+        "timestamp": "2026-10-06 01:16:33",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "45495ff1-3f89-40ad-8d38-b17a4ce0fb42",
+        "timestamp": "2026-10-06 01:16:37",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f632f440-700d-4076-8a15-a7789e74f035",
+        "timestamp": "2026-10-06 01:16:37",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "bd5495e4-253c-4c16-ae16-165fb907af8b",
+        "timestamp": "2026-10-06 01:16:38",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c90133a9-1376-4b20-8d01-7a32918d0dba",
+        "timestamp": "2026-10-06 01:16:38",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b450b6cf-ed11-444d-a00c-e68bc980f698",
+        "timestamp": "2026-10-06 01:16:38",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5159ef01-b57b-462e-b940-63914f261dee",
+        "timestamp": "2026-10-06 01:16:43",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 10,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "321d5b98-d354-4f2b-a208-32cdbc537094",
+        "timestamp": "2026-10-06 01:16:43",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 10,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0822563a-151c-49e1-b4ca-9f3162592453",
+        "timestamp": "2026-10-06 01:16:43",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 10,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "aabe0152-4144-4577-ae1d-cecb7f9a9398",
+        "timestamp": "2026-10-06 01:16:43",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 10,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "24c5f105-3efd-4295-9358-cb8e10ae1dd3",
+        "timestamp": "2026-10-06 01:16:43",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 10,
+                "keep_ratio": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8c0d5a31-329e-4e00-893f-9e9c0a4e7ea3",
+        "timestamp": "2026-10-06 01:17:03",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 10,
+                "keep_ratio": true
+            },
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "490e5f24-f9b3-4723-896f-cc3dc0f89256",
+        "timestamp": "2026-10-06 01:17:03",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 10,
+                "keep_ratio": true
+            },
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "2778e347-46f7-436c-9e7d-3fb5f3db1882",
+        "timestamp": "2026-10-06 01:17:03",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 10,
+                "keep_ratio": true
+            },
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "8a4ae93b-2ba0-4dca-ae78-d31611d437bb",
+        "timestamp": "2026-10-06 01:17:03",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 10,
+                "keep_ratio": true
+            },
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "81b04b88-1429-46f0-a39f-00969bdbb8fa",
+        "timestamp": "2026-10-06 01:17:03",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "value": 10,
+                "keep_ratio": true
+            },
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "16:9"
+            }
+        ],
+        "status": "failed",
+        "error": "'width'"
+    },
+    {
+        "id": "31c73ed3-9de9-4532-b664-dbba1b60b5e3",
+        "timestamp": "2026-10-06 01:17:08",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "dpi",
+                "value": 300
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b51e9551-af89-4916-9f57-ac80f171f27b",
+        "timestamp": "2026-10-06 01:17:09",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "dpi",
+                "value": 300
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f6d55292-61a8-4a4b-b396-7b1d4d6346f9",
+        "timestamp": "2026-10-06 01:17:09",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "dpi",
+                "value": 300
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "007855c7-410a-41fa-a768-afd5dfcbc191",
+        "timestamp": "2026-10-06 01:17:09",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "dpi",
+                "value": 300
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "818df458-aeca-419a-9652-b3d0bfb9df6c",
+        "timestamp": "2026-10-06 01:17:09",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "dpi",
+                "value": 300
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "6b5d421b-fbd5-4006-be70-d5e911482d33",
+        "timestamp": "2026-10-06 01:17:36",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "59bb34cd-c65e-4a33-815c-07720de69ce0",
+        "timestamp": "2026-10-06 01:17:36",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3da129dc-6181-4f7d-abda-8719f06a4845",
+        "timestamp": "2026-10-06 01:17:36",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4d0e1695-02b0-44f2-844f-a6f482d28752",
+        "timestamp": "2026-10-06 01:17:37",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "85d98e82-590a-4b35-9aeb-36ff01dcab55",
+        "timestamp": "2026-10-06 01:17:37",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "184fa765-514a-4b30-92d1-7ec1a0c2e443",
+        "timestamp": "2026-10-06 01:21:25",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "6fa0c151-bf6e-4ca5-a982-0c3f23c898a8",
+        "timestamp": "2026-10-06 01:21:26",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e2273975-39b8-43b9-b7c7-3eb256719fed",
+        "timestamp": "2026-10-06 01:21:26",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7773a911-2389-4c7e-85f4-2ba7fed1aaaf",
+        "timestamp": "2026-10-06 01:21:27",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1152e2e9-dee2-468c-b5ce-3785ecd730bf",
+        "timestamp": "2026-10-06 01:21:27",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "505f1ae8-42d1-47f8-b9a6-c65250aea953",
+        "timestamp": "2026-10-06 01:22:12",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_convert\\image-1.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "834d04ac-994a-4c7a-aed5-3c15586d1924",
+        "timestamp": "2026-10-06 01:22:54",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_compress\\image-1.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "28e6d717-8a28-4b7c-802d-cc8bd3ca2dd9",
+        "timestamp": "2026-10-06 01:23:21",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_compress\\image-1_001.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f25a18b2-8a2f-44f3-83ee-40a7287739da",
+        "timestamp": "2026-10-06 01:23:23",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_compress\\image-1_002.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3425fd55-a4f2-451c-bac2-a7aa9d8bab8b",
+        "timestamp": "2026-10-06 01:23:50",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_compress\\image-1.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "61384495-b1fb-4dbe-9fa2-2b75e260f8ef",
+        "timestamp": "2026-10-06 01:24:11",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_compress\\image-1.jpeg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "36449646-4e31-4415-b6a8-81988ebdcaf3",
+        "timestamp": "2026-10-06 01:24:14",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_compress\\image-1.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 10
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a1549d95-6ef0-4926-b578-03fde69d2ec8",
+        "timestamp": "2026-10-06 01:24:59",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_transform\\image-1.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "transform",
+                "operation": "flip",
+                "direction": "both"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "870b1245-bb5d-4c67-947a-a353df8f9035",
+        "timestamp": "2026-10-06 01:25:20",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_metadata\\image-1.jpeg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "metadata",
+                "mode": "all"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "be5c3fc8-fc25-4f83-9569-2f0dfb21efbe",
+        "timestamp": "2026-10-06 01:27:22",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_colorspace\\image-1.jpeg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c4d790af-9aac-4b14-94c5-56f6b29ccfcb",
+        "timestamp": "2026-10-06 01:27:57",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1_001.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "bb35b7fc-66b8-4cf4-bd95-3c3bb09b7e1d",
+        "timestamp": "2026-10-06 01:27:59",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_bitdepth\\image-1.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "bit_depth": 32
+            }
+        ],
+        "status": "failed",
+        "error": "cannot write mode F as PNG"
+    },
+    {
+        "id": "5b1f120b-e89a-4b21-a3d5-514ab8aa5282",
+        "timestamp": "2026-10-06 01:27:59",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2_001.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f70ded56-f926-429c-9312-78bb60737ddc",
+        "timestamp": "2026-10-06 01:28:01",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3_001.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "00a264f3-71fd-4c1d-91ce-f15a2b92cbdd",
+        "timestamp": "2026-10-06 01:28:02",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4_001.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4d047acc-9003-43a0-994f-d4199f8f1bb6",
+        "timestamp": "2026-10-06 01:28:04",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5_001.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "compression",
+                "quality": 10
+            },
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4bc6a8b7-62b4-4f94-aaea-1f87179cc365",
+        "timestamp": "2026-10-06 01:28:05",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_bitdepth\\image-1.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "bit_depth": 32
+            }
+        ],
+        "status": "failed",
+        "error": "cannot write mode F as PNG"
+    },
+    {
+        "id": "2af2b9b8-e32d-48dd-8851-0f18c0db2948",
+        "timestamp": "2026-10-06 01:28:10",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_bitdepth\\image-1.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "bit_depth": 32
+            }
+        ],
+        "status": "failed",
+        "error": "cannot write mode F as PNG"
+    },
+    {
+        "id": "5c943f1d-0b1b-4ddc-9167-4d5bdcba2ca5",
+        "timestamp": "2026-10-06 01:28:16",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\ui_bitdepth\\image-1.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "bit_depth": 8
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d4179a77-e95a-444b-b142-1b0100497793",
+        "timestamp": "2026-10-06 01:29:34",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-1.jpg",
+        "output": "test_data\\output\\all_processing\\image-1_002.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f44f269e-e625-4377-a6b2-1c4e8ef2cc2e",
+        "timestamp": "2026-10-06 01:29:34",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-2.jpg",
+        "output": "test_data\\output\\all_processing\\image-2_002.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "031641f2-4d0d-4ab2-8158-fc39bc69018d",
+        "timestamp": "2026-10-06 01:29:34",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-3.jpg",
+        "output": "test_data\\output\\all_processing\\image-3_002.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c9727ba3-e9de-4f1e-a7c3-17e5e6fe0a09",
+        "timestamp": "2026-10-06 01:29:34",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-4.jpg",
+        "output": "test_data\\output\\all_processing\\image-4_002.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2ae29e0d-77dc-4d40-a5aa-7df10e0ba917",
+        "timestamp": "2026-10-06 01:29:35",
+        "source": "C:\\Users\\yohan\\Downloads\\Compressed\\sample-images-main\\sample-images-main\\docs\\image-5.jpg",
+        "output": "test_data\\output\\all_processing\\image-5_002.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": "none",
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
     }
 ]

@@ -2,52 +2,98 @@ from PySide6.QtWidgets import (
     QWidget,
     QLabel,
     QVBoxLayout,
-    QGroupBox
+    QPushButton,
+    QFrame
 )
+
+
+from PySide6.QtCore import Qt
+
 
 
 
 class HomePage(QWidget):
 
-    def __init__(self):
+
+    def __init__(
+        self
+    ):
 
         super().__init__()
+
 
         self.setup_ui()
 
 
 
-    def setup_ui(self):
+    def setup_ui(
+        self
+    ):
+
 
         layout = QVBoxLayout()
 
 
-        title = QLabel(
-            "PixVault"
+        layout.setAlignment(
+            Qt.AlignmentFlag.AlignCenter
         )
+
+
+        layout.setSpacing(
+            20
+        )
+
+
+
+        # =====================
+        # TITLE
+        # =====================
+
+
+        title = QLabel(
+            "PIXVAULT"
+        )
+
+
+        title.setAlignment(
+            Qt.AlignmentFlag.AlignCenter
+        )
+
+
+        title.setObjectName(
+            "home_title"
+        )
+
 
 
         subtitle = QLabel(
-            "Local Image Processing Application"
+            "Privacy-first image processing application"
         )
+
+
+        subtitle.setAlignment(
+            Qt.AlignmentFlag.AlignCenter
+        )
+
+
+
+        # =====================
+        # DESCRIPTION
+        # =====================
 
 
         description = QLabel(
             """
-Process your images locally.
+Your images never leave your device.
 
-Available features:
-
-• Convert image formats
-• Resize images
-• Crop images
-• Compress images
-• Transform images
-• Manage DPI
-• Convert Color Space
-• Change Bit Depth
-• Remove Metadata
+Process, convert, optimize, and manage
+your images locally with full control.
             """
+        )
+
+
+        description.setAlignment(
+            Qt.AlignmentFlag.AlignCenter
         )
 
 
@@ -56,31 +102,93 @@ Available features:
         )
 
 
-        processing_box = QGroupBox(
-            "Processing Engine"
+
+        # =====================
+        # PRIVACY BOX
+        # =====================
+
+
+        privacy_box = QFrame()
+
+
+        privacy_box.setFrameShape(
+            QFrame.Shape.StyledPanel
         )
 
 
-        processing_layout = QVBoxLayout()
+        privacy_layout = QVBoxLayout()
 
 
-        processing_layout.addWidget(
-            QLabel(
-                "Powered by local pipeline processing."
-            )
+        privacy_title = QLabel(
+            "🔒 Local Processing"
         )
 
 
-        processing_layout.addWidget(
-            QLabel(
-                "No image upload. All operations run on your device."
-            )
+        privacy_title.setAlignment(
+            Qt.AlignmentFlag.AlignCenter
         )
 
 
-        processing_box.setLayout(
-            processing_layout
+
+        privacy_text = QLabel(
+            """
+✓ No cloud upload
+
+✓ No external processing
+
+✓ Offline capable
+
+✓ Full control of your files
+            """
         )
+
+
+        privacy_text.setAlignment(
+            Qt.AlignmentFlag.AlignCenter
+        )
+
+
+
+        privacy_layout.addWidget(
+            privacy_title
+        )
+
+
+        privacy_layout.addWidget(
+            privacy_text
+        )
+
+
+        privacy_box.setLayout(
+            privacy_layout
+        )
+
+
+
+        # =====================
+        # ACTION
+        # =====================
+
+
+        start_button = QPushButton(
+            "Start Processing"
+        )
+
+
+        start_button.setMinimumHeight(
+            40
+        )
+
+
+        start_button.clicked.connect(
+            self.open_processing
+        )
+
+
+
+        # =====================
+        # ADD
+        # =====================
 
 
         layout.addWidget(
@@ -99,13 +207,40 @@ Available features:
 
 
         layout.addWidget(
-            processing_box
+            privacy_box
         )
 
 
-        layout.addStretch()
+        layout.addWidget(
+            start_button
+        )
 
 
         self.setLayout(
             layout
         )
+
+
+
+    def open_processing(
+        self
+    ):
+
+        parent = self.parentWidget()
+
+
+        while parent:
+
+            if hasattr(
+                parent,
+                "show_page"
+            ):
+
+                parent.show_page(
+                    "all_processing"
+                )
+
+                return
+
+
+            parent = parent.parentWidget()

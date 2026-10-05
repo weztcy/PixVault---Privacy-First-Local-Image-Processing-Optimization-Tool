@@ -2,9 +2,9 @@ from PySide6.QtWidgets import (
     QWidget,
     QVBoxLayout,
     QPushButton,
-    QLabel
+    QLabel,
+    QSizePolicy
 )
-
 
 
 class Sidebar(QWidget):
@@ -32,11 +32,32 @@ class Sidebar(QWidget):
         layout = QVBoxLayout()
 
 
+        layout.setContentsMargins(
+            10,
+            10,
+            10,
+            10
+        )
 
-        # Header
+
+        layout.setSpacing(
+            6
+        )
+
+
+
+        # =====================
+        # HEADER
+        # =====================
+
 
         title = QLabel(
             "PIXVAULT"
+        )
+
+
+        title.setObjectName(
+            "sidebar_title"
         )
 
 
@@ -46,89 +67,86 @@ class Sidebar(QWidget):
 
 
 
-        # MAIN
+        # =====================
+        # HOME
+        # =====================
 
-        main_label = QLabel(
-            "MAIN"
+
+        self.add_section(
+            layout,
+            "HOME"
         )
-
-
-        layout.addWidget(
-            main_label
-        )
-
 
 
         self.create_button(
             layout,
-            "Home",
+            "🏠  Home",
             "home"
         )
 
 
 
-        # PROCESSING
+        # =====================
+        # TOOLS
+        # =====================
 
-        processing_label = QLabel(
-            "PROCESSING"
+
+        self.add_section(
+            layout,
+            "TOOLS"
         )
 
 
-        layout.addWidget(
-            processing_label
-        )
 
-
-
-        processing_menu = [
+        tools = [
 
             (
-                "All Processing",
+                "⚡  All Processing",
                 "all_processing"
             ),
 
             (
-                "Convert",
+                "⇄  Convert",
                 "convert"
             ),
 
             (
-                "Compress",
+                "📦  Compress",
                 "compress"
             ),
 
             (
-                "Resize",
+                "↔  Resize",
                 "resize"
             ),
 
             (
-                "Crop",
+                "✂  Crop",
                 "crop"
             ),
 
             (
-                "Transform",
+                "🔄  Transform",
                 "transform"
             ),
 
             (
-                "DPI",
+                "📐  DPI",
                 "dpi"
             ),
 
             (
-                "Metadata",
+                "🔒  Metadata",
                 "metadata"
             ),
 
             (
-                "Color Space",
+                "🎨  Color Space",
                 "colorspace"
             ),
 
             (
-                "Bit Depth",
+                "◐  Bit Depth",
                 "bitdepth"
             )
 
@@ -136,7 +154,7 @@ class Sidebar(QWidget):
 
 
 
-        for text, key in processing_menu:
+        for text, key in tools:
 
 
             self.create_button(
@@ -147,50 +165,46 @@ class Sidebar(QWidget):
 
 
 
+        # =====================
         # MANAGEMENT
+        # =====================
 
 
-        management_label = QLabel(
+        self.add_section(
+            layout,
             "MANAGEMENT"
-        )
-
-
-        layout.addWidget(
-            management_label
         )
 
 
         self.create_button(
             layout,
-            "History",
+            "🕘  History",
             "history"
         )
 
 
 
+        # =====================
         # SYSTEM
+        # =====================
 
 
-        system_label = QLabel(
+        self.add_section(
+            layout,
             "SYSTEM"
-        )
-
-
-        layout.addWidget(
-            system_label
         )
 
 
         self.create_button(
             layout,
-            "Settings",
+            "⚙  Settings",
             "settings"
         )
 
 
         self.create_button(
             layout,
-            "Privacy",
+            "🔐  Privacy",
             "privacy"
         )
 
@@ -206,6 +220,29 @@ class Sidebar(QWidget):
 
 
 
+    def add_section(
+        self,
+        layout,
+        text
+    ):
+
+
+        label = QLabel(
+            text
+        )
+
+
+        label.setObjectName(
+            "sidebar_section"
+        )
+
+
+        layout.addWidget(
+            label
+        )
+
+
+
     def create_button(
         self,
         layout,
@@ -216,6 +253,17 @@ class Sidebar(QWidget):
 
         button = QPushButton(
             text
+        )
+
+
+        button.setSizePolicy(
+            QSizePolicy.Policy.Expanding,
+            QSizePolicy.Policy.Fixed
+        )
+
+
+        button.setMinimumHeight(
+            34
         )
 
 

@@ -1,8 +1,13 @@
-from PySide6.QtWidgets import QStackedWidget
+from PySide6.QtWidgets import (
+    QStackedWidget,
+    QScrollArea,
+    QWidget
+)
 
 
 from ui.pages.home_page import HomePage
 from ui.pages.all_processing_page import AllProcessingPage
+
 
 from ui.pages.convert_page import ConvertPage
 from ui.pages.compress_page import CompressPage
@@ -13,6 +18,7 @@ from ui.pages.dpi_page import DPIPage
 from ui.pages.metadata_page import MetadataPage
 from ui.pages.colorspace_page import ColorSpacePage
 from ui.pages.bitdepth_page import BitDepthPage
+
 
 from ui.pages.history_page import HistoryPage
 from ui.pages.settings_page import SettingsPage
@@ -53,7 +59,53 @@ class Workspace(QStackedWidget):
     ):
 
 
-        # MAIN
+        self.register_main_pages()
+
+
+        self.register_tool_pages()
+
+
+        self.register_system_pages()
+
+
+        self.show_page(
+            "home"
+        )
+
+
+
+    def wrap_page(
+        self,
+        widget
+    ):
+
+
+        scroll = QScrollArea()
+
+
+        scroll.setWidgetResizable(
+            True
+        )
+
+
+        scroll.setFrameShape(
+            QScrollArea.NoFrame
+        )
+
+
+        scroll.setWidget(
+            widget
+        )
+
+
+        return scroll
+
+
+
+    def register_main_pages(
+        self
+    ):
+
 
         self.add_page(
             "home",
@@ -71,83 +123,84 @@ class Workspace(QStackedWidget):
 
 
 
-        # TOOLS
+    def register_tool_pages(
+        self
+    ):
 
 
-        self.add_page(
-            "convert",
-            ConvertPage(
-                self.image_service
+        tools = {
+
+
+            "convert":
+                ConvertPage(
+                    self.image_service
+                ),
+
+
+            "compress":
+                CompressPage(
+                    self.image_service
+                ),
+
+
+            "resize":
+                ResizePage(
+                    self.image_service
+                ),
+
+
+            "crop":
+                CropPage(
+                    self.image_service
+                ),
+
+
+            "transform":
+                TransformPage(
+                    self.image_service
+                ),
+
+
+            "dpi":
+                DPIPage(
+                    self.image_service
+                ),
+
+
+            "metadata":
+                MetadataPage(
+                    self.image_service
+                ),
+
+
+            "colorspace":
+                ColorSpacePage(
+                    self.image_service
+                ),
+
+
+            "bitdepth":
+                BitDepthPage(
+                    self.image_service
+                )
+
+        }
+
+
+
+        for name, page in tools.items():
+
+
+            self.add_page(
+                name,
+                page
             )
-        )
-
-
-        self.add_page(
-            "compress",
-            CompressPage(
-                self.image_service
-            )
-        )
-
-
-        self.add_page(
-            "resize",
-            ResizePage(
-                self.image_service
-            )
-        )
-
-
-        self.add_page(
-            "crop",
-            CropPage(
-                self.image_service
-            )
-        )
-
-
-        self.add_page(
-            "transform",
-            TransformPage(
-                self.image_service
-            )
-        )
-
-
-        self.add_page(
-            "dpi",
-            DPIPage(
-                self.image_service
-            )
-        )
-
-
-        self.add_page(
-            "metadata",
-            MetadataPage(
-                self.image_service
-            )
-        )
-
-
-        self.add_page(
-            "colorspace",
-            ColorSpacePage(
-                self.image_service
-            )
-        )
-
-
-        self.add_page(
-            "bitdepth",
-            BitDepthPage(
-                self.image_service
-            )
-        )
 
 
 
-        # MANAGEMENT
+    def register_system_pages(
+        self
+    ):
 
 
         self.add_page(
@@ -156,10 +209,6 @@ class Workspace(QStackedWidget):
                 self.history_service
             )
         )
-
-
-
-        # SYSTEM
 
 
         self.add_page(
@@ -175,12 +224,6 @@ class Workspace(QStackedWidget):
 
 
 
-        self.show_page(
-            "home"
-        )
-
-
-
     def add_page(
         self,
         name,
@@ -188,11 +231,22 @@ class Workspace(QStackedWidget):
     ):
 
 
-        self.pages[name] = widget
+        if name in self.pages:
+
+            return
+
+
+
+        scroll_page = self.wrap_page(
+            widget
+        )
+
+
+        self.pages[name] = scroll_page
 
 
         self.addWidget(
-            widget
+            scroll_page
         )
 
 
@@ -213,3 +267,15 @@ class Workspace(QStackedWidget):
             self.setCurrentWidget(
                 page
             )
+
+
+
+    def get_page(
+        self,
+        name
+    ):
+
+
+        return self.pages.get(
+            name
+        )
