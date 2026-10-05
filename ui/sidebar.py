@@ -6,26 +6,59 @@ from PySide6.QtWidgets import (
 )
 
 
+
 class Sidebar(QWidget):
 
-    def __init__(self):
+
+    def __init__(
+        self
+    ):
+
         super().__init__()
 
+
         self.buttons = {}
+
 
         self.setup_ui()
 
 
-    def setup_ui(self):
+
+    def setup_ui(
+        self
+    ):
+
 
         layout = QVBoxLayout()
 
-        # Title
-        title = QLabel("PIXVAULT")
-        layout.addWidget(title)
 
 
-        # Home
+        # Header
+
+        title = QLabel(
+            "PIXVAULT"
+        )
+
+
+        layout.addWidget(
+            title
+        )
+
+
+
+        # MAIN
+
+        main_label = QLabel(
+            "MAIN"
+        )
+
+
+        layout.addWidget(
+            main_label
+        )
+
+
+
         self.create_button(
             layout,
             "Home",
@@ -33,27 +66,78 @@ class Sidebar(QWidget):
         )
 
 
-        # Section
-        tools_label = QLabel("TOOLS")
-        layout.addWidget(tools_label)
+
+        # PROCESSING
+
+        processing_label = QLabel(
+            "PROCESSING"
+        )
 
 
-        # Tools Menu
-        tools = [
-            ("All Processing", "all_processing"),
-            ("Convert", "convert"),
-            ("Compress", "compress"),
-            ("Resize", "resize"),
-            ("Crop", "crop"),
-            ("Transform", "transform"),
-            ("DPI", "dpi"),
-            ("Metadata", "metadata"),
-            ("Color Space", "colorspace"),
-            ("Bit Depth", "bitdepth"),
+        layout.addWidget(
+            processing_label
+        )
+
+
+
+        processing_menu = [
+
+            (
+                "All Processing",
+                "all_processing"
+            ),
+
+            (
+                "Convert",
+                "convert"
+            ),
+
+            (
+                "Compress",
+                "compress"
+            ),
+
+            (
+                "Resize",
+                "resize"
+            ),
+
+            (
+                "Crop",
+                "crop"
+            ),
+
+            (
+                "Transform",
+                "transform"
+            ),
+
+            (
+                "DPI",
+                "dpi"
+            ),
+
+            (
+                "Metadata",
+                "metadata"
+            ),
+
+            (
+                "Color Space",
+                "colorspace"
+            ),
+
+            (
+                "Bit Depth",
+                "bitdepth"
+            )
+
         ]
 
 
-        for text, key in tools:
+
+        for text, key in processing_menu:
+
 
             self.create_button(
                 layout,
@@ -62,14 +146,38 @@ class Sidebar(QWidget):
             )
 
 
-        # Bottom Menu
-        layout.addStretch()
+
+        # MANAGEMENT
+
+
+        management_label = QLabel(
+            "MANAGEMENT"
+        )
+
+
+        layout.addWidget(
+            management_label
+        )
 
 
         self.create_button(
             layout,
             "History",
             "history"
+        )
+
+
+
+        # SYSTEM
+
+
+        system_label = QLabel(
+            "SYSTEM"
+        )
+
+
+        layout.addWidget(
+            system_label
         )
 
 
@@ -87,7 +195,14 @@ class Sidebar(QWidget):
         )
 
 
-        self.setLayout(layout)
+
+        layout.addStretch()
+
+
+
+        self.setLayout(
+            layout
+        )
 
 
 
@@ -98,8 +213,15 @@ class Sidebar(QWidget):
         key
     ):
 
-        button = QPushButton(text)
+
+        button = QPushButton(
+            text
+        )
+
 
         self.buttons[key] = button
 
-        layout.addWidget(button)
+
+        layout.addWidget(
+            button
+        )

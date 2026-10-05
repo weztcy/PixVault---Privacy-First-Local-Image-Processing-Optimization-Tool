@@ -8,30 +8,25 @@ from PySide6.QtWidgets import (
     QPushButton,
     QFileDialog,
     QLineEdit,
-    QHBoxLayout,
-    QMessageBox,
-    QComboBox
+    QComboBox,
+    QMessageBox
 )
 
 
 
 
-class AllProcessingPage(QWidget):
-
+class ConvertPage(QWidget):
 
 
     def __init__(
         self,
-        image_service,
-        batch_service
+        image_service
     ):
 
         super().__init__()
 
 
         self.image_service = image_service
-
-        self.batch_service = batch_service
 
 
         self.selected_file = None
@@ -51,7 +46,7 @@ class AllProcessingPage(QWidget):
 
 
         title = QLabel(
-            "All Processing"
+            "Convert"
         )
 
 
@@ -59,12 +54,6 @@ class AllProcessingPage(QWidget):
             title
         )
 
-
-
-        # Input file
-
-
-        file_layout = QHBoxLayout()
 
 
         self.file_input = QLineEdit()
@@ -84,24 +73,16 @@ class AllProcessingPage(QWidget):
         )
 
 
-        file_layout.addWidget(
+
+        layout.addWidget(
             self.file_input
         )
 
 
-        file_layout.addWidget(
+        layout.addWidget(
             browse_button
         )
 
-
-
-        layout.addLayout(
-            file_layout
-        )
-
-
-
-        # Format
 
 
         self.format_box = QComboBox()
@@ -109,17 +90,22 @@ class AllProcessingPage(QWidget):
 
         self.format_box.addItems(
             [
-                "WEBP",
                 "JPEG",
                 "PNG",
-                "AVIF"
+                "WEBP",
+                "AVIF",
+                "GIF",
+                "BMP",
+                "TIFF",
+                "HEIC",
+                "ICO"
             ]
         )
 
 
         layout.addWidget(
             QLabel(
-                "Output Format"
+                "Target Format"
             )
         )
 
@@ -130,28 +116,23 @@ class AllProcessingPage(QWidget):
 
 
 
-        # Process button
-
-
-        self.process_button = QPushButton(
-            "Process"
+        convert_button = QPushButton(
+            "Convert"
         )
 
 
-        self.process_button.clicked.connect(
-            self.process_image
+        convert_button.clicked.connect(
+            self.convert
         )
 
 
         layout.addWidget(
-            self.process_button
+            convert_button
         )
 
 
 
-        self.result_label = QLabel(
-            ""
-        )
+        self.result_label = QLabel()
 
 
         layout.addWidget(
@@ -179,19 +160,20 @@ class AllProcessingPage(QWidget):
 
         if file:
 
-
             self.selected_file = Path(
                 file
             )
 
 
             self.file_input.setText(
-                str(self.selected_file)
+                str(
+                    self.selected_file
+                )
             )
 
 
 
-    def process_image(
+    def convert(
         self
     ):
 
@@ -210,12 +192,13 @@ class AllProcessingPage(QWidget):
 
 
 
-        output_folder = Path(
-            "test_data/output/ui_processing"
-        )
+        output_format = self.format_box.currentText()
 
 
-        output_path = output_folder / (
+
+        output_path = Path(
+            "test_data/output/ui_convert"
+        ) / (
 
             self.selected_file.stem
 
@@ -225,7 +208,7 @@ class AllProcessingPage(QWidget):
 
             +
 
-            self.format_box.currentText().lower()
+            output_format.lower()
 
         )
 
@@ -234,17 +217,14 @@ class AllProcessingPage(QWidget):
         config = {
 
 
-            "operations":[
-
-            ],
+            "operations": [],
 
 
-            "output":{
+            "output": {
 
-                "format":
-                    self.format_box.currentText(),
+                "format": output_format,
 
-                "quality":85
+                "quality": 85
 
             }
 
@@ -267,7 +247,9 @@ class AllProcessingPage(QWidget):
 
 
             self.result_label.setText(
+
                 f"Completed:\n{result}"
+
             )
 
 
@@ -276,7 +258,11 @@ class AllProcessingPage(QWidget):
 
 
             QMessageBox.critical(
+
                 self,
+
                 "Error",
+
                 str(error)
+
             )

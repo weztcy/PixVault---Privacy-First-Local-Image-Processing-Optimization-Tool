@@ -8,30 +8,26 @@ from PySide6.QtWidgets import (
     QPushButton,
     QFileDialog,
     QLineEdit,
-    QHBoxLayout,
-    QMessageBox,
-    QComboBox
+    QComboBox,
+    QSpinBox,
+    QMessageBox
 )
 
 
 
 
-class AllProcessingPage(QWidget):
-
+class CompressPage(QWidget):
 
 
     def __init__(
         self,
-        image_service,
-        batch_service
+        image_service
     ):
 
         super().__init__()
 
 
         self.image_service = image_service
-
-        self.batch_service = batch_service
 
 
         self.selected_file = None
@@ -51,7 +47,7 @@ class AllProcessingPage(QWidget):
 
 
         title = QLabel(
-            "All Processing"
+            "Compress"
         )
 
 
@@ -59,12 +55,6 @@ class AllProcessingPage(QWidget):
             title
         )
 
-
-
-        # Input file
-
-
-        file_layout = QHBoxLayout()
 
 
         self.file_input = QLineEdit()
@@ -84,37 +74,66 @@ class AllProcessingPage(QWidget):
         )
 
 
-        file_layout.addWidget(
+        layout.addWidget(
             self.file_input
         )
 
 
-        file_layout.addWidget(
+        layout.addWidget(
             browse_button
         )
 
 
 
-        layout.addLayout(
-            file_layout
+        layout.addWidget(
+            QLabel(
+                "Compression Mode"
+            )
         )
 
 
-
-        # Format
-
-
-        self.format_box = QComboBox()
+        self.mode_box = QComboBox()
 
 
-        self.format_box.addItems(
+        self.mode_box.addItems(
             [
-                "WEBP",
-                "JPEG",
-                "PNG",
-                "AVIF"
+                "quality",
+                "target_size"
             ]
         )
+
+
+        layout.addWidget(
+            self.mode_box
+        )
+
+
+
+        layout.addWidget(
+            QLabel(
+                "Quality"
+            )
+        )
+
+
+        self.quality_spin = QSpinBox()
+
+
+        self.quality_spin.setRange(
+            1,
+            100
+        )
+
+
+        self.quality_spin.setValue(
+            85
+        )
+
+
+        layout.addWidget(
+            self.quality_spin
+        )
+
 
 
         layout.addWidget(
@@ -124,34 +143,41 @@ class AllProcessingPage(QWidget):
         )
 
 
+        self.format_box = QComboBox()
+
+
+        self.format_box.addItems(
+            [
+                "WEBP",
+                "JPEG",
+                "PNG"
+            ]
+        )
+
+
         layout.addWidget(
             self.format_box
         )
 
 
 
-        # Process button
-
-
-        self.process_button = QPushButton(
-            "Process"
+        process_button = QPushButton(
+            "Compress"
         )
 
 
-        self.process_button.clicked.connect(
-            self.process_image
+        process_button.clicked.connect(
+            self.compress
         )
 
 
         layout.addWidget(
-            self.process_button
+            process_button
         )
 
 
 
-        self.result_label = QLabel(
-            ""
-        )
+        self.result_label = QLabel()
 
 
         layout.addWidget(
@@ -179,19 +205,20 @@ class AllProcessingPage(QWidget):
 
         if file:
 
-
             self.selected_file = Path(
                 file
             )
 
 
             self.file_input.setText(
-                str(self.selected_file)
+                str(
+                    self.selected_file
+                )
             )
 
 
 
-    def process_image(
+    def compress(
         self
     ):
 
@@ -210,12 +237,12 @@ class AllProcessingPage(QWidget):
 
 
 
-        output_folder = Path(
-            "test_data/output/ui_processing"
-        )
+        output_format = self.format_box.currentText()
 
 
-        output_path = output_folder / (
+        output_path = Path(
+            "test_data/output/ui_compress"
+        ) / (
 
             self.selected_file.stem
 
@@ -225,7 +252,7 @@ class AllProcessingPage(QWidget):
 
             +
 
-            self.format_box.currentText().lower()
+            output_format.lower()
 
         )
 
@@ -236,13 +263,24 @@ class AllProcessingPage(QWidget):
 
             "operations":[
 
+                {
+                    "type":"compression",
+
+                    "mode":
+                        self.mode_box.currentText(),
+
+                    "quality":
+                        self.quality_spin.value()
+
+                }
+
             ],
 
 
             "output":{
 
                 "format":
-                    self.format_box.currentText(),
+                    output_format,
 
                 "quality":85
 

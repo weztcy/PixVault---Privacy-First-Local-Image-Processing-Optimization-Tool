@@ -8,30 +8,25 @@ from PySide6.QtWidgets import (
     QPushButton,
     QFileDialog,
     QLineEdit,
-    QHBoxLayout,
-    QMessageBox,
-    QComboBox
+    QComboBox,
+    QMessageBox
 )
 
 
 
 
-class AllProcessingPage(QWidget):
-
+class MetadataPage(QWidget):
 
 
     def __init__(
         self,
-        image_service,
-        batch_service
+        image_service
     ):
 
         super().__init__()
 
 
         self.image_service = image_service
-
-        self.batch_service = batch_service
 
 
         self.selected_file = None
@@ -50,21 +45,12 @@ class AllProcessingPage(QWidget):
 
 
 
-        title = QLabel(
-            "All Processing"
-        )
-
-
         layout.addWidget(
-            title
+            QLabel(
+                "Metadata"
+            )
         )
 
-
-
-        # Input file
-
-
-        file_layout = QHBoxLayout()
 
 
         self.file_input = QLineEdit()
@@ -74,47 +60,26 @@ class AllProcessingPage(QWidget):
         )
 
 
-        browse_button = QPushButton(
+        browse = QPushButton(
             "Select Image"
         )
 
 
-        browse_button.clicked.connect(
+        browse.clicked.connect(
             self.select_file
         )
 
 
-        file_layout.addWidget(
+
+        layout.addWidget(
             self.file_input
         )
 
 
-        file_layout.addWidget(
-            browse_button
+        layout.addWidget(
+            browse
         )
 
-
-
-        layout.addLayout(
-            file_layout
-        )
-
-
-
-        # Format
-
-
-        self.format_box = QComboBox()
-
-
-        self.format_box.addItems(
-            [
-                "WEBP",
-                "JPEG",
-                "PNG",
-                "AVIF"
-            ]
-        )
 
 
         layout.addWidget(
@@ -124,34 +89,42 @@ class AllProcessingPage(QWidget):
         )
 
 
+
+        self.format_box = QComboBox()
+
+
+        self.format_box.addItems(
+            [
+                "JPEG",
+                "PNG",
+                "WEBP"
+            ]
+        )
+
+
         layout.addWidget(
             self.format_box
         )
 
 
 
-        # Process button
-
-
-        self.process_button = QPushButton(
-            "Process"
+        remove_button = QPushButton(
+            "Remove Metadata"
         )
 
 
-        self.process_button.clicked.connect(
-            self.process_image
+        remove_button.clicked.connect(
+            self.remove_metadata
         )
 
 
         layout.addWidget(
-            self.process_button
+            remove_button
         )
 
 
 
-        self.result_label = QLabel(
-            ""
-        )
+        self.result_label = QLabel()
 
 
         layout.addWidget(
@@ -186,12 +159,14 @@ class AllProcessingPage(QWidget):
 
 
             self.file_input.setText(
-                str(self.selected_file)
+                str(
+                    self.selected_file
+                )
             )
 
 
 
-    def process_image(
+    def remove_metadata(
         self
     ):
 
@@ -210,12 +185,13 @@ class AllProcessingPage(QWidget):
 
 
 
-        output_folder = Path(
-            "test_data/output/ui_processing"
-        )
+        output_format = self.format_box.currentText()
 
 
-        output_path = output_folder / (
+
+        output_path = Path(
+            "test_data/output/ui_metadata"
+        ) / (
 
             self.selected_file.stem
 
@@ -225,24 +201,34 @@ class AllProcessingPage(QWidget):
 
             +
 
-            self.format_box.currentText().lower()
+            output_format.lower()
 
         )
 
 
 
-        config = {
+        operation = {
 
+            "type":"metadata",
+
+            "mode":"all"
+
+        }
+
+
+
+        config = {
 
             "operations":[
 
-            ],
+                operation
 
+            ],
 
             "output":{
 
                 "format":
-                    self.format_box.currentText(),
+                    output_format,
 
                 "quality":85
 

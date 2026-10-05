@@ -8,30 +8,25 @@ from PySide6.QtWidgets import (
     QPushButton,
     QFileDialog,
     QLineEdit,
-    QHBoxLayout,
-    QMessageBox,
-    QComboBox
+    QComboBox,
+    QMessageBox
 )
 
 
 
 
-class AllProcessingPage(QWidget):
-
+class BitDepthPage(QWidget):
 
 
     def __init__(
         self,
-        image_service,
-        batch_service
+        image_service
     ):
 
         super().__init__()
 
 
         self.image_service = image_service
-
-        self.batch_service = batch_service
 
 
         self.selected_file = None
@@ -50,71 +45,68 @@ class AllProcessingPage(QWidget):
 
 
 
-        title = QLabel(
-            "All Processing"
-        )
-
-
         layout.addWidget(
-            title
+            QLabel(
+                "Bit Depth"
+            )
         )
 
-
-
-        # Input file
-
-
-        file_layout = QHBoxLayout()
 
 
         self.file_input = QLineEdit()
+
 
         self.file_input.setReadOnly(
             True
         )
 
 
-        browse_button = QPushButton(
+        browse = QPushButton(
             "Select Image"
         )
 
 
-        browse_button.clicked.connect(
+        browse.clicked.connect(
             self.select_file
         )
 
 
-        file_layout.addWidget(
+
+        layout.addWidget(
             self.file_input
         )
 
 
-        file_layout.addWidget(
-            browse_button
+        layout.addWidget(
+            browse
         )
 
 
 
-        layout.addLayout(
-            file_layout
+        layout.addWidget(
+            QLabel(
+                "Target Bit Depth"
+            )
         )
 
 
 
-        # Format
+        self.depth_box = QComboBox()
 
 
-        self.format_box = QComboBox()
-
-
-        self.format_box.addItems(
+        self.depth_box.addItems(
             [
-                "WEBP",
-                "JPEG",
-                "PNG",
-                "AVIF"
+                "8",
+                "16",
+                "32"
             ]
         )
+
+
+        layout.addWidget(
+            self.depth_box
+        )
+
 
 
         layout.addWidget(
@@ -124,34 +116,42 @@ class AllProcessingPage(QWidget):
         )
 
 
+
+        self.format_box = QComboBox()
+
+
+        self.format_box.addItems(
+            [
+                "PNG",
+                "TIFF",
+                "WEBP"
+            ]
+        )
+
+
         layout.addWidget(
             self.format_box
         )
 
 
 
-        # Process button
-
-
-        self.process_button = QPushButton(
-            "Process"
+        process = QPushButton(
+            "Convert Bit Depth"
         )
 
 
-        self.process_button.clicked.connect(
-            self.process_image
+        process.clicked.connect(
+            self.convert_bitdepth
         )
 
 
         layout.addWidget(
-            self.process_button
+            process
         )
 
 
 
-        self.result_label = QLabel(
-            ""
-        )
+        self.result_label = QLabel()
 
 
         layout.addWidget(
@@ -179,19 +179,20 @@ class AllProcessingPage(QWidget):
 
         if file:
 
-
             self.selected_file = Path(
                 file
             )
 
 
             self.file_input.setText(
-                str(self.selected_file)
+                str(
+                    self.selected_file
+                )
             )
 
 
 
-    def process_image(
+    def convert_bitdepth(
         self
     ):
 
@@ -210,12 +211,13 @@ class AllProcessingPage(QWidget):
 
 
 
-        output_folder = Path(
-            "test_data/output/ui_processing"
-        )
+        output_format = self.format_box.currentText()
 
 
-        output_path = output_folder / (
+
+        output_path = Path(
+            "test_data/output/ui_bitdepth"
+        ) / (
 
             self.selected_file.stem
 
@@ -225,16 +227,30 @@ class AllProcessingPage(QWidget):
 
             +
 
-            self.format_box.currentText().lower()
+            output_format.lower()
 
         )
 
 
 
+        operation = {
+
+            "type":"bitdepth",
+
+            "bit_depth":
+                int(
+                    self.depth_box.currentText()
+                )
+
+        }
+
+
+
         config = {
 
-
             "operations":[
+
+                operation
 
             ],
 
@@ -242,7 +258,7 @@ class AllProcessingPage(QWidget):
             "output":{
 
                 "format":
-                    self.format_box.currentText(),
+                    output_format,
 
                 "quality":85
 
