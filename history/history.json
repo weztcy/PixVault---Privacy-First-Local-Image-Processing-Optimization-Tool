@@ -1,0 +1,193 @@
+[
+    {
+        "id": "e3ad5b11-c0dc-4f16-bb2c-1a5b549dadbf",
+        "timestamp": "2026-10-05 23:40:17",
+        "source": "sample.jpg",
+        "output": "sample.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "value": 800
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "6dd5820a-d376-415f-a84e-626402930dea",
+        "timestamp": "2026-10-05 23:41:42",
+        "source": "test_data/input/sample.jpg",
+        "output": "test_data/output/integrated/sample.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "value": 800
+            }
+        ],
+        "status": "failed",
+        "error": "[Errno 2] No such file or directory: 'test_data\\\\output\\\\integrated\\\\_temp_0_sample.png'"
+    },
+    {
+        "id": "153abe37-f8a3-4196-a64b-822ef03345fd",
+        "timestamp": "2026-10-05 23:41:51",
+        "source": "test_data/input/sample.jpg",
+        "output": "test_data/output/integrated/sample.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "value": 800
+            }
+        ],
+        "status": "failed",
+        "error": "[Errno 2] No such file or directory: 'test_data\\\\output\\\\integrated\\\\_temp_0_sample.png'"
+    },
+    {
+        "id": "a0d56831-e7b3-451e-b5a7-0373d66be892",
+        "timestamp": "2026-10-05 23:43:24",
+        "source": "test_data\\input\\sample.jpg",
+        "output": "test_data\\output\\integrated\\sample.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "value": 800
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "6e1fefc8-e25b-4d02-a004-7602bea7b246",
+        "timestamp": "2026-10-05 23:46:59",
+        "source": "test_data\\input\\sample.jpg",
+        "output": "test_data\\output\\service\\sample.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "value": 800
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "bf431263-6e24-4fe3-8517-fcb36b028a43",
+        "timestamp": "2026-10-05 23:47:49",
+        "source": "test_data\\input\\sample.jpg",
+        "output": "test_data\\output\\service_batch\\sample.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "value": 800
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "40f59a13-d166-4434-813b-d5e67e1fe2d4",
+        "timestamp": "2026-10-05 23:47:50",
+        "source": "test_data\\input\\sample.png",
+        "output": "test_data\\output\\service_batch\\sample_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "value": 800
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0ca78125-551f-46e7-a7f1-e129d6bfc470",
+        "timestamp": "2026-10-05 23:47:50",
+        "source": "test_data\\input\\sample.webp",
+        "output": "test_data\\output\\service_batch\\sample_002.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "value": 800
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e762d964-3886-40b9-832a-4bb96d78a83b",
+        "timestamp": "2026-10-05 23:50:22",
+        "source": "test_data\\input\\sample.jpg",
+        "output": "test_data\\output\\service_integration\\sample.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "value": 800
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a8cee9a2-857c-493f-8d5b-fb680cf338c0",
+        "timestamp": "2026-10-05 23:50:28",
+        "source": "test_data\\input\\sample.jpg",
+        "output": "test_data\\output\\service_integration\\batch\\sample.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 75
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ebceded4-5bdb-4f91-818d-c82dc7cbd081",
+        "timestamp": "2026-10-05 23:50:29",
+        "source": "test_data\\input\\sample.png",
+        "output": "test_data\\output\\service_integration\\batch\\sample_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 75
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "79738852-5e6d-47a7-9110-999233a33a6e",
+        "timestamp": "2026-10-05 23:50:38",
+        "source": "test_data\\input\\sample.webp",
+        "output": "test_data\\output\\service_integration\\batch\\sample_002.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 75
+            }
+        ],
+        "status": "success",
+        "error": null
+    }
+]
