@@ -1,16 +1,40 @@
+from PySide6.QtCore import QObject, Signal
+
+
 from core.worker import WorkerThread
 
 
 
 
 
-class BatchService:
+class BatchService(QObject):
+
+
+    progress_changed = Signal(
+        int,
+        int,
+        str
+    )
+
+
+    processing_finished = Signal(
+        dict
+    )
+
+
+    processing_error = Signal(
+        str
+    )
+
+
 
 
 
     def __init__(
         self
     ):
+
+        super().__init__()
 
 
         self.thread = None
@@ -25,12 +49,8 @@ class BatchService:
         self,
         files,
         output_folder,
-        config,
-        progress_callback=None,
-        finished_callback=None,
-        error_callback=None
+        config
     ):
-
 
 
         if self.is_running():
@@ -41,8 +61,6 @@ class BatchService:
                 "Batch processing is already running"
 
             )
-
-
 
 
 
@@ -57,8 +75,6 @@ class BatchService:
 
 
 
-
-
         if not output_folder:
 
 
@@ -70,8 +86,6 @@ class BatchService:
 
 
 
-
-
         if not config:
 
 
@@ -80,7 +94,6 @@ class BatchService:
                 "Processing configuration missing"
 
             )
-
 
 
 
@@ -100,52 +113,51 @@ class BatchService:
 
 
 
-
-
-        # =====================
-        # SIGNAL CONNECTION
-        # =====================
+        self.connect_thread()
 
 
 
-        if progress_callback:
-
-
-            self.thread.progress_changed.connect(
-
-                progress_callback
-
-            )
+        self.thread.start()
 
 
 
 
 
-        if finished_callback:
-
-
-            self.thread.processing_finished.connect(
-
-                finished_callback
-
-            )
 
 
 
+    def connect_thread(
+        self
+    ):
 
 
-        if error_callback:
+        if not self.thread:
 
-
-            self.thread.processing_error.connect(
-
-                error_callback
-
-            )
-
+            return
 
 
 
+        self.thread.progress_changed.connect(
+
+            self.progress_changed.emit
+
+        )
+
+
+
+        self.thread.processing_finished.connect(
+
+            self.processing_finished.emit
+
+        )
+
+
+
+        self.thread.processing_error.connect(
+
+            self.processing_error.emit
+
+        )
 
 
 
@@ -159,11 +171,6 @@ class BatchService:
 
 
 
-        self.thread.start()
-
-
-
-
 
 
 
@@ -172,13 +179,9 @@ class BatchService:
     ):
 
 
-
         if not self.thread:
 
-
             return
-
-
 
 
 
@@ -196,7 +199,6 @@ class BatchService:
     def is_running(
         self
     ):
-
 
 
         if not self.thread:
@@ -217,7 +219,6 @@ class BatchService:
     def cleanup_thread(
         self
     ):
-
 
 
         if self.thread:

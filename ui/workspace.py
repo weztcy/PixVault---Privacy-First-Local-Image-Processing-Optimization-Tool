@@ -1,11 +1,7 @@
-from PySide6.QtWidgets import (
-    QStackedWidget,
-    QScrollArea
-)
+from PySide6.QtWidgets import QStackedWidget
 
 
 from ui.pages.home_page import HomePage
-
 
 from ui.pages.convert_page import ConvertPage
 from ui.pages.compress_page import CompressPage
@@ -29,7 +25,6 @@ from ui.pages.privacy_page import PrivacyPage
 class Workspace(QStackedWidget):
 
 
-
     def __init__(
         self,
         image_service,
@@ -49,13 +44,11 @@ class Workspace(QStackedWidget):
             )
 
 
-
         if batch_service is None:
 
             raise ValueError(
                 "BatchService is required"
             )
-
 
 
         if history_service is None:
@@ -100,42 +93,11 @@ class Workspace(QStackedWidget):
         self.register_system_pages()
 
 
+
         self.show_page(
             "home"
         )
 
-
-
-
-
-
-
-
-    def wrap_page(
-        self,
-        widget
-    ):
-
-
-        scroll = QScrollArea()
-
-
-        scroll.setWidgetResizable(
-            True
-        )
-
-
-        scroll.setFrameShape(
-            QScrollArea.Shape.NoFrame
-        )
-
-
-        scroll.setWidget(
-            widget
-        )
-
-
-        return scroll
 
 
 
@@ -181,7 +143,6 @@ class Workspace(QStackedWidget):
         tools = {
 
 
-
             "convert":
 
                 ConvertPage(
@@ -191,7 +152,6 @@ class Workspace(QStackedWidget):
                     self.batch_service
 
                 ),
-
 
 
 
@@ -207,7 +167,6 @@ class Workspace(QStackedWidget):
 
 
 
-
             "resize":
 
                 ResizePage(
@@ -217,7 +176,6 @@ class Workspace(QStackedWidget):
                     self.batch_service
 
                 ),
-
 
 
 
@@ -233,7 +191,6 @@ class Workspace(QStackedWidget):
 
 
 
-
             "transform":
 
                 TransformPage(
@@ -243,7 +200,6 @@ class Workspace(QStackedWidget):
                     self.batch_service
 
                 ),
-
 
 
 
@@ -259,7 +215,6 @@ class Workspace(QStackedWidget):
 
 
 
-
             "metadata":
 
                 MetadataPage(
@@ -269,7 +224,6 @@ class Workspace(QStackedWidget):
                     self.batch_service
 
                 ),
-
 
 
 
@@ -285,7 +239,6 @@ class Workspace(QStackedWidget):
 
 
 
-
             "bitdepth":
 
                 BitDepthPage(
@@ -297,8 +250,6 @@ class Workspace(QStackedWidget):
                 )
 
         }
-
-
 
 
 
@@ -397,21 +348,13 @@ class Workspace(QStackedWidget):
 
 
 
-        scroll_page = self.wrap_page(
-
-            widget
-
-        )
-
-
-
-        self.pages[name] = scroll_page
+        self.pages[name] = widget
 
 
 
         self.addWidget(
 
-            scroll_page
+            widget
 
         )
 
@@ -444,6 +387,11 @@ class Workspace(QStackedWidget):
                 page
 
             )
+
+
+
+
+
 
 
 

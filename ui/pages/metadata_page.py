@@ -1,16 +1,22 @@
-from pathlib import Path
-import json
-
-
 from PySide6.QtWidgets import (
     QWidget,
     QLabel,
     QVBoxLayout,
+    QHBoxLayout,
     QPushButton,
-    QFileDialog,
-    QLineEdit,
+    QScrollArea,
+    QFrame,
+    QComboBox,
     QMessageBox
 )
+
+
+from ui.components.image_importer import ImageImporter
+from ui.components.image_list_widget import ImageListWidget
+from ui.components.image_preview import ImagePreview
+from ui.components.image_info_panel import ImageInfoPanel
+from ui.components.output_selector import OutputSelector
+from ui.components.export_progress import ExportProgress
 
 
 
@@ -19,11 +25,10 @@ from PySide6.QtWidgets import (
 class MetadataPage(QWidget):
 
 
-
     def __init__(
         self,
         image_service,
-        batch_service=None
+        batch_service
     ):
 
         super().__init__()
@@ -34,10 +39,16 @@ class MetadataPage(QWidget):
         self.batch_service = batch_service
 
 
-        self.selected_file = None
+        self.images = []
+
+        self.output_folder = None
+
 
 
         self.setup_ui()
+
+        self.connect_events()
+
 
 
 
@@ -50,88 +61,182 @@ class MetadataPage(QWidget):
     ):
 
 
-        layout = QVBoxLayout()
-
-
-        layout.setSpacing(
-            10
+        root_layout = QVBoxLayout(
+            self
         )
 
 
 
-        layout.addWidget(
-
-            QLabel(
-                "Metadata Processor"
-            )
-
-        )
+        self.scroll_area = QScrollArea()
 
 
-
-        self.file_input = QLineEdit()
-
-
-        self.file_input.setReadOnly(
+        self.scroll_area.setWidgetResizable(
             True
         )
 
 
 
-        browse = QPushButton(
-            "Select Image"
+        container = QWidget()
+
+
+        self.layout = QVBoxLayout(
+            container
         )
 
 
-        browse.clicked.connect(
-            self.select_file
-        )
-
-
-
-        layout.addWidget(
-            self.file_input
-        )
-
-
-        layout.addWidget(
-            browse
+        self.layout.setSpacing(
+            15
         )
 
 
 
-
-
-        remove_button = QPushButton(
-            "Remove All Metadata"
+        title = QLabel(
+            "Metadata Processor"
         )
 
 
-        remove_button.clicked.connect(
-            self.remove_metadata
-        )
-
-
-        layout.addWidget(
-            remove_button
+        title.setObjectName(
+            "page_title"
         )
 
 
 
-        self.result_label = QLabel()
+        self.importer = ImageImporter()
 
 
-        layout.addWidget(
-            self.result_label
+        self.image_list = ImageListWidget()
+
+
+
+        preview_layout = QHBoxLayout()
+
+
+
+        self.preview = ImagePreview()
+
+
+        self.info_panel = ImageInfoPanel()
+
+
+
+        preview_layout.addWidget(
+            self.preview
         )
 
 
-        layout.addStretch()
+        preview_layout.addWidget(
+            self.info_panel
+        )
 
 
 
-        self.setLayout(
-            layout
+        settings_box = QFrame()
+
+
+        settings_layout = QVBoxLayout(
+            settings_box
+        )
+
+
+        settings_layout.addWidget(
+            QLabel(
+                "Metadata Settings"
+            )
+        )
+
+
+
+        settings_layout.addWidget(
+            QLabel(
+                "Metadata Action"
+            )
+        )
+
+
+
+        self.mode_box = QComboBox()
+
+
+        self.mode_box.addItems(
+            [
+                "all",
+                "exif",
+                "iptc",
+                "xmp"
+            ]
+        )
+
+
+        settings_layout.addWidget(
+            self.mode_box
+        )
+
+
+
+        self.output_selector = OutputSelector()
+
+
+        self.progress = ExportProgress()
+
+
+
+        self.start_button = QPushButton(
+            "Remove Metadata"
+        )
+
+
+
+        self.layout.addWidget(
+            title
+        )
+
+
+        self.layout.addWidget(
+            self.importer
+        )
+
+
+        self.layout.addWidget(
+            self.image_list
+        )
+
+
+        self.layout.addLayout(
+            preview_layout
+        )
+
+
+        self.layout.addWidget(
+            settings_box
+        )
+
+
+        self.layout.addWidget(
+            self.output_selector
+        )
+
+
+        self.layout.addWidget(
+            self.progress
+        )
+
+
+        self.layout.addWidget(
+            self.start_button
+        )
+
+
+        self.layout.addStretch()
+
+
+
+        self.scroll_area.setWidget(
+            container
+        )
+
+
+        root_layout.addWidget(
+            self.scroll_area
         )
 
 
@@ -141,205 +246,136 @@ class MetadataPage(QWidget):
 
 
 
-    def select_file(
+    def connect_events(
         self
     ):
 
 
-        file, _ = QFileDialog.getOpenFileName(
+        self.importer.images_added.connect(
+            self.load_images
+        )
 
-            self,
 
-            "Select Image",
+        self.image_list.image_selected.connect(
+            self.show_preview
+        )
 
-            "",
 
-            (
-                "Images "
-                "(*.jpg *.jpeg *.png *.webp *.avif "
-                "*.gif *.bmp *.tiff *.tif *.heic *.ico)"
-            )
+        self.output_selector.output_changed.connect(
+            self.set_output_folder
+        )
 
+
+        self.start_button.clicked.connect(
+            self.start_metadata
+        )
+
+
+        self.batch_service.progress_changed.connect(
+            self.progress.update_progress
+        )
+
+
+        self.batch_service.processing_finished.connect(
+            self.metadata_finished
+        )
+
+
+        self.batch_service.processing_error.connect(
+            self.metadata_error
         )
 
 
 
-        if file:
-
-
-            self.selected_file = Path(
-
-                file
-
-            )
-
-
-            self.file_input.setText(
-
-                str(
-                    self.selected_file
-                )
-
-            )
 
 
 
 
 
-
-
-
-    def get_output_folder(
-        self
+    def load_images(
+        self,
+        images
     ):
 
 
-        config_file = Path(
+        self.images = images
 
-            "config/app_settings.json"
 
+        self.image_list.set_images(
+            images
         )
 
 
+        if images:
 
-        if config_file.exists():
-
-
-            try:
-
-
-                with open(
-
-                    config_file,
-
-                    "r",
-
-                    encoding="utf-8"
-
-                ) as file:
-
-
-                    data = json.load(file)
-
-
-
-                    folder = data.get(
-
-                        "output_folder"
-
-                    )
-
-
-                    if folder:
-
-
-                        return Path(
-
-                            folder
-
-                        )
-
-
-
-            except Exception:
-
-                pass
-
-
-
-        return Path(
-            "output"
-        )
-
-
-
-
-
-
-
-
-    def remove_metadata(
-        self
-    ):
-
-
-        if not self.selected_file:
-
-
-            QMessageBox.warning(
-
-                self,
-
-                "Warning",
-
-                "Select image first"
-
+            self.show_preview(
+                images[0]
             )
 
 
-            return
 
 
 
 
 
+
+    def show_preview(
+        self,
+        image
+    ):
+
+
+        self.preview.set_image(
+            image
+        )
+
+
+        self.info_panel.set_image(
+            image
+        )
+
+
+
+
+
+
+
+
+    def set_output_folder(
+        self,
+        folder
+    ):
+
+
+        self.output_folder = folder
+
+
+
+
+
+
+
+
+    def build_config(
+        self
+    ):
 
 
         operation = {
 
 
             "type":
-
                 "metadata",
 
 
-
             "mode":
-
-                "all"
+                self.mode_box.currentText()
 
         }
 
 
 
-
-
-
-
-        output_folder = self.get_output_folder()
-
-
-        output_folder.mkdir(
-
-            parents=True,
-
-            exist_ok=True
-
-        )
-
-
-
-        output_path = output_folder / (
-
-            self.selected_file.stem
-
-            +
-
-            "_clean"
-
-            +
-
-            self.selected_file.suffix
-
-        )
-
-
-
-
-
-
-
-        config = {
+        return {
 
 
             "operations":
@@ -356,16 +392,8 @@ class MetadataPage(QWidget):
 
                 {
 
-
-                    "format":
-
-                        self.selected_file.suffix.replace(
-
-                            ".",
-
-                            ""
-
-                        ).upper()
+                    "keep_format":
+                        True
 
                 }
 
@@ -377,30 +405,78 @@ class MetadataPage(QWidget):
 
 
 
+
+    def start_metadata(
+        self
+    ):
+
+
+        if not self.images:
+
+
+            QMessageBox.warning(
+                self,
+                "Metadata",
+                "No images selected"
+            )
+
+
+            return
+
+
+
+        if not self.output_folder:
+
+
+            QMessageBox.warning(
+                self,
+                "Metadata",
+                "Output folder not selected"
+            )
+
+
+            return
+
+
+
+        self.start_button.setEnabled(
+            False
+        )
+
+
+        self.progress.reset()
+
+
+
         try:
 
 
-            result = self.image_service.process_image(
+            self.batch_service.start_batch(
 
-                self.selected_file,
+                self.images,
 
-                output_path,
+                self.output_folder,
 
-                config
+                self.build_config()
 
             )
 
 
 
-            self.result_label.setText(
+            self.progress.set_output_folder(
 
-                f"Completed:\n{result}"
+                self.output_folder
 
             )
 
 
 
         except Exception as error:
+
+
+            self.start_button.setEnabled(
+                True
+            )
 
 
             QMessageBox.critical(
@@ -412,3 +488,45 @@ class MetadataPage(QWidget):
                 str(error)
 
             )
+
+
+
+
+
+
+
+
+    def metadata_finished(
+        self,
+        result
+    ):
+
+
+        self.start_button.setEnabled(
+            True
+        )
+
+
+        self.progress.finished()
+
+
+
+
+
+
+
+
+    def metadata_error(
+        self,
+        error
+    ):
+
+
+        self.start_button.setEnabled(
+            True
+        )
+
+
+        self.progress.failed(
+            error
+        )
