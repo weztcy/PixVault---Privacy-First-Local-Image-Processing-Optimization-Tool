@@ -6,7 +6,6 @@ from PySide6.QtWidgets import (
     QPushButton,
     QScrollArea,
     QFrame,
-    QComboBox,
     QMessageBox
 )
 
@@ -17,6 +16,13 @@ from ui.components.image_preview import ImagePreview
 from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.output_selector import OutputSelector
 from ui.components.export_progress import ExportProgress
+
+
+from ui.components.processing_options.bitdepth_options import (
+    BitDepthOptions
+)
+
+
 
 
 
@@ -31,6 +37,7 @@ class BitDepthPage(QWidget):
         batch_service
     ):
 
+
         super().__init__()
 
 
@@ -38,6 +45,7 @@ class BitDepthPage(QWidget):
         self.image_service = image_service
 
         self.batch_service = batch_service
+
 
 
         self.images = []
@@ -56,7 +64,6 @@ class BitDepthPage(QWidget):
 
 
 
-
     def setup_ui(
         self
     ):
@@ -65,6 +72,7 @@ class BitDepthPage(QWidget):
         root_layout = QVBoxLayout(
             self
         )
+
 
 
         self.scroll_area = QScrollArea()
@@ -79,6 +87,7 @@ class BitDepthPage(QWidget):
         container = QWidget()
 
 
+
         self.layout = QVBoxLayout(
             container
         )
@@ -87,6 +96,10 @@ class BitDepthPage(QWidget):
         self.layout.setSpacing(
             15
         )
+
+
+
+
 
 
 
@@ -101,10 +114,18 @@ class BitDepthPage(QWidget):
 
 
 
+
+
+
+
         self.importer = ImageImporter()
 
 
+
         self.image_list = ImageListWidget()
+
+
+
 
 
 
@@ -130,7 +151,19 @@ class BitDepthPage(QWidget):
 
 
 
+
+
+
+
+
+
+        # =====================
+        # BIT DEPTH OPTIONS
+        # =====================
+
+
         settings_box = QFrame()
+
 
 
         settings_layout = QVBoxLayout(
@@ -140,53 +173,64 @@ class BitDepthPage(QWidget):
 
 
         settings_layout.addWidget(
+
             QLabel(
                 "Bit Depth Settings"
             )
+
         )
+
+
+
+        self.bitdepth_options = BitDepthOptions()
 
 
 
         settings_layout.addWidget(
-            QLabel(
-                "Target Bit Depth"
-            )
+
+            self.bitdepth_options
+
         )
 
 
 
-        self.depth_box = QComboBox()
 
 
-        self.depth_box.addItems(
-            [
-                "8",
-                "16",
-                "32"
-            ]
-        )
 
-
-        settings_layout.addWidget(
-            self.depth_box
-        )
 
 
 
         self.output_selector = OutputSelector()
 
+
+
         self.output_folder = (
+
             self.output_selector.get_output_folder()
+
         )
+
+
+
 
 
         self.progress = ExportProgress()
 
 
 
+
+
         self.start_button = QPushButton(
+
             "Apply Bit Depth"
+
         )
+
+
+
+
+
+
 
 
 
@@ -234,6 +278,9 @@ class BitDepthPage(QWidget):
 
 
 
+
+
+
         self.scroll_area.setWidget(
             container
         )
@@ -250,44 +297,66 @@ class BitDepthPage(QWidget):
 
 
 
+
     def connect_events(
         self
     ):
 
 
         self.importer.images_added.connect(
+
             self.load_images
+
         )
+
 
 
         self.image_list.image_selected.connect(
+
             self.show_preview
+
         )
+
 
 
         self.output_selector.output_changed.connect(
+
             self.set_output_folder
+
         )
+
 
 
         self.start_button.clicked.connect(
+
             self.start_bitdepth
+
         )
+
 
 
         self.batch_service.progress_changed.connect(
+
             self.progress.update_progress
+
         )
+
 
 
         self.batch_service.processing_finished.connect(
+
             self.bitdepth_finished
+
         )
+
 
 
         self.batch_service.processing_error.connect(
+
             self.bitdepth_error
+
         )
+
 
 
 
@@ -305,17 +374,24 @@ class BitDepthPage(QWidget):
         self.images = images
 
 
+
         self.image_list.set_images(
+
             images
+
         )
+
 
 
         if images:
 
 
             self.show_preview(
+
                 images[0]
+
             )
+
 
 
 
@@ -331,13 +407,18 @@ class BitDepthPage(QWidget):
 
 
         self.preview.set_image(
+
             image
+
         )
 
 
         self.info_panel.set_image(
+
             image
+
         )
+
 
 
 
@@ -361,24 +442,25 @@ class BitDepthPage(QWidget):
 
 
 
+
+
     def build_config(
         self
     ):
 
 
-        operation = {
+        operation = (
+
+            self.bitdepth_options.get_settings()
+
+        )
 
 
-            "type":
-                "bitdepth",
+        operation["type"] = (
 
+            "bitdepth"
 
-            "value":
-                int(
-                    self.depth_box.currentText()
-                )
-
-        }
+        )
 
 
 
@@ -387,21 +469,24 @@ class BitDepthPage(QWidget):
 
             "operations":
 
-                [
-                    operation
-                ],
+            [
+
+                operation
+
+            ],
+
 
 
             "output":
 
-                {
+            {
 
-                    "keep_format":
-                        True
+                "keep_format": True
 
-                }
+            }
 
         }
+
 
 
 
@@ -419,13 +504,20 @@ class BitDepthPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Bit Depth",
+
                 "No images selected"
+
             )
 
 
             return
+
+
+
 
 
 
@@ -433,9 +525,13 @@ class BitDepthPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Bit Depth",
+
                 "Output folder not selected"
+
             )
 
 
@@ -443,12 +539,22 @@ class BitDepthPage(QWidget):
 
 
 
+
+
+
+
         self.start_button.setEnabled(
+
             False
+
         )
 
 
         self.progress.reset()
+
+
+
+
 
 
 
@@ -475,12 +581,18 @@ class BitDepthPage(QWidget):
 
 
 
+
+
         except Exception as error:
 
 
+
             self.start_button.setEnabled(
+
                 True
+
             )
+
 
 
             QMessageBox.critical(
@@ -500,6 +612,7 @@ class BitDepthPage(QWidget):
 
 
 
+
     def bitdepth_finished(
         self,
         result
@@ -507,11 +620,14 @@ class BitDepthPage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.finished()
+
 
 
 
@@ -527,10 +643,14 @@ class BitDepthPage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.failed(
+
             error
+
         )

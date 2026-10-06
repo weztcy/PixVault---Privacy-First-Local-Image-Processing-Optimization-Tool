@@ -20,7 +20,36 @@ from history.manager import HistoryManager
 
 
 
+
 class ImagePipeline:
+
+
+
+
+    PROCESS_ORDER = {
+
+
+        "resize": 1,
+
+        "crop": 2,
+
+        "transform": 3,
+
+        "compression": 4,
+
+        "bitdepth": 5,
+
+        "colorspace": 6,
+
+        "dpi": 7,
+
+        "metadata": 8
+
+    }
+
+
+
+
 
 
 
@@ -37,9 +66,11 @@ class ImagePipeline:
                 ImageResizer(),
 
 
+
             "crop":
 
                 ImageCropper(),
+
 
 
             "transform":
@@ -47,9 +78,11 @@ class ImagePipeline:
                 ImageTransformer(),
 
 
+
             "compression":
 
                 ImageCompressor(),
+
 
 
             "dpi":
@@ -57,14 +90,17 @@ class ImagePipeline:
                 DPIProcessor(),
 
 
+
             "colorspace":
 
                 ColorSpaceProcessor(),
 
 
+
             "bitdepth":
 
                 BitDepthProcessor(),
+
 
 
             "metadata":
@@ -78,8 +114,6 @@ class ImagePipeline:
         self.exporter = Exporter()
 
         self.history = HistoryManager()
-
-        self.temp_files = []
 
 
 
@@ -95,11 +129,6 @@ class ImagePipeline:
     ):
 
 
-
-        self.temp_files.clear()
-
-
-
         source_path = Path(
             source_path
         )
@@ -108,7 +137,6 @@ class ImagePipeline:
         output_path = Path(
             output_path
         )
-
 
 
 
@@ -122,7 +150,6 @@ class ImagePipeline:
 
 
 
-
         if not config:
 
             raise ValueError(
@@ -132,26 +159,6 @@ class ImagePipeline:
             )
 
 
-
-
-        output_path.parent.mkdir(
-
-            parents=True,
-
-            exist_ok=True
-
-        )
-
-
-
-
-        operations = config.get(
-
-            "operations",
-
-            []
-
-        )
 
 
 
@@ -175,6 +182,7 @@ class ImagePipeline:
 
 
 
+
         self.validate_output_format(
 
             output_settings
@@ -185,7 +193,14 @@ class ImagePipeline:
 
 
 
-        current_file = source_path
+
+        operations = config.get(
+
+            "operations",
+
+            []
+
+        )
 
 
 
@@ -195,36 +210,33 @@ class ImagePipeline:
 
 
 
+            with Image.open(
 
-            # =====================
-            # PROCESSING CHAIN
-            # =====================
+                source_path
+
+            ) as source_image:
 
 
-            for index, operation in enumerate(
+
+                image = source_image.copy()
+
+
+
+
+
+            operations = self.sort_operations(
 
                 operations
 
-            ):
+            )
 
 
 
-                if not isinstance(
-
-                    operation,
-
-                    dict
-
-                ):
 
 
-                    raise ValueError(
-
-                        "Invalid operation configuration"
-
-                    )
 
 
+            for operation in operations:
 
 
 
@@ -233,7 +245,6 @@ class ImagePipeline:
                     "type"
 
                 )
-
 
 
 
@@ -258,8 +269,7 @@ class ImagePipeline:
 
 
 
-
-                if processor is None:
+                if not processor:
 
 
                     raise ValueError(
@@ -273,32 +283,9 @@ class ImagePipeline:
 
 
 
-                temp_output = self.generate_temp_path(
+                image = processor.process(
 
-                    output_path,
-
-                    index
-
-                )
-
-
-
-
-                self.temp_files.append(
-
-                    temp_output
-
-                )
-
-
-
-
-
-                current_file = processor.process(
-
-                    current_file,
-
-                    temp_output,
+                    image,
 
                     operation
 
@@ -309,36 +296,20 @@ class ImagePipeline:
 
 
 
-            # =====================
-            # EXPORT
-            # =====================
 
 
 
-            with Image.open(
+            export_result = self.exporter.export(
 
-                current_file
+                image,
 
-            ) as image:
+                source_path,
 
+                output_path.parent,
 
+                output_settings
 
-                image.load()
-
-
-
-                export_result = self.exporter.export(
-
-                    image,
-
-                    source_path,
-
-                    output_path.parent,
-
-                    output_settings
-
-                )
-
+            )
 
 
 
@@ -349,7 +320,6 @@ class ImagePipeline:
                 export_result["path"]
 
             )
-
 
 
 
@@ -401,7 +371,6 @@ class ImagePipeline:
 
 
 
-
             self.history.add(
 
                 source=str(
@@ -440,7 +409,6 @@ class ImagePipeline:
             )
 
 
-
             raise
 
 
@@ -448,10 +416,29 @@ class ImagePipeline:
 
 
 
-        finally:
+
+    def sort_operations(
+        self,
+        operations
+    ):
 
 
-            self.cleanup_temp()
+        return sorted(
+
+            operations,
+
+            key=lambda item:
+
+                self.PROCESS_ORDER.get(
+
+                    item.get("type"),
+
+                    999
+
+                )
+
+        )
+
 
 
 
@@ -498,80 +485,3 @@ class ImagePipeline:
                 f"Unsupported output format: {format_name}"
 
             )
-
-
-
-
-
-
-
-
-
-    def generate_temp_path(
-        self,
-        output_path,
-        index
-    ):
-
-
-
-        output_path = Path(
-
-            output_path
-
-        )
-
-
-
-        return output_path.parent / (
-
-            f"_pixvault_temp_{index}_"
-
-            f"{output_path.stem}.tiff"
-
-        )
-
-
-
-
-
-
-
-
-    def cleanup_temp(
-        self
-    ):
-
-
-
-        for file in self.temp_files:
-
-
-
-            try:
-
-
-                file = Path(
-
-                    file
-
-                )
-
-
-
-                if file.exists():
-
-
-                    file.unlink()
-
-
-
-            except Exception:
-
-
-                pass
-
-
-
-
-        self.temp_files.clear()

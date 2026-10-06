@@ -6,7 +6,6 @@ from PySide6.QtWidgets import (
     QPushButton,
     QScrollArea,
     QFrame,
-    QComboBox,
     QMessageBox
 )
 
@@ -17,6 +16,13 @@ from ui.components.image_preview import ImagePreview
 from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.output_selector import OutputSelector
 from ui.components.export_progress import ExportProgress
+
+
+from ui.components.processing_options.colorspace_options import (
+    ColorSpaceOptions
+)
+
+
 
 
 
@@ -31,6 +37,7 @@ class ColorSpacePage(QWidget):
         batch_service
     ):
 
+
         super().__init__()
 
 
@@ -38,6 +45,7 @@ class ColorSpacePage(QWidget):
         self.image_service = image_service
 
         self.batch_service = batch_service
+
 
 
         self.images = []
@@ -79,6 +87,7 @@ class ColorSpacePage(QWidget):
         container = QWidget()
 
 
+
         self.layout = QVBoxLayout(
             container
         )
@@ -87,6 +96,10 @@ class ColorSpacePage(QWidget):
         self.layout.setSpacing(
             15
         )
+
+
+
+
 
 
 
@@ -101,10 +114,18 @@ class ColorSpacePage(QWidget):
 
 
 
+
+
+
+
         self.importer = ImageImporter()
 
 
+
         self.image_list = ImageListWidget()
+
+
+
 
 
 
@@ -130,7 +151,19 @@ class ColorSpacePage(QWidget):
 
 
 
+
+
+
+
+
+
+        # =====================
+        # COLOR SPACE OPTIONS
+        # =====================
+
+
         settings_box = QFrame()
+
 
 
         settings_layout = QVBoxLayout(
@@ -140,55 +173,64 @@ class ColorSpacePage(QWidget):
 
 
         settings_layout.addWidget(
+
             QLabel(
                 "Color Space Settings"
             )
+
         )
+
+
+
+        self.colorspace_options = ColorSpaceOptions()
 
 
 
         settings_layout.addWidget(
-            QLabel(
-                "Target Color Space"
-            )
+
+            self.colorspace_options
+
         )
 
 
 
-        self.colorspace_box = QComboBox()
 
 
-        self.colorspace_box.addItems(
-            [
-                "sRGB",
-                "grayscale",
-                "CMYK",
-                "Adobe RGB",
-                "Display P3"
-            ]
-        )
 
-
-        settings_layout.addWidget(
-            self.colorspace_box
-        )
 
 
 
         self.output_selector = OutputSelector()
 
+
+
         self.output_folder = (
+
             self.output_selector.get_output_folder()
+
         )
+
+
+
 
 
         self.progress = ExportProgress()
 
 
 
+
+
         self.start_button = QPushButton(
+
             "Apply Color Space"
+
         )
+
+
+
+
+
+
 
 
 
@@ -236,6 +278,9 @@ class ColorSpacePage(QWidget):
 
 
 
+
+
+
         self.scroll_area.setWidget(
             container
         )
@@ -252,44 +297,66 @@ class ColorSpacePage(QWidget):
 
 
 
+
     def connect_events(
         self
     ):
 
 
         self.importer.images_added.connect(
+
             self.load_images
+
         )
+
 
 
         self.image_list.image_selected.connect(
+
             self.show_preview
+
         )
+
 
 
         self.output_selector.output_changed.connect(
+
             self.set_output_folder
+
         )
+
 
 
         self.start_button.clicked.connect(
+
             self.start_colorspace
+
         )
+
 
 
         self.batch_service.progress_changed.connect(
+
             self.progress.update_progress
+
         )
+
 
 
         self.batch_service.processing_finished.connect(
+
             self.colorspace_finished
+
         )
+
 
 
         self.batch_service.processing_error.connect(
+
             self.colorspace_error
+
         )
+
 
 
 
@@ -307,17 +374,24 @@ class ColorSpacePage(QWidget):
         self.images = images
 
 
+
         self.image_list.set_images(
+
             images
+
         )
+
 
 
         if images:
 
 
             self.show_preview(
+
                 images[0]
+
             )
+
 
 
 
@@ -333,13 +407,18 @@ class ColorSpacePage(QWidget):
 
 
         self.preview.set_image(
+
             image
+
         )
 
 
         self.info_panel.set_image(
+
             image
+
         )
+
 
 
 
@@ -363,22 +442,25 @@ class ColorSpacePage(QWidget):
 
 
 
+
+
     def build_config(
         self
     ):
 
 
-        operation = {
+        operation = (
+
+            self.colorspace_options.get_settings()
+
+        )
 
 
-            "type":
-                "colorspace",
+        operation["type"] = (
 
+            "colorspace"
 
-            "target":
-                self.colorspace_box.currentText()
-
-        }
+        )
 
 
 
@@ -387,24 +469,24 @@ class ColorSpacePage(QWidget):
 
             "operations":
 
-                [
+            [
 
-                    operation
+                operation
 
-                ],
+            ],
 
 
 
             "output":
 
-                {
+            {
 
-                    "keep_format":
-                        True
+                "keep_format": True
 
-                }
+            }
 
         }
+
 
 
 
@@ -422,13 +504,20 @@ class ColorSpacePage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Color Space",
+
                 "No images selected"
+
             )
 
 
             return
+
+
+
 
 
 
@@ -436,9 +525,13 @@ class ColorSpacePage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Color Space",
+
                 "Output folder not selected"
+
             )
 
 
@@ -446,12 +539,22 @@ class ColorSpacePage(QWidget):
 
 
 
+
+
+
+
         self.start_button.setEnabled(
+
             False
+
         )
 
 
         self.progress.reset()
+
+
+
+
 
 
 
@@ -478,12 +581,18 @@ class ColorSpacePage(QWidget):
 
 
 
+
+
         except Exception as error:
 
 
+
             self.start_button.setEnabled(
+
                 True
+
             )
+
 
 
             QMessageBox.critical(
@@ -503,6 +612,7 @@ class ColorSpacePage(QWidget):
 
 
 
+
     def colorspace_finished(
         self,
         result
@@ -510,11 +620,14 @@ class ColorSpacePage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.finished()
+
 
 
 
@@ -530,10 +643,14 @@ class ColorSpacePage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.failed(
+
             error
+
         )

@@ -6,7 +6,6 @@ from PySide6.QtWidgets import (
     QPushButton,
     QScrollArea,
     QFrame,
-    QComboBox,
     QMessageBox
 )
 
@@ -17,6 +16,13 @@ from ui.components.image_preview import ImagePreview
 from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.output_selector import OutputSelector
 from ui.components.export_progress import ExportProgress
+
+
+from ui.components.processing_options.metadata_options import (
+    MetadataOptions
+)
+
+
 
 
 
@@ -32,6 +38,7 @@ class MetadataPage(QWidget):
     ):
 
         super().__init__()
+
 
 
         self.image_service = image_service
@@ -55,7 +62,6 @@ class MetadataPage(QWidget):
 
 
 
-
     def setup_ui(
         self
     ):
@@ -66,14 +72,12 @@ class MetadataPage(QWidget):
         )
 
 
-
         self.scroll_area = QScrollArea()
 
 
         self.scroll_area.setWidgetResizable(
             True
         )
-
 
 
         container = QWidget()
@@ -130,12 +134,20 @@ class MetadataPage(QWidget):
 
 
 
+
+
+        # =====================
+        # METADATA OPTIONS
+        # =====================
+
+
         settings_box = QFrame()
 
 
         settings_layout = QVBoxLayout(
             settings_box
         )
+
 
 
         settings_layout.addWidget(
@@ -146,34 +158,20 @@ class MetadataPage(QWidget):
 
 
 
-        settings_layout.addWidget(
-            QLabel(
-                "Metadata Action"
-            )
-        )
+        self.metadata_options = MetadataOptions()
 
-
-
-        self.mode_box = QComboBox()
-
-
-        self.mode_box.addItems(
-            [
-                "all",
-                "exif",
-                "iptc",
-                "xmp"
-            ]
-        )
 
 
         settings_layout.addWidget(
-            self.mode_box
+            self.metadata_options
         )
+
+
 
 
 
         self.output_selector = OutputSelector()
+
 
         self.output_folder = (
             self.output_selector.get_output_folder()
@@ -187,6 +185,8 @@ class MetadataPage(QWidget):
         self.start_button = QPushButton(
             "Remove Metadata"
         )
+
+
 
 
 
@@ -250,6 +250,7 @@ class MetadataPage(QWidget):
 
 
 
+
     def connect_events(
         self
     ):
@@ -296,6 +297,7 @@ class MetadataPage(QWidget):
 
 
 
+
     def load_images(
         self,
         images
@@ -315,6 +317,7 @@ class MetadataPage(QWidget):
             self.show_preview(
                 images[0]
             )
+
 
 
 
@@ -345,6 +348,7 @@ class MetadataPage(QWidget):
 
 
 
+
     def set_output_folder(
         self,
         folder
@@ -360,22 +364,25 @@ class MetadataPage(QWidget):
 
 
 
+
+
     def build_config(
         self
     ):
 
 
-        operation = {
+        operation = (
+
+            self.metadata_options.get_settings()
+
+        )
 
 
-            "type":
-                "metadata",
+        operation["type"] = (
 
+            "metadata"
 
-            "mode":
-                self.mode_box.currentText()
-
-        }
+        )
 
 
 
@@ -384,24 +391,26 @@ class MetadataPage(QWidget):
 
             "operations":
 
-                [
+            [
 
-                    operation
+                operation
 
-                ],
+            ],
 
 
 
             "output":
 
-                {
+            {
 
-                    "keep_format":
-                        True
+                "keep_format":
 
-                }
+                    True
+
+            }
 
         }
+
 
 
 
@@ -419,13 +428,19 @@ class MetadataPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Metadata",
+
                 "No images selected"
+
             )
 
 
             return
+
+
 
 
 
@@ -433,13 +448,19 @@ class MetadataPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Metadata",
+
                 "Output folder not selected"
+
             )
 
 
             return
+
+
 
 
 
@@ -449,6 +470,8 @@ class MetadataPage(QWidget):
 
 
         self.progress.reset()
+
+
 
 
 
@@ -472,6 +495,8 @@ class MetadataPage(QWidget):
                 self.output_folder
 
             )
+
+
 
 
 
@@ -500,6 +525,7 @@ class MetadataPage(QWidget):
 
 
 
+
     def metadata_finished(
         self,
         result
@@ -512,6 +538,7 @@ class MetadataPage(QWidget):
 
 
         self.progress.finished()
+
 
 
 

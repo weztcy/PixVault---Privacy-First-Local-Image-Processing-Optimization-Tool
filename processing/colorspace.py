@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from PIL import Image, ImageCms
 
 
@@ -10,29 +8,68 @@ class ColorSpaceProcessor:
 
 
 
+    PROFILES = {
+
+
+        "srgb":
+
+            "sRGB",
+
+
+        "adobe_rgb":
+
+            "Adobe RGB (1998)",
+
+
+        "display_p3":
+
+            "DisplayP3"
+
+    }
+
+
+
+
+
+
+
+    INTENTS = {
+
+
+        "perceptual":
+
+            ImageCms.Intent.PERCEPTUAL,
+
+
+        "relative_colorimetric":
+
+            ImageCms.Intent.RELATIVE_COLORIMETRIC,
+
+
+        "saturation":
+
+            ImageCms.Intent.SATURATION,
+
+
+        "absolute_colorimetric":
+
+            ImageCms.Intent.ABSOLUTE_COLORIMETRIC
+
+    }
+
+
+
+
+
+
+
+
+
     def process(
         self,
-        source_path,
-        output_path,
+        image,
         settings
     ):
-
-
-        source = Path(
-            source_path
-        )
-
-
-        output = Path(
-            output_path
-        )
-
-
-        output.parent.mkdir(
-            parents=True,
-            exist_ok=True
-        )
-
 
 
         target = settings.get(
@@ -44,60 +81,27 @@ class ColorSpaceProcessor:
         )
 
 
+        intent = settings.get(
 
-        with Image.open(source) as image:
+            "intent",
 
+            "perceptual"
 
-            converted = self.convert_colorspace(
-
-                image,
-
-                target
-
-            )
+        )
 
 
 
-            save_settings = {
+        return self.convert_colorspace(
+
+            image,
+
+            target,
+
+            intent
+
+        )
 
 
-                "format":
-
-                    "TIFF",
-
-
-                "compression":
-
-                    "tiff_lzw"
-
-            }
-
-
-
-            icc_profile = converted.info.get(
-                "icc_profile"
-            )
-
-
-
-            if icc_profile:
-
-
-                save_settings["icc_profile"] = icc_profile
-
-
-
-            converted.save(
-
-                output,
-
-                **save_settings
-
-            )
-
-
-
-        return output
 
 
 
@@ -108,25 +112,24 @@ class ColorSpaceProcessor:
     def convert_colorspace(
         self,
         image,
-        target
+        target,
+        intent
     ):
 
 
         target = str(
+
             target
+
         ).lower().strip()
 
 
 
+        intent = str(
 
+            intent
 
-        if target == "srgb":
-
-
-            return self.convert_srgb(
-                image
-            )
-
+        ).lower().strip()
 
 
 
@@ -136,8 +139,11 @@ class ColorSpaceProcessor:
 
 
             return image.convert(
+
                 "L"
+
             )
+
 
 
 
@@ -147,8 +153,31 @@ class ColorSpaceProcessor:
         if target == "cmyk":
 
 
-            return image.convert(
-                "CMYK"
+            return self.convert_cmyk(
+
+                image,
+
+                intent
+
+            )
+
+
+
+
+
+
+
+        if target in self.PROFILES:
+
+
+            return self.convert_icc(
+
+                image,
+
+                target,
+
+                intent
+
             )
 
 
@@ -169,34 +198,176 @@ class ColorSpaceProcessor:
 
 
 
-    def convert_srgb(
+
+    def convert_icc(
         self,
-        image
+        image,
+        target,
+        intent
+    ):
+
+
+        source_profile = image.info.get(
+
+            "icc_profile"
+
+        )
+
+
+
+        if source_profile:
+
+
+            input_profile = ImageCms.ImageCmsProfile(
+
+                bytes(source_profile)
+
+            )
+
+
+        else:
+
+
+            input_profile = ImageCms.createProfile(
+
+                "sRGB"
+
+            )
+
+
+
+
+
+
+        output_profile = ImageCms.createProfile(
+
+            self.PROFILES[target]
+
+        )
+
+
+
+
+
+        transform = ImageCms.buildTransform(
+
+            input_profile,
+
+            output_profile,
+
+            image.mode,
+
+            image.mode,
+
+            renderingIntent=self.INTENTS.get(
+
+                intent,
+
+                ImageCms.Intent.PERCEPTUAL
+
+            )
+
+        )
+
+
+
+
+
+
+        result = ImageCms.applyTransform(
+
+            image,
+
+            transform
+
+        )
+
+
+
+
+
+        result.info["icc_profile"] = ImageCms.ImageCmsProfile(
+
+            output_profile
+
+        ).tobytes()
+
+
+
+
+
+        return result
+
+
+
+
+
+
+
+
+
+
+    def convert_cmyk(
+        self,
+        image,
+        intent
     ):
 
 
         rgb = image.convert(
+
             "RGB"
+
         )
 
 
 
-        profile = ImageCms.createProfile(
+        rgb_profile = ImageCms.createProfile(
+
             "sRGB"
-        )
-
-
-
-        rgb.info["icc_profile"] = (
-
-            ImageCms.ImageCmsProfile(
-
-                profile
-
-            ).tobytes()
 
         )
 
 
 
-        return rgb
+        cmyk_profile = ImageCms.createProfile(
+
+            "CMYK"
+
+        )
+
+
+
+
+
+        transform = ImageCms.buildTransform(
+
+            rgb_profile,
+
+            cmyk_profile,
+
+            "RGB",
+
+            "CMYK",
+
+            renderingIntent=self.INTENTS.get(
+
+                intent,
+
+                ImageCms.Intent.PERCEPTUAL
+
+            )
+
+        )
+
+
+
+
+
+        return ImageCms.applyTransform(
+
+            rgb,
+
+            transform
+
+        )

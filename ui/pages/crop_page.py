@@ -6,8 +6,6 @@ from PySide6.QtWidgets import (
     QPushButton,
     QScrollArea,
     QFrame,
-    QComboBox,
-    QSpinBox,
     QMessageBox
 )
 
@@ -18,6 +16,13 @@ from ui.components.image_preview import ImagePreview
 from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.output_selector import OutputSelector
 from ui.components.export_progress import ExportProgress
+
+
+from ui.components.processing_options.crop_options import (
+    CropOptions
+)
+
+
 
 
 
@@ -32,7 +37,9 @@ class CropPage(QWidget):
         batch_service
     ):
 
+
         super().__init__()
+
 
 
         self.image_service = image_service
@@ -40,15 +47,16 @@ class CropPage(QWidget):
         self.batch_service = batch_service
 
 
+
         self.images = []
 
         self.output_folder = None
 
 
+
         self.setup_ui()
 
         self.connect_events()
-
 
 
 
@@ -66,6 +74,7 @@ class CropPage(QWidget):
         )
 
 
+
         self.scroll_area = QScrollArea()
 
 
@@ -74,7 +83,9 @@ class CropPage(QWidget):
         )
 
 
+
         container = QWidget()
+
 
 
         self.layout = QVBoxLayout(
@@ -85,6 +96,9 @@ class CropPage(QWidget):
         self.layout.setSpacing(
             15
         )
+
+
+
 
 
 
@@ -99,10 +113,18 @@ class CropPage(QWidget):
 
 
 
+
+
+
+
         self.importer = ImageImporter()
 
 
+
         self.image_list = ImageListWidget()
+
+
+
 
 
 
@@ -128,7 +150,19 @@ class CropPage(QWidget):
 
 
 
+
+
+
+
+
+
+        # =====================
+        # CROP OPTIONS
+        # =====================
+
+
         crop_box = QFrame()
+
 
 
         crop_layout = QVBoxLayout(
@@ -136,207 +170,65 @@ class CropPage(QWidget):
         )
 
 
+
         crop_layout.addWidget(
+
             QLabel(
                 "Crop Settings"
             )
+
         )
+
+
+
+        self.crop_options = CropOptions()
 
 
 
         crop_layout.addWidget(
-            QLabel(
-                "Crop Mode"
-            )
+
+            self.crop_options
+
         )
 
 
 
-        self.mode_box = QComboBox()
 
 
-        self.mode_box.addItems(
-            [
-                "fixed",
-                "percentage",
-                "aspect_ratio",
-                "coordinates"
-            ]
-        )
 
-
-        crop_layout.addWidget(
-            self.mode_box
-        )
-
-
-
-        crop_layout.addWidget(
-            QLabel(
-                "Width"
-            )
-        )
-
-
-        self.width_spin = QSpinBox()
-
-
-        self.width_spin.setRange(
-            1,
-            100000
-        )
-
-
-        self.width_spin.setValue(
-            500
-        )
-
-
-        crop_layout.addWidget(
-            self.width_spin
-        )
-
-
-
-        crop_layout.addWidget(
-            QLabel(
-                "Height"
-            )
-        )
-
-
-        self.height_spin = QSpinBox()
-
-
-        self.height_spin.setRange(
-            1,
-            100000
-        )
-
-
-        self.height_spin.setValue(
-            500
-        )
-
-
-        crop_layout.addWidget(
-            self.height_spin
-        )
-
-
-
-        crop_layout.addWidget(
-            QLabel(
-                "Percentage"
-            )
-        )
-
-
-        self.percent_spin = QSpinBox()
-
-
-        self.percent_spin.setRange(
-            1,
-            100
-        )
-
-
-        self.percent_spin.setValue(
-            50
-        )
-
-
-        crop_layout.addWidget(
-            self.percent_spin
-        )
-
-
-
-        crop_layout.addWidget(
-            QLabel(
-                "Aspect Ratio"
-            )
-        )
-
-
-        self.ratio_box = QComboBox()
-
-
-        self.ratio_box.addItems(
-            [
-                "1:1",
-                "4:3",
-                "16:9",
-                "3:2",
-                "9:16"
-            ]
-        )
-
-
-        crop_layout.addWidget(
-            self.ratio_box
-        )
-
-
-
-        crop_layout.addWidget(
-            QLabel(
-                "X Coordinate"
-            )
-        )
-
-
-        self.x_spin = QSpinBox()
-
-
-        self.x_spin.setRange(
-            0,
-            100000
-        )
-
-
-        crop_layout.addWidget(
-            self.x_spin
-        )
-
-
-
-        crop_layout.addWidget(
-            QLabel(
-                "Y Coordinate"
-            )
-        )
-
-
-        self.y_spin = QSpinBox()
-
-
-        self.y_spin.setRange(
-            0,
-            100000
-        )
-
-
-        crop_layout.addWidget(
-            self.y_spin
-        )
 
 
 
         self.output_selector = OutputSelector()
 
+
+
         self.output_folder = (
+
             self.output_selector.get_output_folder()
+
         )
+
+
+
 
 
         self.progress = ExportProgress()
 
 
 
+
+
         self.start_button = QPushButton(
+
             "Start Crop"
+
         )
+
+
+
+
+
 
 
 
@@ -384,6 +276,9 @@ class CropPage(QWidget):
 
 
 
+
+
+
         self.scroll_area.setWidget(
             container
         )
@@ -400,54 +295,65 @@ class CropPage(QWidget):
 
 
 
+
     def connect_events(
         self
     ):
 
 
         self.importer.images_added.connect(
+
             self.load_images
+
         )
 
 
         self.image_list.image_selected.connect(
+
             self.show_preview
+
         )
+
 
 
         self.output_selector.output_changed.connect(
+
             self.set_output_folder
+
         )
+
 
 
         self.start_button.clicked.connect(
+
             self.start_crop
+
         )
 
-
-
-        self.mode_box.currentTextChanged.connect(
-            self.update_mode
-        )
 
 
         self.batch_service.progress_changed.connect(
+
             self.progress.update_progress
+
         )
+
 
 
         self.batch_service.processing_finished.connect(
+
             self.crop_finished
+
         )
+
 
 
         self.batch_service.processing_error.connect(
+
             self.crop_error
+
         )
 
-
-
-        self.update_mode()
 
 
 
@@ -465,16 +371,24 @@ class CropPage(QWidget):
         self.images = images
 
 
+
         self.image_list.set_images(
+
             images
+
         )
+
 
 
         if images:
 
+
             self.show_preview(
+
                 images[0]
+
             )
+
 
 
 
@@ -490,13 +404,18 @@ class CropPage(QWidget):
 
 
         self.preview.set_image(
+
             image
+
         )
 
 
         self.info_panel.set_image(
+
             image
+
         )
+
 
 
 
@@ -520,54 +439,6 @@ class CropPage(QWidget):
 
 
 
-    def update_mode(
-        self
-    ):
-
-
-        mode = self.mode_box.currentText()
-
-
-        self.width_spin.setEnabled(
-            mode in [
-                "fixed",
-                "coordinates"
-            ]
-        )
-
-
-        self.height_spin.setEnabled(
-            mode in [
-                "fixed",
-                "coordinates"
-            ]
-        )
-
-
-        self.percent_spin.setEnabled(
-            mode == "percentage"
-        )
-
-
-        self.ratio_box.setEnabled(
-            mode == "aspect_ratio"
-        )
-
-
-        self.x_spin.setEnabled(
-            mode == "coordinates"
-        )
-
-
-        self.y_spin.setEnabled(
-            mode == "coordinates"
-        )
-
-
-
-
-
-
 
 
     def build_config(
@@ -575,93 +446,45 @@ class CropPage(QWidget):
     ):
 
 
-        mode = self.mode_box.currentText()
+        operation = (
 
+            self.crop_options.get_settings()
 
-        operation = {
-
-            "type":
-                "crop",
-
-            "mode":
-                mode
-
-        }
+        )
 
 
 
-        if mode == "fixed":
+        operation["type"] = (
 
+            "crop"
 
-            operation.update({
-
-                "width":
-                    self.width_spin.value(),
-
-                "height":
-                    self.height_spin.value()
-
-            })
-
-
-
-        elif mode == "percentage":
-
-
-            operation["value"] = (
-
-                self.percent_spin.value()
-
-            )
-
-
-
-        elif mode == "aspect_ratio":
-
-
-            operation["ratio"] = (
-
-                self.ratio_box.currentText()
-
-            )
-
-
-
-        elif mode == "coordinates":
-
-
-            operation.update({
-
-                "x":
-                    self.x_spin.value(),
-
-                "y":
-                    self.y_spin.value(),
-
-                "width":
-                    self.width_spin.value(),
-
-                "height":
-                    self.height_spin.value()
-
-            })
+        )
 
 
 
         return {
 
+
             "operations":
-                [
-                    operation
-                ],
+
+            [
+
+                operation
+
+            ],
+
 
 
             "output":
-                {
-                    "keep_format": True
-                }
+
+            {
+
+                "keep_format": True
+
+            }
 
         }
+
 
 
 
@@ -679,13 +502,20 @@ class CropPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Crop",
+
                 "No images selected"
+
             )
 
 
             return
+
+
+
 
 
 
@@ -693,9 +523,13 @@ class CropPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Crop",
+
                 "Output folder not selected"
+
             )
 
 
@@ -703,13 +537,22 @@ class CropPage(QWidget):
 
 
 
+
+
+
+
         self.start_button.setEnabled(
+
             False
+
         )
 
 
-
         self.progress.reset()
+
+
+
+
 
 
 
@@ -727,6 +570,7 @@ class CropPage(QWidget):
             )
 
 
+
             self.progress.set_output_folder(
 
                 self.output_folder
@@ -735,12 +579,18 @@ class CropPage(QWidget):
 
 
 
+
+
         except Exception as error:
 
 
+
             self.start_button.setEnabled(
+
                 True
+
             )
+
 
 
             QMessageBox.critical(
@@ -760,6 +610,7 @@ class CropPage(QWidget):
 
 
 
+
     def crop_finished(
         self,
         result
@@ -767,11 +618,14 @@ class CropPage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.finished()
+
 
 
 
@@ -787,10 +641,15 @@ class CropPage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.failed(
+
             error
+
         )
+        

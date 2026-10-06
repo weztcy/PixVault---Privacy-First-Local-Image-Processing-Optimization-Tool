@@ -6,8 +6,6 @@ from PySide6.QtWidgets import (
     QPushButton,
     QScrollArea,
     QFrame,
-    QComboBox,
-    QSpinBox,
     QMessageBox
 )
 
@@ -18,6 +16,13 @@ from ui.components.image_preview import ImagePreview
 from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.output_selector import OutputSelector
 from ui.components.export_progress import ExportProgress
+
+
+from ui.components.processing_options.transform_options import (
+    TransformOptions
+)
+
+
 
 
 
@@ -32,6 +37,7 @@ class TransformPage(QWidget):
         batch_service
     ):
 
+
         super().__init__()
 
 
@@ -39,6 +45,7 @@ class TransformPage(QWidget):
         self.image_service = image_service
 
         self.batch_service = batch_service
+
 
 
         self.images = []
@@ -50,7 +57,6 @@ class TransformPage(QWidget):
         self.setup_ui()
 
         self.connect_events()
-
 
 
 
@@ -81,6 +87,7 @@ class TransformPage(QWidget):
         container = QWidget()
 
 
+
         self.layout = QVBoxLayout(
             container
         )
@@ -89,6 +96,10 @@ class TransformPage(QWidget):
         self.layout.setSpacing(
             15
         )
+
+
+
+
 
 
 
@@ -103,10 +114,18 @@ class TransformPage(QWidget):
 
 
 
+
+
+
+
         self.importer = ImageImporter()
 
 
+
         self.image_list = ImageListWidget()
+
+
+
 
 
 
@@ -132,7 +151,19 @@ class TransformPage(QWidget):
 
 
 
+
+
+
+
+
+
+        # =====================
+        # TRANSFORM OPTIONS
+        # =====================
+
+
         settings_box = QFrame()
+
 
 
         settings_layout = QVBoxLayout(
@@ -142,82 +173,64 @@ class TransformPage(QWidget):
 
 
         settings_layout.addWidget(
+
             QLabel(
                 "Transform Settings"
             )
+
         )
+
+
+
+        self.transform_options = TransformOptions()
 
 
 
         settings_layout.addWidget(
-            QLabel(
-                "Operation"
-            )
+
+            self.transform_options
+
         )
 
 
 
-        self.operation_box = QComboBox()
-
-
-        self.operation_box.addItems(
-            [
-                "rotate",
-                "flip_horizontal",
-                "flip_vertical",
-                "flip_both"
-            ]
-        )
-
-
-        settings_layout.addWidget(
-            self.operation_box
-        )
 
 
 
-        settings_layout.addWidget(
-            QLabel(
-                "Rotation Angle"
-            )
-        )
-
-
-
-        self.angle_spin = QSpinBox()
-
-
-        self.angle_spin.setRange(
-            -360,
-            360
-        )
-
-
-        self.angle_spin.setValue(
-            90
-        )
-
-
-        settings_layout.addWidget(
-            self.angle_spin
-        )
 
 
 
         self.output_selector = OutputSelector()
 
+
+
         self.output_folder = (
+
             self.output_selector.get_output_folder()
+
         )
+
+
+
 
 
         self.progress = ExportProgress()
 
 
 
+
+
         self.start_button = QPushButton(
+
             "Start Transform"
+
         )
+
+
+
+
+
+
 
 
 
@@ -265,14 +278,19 @@ class TransformPage(QWidget):
 
 
 
+
+
+
         self.scroll_area.setWidget(
             container
         )
 
 
+
         root_layout.addWidget(
             self.scroll_area
         )
+
 
 
 
@@ -287,47 +305,59 @@ class TransformPage(QWidget):
 
 
         self.importer.images_added.connect(
+
             self.load_images
+
         )
+
 
 
         self.image_list.image_selected.connect(
+
             self.show_preview
+
         )
+
 
 
         self.output_selector.output_changed.connect(
+
             self.set_output_folder
+
         )
+
 
 
         self.start_button.clicked.connect(
+
             self.start_transform
+
         )
 
-
-        self.operation_box.currentTextChanged.connect(
-            self.update_operation
-        )
 
 
         self.batch_service.progress_changed.connect(
+
             self.progress.update_progress
+
         )
+
 
 
         self.batch_service.processing_finished.connect(
+
             self.transform_finished
+
         )
+
 
 
         self.batch_service.processing_error.connect(
+
             self.transform_error
+
         )
 
-
-
-        self.update_operation()
 
 
 
@@ -345,8 +375,11 @@ class TransformPage(QWidget):
         self.images = images
 
 
+
         self.image_list.set_images(
+
             images
+
         )
 
 
@@ -355,8 +388,11 @@ class TransformPage(QWidget):
 
 
             self.show_preview(
+
                 images[0]
+
             )
+
 
 
 
@@ -372,13 +408,18 @@ class TransformPage(QWidget):
 
 
         self.preview.set_image(
+
             image
+
         )
 
 
         self.info_panel.set_image(
+
             image
+
         )
+
 
 
 
@@ -402,23 +443,6 @@ class TransformPage(QWidget):
 
 
 
-    def update_operation(
-        self
-    ):
-
-
-        operation = self.operation_box.currentText()
-
-
-        self.angle_spin.setEnabled(
-            operation == "rotate"
-        )
-
-
-
-
-
-
 
 
     def build_config(
@@ -426,71 +450,45 @@ class TransformPage(QWidget):
     ):
 
 
-        operation_name = self.operation_box.currentText()
+        operation = (
+
+            self.transform_options.get_settings()
+
+        )
 
 
 
-        operation = {
+        operation["type"] = (
 
-            "type":
-                "transform"
+            "transform"
 
-        }
-
-
-
-        if operation_name == "rotate":
-
-
-            operation["rotation"] = (
-
-                self.angle_spin.value()
-
-            )
-
-
-
-        elif operation_name == "flip_horizontal":
-
-
-            operation["flip"] = (
-                "horizontal"
-            )
-
-
-
-        elif operation_name == "flip_vertical":
-
-
-            operation["flip"] = (
-                "vertical"
-            )
-
-
-
-        elif operation_name == "flip_both":
-
-
-            operation["flip"] = (
-                "both"
-            )
+        )
 
 
 
         return {
 
+
             "operations":
-                [
-                    operation
-                ],
+
+            [
+
+                operation
+
+            ],
+
 
 
             "output":
-                {
-                    "keep_format": True
-                }
+
+            {
+
+                "keep_format": True
+
+            }
 
         }
+
 
 
 
@@ -508,13 +506,20 @@ class TransformPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Transform",
+
                 "No images selected"
+
             )
 
 
             return
+
+
+
 
 
 
@@ -522,9 +527,13 @@ class TransformPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Transform",
+
                 "Output folder not selected"
+
             )
 
 
@@ -532,8 +541,14 @@ class TransformPage(QWidget):
 
 
 
+
+
+
+
         self.start_button.setEnabled(
+
             False
+
         )
 
 
@@ -541,7 +556,12 @@ class TransformPage(QWidget):
 
 
 
+
+
+
+
         try:
+
 
 
             self.batch_service.start_batch(
@@ -564,12 +584,18 @@ class TransformPage(QWidget):
 
 
 
+
+
         except Exception as error:
 
 
+
             self.start_button.setEnabled(
+
                 True
+
             )
+
 
 
             QMessageBox.critical(
@@ -589,6 +615,7 @@ class TransformPage(QWidget):
 
 
 
+
     def transform_finished(
         self,
         result
@@ -596,11 +623,14 @@ class TransformPage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.finished()
+
 
 
 
@@ -616,10 +646,14 @@ class TransformPage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.failed(
+
             error
+
         )

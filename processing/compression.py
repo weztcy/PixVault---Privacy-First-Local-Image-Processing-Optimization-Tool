@@ -1,4 +1,4 @@
-from pathlib import Path
+from io import BytesIO
 
 from PIL import Image
 
@@ -10,35 +10,44 @@ class ImageCompressor:
 
 
 
+    PRIORITY_STEPS = {
+
+
+        "size": 10,
+
+        "balanced": 5,
+
+        "quality": 2
+
+    }
+
+
+
+
+
+
+
     def process(
         self,
-        source_path,
-        output_path,
+        image,
         settings
     ):
 
 
-        source = Path(
-            source_path
-        )
+        mode = settings.get(
 
+            "mode",
 
-        output = Path(
-            output_path
-        )
+            "quality"
 
-
-        output.parent.mkdir(
-            parents=True,
-            exist_ok=True
         )
 
 
 
-        with Image.open(source) as image:
+        if mode == "quality":
 
 
-            processed = self.compress_image(
+            return self.quality_compression(
 
                 image,
 
@@ -47,19 +56,32 @@ class ImageCompressor:
             )
 
 
-            processed.save(
 
-                output,
 
-                format="TIFF",
 
-                compression="tiff_lzw"
+        elif mode == "target_size":
+
+
+            return self.target_size_compression(
+
+                image,
+
+                settings
 
             )
 
 
 
-        return output
+
+
+        else:
+
+
+            raise ValueError(
+
+                f"Unsupported compression mode: {mode}"
+
+            )
 
 
 
@@ -67,18 +89,29 @@ class ImageCompressor:
 
 
 
-    def compress_image(
+
+
+    def quality_compression(
         self,
         image,
         settings
     ):
 
 
-        method = settings.get(
+        quality = settings.get(
 
-            "method",
+            "quality",
 
-            "none"
+            85
+
+        )
+
+
+        optimize = settings.get(
+
+            "optimize",
+
+            True
 
         )
 
@@ -86,57 +119,291 @@ class ImageCompressor:
 
 
 
-        # =====================
-        # NONE
-        # =====================
+        if quality < 1 or quality > 100:
 
 
-        if method == "none":
+            raise ValueError(
 
+                "Quality must be between 1 and 100"
 
-            return image.copy()
-
-
-
-
-
-
-
-        # =====================
-        # OPTIMIZE
-        # =====================
-
-
-        if method == "optimize":
-
-
-            optimized = image.copy()
-
-
-            optimized.info.clear()
-
-
-            return optimized
-
-
-
-
-
-
-
-        # =====================
-        # REMOVE ALPHA
-        # =====================
-
-
-        if method == "remove_alpha":
-
-
-            return self.remove_alpha(
-                image
             )
 
 
+
+
+
+        result = image.copy()
+
+
+
+        result.info["compression"] = {
+
+
+            "quality":
+
+                int(quality),
+
+
+
+            "optimize":
+
+                bool(optimize)
+
+        }
+
+
+
+        return result
+
+
+
+
+
+
+
+
+
+
+    def target_size_compression(
+        self,
+        image,
+        settings
+    ):
+
+
+        target_size = settings.get(
+
+            "size"
+
+        )
+
+
+
+        unit = settings.get(
+
+            "unit",
+
+            "KB"
+
+        )
+
+
+
+        priority = settings.get(
+
+            "priority",
+
+            "balanced"
+
+        )
+
+
+
+        if target_size is None:
+
+
+            raise ValueError(
+
+                "Target size missing"
+
+            )
+
+
+
+
+
+        target_bytes = self.convert_size(
+
+            target_size,
+
+            unit
+
+        )
+
+
+
+        if target_bytes <= 0:
+
+
+            raise ValueError(
+
+                "Target size must be positive"
+
+            )
+
+
+
+
+
+        result = image.copy()
+
+
+
+        result.info["compression"] = {
+
+
+            "target_size":
+
+                target_bytes,
+
+
+
+            "priority":
+
+                priority
+
+        }
+
+
+
+        return result
+
+
+
+
+
+
+
+
+
+
+    def compress_to_target_size(
+        self,
+        image,
+        output_format,
+        target_bytes,
+        priority="balanced"
+    ):
+
+
+        quality = 95
+
+
+
+        step = self.PRIORITY_STEPS.get(
+
+            priority,
+
+            5
+
+        )
+
+
+
+
+
+        while quality > 5:
+
+
+            buffer = BytesIO()
+
+
+
+            save_options = {
+
+
+                "format":
+
+                    output_format,
+
+
+                "quality":
+
+                    quality
+
+            }
+
+
+
+
+
+            image.save(
+
+                buffer,
+
+                **save_options
+
+            )
+
+
+
+
+
+            current_size = buffer.tell()
+
+
+
+
+
+            if current_size <= target_bytes:
+
+
+                return buffer.getvalue(), quality
+
+
+
+
+
+            quality -= step
+
+
+
+
+
+
+        return buffer.getvalue(), quality
+
+
+
+
+
+
+
+
+
+
+    def convert_size(
+        self,
+        value,
+        unit
+    ):
+
+
+        value = float(
+
+            value
+
+        )
+
+
+
+        unit = unit.upper()
+
+
+
+
+
+        if unit == "KB":
+
+
+            return int(
+
+                value * 1024
+
+            )
+
+
+
+
+
+        if unit == "MB":
+
+
+            return int(
+
+                value * 1024 * 1024
+
+            )
 
 
 
@@ -144,61 +411,6 @@ class ImageCompressor:
 
         raise ValueError(
 
-            f"Unsupported compression method: {method}"
+            f"Unsupported size unit: {unit}"
 
         )
-
-
-
-
-
-
-
-    def remove_alpha(
-        self,
-        image
-    ):
-
-
-        if image.mode not in [
-
-            "RGBA",
-
-            "LA"
-
-        ]:
-
-
-            return image.copy()
-
-
-
-        background = Image.new(
-
-            "RGB",
-
-            image.size,
-
-            "white"
-
-        )
-
-
-
-        alpha = image.getchannel(
-            "A"
-        )
-
-
-
-        background.paste(
-
-            image,
-
-            mask=alpha
-
-        )
-
-
-
-        return background

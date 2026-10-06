@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from PIL import Image
 
 
@@ -12,59 +10,34 @@ class DPIProcessor:
 
     def process(
         self,
-        source_path,
-        output_path,
+        image,
         settings
     ):
 
 
-        source = Path(
-            source_path
-        )
-
-
-        output = Path(
-            output_path
-        )
-
-
-        output.parent.mkdir(
-            parents=True,
-            exist_ok=True
-        )
-
-
-
         horizontal, vertical = self.get_dpi(
+
             settings
+
         )
 
 
 
-        with Image.open(source) as image:
-
-
-            image.save(
-
-                output,
-
-                format="TIFF",
-
-                compression="tiff_lzw",
-
-                dpi=(
-
-                    horizontal,
-
-                    vertical
-
-                )
-
-            )
+        result = image.copy()
 
 
 
-        return output
+        result.info["dpi"] = (
+
+            horizontal,
+
+            vertical
+
+        )
+
+
+
+        return result
 
 
 
@@ -92,14 +65,36 @@ class DPIProcessor:
 
 
 
-        horizontal = settings.get(
-            "horizontal"
+
+
+        linked = settings.get(
+
+            "linked",
+
+            True
+
         )
+
+
+
+
+
+        horizontal = settings.get(
+
+            "horizontal"
+
+        )
+
 
 
         vertical = settings.get(
+
             "vertical"
+
         )
+
+
+
 
 
 
@@ -122,10 +117,23 @@ class DPIProcessor:
 
 
 
-        if vertical is None:
+
+
+        if linked:
 
 
             vertical = horizontal
+
+
+
+        elif vertical is None:
+
+
+            vertical = horizontal
+
+
+
+
 
 
 
@@ -133,29 +141,47 @@ class DPIProcessor:
 
 
             horizontal = float(
+
                 horizontal
+
             )
 
 
             vertical = float(
+
                 vertical
+
             )
+
 
 
         except Exception:
 
 
             raise ValueError(
+
                 "Invalid DPI value"
+
             )
+
+
+
+
+
 
 
 
         if horizontal <= 0 or vertical <= 0:
 
+
             raise ValueError(
+
                 "DPI must be greater than zero"
+
             )
+
+
+
 
 
 
@@ -164,19 +190,28 @@ class DPIProcessor:
         if unit == "dpcm":
 
 
+
             horizontal *= 2.54
+
 
             vertical *= 2.54
 
 
 
+
+
         elif unit != "dpi":
+
+
 
             raise ValueError(
 
                 f"Unsupported DPI unit: {unit}"
 
             )
+
+
+
 
 
 

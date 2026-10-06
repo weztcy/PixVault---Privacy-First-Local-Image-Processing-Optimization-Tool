@@ -6,7 +6,6 @@ from PySide6.QtWidgets import (
     QPushButton,
     QScrollArea,
     QFrame,
-    QComboBox,
     QMessageBox
 )
 
@@ -17,6 +16,13 @@ from ui.components.image_preview import ImagePreview
 from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.output_selector import OutputSelector
 from ui.components.export_progress import ExportProgress
+
+
+from ui.components.processing_options.compression_options import (
+    CompressionOptions
+)
+
+
 
 
 
@@ -31,7 +37,9 @@ class CompressPage(QWidget):
         batch_service
     ):
 
+
         super().__init__()
+
 
 
         self.image_service = image_service
@@ -39,9 +47,11 @@ class CompressPage(QWidget):
         self.batch_service = batch_service
 
 
+
         self.images = []
 
         self.output_folder = None
+
 
 
         self.setup_ui()
@@ -64,6 +74,7 @@ class CompressPage(QWidget):
         )
 
 
+
         self.scroll_area = QScrollArea()
 
 
@@ -76,6 +87,7 @@ class CompressPage(QWidget):
         container = QWidget()
 
 
+
         self.layout = QVBoxLayout(
             container
         )
@@ -84,6 +96,10 @@ class CompressPage(QWidget):
         self.layout.setSpacing(
             15
         )
+
+
+
+
 
 
 
@@ -98,10 +114,18 @@ class CompressPage(QWidget):
 
 
 
+
+
+
+
         self.importer = ImageImporter()
 
 
+
         self.image_list = ImageListWidget()
+
+
+
 
 
 
@@ -127,7 +151,19 @@ class CompressPage(QWidget):
 
 
 
+
+
+
+
+
+
+        # =====================
+        # COMPRESSION OPTIONS
+        # =====================
+
+
         settings_box = QFrame()
+
 
 
         settings_layout = QVBoxLayout(
@@ -135,54 +171,66 @@ class CompressPage(QWidget):
         )
 
 
+
         settings_layout.addWidget(
+
             QLabel(
                 "Compression Settings"
             )
+
         )
+
+
+
+        self.compression_options = CompressionOptions()
 
 
 
         settings_layout.addWidget(
-            QLabel(
-                "Compression Method"
-            )
+
+            self.compression_options
+
         )
 
 
 
-        self.method_box = QComboBox()
 
 
-        self.method_box.addItems(
-            [
-                "none",
-                "optimize",
-                "remove_alpha"
-            ]
-        )
 
-
-        settings_layout.addWidget(
-            self.method_box
-        )
 
 
 
         self.output_selector = OutputSelector()
 
+
+
         self.output_folder = (
+
             self.output_selector.get_output_folder()
+
         )
+
+
+
 
 
         self.progress = ExportProgress()
 
 
 
+
+
         self.start_button = QPushButton(
+
             "Start Compression"
+
         )
+
+
+
+
+
+
 
 
 
@@ -230,6 +278,9 @@ class CompressPage(QWidget):
 
 
 
+
+
+
         self.scroll_area.setWidget(
             container
         )
@@ -246,44 +297,66 @@ class CompressPage(QWidget):
 
 
 
+
     def connect_events(
         self
     ):
 
 
         self.importer.images_added.connect(
+
             self.load_images
+
         )
+
 
 
         self.image_list.image_selected.connect(
+
             self.show_preview
+
         )
+
 
 
         self.output_selector.output_changed.connect(
+
             self.set_output_folder
+
         )
+
 
 
         self.start_button.clicked.connect(
+
             self.start_compress
+
         )
+
 
 
         self.batch_service.progress_changed.connect(
+
             self.progress.update_progress
+
         )
+
 
 
         self.batch_service.processing_finished.connect(
+
             self.compress_finished
+
         )
+
 
 
         self.batch_service.processing_error.connect(
+
             self.compress_error
+
         )
+
 
 
 
@@ -301,17 +374,24 @@ class CompressPage(QWidget):
         self.images = images
 
 
+
         self.image_list.set_images(
+
             images
+
         )
+
 
 
         if images:
 
 
             self.show_preview(
+
                 images[0]
+
             )
+
 
 
 
@@ -327,13 +407,18 @@ class CompressPage(QWidget):
 
 
         self.preview.set_image(
+
             image
+
         )
 
 
         self.info_panel.set_image(
+
             image
+
         )
+
 
 
 
@@ -357,37 +442,52 @@ class CompressPage(QWidget):
 
 
 
+
+
     def build_config(
         self
     ):
 
 
-        operation = {
+        operation = (
 
-            "type":
-                "compression",
+            self.compression_options.get_settings()
 
-            "method":
-                self.method_box.currentText()
+        )
 
-        }
+
+
+        operation["type"] = (
+
+            "compression"
+
+        )
 
 
 
         return {
 
+
             "operations":
-                [
-                    operation
-                ],
+
+            [
+
+                operation
+
+            ],
+
 
 
             "output":
-                {
-                    "keep_format": True
-                }
+
+            {
+
+                "keep_format": True
+
+            }
 
         }
+
 
 
 
@@ -405,13 +505,20 @@ class CompressPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Compression",
+
                 "No images selected"
+
             )
 
 
             return
+
+
+
 
 
 
@@ -419,9 +526,13 @@ class CompressPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Compression",
+
                 "Output folder not selected"
+
             )
 
 
@@ -429,12 +540,22 @@ class CompressPage(QWidget):
 
 
 
+
+
+
+
         self.start_button.setEnabled(
+
             False
+
         )
 
 
         self.progress.reset()
+
+
+
+
 
 
 
@@ -461,12 +582,18 @@ class CompressPage(QWidget):
 
 
 
+
+
         except Exception as error:
 
 
+
             self.start_button.setEnabled(
+
                 True
+
             )
+
 
 
             QMessageBox.critical(
@@ -486,6 +613,7 @@ class CompressPage(QWidget):
 
 
 
+
     def compress_finished(
         self,
         result
@@ -493,11 +621,14 @@ class CompressPage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.finished()
+
 
 
 
@@ -513,10 +644,14 @@ class CompressPage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.failed(
+
             error
+
         )

@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from PIL import Image
 
 
@@ -10,81 +8,57 @@ class BitDepthProcessor:
 
 
 
+
     def process(
         self,
-        source_path,
-        output_path,
+        image,
         settings
     ):
 
 
-        source = Path(
-            source_path
-        )
-
-
-        output = Path(
-            output_path
-        )
-
-
-        output.parent.mkdir(
-            parents=True,
-            exist_ok=True
-        )
-
-
-
         value = settings.get(
+
             "value",
+
             settings.get(
+
                 "bit_depth",
+
                 8
+
             )
+
         )
 
 
 
         try:
 
-            bit_depth = int(
-                value
-            )
+            bit_depth = int(value)
+
 
         except Exception:
 
+
             raise ValueError(
+
                 "Invalid bit depth value"
-            )
-
-
-
-        with Image.open(source) as image:
-
-
-            converted = self.convert_bitdepth(
-
-                image,
-
-                bit_depth
 
             )
 
 
 
-            converted.save(
-
-                output,
-
-                format="TIFF",
-
-                compression="tiff_lzw"
-
-            )
 
 
+        return self.convert_bitdepth(
 
-        return output
+            image,
+
+            bit_depth
+
+        )
+
+
 
 
 
@@ -101,25 +75,40 @@ class BitDepthProcessor:
 
         if bit_depth == 8:
 
+
             return self.convert_8bit(
+
                 image
+
             )
+
+
 
 
 
         if bit_depth == 16:
 
+
             return self.convert_16bit(
+
                 image
+
             )
+
+
 
 
 
         if bit_depth == 32:
 
+
             return self.convert_32bit(
+
                 image
+
             )
+
+
 
 
 
@@ -136,13 +125,20 @@ class BitDepthProcessor:
 
 
 
+
     def convert_8bit(
         self,
         image
     ):
 
 
-        if image.mode in [
+        mode = image.mode
+
+
+
+
+
+        if mode in [
 
             "RGB",
 
@@ -152,13 +148,32 @@ class BitDepthProcessor:
 
         ]:
 
+
             return image
 
 
 
+
+
+        if "A" in mode:
+
+
+            return image.convert(
+
+                "RGBA"
+
+            )
+
+
+
+
+
         return image.convert(
+
             "RGB"
+
         )
+
 
 
 
@@ -173,29 +188,83 @@ class BitDepthProcessor:
     ):
 
 
-        if image.mode == "I;16":
-
-            return image
+        mode = image.mode
 
 
 
-        grayscale = image.convert(
-            "L"
-        )
+
+
+        # grayscale
+
+        if mode == "L":
+
+
+            return image.convert(
+
+                "I;16"
+
+            )
 
 
 
-        return grayscale.point(
 
-            lambda value:
 
-            value * 257
+        # RGB
 
-        ).convert(
+
+        if mode == "RGB":
+
+
+            channels = image.split()
+
+
+
+            converted = [
+
+                channel.convert(
+
+                    "I;16"
+
+                )
+
+                for channel in channels
+
+            ]
+
+
+
+            return Image.merge(
+
+                "RGB",
+
+                converted
+
+            )
+
+
+
+
+
+
+        if mode == "RGBA":
+
+
+            return image.convert(
+
+                "RGBA"
+
+            )
+
+
+
+
+
+        return image.convert(
 
             "I;16"
 
         )
+
 
 
 
@@ -210,11 +279,23 @@ class BitDepthProcessor:
     ):
 
 
-        grayscale = image.convert(
-            "L"
-        )
+        # Pillow hanya memiliki float mode F
+
+        # terutama untuk scientific grayscale
 
 
-        return grayscale.convert(
+
+        if image.mode == "F":
+
+
+            return image
+
+
+
+
+
+        return image.convert(
+
             "F"
+
         )

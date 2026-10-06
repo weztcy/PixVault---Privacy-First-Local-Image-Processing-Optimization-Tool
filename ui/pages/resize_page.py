@@ -6,9 +6,6 @@ from PySide6.QtWidgets import (
     QPushButton,
     QScrollArea,
     QFrame,
-    QSpinBox,
-    QComboBox,
-    QCheckBox,
     QMessageBox
 )
 
@@ -19,6 +16,13 @@ from ui.components.image_preview import ImagePreview
 from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.output_selector import OutputSelector
 from ui.components.export_progress import ExportProgress
+
+
+from ui.components.processing_options.resize_options import (
+    ResizeOptions
+)
+
+
 
 
 
@@ -33,6 +37,7 @@ class ResizePage(QWidget):
         batch_service
     ):
 
+
         super().__init__()
 
 
@@ -45,6 +50,7 @@ class ResizePage(QWidget):
 
 
         self.output_folder = None
+
 
 
         self.setup_ui()
@@ -68,6 +74,7 @@ class ResizePage(QWidget):
         )
 
 
+
         self.scroll_area = QScrollArea()
 
 
@@ -80,6 +87,7 @@ class ResizePage(QWidget):
         container = QWidget()
 
 
+
         self.layout = QVBoxLayout(
             container
         )
@@ -88,6 +96,9 @@ class ResizePage(QWidget):
         self.layout.setSpacing(
             15
         )
+
+
+
 
 
 
@@ -102,6 +113,10 @@ class ResizePage(QWidget):
 
 
 
+
+
+
+
         self.importer = ImageImporter()
 
 
@@ -110,7 +125,11 @@ class ResizePage(QWidget):
 
 
 
-        preview_container = QHBoxLayout()
+
+
+
+
+        preview_layout = QHBoxLayout()
 
 
 
@@ -121,15 +140,26 @@ class ResizePage(QWidget):
 
 
 
-        preview_container.addWidget(
+        preview_layout.addWidget(
             self.preview
         )
 
 
-        preview_container.addWidget(
+        preview_layout.addWidget(
             self.info_panel
         )
 
+
+
+
+
+
+
+
+
+        # =====================
+        # RESIZE OPTIONS
+        # =====================
 
 
         settings_box = QFrame()
@@ -142,173 +172,44 @@ class ResizePage(QWidget):
 
 
         settings_layout.addWidget(
+
             QLabel(
                 "Resize Settings"
             )
+
         )
+
+
+
+        self.resize_options = ResizeOptions()
 
 
 
         settings_layout.addWidget(
-            QLabel(
-                "Method"
-            )
+
+            self.resize_options
+
         )
 
 
 
-        self.method_box = QComboBox()
-
-
-        self.method_box.addItems(
-            [
-                "exact",
-                "width",
-                "height",
-                "percentage",
-                "longest_side",
-                "shortest_side"
-            ]
-        )
-
-
-        settings_layout.addWidget(
-            self.method_box
-        )
 
 
 
-        settings_layout.addWidget(
-            QLabel(
-                "Width"
-            )
-        )
-
-
-        self.width_spin = QSpinBox()
-
-
-        self.width_spin.setRange(
-            1,
-            100000
-        )
-
-
-        self.width_spin.setValue(
-            1920
-        )
-
-
-        settings_layout.addWidget(
-            self.width_spin
-        )
-
-
-
-        settings_layout.addWidget(
-            QLabel(
-                "Height"
-            )
-        )
-
-
-
-        self.height_spin = QSpinBox()
-
-
-        self.height_spin.setRange(
-            1,
-            100000
-        )
-
-
-        self.height_spin.setValue(
-            1080
-        )
-
-
-        settings_layout.addWidget(
-            self.height_spin
-        )
-
-
-
-        settings_layout.addWidget(
-            QLabel(
-                "Value"
-            )
-        )
-
-
-
-        self.value_spin = QSpinBox()
-
-
-        self.value_spin.setRange(
-            1,
-            100000
-        )
-
-
-        self.value_spin.setValue(
-            800
-        )
-
-
-        settings_layout.addWidget(
-            self.value_spin
-        )
-
-
-
-        self.keep_ratio = QCheckBox(
-            "Keep Aspect Ratio"
-        )
-
-
-        self.keep_ratio.setChecked(
-            True
-        )
-
-
-        settings_layout.addWidget(
-            self.keep_ratio
-        )
-
-
-
-        settings_layout.addWidget(
-            QLabel(
-                "Resampling"
-            )
-        )
-
-
-
-        self.resampling_box = QComboBox()
-
-
-        self.resampling_box.addItems(
-            [
-                "lanczos",
-                "bicubic",
-                "bilinear",
-                "nearest"
-            ]
-        )
-
-
-        settings_layout.addWidget(
-            self.resampling_box
-        )
 
 
 
         self.output_selector = OutputSelector()
 
+
+
         self.output_folder = (
+
             self.output_selector.get_output_folder()
+
         )
+
+
 
 
 
@@ -317,8 +218,14 @@ class ResizePage(QWidget):
 
 
         self.start_button = QPushButton(
+
             "Start Resize"
+
         )
+
+
+
+
 
 
 
@@ -338,7 +245,7 @@ class ResizePage(QWidget):
 
 
         self.layout.addLayout(
-            preview_container
+            preview_layout
         )
 
 
@@ -366,9 +273,12 @@ class ResizePage(QWidget):
 
 
 
+
+
         self.scroll_area.setWidget(
             container
         )
+
 
 
         root_layout.addWidget(
@@ -382,44 +292,67 @@ class ResizePage(QWidget):
 
 
 
+
     def connect_events(
         self
     ):
 
 
+
         self.importer.images_added.connect(
+
             self.load_images
+
         )
+
 
 
         self.image_list.image_selected.connect(
+
             self.show_preview
+
         )
+
 
 
         self.output_selector.output_changed.connect(
+
             self.set_output_folder
+
         )
+
 
 
         self.start_button.clicked.connect(
+
             self.start_resize
+
         )
+
 
 
         self.batch_service.progress_changed.connect(
+
             self.progress.update_progress
+
         )
+
 
 
         self.batch_service.processing_finished.connect(
+
             self.resize_finished
+
         )
+
 
 
         self.batch_service.processing_error.connect(
+
             self.resize_error
+
         )
+
 
 
 
@@ -437,16 +370,24 @@ class ResizePage(QWidget):
         self.images = images
 
 
+
         self.image_list.set_images(
+
             images
+
         )
+
 
 
         if images:
 
+
             self.show_preview(
+
                 images[0]
+
             )
+
 
 
 
@@ -462,13 +403,18 @@ class ResizePage(QWidget):
 
 
         self.preview.set_image(
+
             image
+
         )
 
 
         self.info_panel.set_image(
+
             image
+
         )
+
 
 
 
@@ -492,65 +438,53 @@ class ResizePage(QWidget):
 
 
 
+
+
     def build_config(
         self
     ):
 
 
-        operation = {
 
-            "type":
-                "resize",
+        operation = (
 
-            "method":
-                self.method_box.currentText(),
+            self.resize_options.get_settings()
 
-            "keep_ratio":
-                self.keep_ratio.isChecked(),
-
-            "resampling":
-                self.resampling_box.currentText()
-
-        }
+        )
 
 
 
-        method = self.method_box.currentText()
+        operation["type"] = (
 
+            "resize"
 
-
-        if method == "exact":
-
-
-            operation["width"] = self.width_spin.value()
-
-            operation["height"] = self.height_spin.value()
-
-
-
-        else:
-
-
-            operation["value"] = self.value_spin.value()
+        )
 
 
 
         return {
 
+
             "operations":
 
-                [
-                    operation
-                ],
+            [
+
+                operation
+
+            ],
+
 
 
             "output":
 
-                {
-                    "keep_format": True
-                }
+            {
+
+                "keep_format": True
+
+            }
 
         }
+
 
 
 
@@ -568,13 +502,20 @@ class ResizePage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Resize",
+
                 "No images selected"
+
             )
 
 
             return
+
+
+
 
 
 
@@ -582,9 +523,13 @@ class ResizePage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Resize",
+
                 "Output folder not selected"
+
             )
 
 
@@ -592,12 +537,19 @@ class ResizePage(QWidget):
 
 
 
+
+
+
         self.start_button.setEnabled(
+
             False
+
         )
 
 
         self.progress.reset()
+
+
 
 
 
@@ -615,6 +567,7 @@ class ResizePage(QWidget):
             )
 
 
+
             self.progress.set_output_folder(
 
                 self.output_folder
@@ -623,12 +576,18 @@ class ResizePage(QWidget):
 
 
 
+
+
         except Exception as error:
 
 
+
             self.start_button.setEnabled(
+
                 True
+
             )
+
 
 
             QMessageBox.critical(
@@ -648,6 +607,7 @@ class ResizePage(QWidget):
 
 
 
+
     def resize_finished(
         self,
         result
@@ -655,11 +615,14 @@ class ResizePage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.finished()
+
 
 
 
@@ -675,10 +638,14 @@ class ResizePage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.failed(
+
             error
+
         )

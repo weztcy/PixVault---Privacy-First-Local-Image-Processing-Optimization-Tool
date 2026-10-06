@@ -6,8 +6,6 @@ from PySide6.QtWidgets import (
     QPushButton,
     QScrollArea,
     QFrame,
-    QSpinBox,
-    QComboBox,
     QMessageBox
 )
 
@@ -18,6 +16,13 @@ from ui.components.image_preview import ImagePreview
 from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.output_selector import OutputSelector
 from ui.components.export_progress import ExportProgress
+
+
+from ui.components.processing_options.dpi_options import (
+    DPIOptions
+)
+
+
 
 
 
@@ -32,6 +37,7 @@ class DPIPage(QWidget):
         batch_service
     ):
 
+
         super().__init__()
 
 
@@ -39,6 +45,7 @@ class DPIPage(QWidget):
         self.image_service = image_service
 
         self.batch_service = batch_service
+
 
 
         self.images = []
@@ -67,6 +74,7 @@ class DPIPage(QWidget):
         )
 
 
+
         self.scroll_area = QScrollArea()
 
 
@@ -79,6 +87,7 @@ class DPIPage(QWidget):
         container = QWidget()
 
 
+
         self.layout = QVBoxLayout(
             container
         )
@@ -87,6 +96,10 @@ class DPIPage(QWidget):
         self.layout.setSpacing(
             15
         )
+
+
+
+
 
 
 
@@ -101,10 +114,18 @@ class DPIPage(QWidget):
 
 
 
+
+
+
+
         self.importer = ImageImporter()
 
 
+
         self.image_list = ImageListWidget()
+
+
+
 
 
 
@@ -130,7 +151,19 @@ class DPIPage(QWidget):
 
 
 
+
+
+
+
+
+
+        # =====================
+        # DPI OPTIONS
+        # =====================
+
+
         settings_box = QFrame()
+
 
 
         settings_layout = QVBoxLayout(
@@ -140,99 +173,44 @@ class DPIPage(QWidget):
 
 
         settings_layout.addWidget(
+
             QLabel(
                 "DPI Settings"
             )
+
         )
+
+
+
+        self.dpi_options = DPIOptions()
 
 
 
         settings_layout.addWidget(
-            QLabel(
-                "Unit"
-            )
+
+            self.dpi_options
+
         )
 
 
 
-        self.unit_box = QComboBox()
-
-
-        self.unit_box.addItems(
-            [
-                "dpi",
-                "dpcm"
-            ]
-        )
-
-
-        settings_layout.addWidget(
-            self.unit_box
-        )
 
 
 
-        settings_layout.addWidget(
-            QLabel(
-                "Horizontal DPI"
-            )
-        )
-
-
-
-        self.horizontal_spin = QSpinBox()
-
-
-        self.horizontal_spin.setRange(
-            1,
-            5000
-        )
-
-
-        self.horizontal_spin.setValue(
-            300
-        )
-
-
-        settings_layout.addWidget(
-            self.horizontal_spin
-        )
-
-
-
-        settings_layout.addWidget(
-            QLabel(
-                "Vertical DPI"
-            )
-        )
-
-
-
-        self.vertical_spin = QSpinBox()
-
-
-        self.vertical_spin.setRange(
-            1,
-            5000
-        )
-
-
-        self.vertical_spin.setValue(
-            300
-        )
-
-
-        settings_layout.addWidget(
-            self.vertical_spin
-        )
 
 
 
         self.output_selector = OutputSelector()
 
+
+
         self.output_folder = (
+
             self.output_selector.get_output_folder()
+
         )
+
+
 
 
 
@@ -240,9 +218,19 @@ class DPIPage(QWidget):
 
 
 
+
+
         self.start_button = QPushButton(
+
             "Apply DPI"
+
         )
+
+
+
+
+
+
 
 
 
@@ -290,6 +278,9 @@ class DPIPage(QWidget):
 
 
 
+
+
+
         self.scroll_area.setWidget(
             container
         )
@@ -306,44 +297,66 @@ class DPIPage(QWidget):
 
 
 
+
     def connect_events(
         self
     ):
 
 
         self.importer.images_added.connect(
+
             self.load_images
+
         )
+
 
 
         self.image_list.image_selected.connect(
+
             self.show_preview
+
         )
+
 
 
         self.output_selector.output_changed.connect(
+
             self.set_output_folder
+
         )
+
 
 
         self.start_button.clicked.connect(
+
             self.start_dpi
+
         )
+
 
 
         self.batch_service.progress_changed.connect(
+
             self.progress.update_progress
+
         )
+
 
 
         self.batch_service.processing_finished.connect(
+
             self.dpi_finished
+
         )
+
 
 
         self.batch_service.processing_error.connect(
+
             self.dpi_error
+
         )
+
 
 
 
@@ -361,17 +374,24 @@ class DPIPage(QWidget):
         self.images = images
 
 
+
         self.image_list.set_images(
+
             images
+
         )
+
 
 
         if images:
 
 
             self.show_preview(
+
                 images[0]
+
             )
+
 
 
 
@@ -387,13 +407,18 @@ class DPIPage(QWidget):
 
 
         self.preview.set_image(
+
             image
+
         )
 
 
         self.info_panel.set_image(
+
             image
+
         )
+
 
 
 
@@ -417,30 +442,25 @@ class DPIPage(QWidget):
 
 
 
+
+
     def build_config(
         self
     ):
 
 
-        operation = {
+        operation = (
+
+            self.dpi_options.get_settings()
+
+        )
 
 
-            "type":
-                "dpi",
+        operation["type"] = (
 
+            "dpi"
 
-            "unit":
-                self.unit_box.currentText(),
-
-
-            "horizontal":
-                self.horizontal_spin.value(),
-
-
-            "vertical":
-                self.vertical_spin.value()
-
-        }
+        )
 
 
 
@@ -449,18 +469,24 @@ class DPIPage(QWidget):
 
             "operations":
 
-                [
-                    operation
-                ],
+            [
+
+                operation
+
+            ],
+
 
 
             "output":
 
-                {
-                    "keep_format": True
-                }
+            {
+
+                "keep_format": True
+
+            }
 
         }
+
 
 
 
@@ -478,13 +504,20 @@ class DPIPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "DPI",
+
                 "No images selected"
+
             )
 
 
             return
+
+
+
 
 
 
@@ -492,9 +525,13 @@ class DPIPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "DPI",
+
                 "Output folder not selected"
+
             )
 
 
@@ -502,12 +539,22 @@ class DPIPage(QWidget):
 
 
 
+
+
+
+
         self.start_button.setEnabled(
+
             False
+
         )
 
 
         self.progress.reset()
+
+
+
+
 
 
 
@@ -534,12 +581,18 @@ class DPIPage(QWidget):
 
 
 
+
+
         except Exception as error:
 
 
+
             self.start_button.setEnabled(
+
                 True
+
             )
+
 
 
             QMessageBox.critical(
@@ -559,6 +612,7 @@ class DPIPage(QWidget):
 
 
 
+
     def dpi_finished(
         self,
         result
@@ -566,11 +620,14 @@ class DPIPage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.finished()
+
 
 
 
@@ -586,10 +643,14 @@ class DPIPage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.failed(
+
             error
+
         )

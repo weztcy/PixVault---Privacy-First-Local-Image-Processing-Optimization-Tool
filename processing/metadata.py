@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from PIL import Image
 
 
@@ -10,29 +8,12 @@ class MetadataProcessor:
 
 
 
+
     def process(
         self,
-        source_path,
-        output_path,
+        image,
         settings
     ):
-
-
-        source = Path(
-            source_path
-        )
-
-
-        output = Path(
-            output_path
-        )
-
-
-        output.parent.mkdir(
-            parents=True,
-            exist_ok=True
-        )
-
 
 
         mode = settings.get(
@@ -45,59 +26,17 @@ class MetadataProcessor:
 
 
 
-        with Image.open(source) as image:
+        return self.remove_metadata(
+
+            image,
+
+            mode,
+
+            settings
+
+        )
 
 
-            cleaned = self.remove_metadata(
-
-                image,
-
-                mode,
-
-                settings
-
-            )
-
-
-
-            save_settings = {
-
-
-                "format":
-
-                    "TIFF",
-
-
-                "compression":
-
-                    "tiff_lzw"
-
-            }
-
-
-
-            if "icc_profile" in cleaned.info:
-
-
-                save_settings["icc_profile"] = (
-
-                    cleaned.info["icc_profile"]
-
-                )
-
-
-
-            cleaned.save(
-
-                output,
-
-                **save_settings
-
-            )
-
-
-
-        return output
 
 
 
@@ -113,12 +52,6 @@ class MetadataProcessor:
     ):
 
 
-
-        # =====================
-        # PRESERVE
-        # =====================
-
-
         if mode == "preserve":
 
 
@@ -128,30 +61,7 @@ class MetadataProcessor:
 
 
 
-
-        # =====================
-        # CREATE CLEAN IMAGE
-        # =====================
-
-
-        clean = Image.new(
-
-            image.mode,
-
-            image.size
-
-        )
-
-
-        clean.putdata(
-
-            list(
-
-                image.getdata()
-
-            )
-
-        )
+        clean = image.copy()
 
 
 
@@ -161,7 +71,11 @@ class MetadataProcessor:
         if mode == "all":
 
 
-            return clean
+            return self.clear_all(
+
+                clean
+
+            )
 
 
 
@@ -172,27 +86,19 @@ class MetadataProcessor:
         if mode == "custom":
 
 
-            remove = settings.get(
+            return self.remove_custom(
 
-                "remove",
+                clean,
 
-                []
+                settings.get(
+
+                    "remove",
+
+                    []
+
+                )
 
             )
-
-
-
-            for key, value in image.info.items():
-
-
-                if key not in remove:
-
-
-                    clean.info[key] = value
-
-
-
-            return clean
 
 
 
@@ -205,6 +111,277 @@ class MetadataProcessor:
 
         )
 
+
+
+
+
+
+
+
+
+    def clear_all(
+        self,
+        image
+    ):
+
+
+        image.info.clear()
+
+
+
+        if "exif" in image.info:
+
+
+            del image.info["exif"]
+
+
+
+        return image
+
+
+
+
+
+
+
+    def remove_custom(
+        self,
+        image,
+        remove_list
+    ):
+
+
+        remove_list = [
+
+            item.lower()
+
+            for item in remove_list
+
+        ]
+
+
+
+
+
+        # EXIF
+
+        if "exif" in remove_list:
+
+
+            image.info.pop(
+
+                "exif",
+
+                None
+
+            )
+
+
+
+
+
+
+        # ICC PROFILE
+
+        if "icc_profile" in remove_list:
+
+
+            image.info.pop(
+
+                "icc_profile",
+
+                None
+
+            )
+
+
+
+
+
+
+        # XMP
+
+        if "xmp" in remove_list:
+
+
+            image.info.pop(
+
+                "xmp",
+
+                None
+
+            )
+
+
+
+
+
+
+
+        # IPTC
+
+        if "iptc" in remove_list:
+
+
+            image.info.pop(
+
+                "iptc",
+
+                None
+
+            )
+
+
+
+
+
+
+
+        # SOFTWARE
+
+        if "software" in remove_list:
+
+
+            image.info.pop(
+
+                "software",
+
+                None
+
+            )
+
+
+
+
+
+
+        # COPYRIGHT
+
+        if "copyright" in remove_list:
+
+
+            image.info.pop(
+
+                "copyright",
+
+                None
+
+            )
+
+
+
+
+
+
+        # GPS
+
+        if "gps" in remove_list:
+
+
+            self.remove_gps(
+
+                image
+
+            )
+
+
+
+
+
+
+
+        # MAKER NOTES
+
+        if "maker_notes" in remove_list:
+
+
+            self.remove_maker_notes(
+
+                image
+
+            )
+
+
+
+
+
+        return image
+
+
+
+
+
+
+
+    def remove_gps(
+        self,
+        image
+    ):
+
+
+        exif = image.getexif()
+
+
+
+        if not exif:
+
+
+            return
+
+
+
+
+
+        gps_tag = 34853
+
+
+
+        if gps_tag in exif:
+
+
+            del exif[gps_tag]
+
+
+
+        image.info["exif"] = exif.tobytes()
+
+
+
+
+
+
+
+    def remove_maker_notes(
+        self,
+        image
+    ):
+
+
+        exif = image.getexif()
+
+
+
+        if not exif:
+
+
+            return
+
+
+
+
+
+        maker_note_tag = 37500
+
+
+
+        if maker_note_tag in exif:
+
+
+            del exif[maker_note_tag]
+
+
+
+        image.info["exif"] = exif.tobytes()
 
 
 

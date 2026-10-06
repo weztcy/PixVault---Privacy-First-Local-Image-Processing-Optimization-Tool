@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from PIL import Image
 
 
@@ -14,18 +12,22 @@ class ImageResizer:
 
 
         "nearest":
+
             Image.Resampling.NEAREST,
 
 
         "bilinear":
+
             Image.Resampling.BILINEAR,
 
 
         "bicubic":
+
             Image.Resampling.BICUBIC,
 
 
         "lanczos":
+
             Image.Resampling.LANCZOS
 
     }
@@ -35,49 +37,23 @@ class ImageResizer:
 
 
 
+
     def process(
         self,
-        source_path,
-        output_path,
+        image,
         settings
     ):
 
 
-        source = Path(
-            source_path
+        return self.resize_image(
+
+            image,
+
+            settings
+
         )
 
 
-        output = Path(
-            output_path
-        )
-
-
-        output.parent.mkdir(
-            parents=True,
-            exist_ok=True
-        )
-
-
-
-        with Image.open(source) as image:
-
-
-            resized = self.resize_image(
-                image,
-                settings
-            )
-
-
-            resized.save(
-                output,
-                format="TIFF",
-                compression="tiff_lzw"
-            )
-
-
-
-        return output
 
 
 
@@ -93,35 +69,52 @@ class ImageResizer:
 
 
         method = settings.get(
+
             "method"
+
         )
 
 
         if not method:
 
+
             raise ValueError(
+
                 "Resize method missing"
+
             )
 
 
 
+
+
         keep_ratio = settings.get(
+
             "keep_ratio",
+
             True
+
         )
+
+
 
 
 
         resampling = self.RESAMPLING.get(
 
             settings.get(
+
                 "resampling",
+
                 "lanczos"
+
             ),
 
             Image.Resampling.LANCZOS
 
         )
+
+
 
 
 
@@ -131,55 +124,97 @@ class ImageResizer:
 
 
 
+        new_width = None
+
+        new_height = None
+
+
+
+
+
+
+
+        # =====================
+        # EXACT DIMENSION
+        # =====================
+
+
         if method == "exact":
 
 
             new_width = settings.get(
+
                 "width"
+
             )
 
 
             new_height = settings.get(
+
                 "height"
+
             )
 
 
 
             self.validate_size(
+
                 new_width,
+
                 new_height
+
             )
 
 
 
 
+
+
+
+        # =====================
+        # WIDTH
+        # =====================
 
 
         elif method == "width":
 
 
-            new_width = settings.get(
+            value = settings.get(
+
                 "value"
+
             )
 
 
-            if not new_width:
+            if value is None:
+
 
                 raise ValueError(
+
                     "Resize width missing"
+
                 )
 
 
+
             new_width = int(
-                new_width
+
+                value
+
             )
+
 
 
             if new_width <= 0:
 
+
                 raise ValueError(
+
                     "Resize width must be positive"
+
                 )
+
+
 
 
 
@@ -190,11 +225,14 @@ class ImageResizer:
 
 
                 new_height = round(
+
                     height * ratio
+
                 )
 
 
             else:
+
 
                 new_height = height
 
@@ -203,31 +241,51 @@ class ImageResizer:
 
 
 
+
+        # =====================
+        # HEIGHT
+        # =====================
+
+
         elif method == "height":
 
 
-            new_height = settings.get(
+            value = settings.get(
+
                 "value"
+
             )
 
 
-            if not new_height:
+            if value is None:
+
 
                 raise ValueError(
+
                     "Resize height missing"
+
                 )
 
 
+
             new_height = int(
-                new_height
+
+                value
+
             )
+
 
 
             if new_height <= 0:
 
+
                 raise ValueError(
+
                     "Resize height must be positive"
+
                 )
+
+
 
 
 
@@ -238,11 +296,14 @@ class ImageResizer:
 
 
                 new_width = round(
+
                     width * ratio
+
                 )
 
 
             else:
+
 
                 new_width = width
 
@@ -252,30 +313,47 @@ class ImageResizer:
 
 
 
+        # =====================
+        # PERCENTAGE
+        # =====================
+
+
         elif method == "percentage":
 
 
             value = settings.get(
+
                 "value"
+
             )
 
 
             if value is None:
 
+
                 raise ValueError(
+
                     "Resize percentage missing"
+
                 )
 
 
+
             value = float(
+
                 value
+
             )
 
 
-            if value <= 0:
+
+            if value <= 0 or value > 1000:
+
 
                 raise ValueError(
-                    "Resize percentage must be positive"
+
+                    "Resize percentage must be between 0 and 1000"
+
                 )
 
 
@@ -284,96 +362,170 @@ class ImageResizer:
 
 
 
+
+
             new_width = round(
+
                 width * ratio
+
             )
 
 
             new_height = round(
+
                 height * ratio
+
             )
 
 
 
 
 
+
+
+        # =====================
+        # LONGEST SIDE
+        # =====================
 
 
         elif method == "longest_side":
 
 
             target = settings.get(
+
                 "value"
+
             )
 
 
-            if not target:
+            if target is None:
+
 
                 raise ValueError(
+
                     "Longest side value missing"
+
                 )
 
 
+
             target = int(
+
                 target
+
             )
+
+
+
+            if target <= 0:
+
+
+                raise ValueError(
+
+                    "Longest side must be positive"
+
+                )
+
 
 
             ratio = target / max(
+
                 width,
+
                 height
+
             )
 
 
+
             new_width = round(
+
                 width * ratio
+
             )
 
 
             new_height = round(
+
                 height * ratio
+
             )
 
 
 
 
 
+
+
+
+        # =====================
+        # SHORTEST SIDE
+        # =====================
 
 
         elif method == "shortest_side":
 
 
             target = settings.get(
+
                 "value"
+
             )
 
 
-            if not target:
+            if target is None:
+
 
                 raise ValueError(
+
                     "Shortest side value missing"
+
                 )
 
 
+
             target = int(
+
                 target
+
             )
+
+
+
+            if target <= 0:
+
+
+                raise ValueError(
+
+                    "Shortest side must be positive"
+
+                )
+
 
 
             ratio = target / min(
+
                 width,
+
                 height
+
             )
 
 
+
             new_width = round(
+
                 width * ratio
+
             )
 
 
             new_height = round(
+
                 height * ratio
+
             )
+
 
 
 
@@ -382,16 +534,29 @@ class ImageResizer:
 
         else:
 
+
             raise ValueError(
+
                 f"Unsupported resize method: {method}"
+
             )
 
 
 
+
+
+
+
         self.validate_size(
+
             new_width,
+
             new_height
+
         )
+
+
+
 
 
 
@@ -414,6 +579,9 @@ class ImageResizer:
 
 
 
+
+
+
     def validate_size(
         self,
         width,
@@ -423,25 +591,35 @@ class ImageResizer:
 
         if width is None or height is None:
 
+
             raise ValueError(
+
                 "Resize dimensions missing"
+
             )
 
 
 
         width = int(
+
             width
+
         )
 
 
         height = int(
+
             height
+
         )
 
 
 
         if width <= 0 or height <= 0:
 
+
             raise ValueError(
+
                 "Resize dimensions must be positive"
+
             )

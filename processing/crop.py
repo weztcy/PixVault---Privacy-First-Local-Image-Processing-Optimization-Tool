@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from PIL import Image
 
 
@@ -12,51 +10,20 @@ class ImageCropper:
 
     def process(
         self,
-        source_path,
-        output_path,
+        image,
         settings
     ):
 
 
-        source = Path(
-            source_path
+        return self.crop_image(
+
+            image,
+
+            settings
+
         )
 
 
-        output = Path(
-            output_path
-        )
-
-
-        output.parent.mkdir(
-            parents=True,
-            exist_ok=True
-        )
-
-
-
-        with Image.open(source) as image:
-
-
-            cropped = self.crop_image(
-                image,
-                settings
-            )
-
-
-            cropped.save(
-
-                output,
-
-                format="TIFF",
-
-                compression="tiff_lzw"
-
-            )
-
-
-
-        return output
 
 
 
@@ -72,15 +39,23 @@ class ImageCropper:
 
 
         mode = settings.get(
+
             "mode"
+
         )
+
 
 
         if not mode:
 
+
             raise ValueError(
+
                 "Crop mode missing"
+
             )
+
+
 
 
 
@@ -90,33 +65,54 @@ class ImageCropper:
 
 
 
+        crop_width = None
+
+        crop_height = None
+
+        left = None
+
+        top = None
+
+
+
+
+
+
+
         # =====================
-        # FIXED CENTER CROP
+        # FIXED DIMENSIONS
         # =====================
 
 
-        if mode == "fixed":
+        if mode in (
+
+            "fixed",
+
+            "fixed_dimensions"
+
+        ):
+
 
 
             crop_width = int(
+
                 settings.get(
+
                     "width"
+
                 )
+
             )
 
 
             crop_height = int(
+
                 settings.get(
+
                     "height"
+
                 )
-            )
 
-
-            self.validate_crop_size(
-                crop_width,
-                crop_height,
-                width,
-                height
             )
 
 
@@ -133,32 +129,62 @@ class ImageCropper:
         elif mode == "percentage":
 
 
-            value = float(
-                settings.get(
-                    "value",
-                    100
-                )
+
+            value = settings.get(
+
+                "value"
+
             )
+
+
+
+            if value is None:
+
+
+                raise ValueError(
+
+                    "Crop percentage missing"
+
+                )
+
+
+
+            value = float(
+
+                value
+
+            )
+
 
 
             if value <= 0 or value > 100:
 
+
                 raise ValueError(
+
                     "Crop percentage must be between 1 and 100"
+
                 )
+
 
 
             ratio = value / 100
 
 
+
             crop_width = round(
+
                 width * ratio
+
             )
 
 
             crop_height = round(
+
                 height * ratio
+
             )
+
 
 
 
@@ -174,41 +200,57 @@ class ImageCropper:
         elif mode == "aspect_ratio":
 
 
+
             ratio = settings.get(
+
                 "ratio"
+
             )
+
 
 
             if not ratio:
 
+
                 raise ValueError(
+
                     "Crop ratio missing"
+
                 )
+
 
 
             try:
 
+
                 ratio_w, ratio_h = map(
 
-                    int,
+                    float,
 
                     ratio.split(":")
 
                 )
 
 
+
             except Exception:
 
+
                 raise ValueError(
+
                     f"Invalid crop ratio: {ratio}"
+
                 )
 
 
 
             if ratio_w <= 0 or ratio_h <= 0:
 
+
                 raise ValueError(
-                    "Invalid crop ratio value"
+
+                    "Invalid ratio"
+
                 )
 
 
@@ -216,30 +258,39 @@ class ImageCropper:
             target_ratio = ratio_w / ratio_h
 
 
+
             current_ratio = width / height
+
+
 
 
 
             if current_ratio > target_ratio:
 
 
-                crop_width = round(
-                    height * target_ratio
-                )
-
 
                 crop_height = height
+
+
+                crop_width = round(
+
+                    height * target_ratio
+
+                )
 
 
 
             else:
 
 
+
                 crop_width = width
 
 
                 crop_height = round(
+
                     width / target_ratio
+
                 )
 
 
@@ -248,90 +299,67 @@ class ImageCropper:
 
 
 
+
+
         # =====================
-        # COORDINATES
+        # CUSTOM COORDINATES
         # =====================
 
 
         elif mode == "coordinates":
 
 
+
             left = int(
+
                 settings.get(
+
                     "x",
+
                     0
+
                 )
+
             )
+
 
 
             top = int(
+
                 settings.get(
+
                     "y",
+
                     0
+
                 )
+
             )
+
 
 
             crop_width = int(
+
                 settings.get(
+
                     "width"
+
                 )
+
             )
+
 
 
             crop_height = int(
+
                 settings.get(
+
                     "height"
-                )
-            )
 
-
-
-            if left < 0 or top < 0:
-
-                raise ValueError(
-                    "Crop coordinates cannot be negative"
-                )
-
-
-
-            if crop_width <= 0 or crop_height <=0:
-
-                raise ValueError(
-                    "Crop dimensions must be positive"
-                )
-
-
-
-            right = min(
-                left + crop_width,
-                width
-            )
-
-
-            bottom = min(
-                top + crop_height,
-                height
-            )
-
-
-            if right <= left or bottom <= top:
-
-                raise ValueError(
-                    "Invalid crop area"
-                )
-
-
-            return image.crop(
-
-                (
-                    left,
-                    top,
-                    right,
-                    bottom
                 )
 
             )
+
 
 
 
@@ -341,17 +369,17 @@ class ImageCropper:
         else:
 
 
+
             raise ValueError(
+
                 f"Unsupported crop mode: {mode}"
+
             )
 
 
 
 
 
-        # =====================
-        # CENTER POSITION
-        # =====================
 
 
         self.validate_crop_size(
@@ -368,19 +396,82 @@ class ImageCropper:
 
 
 
-        left = (
-
-            width - crop_width
-
-        ) // 2
 
 
 
-        top = (
 
-            height - crop_height
+        # default center crop
 
-        ) // 2
+        if left is None:
+
+
+
+            left = (
+
+                width - crop_width
+
+            ) // 2
+
+
+
+
+
+
+        if top is None:
+
+
+
+            top = (
+
+                height - crop_height
+
+            ) // 2
+
+
+
+
+
+
+
+        if left < 0 or top < 0:
+
+
+            raise ValueError(
+
+                "Crop position cannot be negative"
+
+            )
+
+
+
+
+
+
+        if left + crop_width > width:
+
+
+            raise ValueError(
+
+                "Crop exceeds image width"
+
+            )
+
+
+
+
+
+        if top + crop_height > height:
+
+
+            raise ValueError(
+
+                "Crop exceeds image height"
+
+            )
+
+
+
+
 
 
 
@@ -406,6 +497,8 @@ class ImageCropper:
 
 
 
+
+
     def validate_crop_size(
         self,
         crop_width,
@@ -415,23 +508,44 @@ class ImageCropper:
     ):
 
 
-        if crop_width <= 0 or crop_height <= 0:
+        if crop_width is None or crop_height is None:
+
 
             raise ValueError(
+
+                "Crop dimensions missing"
+
+            )
+
+
+
+        if crop_width <= 0 or crop_height <= 0:
+
+
+            raise ValueError(
+
                 "Crop dimensions must be positive"
+
             )
 
 
 
         if crop_width > image_width:
 
+
             raise ValueError(
+
                 "Crop width exceeds image width"
+
             )
+
 
 
         if crop_height > image_height:
 
+
             raise ValueError(
+
                 "Crop height exceeds image height"
+
             )

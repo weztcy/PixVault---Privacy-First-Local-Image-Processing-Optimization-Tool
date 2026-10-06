@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from PIL import Image
 
 
@@ -12,54 +10,20 @@ class ImageTransformer:
 
     def process(
         self,
-        source_path,
-        output_path,
+        image,
         settings
     ):
 
 
-        source = Path(
-            source_path
+        return self.apply_transform(
+
+            image,
+
+            settings
+
         )
 
 
-        output = Path(
-            output_path
-        )
-
-
-        output.parent.mkdir(
-            parents=True,
-            exist_ok=True
-        )
-
-
-
-        with Image.open(source) as image:
-
-
-            transformed = self.apply_transform(
-
-                image,
-
-                settings
-
-            )
-
-
-            transformed.save(
-
-                output,
-
-                format="TIFF",
-
-                compression="tiff_lzw"
-
-            )
-
-
-
-        return output
 
 
 
@@ -75,14 +39,20 @@ class ImageTransformer:
 
 
         rotation = settings.get(
+
             "rotation",
-            "none"
+
+            0
+
         )
 
 
         flip = settings.get(
+
             "flip",
+
             "none"
+
         )
 
 
@@ -115,6 +85,8 @@ class ImageTransformer:
 
 
 
+
+
     def apply_rotation(
         self,
         image,
@@ -122,10 +94,18 @@ class ImageTransformer:
     ):
 
 
-        if rotation in [
+        if rotation in (
+
             None,
-            "none"
-        ]:
+
+            "none",
+
+            0,
+
+            "0"
+
+        ):
+
 
             return image
 
@@ -133,12 +113,16 @@ class ImageTransformer:
 
         try:
 
-            angle = int(
+
+            angle = float(
+
                 rotation
+
             )
 
 
         except Exception:
+
 
             raise ValueError(
 
@@ -148,18 +132,14 @@ class ImageTransformer:
 
 
 
-        if angle not in [
-            90,
-            180,
-            270,
-            -90,
-            -180,
-            -270
-        ]:
+
+
+        if angle < -360 or angle > 360:
+
 
             raise ValueError(
 
-                "Rotation must be 90,180,270"
+                "Rotation angle must be between -360 and 360"
 
             )
 
@@ -188,12 +168,18 @@ class ImageTransformer:
     ):
 
 
-        if flip in [
+        if flip in (
+
             None,
+
             "none"
-        ]:
+
+        ):
+
 
             return image
+
+
 
 
 
@@ -213,6 +199,7 @@ class ImageTransformer:
 
 
 
+
         if flip == "vertical":
 
 
@@ -221,6 +208,7 @@ class ImageTransformer:
                 Image.Transpose.FLIP_TOP_BOTTOM
 
             )
+
 
 
 
@@ -242,6 +230,7 @@ class ImageTransformer:
                 Image.Transpose.FLIP_TOP_BOTTOM
 
             )
+
 
 
 
