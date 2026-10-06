@@ -4,7 +4,8 @@ from pathlib import Path
 from PySide6.QtWidgets import (
     QWidget,
     QLabel,
-    QVBoxLayout
+    QVBoxLayout,
+    QFileDialog
 )
 
 
@@ -16,8 +17,11 @@ from PySide6.QtCore import (
 
 from PySide6.QtGui import (
     QDragEnterEvent,
-    QDropEvent
+    QDropEvent,
+    QCursor
 )
+
+
 
 
 
@@ -54,6 +58,8 @@ class DropArea(QWidget):
 
 
 
+
+
     def __init__(
         self
     ):
@@ -79,12 +85,23 @@ class DropArea(QWidget):
     ):
 
 
-        layout = QVBoxLayout()
+        layout = QVBoxLayout(
+            self
+        )
+
+
+        layout.setContentsMargins(
+            10,
+            10,
+            10,
+            10
+        )
+
 
 
         self.label = QLabel(
 
-            "Drag & Drop Images or Folder Here"
+            "📂 Click or Drag & Drop Images / Folder Here"
 
         )
 
@@ -110,11 +127,52 @@ class DropArea(QWidget):
         )
 
 
+        self.label.setCursor(
+
+            QCursor(
+
+                Qt.CursorShape.PointingHandCursor
+
+            )
+
+        )
+
+
+        self.label.setStyleSheet(
+            """
+            QLabel#drop_area
+            {
+                border: 2px dashed #888888;
+                border-radius: 10px;
+                background-color: rgba(120,120,120,0.05);
+                color: #555555;
+                font-size: 14px;
+            }
+
+
+            QLabel#drop_area:hover
+            {
+                border: 2px dashed #4a90e2;
+                background-color: rgba(74,144,226,0.08);
+            }
+
+
+            QLabel#drop_area:pressed
+            {
+                border: 2px dashed #2c6cb0;
+                background-color: rgba(74,144,226,0.15);
+            }
+            """
+        )
+
+
+
         layout.addWidget(
 
             self.label
 
         )
+
 
 
         self.setLayout(
@@ -127,6 +185,106 @@ class DropArea(QWidget):
 
 
 
+
+
+
+
+
+    # =====================
+    # CLICK IMPORT
+    # =====================
+
+
+    def mousePressEvent(
+        self,
+        event
+    ):
+
+
+        if event.button() == Qt.MouseButton.LeftButton:
+
+
+            self.open_file_dialog()
+
+
+
+        super().mousePressEvent(
+            event
+        )
+
+
+
+
+
+
+
+
+    def open_file_dialog(
+        self
+    ):
+
+
+        files, _ = QFileDialog.getOpenFileNames(
+
+            self,
+
+            "Select Images",
+
+            "",
+
+            (
+                "Images "
+                "(*.jpg *.jpeg *.png *.webp *.avif "
+                "*.gif *.bmp *.tiff *.tif "
+                "*.heic *.heif *.ico *.svg)"
+            )
+
+        )
+
+
+
+        result = []
+
+
+
+        for file in files:
+
+
+            path = Path(
+                file
+            )
+
+
+            if self.is_supported_image(
+                path
+            ):
+
+
+                result.append(
+                    path
+                )
+
+
+
+        if result:
+
+
+            self.files_dropped.emit(
+                result
+            )
+
+
+
+
+
+
+
+
+
+
+    # =====================
+    # DRAG DROP
+    # =====================
 
 
     def dragEnterEvent(
@@ -169,20 +327,17 @@ class DropArea(QWidget):
             )
 
 
+
             if path.is_file():
 
 
                 if self.is_supported_image(
-
                     path
-
                 ):
 
 
                     files.append(
-
                         path
-
                     )
 
 
@@ -193,9 +348,7 @@ class DropArea(QWidget):
                 files.extend(
 
                     self.scan_folder(
-
                         path
-
                     )
 
                 )
@@ -206,9 +359,7 @@ class DropArea(QWidget):
 
 
             self.files_dropped.emit(
-
                 files
-
             )
 
 
@@ -232,9 +383,7 @@ class DropArea(QWidget):
 
 
         for file in folder.rglob(
-
             "*"
-
         ):
 
 
@@ -242,16 +391,12 @@ class DropArea(QWidget):
 
 
                 if self.is_supported_image(
-
                     file
-
                 ):
 
 
                     result.append(
-
                         file
-
                     )
 
 
