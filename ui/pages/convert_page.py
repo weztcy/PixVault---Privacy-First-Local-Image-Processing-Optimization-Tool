@@ -1,842 +1,238 @@
 from PySide6.QtWidgets import (
-    QWidget,
-    QLabel,
-    QVBoxLayout,
+    QComboBox,
+    QFrame,
     QHBoxLayout,
+    QLabel,
+    QMessageBox,
     QPushButton,
     QScrollArea,
-    QFrame,
-    QComboBox,
-    QMessageBox
+    QVBoxLayout,
+    QWidget,
 )
 
-
-
+from ui.components.export_progress import ExportProgress
+from ui.components.format_options.format_options_panel import FormatOptionsPanel
 from ui.components.image_importer import ImageImporter
+from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.image_list_widget import ImageListWidget
 from ui.components.image_preview import ImagePreview
-from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.output_selector import OutputSelector
-from ui.components.export_progress import ExportProgress
-
-
-from ui.components.format_options.format_options_panel import (
-    FormatOptionsPanel
-)
-
-
-
-
-
 
 
 class ConvertPage(QWidget):
-
-
-    def __init__(
-        self,
-        image_service,
-        batch_service
-    ):
-
+    def __init__(self, image_service, batch_service):
 
         super().__init__()
-
 
         self.image_service = image_service
 
         self.batch_service = batch_service
 
-
         self.images = []
-
 
         self.output_folder = None
 
-
         self.format_settings = {}
-
-
 
         self.setup_ui()
 
-
         self.connect_events()
 
+        self.format_options.set_format(self.format_box.currentText())
 
+    def setup_ui(self):
 
-        self.format_options.set_format(
-
-            self.format_box.currentText()
-
-        )
-
-
-
-
-
-
-
-
-
-    def setup_ui(
-        self
-    ):
-
-
-        root_layout = QVBoxLayout(
-            self
-        )
-
+        root_layout = QVBoxLayout(self)
 
         self.scroll_area = QScrollArea()
 
-
-        self.scroll_area.setWidgetResizable(
-
-            True
-
-        )
-
-
+        self.scroll_area.setWidgetResizable(True)
 
         container = QWidget()
 
+        self.layout = QVBoxLayout(container)
 
+        self.layout.setSpacing(15)
 
-        self.layout = QVBoxLayout(
+        title = QLabel("Convert Image")
 
-            container
-
-        )
-
-
-        self.layout.setSpacing(
-
-            15
-
-        )
-
-
-
-
-
-
-
-
-        title = QLabel(
-
-            "Convert Image"
-
-        )
-
-
-        title.setObjectName(
-
-            "page_title"
-
-        )
-
-
-
-
-
-
-
-
+        title.setObjectName("page_title")
 
         self.importer = ImageImporter()
 
-
-
         self.image_list = ImageListWidget()
-
-
-
-
-
-
 
         preview_layout = QHBoxLayout()
 
-
-
         self.preview = ImagePreview()
-
 
         self.info_panel = ImageInfoPanel()
 
+        preview_layout.addWidget(self.preview)
 
-
-        preview_layout.addWidget(
-
-            self.preview
-
-        )
-
-
-        preview_layout.addWidget(
-
-            self.info_panel
-
-        )
-
-
-
-
-
-
-
-
+        preview_layout.addWidget(self.info_panel)
 
         settings_box = QFrame()
 
+        settings_layout = QVBoxLayout(settings_box)
 
+        settings_layout.setSpacing(10)
 
-        settings_layout = QVBoxLayout(
+        settings_layout.addWidget(QLabel("Conversion Settings"))
 
-            settings_box
-
-        )
-
-
-
-        settings_layout.setSpacing(
-
-            10
-
-        )
-
-
-
-
-
-        settings_layout.addWidget(
-
-            QLabel(
-
-                "Conversion Settings"
-
-            )
-
-        )
-
-
-
-
-
-
-
-
-
-        settings_layout.addWidget(
-
-            QLabel(
-
-                "Target Format"
-
-            )
-
-        )
-
-
-
-
-
-
-
+        settings_layout.addWidget(QLabel("Target Format"))
 
         self.format_box = QComboBox()
 
-
-
         self.format_box.addItems(
-
             [
-
                 "JPEG",
-
                 "PNG",
-
                 "WEBP",
-
                 "AVIF",
-
                 "GIF",
-
                 "BMP",
-
                 "TIFF",
-
                 "HEIC",
-
                 "HEIF",
-
                 "ICO",
-
-                "SVG"
-
+                "SVG",
             ]
-
         )
 
+        settings_layout.addWidget(self.format_box)
 
-
-        settings_layout.addWidget(
-
-            self.format_box
-
-        )
-
-
-
-
-
-
-
-
-
-        settings_layout.addWidget(
-
-            QLabel(
-
-                "Format Options"
-
-            )
-
-        )
-
-
+        settings_layout.addWidget(QLabel("Format Options"))
 
         self.format_options = FormatOptionsPanel()
 
-
-
-        settings_layout.addWidget(
-
-            self.format_options
-
-        )
-
-
-
-
-
-
-
-
+        settings_layout.addWidget(self.format_options)
 
         self.output_selector = OutputSelector()
 
-
-
-        self.output_folder = (
-
-            self.output_selector.get_output_folder()
-
-        )
-
-
-
-
-
-
-
+        self.output_folder = self.output_selector.get_output_folder()
 
         self.progress = ExportProgress()
 
+        self.start_button = QPushButton("Start Conversion")
 
+        self.layout.addWidget(title)
 
-        self.start_button = QPushButton(
+        self.layout.addWidget(self.importer)
 
-            "Start Conversion"
+        self.layout.addWidget(self.image_list)
 
-        )
+        self.layout.addLayout(preview_layout)
 
+        self.layout.addWidget(settings_box)
 
+        self.layout.addWidget(self.output_selector)
 
+        self.layout.addWidget(self.progress)
 
-
-
-
-
-
-        self.layout.addWidget(
-
-            title
-
-        )
-
-
-        self.layout.addWidget(
-
-            self.importer
-
-        )
-
-
-        self.layout.addWidget(
-
-            self.image_list
-
-        )
-
-
-        self.layout.addLayout(
-
-            preview_layout
-
-        )
-
-
-        self.layout.addWidget(
-
-            settings_box
-
-        )
-
-
-        self.layout.addWidget(
-
-            self.output_selector
-
-        )
-
-
-        self.layout.addWidget(
-
-            self.progress
-
-        )
-
-
-        self.layout.addWidget(
-
-            self.start_button
-
-        )
-
+        self.layout.addWidget(self.start_button)
 
         self.layout.addStretch()
 
+        self.scroll_area.setWidget(container)
 
+        root_layout.addWidget(self.scroll_area)
 
+    def connect_events(self):
 
+        self.importer.images_added.connect(self.load_images)
 
+        self.image_list.image_selected.connect(self.show_preview)
 
+        self.output_selector.output_changed.connect(self.set_output_folder)
 
-        self.scroll_area.setWidget(
+        self.format_box.currentTextChanged.connect(self.change_format)
 
-            container
+        self.format_options.settings_changed.connect(self.update_format_settings)
 
-        )
+        self.start_button.clicked.connect(self.start_convert)
 
+        self.batch_service.progress_changed.connect(self.progress.update_progress)
 
-        root_layout.addWidget(
+        self.batch_service.processing_finished.connect(self.convert_finished)
 
-            self.scroll_area
+        self.batch_service.processing_error.connect(self.convert_error)
 
-        )
+    def change_format(self, format_name):
 
-
-
-
-
-
-
-
-
-    def connect_events(
-        self
-    ):
-
-
-        self.importer.images_added.connect(
-
-            self.load_images
-
-        )
-
-
-
-        self.image_list.image_selected.connect(
-
-            self.show_preview
-
-        )
-
-
-
-        self.output_selector.output_changed.connect(
-
-            self.set_output_folder
-
-        )
-
-
-
-        self.format_box.currentTextChanged.connect(
-
-            self.change_format
-
-        )
-
-
-
-        self.format_options.settings_changed.connect(
-
-            self.update_format_settings
-
-        )
-
-
-
-        self.start_button.clicked.connect(
-
-            self.start_convert
-
-        )
-
-
-
-        self.batch_service.progress_changed.connect(
-
-            self.progress.update_progress
-
-        )
-
-
-
-        self.batch_service.processing_finished.connect(
-
-            self.convert_finished
-
-        )
-
-
-
-        self.batch_service.processing_error.connect(
-
-            self.convert_error
-
-        )
-
-
-
-
-
-
-
-
-
-    def change_format(
-        self,
-        format_name
-    ):
-
-
-        self.format_options.set_format(
-
-            format_name
-
-        )
-
-
+        self.format_options.set_format(format_name)
 
         self.format_options.reset()
 
-
-
-
-
-
-
-    def update_format_settings(
-        self,
-        settings
-    ):
-
+    def update_format_settings(self, settings):
 
         self.format_settings = settings
 
-
-
-
-
-
-
-    def load_images(
-        self,
-        images
-    ):
-
+    def load_images(self, images):
 
         self.images = images
 
-
-
-        self.image_list.set_images(
-
-            images
-
-        )
-
-
+        self.image_list.set_images(images)
 
         if images:
+            self.show_preview(images[0])
 
+    def show_preview(self, image):
 
-            self.show_preview(
+        self.preview.set_image(image)
 
-                images[0]
+        self.info_panel.set_image(image)
 
-            )
-
-
-
-
-
-
-
-
-
-    def show_preview(
-        self,
-        image
-    ):
-
-
-        self.preview.set_image(
-
-            image
-
-        )
-
-
-        self.info_panel.set_image(
-
-            image
-
-        )
-
-
-
-
-
-
-
-
-
-    def set_output_folder(
-        self,
-        folder
-    ):
-
+    def set_output_folder(self, folder):
 
         self.output_folder = folder
 
-
-
-
-
-
-
-
-
-
-    def build_config(
-        self
-    ):
-
+    def build_config(self):
 
         return {
-
-
-            "operations":
-
-                [],
-
-
-
-            "output":
-
-                {
-
-
-                    "format":
-
-                        self.format_box.currentText(),
-
-
-
-                    "options":
-
-                        self.format_settings
-
-                }
-
+            "operations": [],
+            "output": {
+                "format": self.format_box.currentText(),
+                "options": self.format_settings,
+            },
         }
 
-
-
-
-
-
-
-
-
-    def start_convert(
-        self
-    ):
-
+    def start_convert(self):
 
         if not self.images:
-
-
-            QMessageBox.warning(
-
-                self,
-
-                "Convert",
-
-                "No images selected"
-
-            )
-
+            QMessageBox.warning(self, "Convert", "No images selected")
 
             return
-
-
-
-
-
-
 
         if not self.output_folder:
-
-
-            QMessageBox.warning(
-
-                self,
-
-                "Convert",
-
-                "Output folder not selected"
-
-            )
-
+            QMessageBox.warning(self, "Convert", "Output folder not selected")
 
             return
 
-
-
-
-
-
-
-        self.start_button.setEnabled(
-
-            False
-
-        )
-
+        self.start_button.setEnabled(False)
 
         self.progress.reset()
 
-
-
-
-
-
         try:
-
-
             self.batch_service.start_batch(
-
-                self.images,
-
-                self.output_folder,
-
-                self.build_config()
-
+                self.images, self.output_folder, self.build_config()
             )
 
-
-
-            self.progress.set_output_folder(
-
-                self.output_folder
-
-            )
-
-
-
+            self.progress.set_output_folder(self.output_folder)
 
         except Exception as error:
+            self.start_button.setEnabled(True)
 
+            QMessageBox.critical(self, "Conversion Error", str(error))
 
+    def convert_finished(self, result):
 
-            self.start_button.setEnabled(
-
-                True
-
-            )
-
-
-            QMessageBox.critical(
-
-                self,
-
-                "Conversion Error",
-
-                str(error)
-
-            )
-
-
-
-
-
-
-
-
-
-    def convert_finished(
-        self,
-        result
-    ):
-
-
-        self.start_button.setEnabled(
-
-            True
-
-        )
-
+        self.start_button.setEnabled(True)
 
         self.progress.finished()
 
+    def convert_error(self, error):
 
+        self.start_button.setEnabled(True)
 
-
-
-
-
-    def convert_error(
-        self,
-        error
-    ):
-
-
-        self.start_button.setEnabled(
-
-            True
-
-        )
-
-
-        self.progress.failed(
-
-            error
-
-        )
+        self.progress.failed(error)

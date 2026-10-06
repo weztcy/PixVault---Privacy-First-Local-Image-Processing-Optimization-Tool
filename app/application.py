@@ -6,11 +6,9 @@ from ui.main_window import MainWindow
 
 
 class PixVaultApplication:
-
     def __init__(self):
         self.qt_app = QApplication(sys.argv)
         self.window = None
-
 
     def start(self):
 

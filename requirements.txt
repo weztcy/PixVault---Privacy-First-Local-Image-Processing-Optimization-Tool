@@ -1,6 +1,24 @@
+# GUI Framework
 PySide6
+
+
+# Image Processing
 Pillow
 pillow-heif
 pillow-avif-plugin
-rawpy
+
+
+# Numerical Processing
 numpy
+
+
+# RAW Image Support
+rawpy
+
+
+# SVG Support
+svgwrite
+
+
+# Utilities
+requests

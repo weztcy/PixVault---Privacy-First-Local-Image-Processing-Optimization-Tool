@@ -1,216 +1,60 @@
-from PySide6.QtWidgets import (
-    QWidget,
-    QVBoxLayout
-)
-
-
-from PySide6.QtCore import (
-    Signal
-)
-
-
-
-
-
+from PySide6.QtCore import Signal
+from PySide6.QtWidgets import QVBoxLayout, QWidget
 
 
 class BaseFormatOptions(QWidget):
+    settings_changed = Signal(dict)
 
-
-    settings_changed = Signal(
-        dict
-    )
-
-
-
-
-
-    def __init__(
-        self
-    ):
+    def __init__(self):
 
         super().__init__()
 
-
         self.widgets = []
-
 
         self.setup_ui()
 
+    def setup_ui(self):
 
+        self.layout = QVBoxLayout(self)
 
+        self.layout.setSpacing(10)
 
+        self.layout.setContentsMargins(0, 0, 0, 0)
 
+    def add_widget(self, widget):
 
+        self.widgets.append(widget)
 
+        self.layout.addWidget(widget)
 
-    def setup_ui(
-        self
-    ):
-
-
-        self.layout = QVBoxLayout(
-            self
-        )
-
-
-        self.layout.setSpacing(
-            10
-        )
-
-
-        self.layout.setContentsMargins(
-            0,
-            0,
-            0,
-            0
-        )
-
-
-
-
-
-
-
-
-
-    def add_widget(
-        self,
-        widget
-    ):
-
-
-        self.widgets.append(
-
-            widget
-
-        )
-
-
-        self.layout.addWidget(
-
-            widget
-
-        )
-
-
-
-
-
-
-
-
-
-    def remove_widget(
-        self,
-        widget
-    ):
-
+    def remove_widget(self, widget):
 
         if widget in self.widgets:
+            self.widgets.remove(widget)
 
-
-            self.widgets.remove(
-
-                widget
-
-            )
-
-
-        self.layout.removeWidget(
-
-            widget
-
-        )
-
+        self.layout.removeWidget(widget)
 
         widget.deleteLater()
 
-
-
-
-
-
-
-
-
-    def clear_options(
-        self
-    ):
-
+    def clear_options(self):
 
         for widget in self.widgets:
-
-
-            self.layout.removeWidget(
-
-                widget
-
-            )
-
+            self.layout.removeWidget(widget)
 
             widget.deleteLater()
 
-
-
         self.widgets.clear()
 
-
-
-
-
-
-
-
-
-    def set_widget_visible(
-        self,
-        widget,
-        visible
-    ):
-
+    def set_widget_visible(self, widget, visible):
 
         if widget:
+            widget.setVisible(visible)
 
+    def emit_settings_changed(self):
 
-            widget.setVisible(
+        self.settings_changed.emit(self.get_settings())
 
-                visible
-
-            )
-
-
-
-
-
-
-
-
-
-    def emit_settings_changed(
-        self
-    ):
-
-
-        self.settings_changed.emit(
-
-            self.get_settings()
-
-        )
-
-
-
-
-
-
-
-
-
-    def get_settings(
-        self
-    ):
-
-
+    def get_settings(self):
         """
         Return format specific encoder settings.
 
@@ -227,41 +71,14 @@ class BaseFormatOptions(QWidget):
 
         return {}
 
-
-
-
-
-
-
-
-
-    def reset(
-        self
-    ):
-
-
+    def reset(self):
         """
         Reset all widgets.
 
         Child classes should override.
         """
 
-        pass
-
-
-
-
-
-
-
-
-
-    def set_defaults(
-        self,
-        settings=None
-    ):
-
-
+    def set_defaults(self, settings=None):
         """
         Load saved encoder settings.
 
@@ -273,5 +90,3 @@ class BaseFormatOptions(QWidget):
         }
 
         """
-
-        pass

@@ -1,226 +1,53 @@
 from pathlib import Path
 
-from formats.encoder import EncoderManager
 from export.naming import NamingEngine
-
-
-
+from formats.encoder import EncoderManager
 
 
 class Exporter:
-
-
-
-    def __init__(
-        self
-    ):
-
+    def __init__(self):
 
         self.encoder = EncoderManager()
 
         self.naming = NamingEngine()
 
-
-
-
-
-
-    def export(
-        self,
-        image,
-        source_path,
-        output_folder,
-        settings
-    ):
-
+    def export(self, image, source_path, output_folder, settings):
 
         if image is None:
-
-
-            raise ValueError(
-
-                "Image data is missing"
-
-            )
-
-
+            raise ValueError("Image data is missing")
 
         if not settings:
+            raise ValueError("Export settings missing")
 
+        output_folder = Path(output_folder)
 
-            raise ValueError(
+        output_folder.mkdir(parents=True, exist_ok=True)
 
-                "Export settings missing"
-
-            )
-
-
-
-        output_folder = Path(
-
-            output_folder
-
-        )
-
-
-
-        output_folder.mkdir(
-
-            parents=True,
-
-            exist_ok=True
-
-        )
-
-
-
-
-
-        format_name = settings.get(
-
-            "format"
-
-        )
-
-
+        format_name = settings.get("format")
 
         if not format_name:
+            raise ValueError("Output format missing")
 
+        format_name = self.encoder.normalize_format(format_name)
 
-            raise ValueError(
-
-                "Output format missing"
-
-            )
-
-
-
-
-
-        format_name = self.encoder.normalize_format(
-
-            format_name
-
-        )
-
-
-
-
-
-        if not self.encoder.is_supported(
-
-            format_name
-
-        ):
-
-
-            raise ValueError(
-
-                f"Unsupported output format: {format_name}"
-
-            )
-
-
-
-
-
+        if not self.encoder.is_supported(format_name):
+            raise ValueError(f"Unsupported output format: {format_name}")
 
         # clone settings
 
-        export_settings = dict(
-
-            settings
-
-        )
-
-
+        export_settings = dict(settings)
 
         export_settings["format"] = format_name
 
+        output_path = self.naming.generate(source_path, output_folder, export_settings)
 
+        output_path = Path(output_path)
 
+        result = self.encoder.save(image, output_path, export_settings)
 
-
-
-
-        output_path = self.naming.generate(
-
-            source_path,
-
-            output_folder,
-
-            export_settings
-
-        )
-
-
-
-        output_path = Path(
-
-            output_path
-
-        )
-
-
-
-
-
-
-        result = self.encoder.save(
-
-            image,
-
-            output_path,
-
-            export_settings
-
-        )
-
-
-
-        result = Path(
-
-            result
-
-        )
-
-
-
-
-
-
+        result = Path(result)
 
         if not result.exists():
+            raise RuntimeError(f"Encoder failed creating file: {result}")
 
-
-            raise RuntimeError(
-
-                f"Encoder failed creating file: {result}"
-
-            )
-
-
-
-
-
-
-
-        return {
-
-
-            "path":
-
-                result,
-
-
-            "format":
-
-                format_name,
-
-
-            "size":
-
-                result.stat().st_size
-
-
-        }
+        return {"path": result, "format": format_name, "size": result.stat().st_size}

@@ -1,28 +1,14 @@
 from abc import ABC, abstractmethod
 
 
-
-
-class BaseEncoder(
-    ABC
-):
-
-
+class BaseEncoder(ABC):
     """
     Base interface
     for all PixVault encoders.
     """
 
-
-
     @abstractmethod
-    def save(
-        self,
-        image,
-        output_path,
-        settings
-    ):
-
+    def save(self, image, output_path, settings):
         """
         Save processed image.
 

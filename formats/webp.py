@@ -1,262 +1,65 @@
 from pathlib import Path
 
-from PIL import Image
-
 from formats import BaseEncoder
 
 
-
-
-
 class WEBPEncoder(BaseEncoder):
+    def save(self, image, output_path, settings):
 
+        output = Path(output_path)
 
+        output.parent.mkdir(parents=True, exist_ok=True)
 
-    def save(
-        self,
-        image,
-        output_path,
-        settings
-    ):
+        lossless = settings.get("lossless", False)
 
+        quality = settings.get("quality", 85)
 
-        output = Path(
-            output_path
-        )
+        method = settings.get("method", 4)
 
-
-        output.parent.mkdir(
-
-            parents=True,
-
-            exist_ok=True
-
-        )
-
-
-
-        lossless = settings.get(
-
-            "lossless",
-
-            False
-
-        )
-
-
-        quality = settings.get(
-
-            "quality",
-
-            85
-
-        )
-
-
-        method = settings.get(
-
-            "method",
-
-            4
-
-        )
-
-
-        alpha_quality = settings.get(
-
-            "alpha_quality",
-
-            100
-
-        )
-
-
-
-
+        alpha_quality = settings.get("alpha_quality", 100)
 
         try:
+            quality = int(quality)
 
+            method = int(method)
 
-            quality = int(
-                quality
-            )
-
-
-            method = int(
-                method
-            )
-
-
-            alpha_quality = int(
-                alpha_quality
-            )
-
+            alpha_quality = int(alpha_quality)
 
         except Exception:
+            raise ValueError("Invalid WEBP settings")
 
+        quality = max(0, min(100, quality))
 
-            raise ValueError(
+        method = max(0, min(6, method))
 
-                "Invalid WEBP settings"
-
-            )
-
-
-
-
-
-        quality = max(
-
-            0,
-
-            min(
-
-                100,
-
-                quality
-
-            )
-
-        )
-
-
-        method = max(
-
-            0,
-
-            min(
-
-                6,
-
-                method
-
-            )
-
-        )
-
-
-        alpha_quality = max(
-
-            0,
-
-            min(
-
-                100,
-
-                alpha_quality
-
-            )
-
-        )
-
-
-
-
-
-
+        alpha_quality = max(0, min(100, alpha_quality))
 
         # =====================
         # COLOR MODE
         # =====================
 
-
-        if image.mode not in [
-
-            "RGB",
-
-            "RGBA"
-
-        ]:
-
-
+        if image.mode not in ["RGB", "RGBA"]:
             if "A" in image.getbands():
-
-
-                image = image.convert(
-
-                    "RGBA"
-
-                )
-
+                image = image.convert("RGBA")
 
             else:
-
-
-                image = image.convert(
-
-                    "RGB"
-
-                )
-
-
-
-
-
-
+                image = image.convert("RGB")
 
         save_settings = {
-
-
-            "format":
-
-                "WEBP",
-
-
-            "lossless":
-
-                bool(lossless),
-
-
-            "method":
-
-                method,
-
-
-            "alpha_quality":
-
-                alpha_quality
-
+            "format": "WEBP",
+            "lossless": bool(lossless),
+            "method": method,
+            "alpha_quality": alpha_quality,
         }
 
-
-
-
-
         if not lossless:
-
-
             save_settings["quality"] = quality
 
-
-
-
-
-        icc_profile = image.info.get(
-
-            "icc_profile"
-
-        )
-
-
+        icc_profile = image.info.get("icc_profile")
 
         if icc_profile:
-
-
             save_settings["icc_profile"] = icc_profile
 
-
-
-
-
-
-        image.save(
-
-            output,
-
-            **save_settings
-
-        )
-
-
+        image.save(output, **save_settings)
 
         return output

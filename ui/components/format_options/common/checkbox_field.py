@@ -1,118 +1,32 @@
-from PySide6.QtWidgets import (
-    QWidget,
-    QCheckBox,
-    QVBoxLayout
-)
-
-
 from PySide6.QtCore import Signal
-
-
-
+from PySide6.QtWidgets import QCheckBox, QVBoxLayout, QWidget
 
 
 class CheckboxField(QWidget):
+    value_changed = Signal(bool)
 
-
-    value_changed = Signal(
-        bool
-    )
-
-
-
-
-
-    def __init__(
-        self,
-        text,
-        default=False
-    ):
+    def __init__(self, text, default=False):
 
         super().__init__()
 
+        self.checkbox = QCheckBox(text)
 
-        self.checkbox = QCheckBox(
+        self.checkbox.setChecked(default)
 
-            text
+        self.checkbox.stateChanged.connect(self.changed)
 
-        )
+        layout = QVBoxLayout(self)
 
+        layout.addWidget(self.checkbox)
 
-        self.checkbox.setChecked(
+    def changed(self):
 
-            default
+        self.value_changed.emit(self.checkbox.isChecked())
 
-        )
-
-
-        self.checkbox.stateChanged.connect(
-
-            self.changed
-
-        )
-
-
-        layout = QVBoxLayout(
-
-            self
-
-        )
-
-
-        layout.addWidget(
-
-            self.checkbox
-
-        )
-
-
-
-
-
-
-
-
-
-    def changed(
-        self
-    ):
-
-
-        self.value_changed.emit(
-
-            self.checkbox.isChecked()
-
-        )
-
-
-
-
-
-
-
-
-
-    def value(
-        self
-    ):
-
+    def value(self):
 
         return self.checkbox.isChecked()
 
+    def set_value(self, value):
 
-
-
-
-
-
-    def set_value(
-        self,
-        value
-    ):
-
-
-        self.checkbox.setChecked(
-
-            value
-
-        )
+        self.checkbox.setChecked(value)

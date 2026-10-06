@@ -1,135 +1,37 @@
-from PySide6.QtWidgets import (
-    QWidget,
-    QLabel,
-    QComboBox,
-    QVBoxLayout
-)
-
-
 from PySide6.QtCore import Signal
-
-
-
+from PySide6.QtWidgets import QComboBox, QLabel, QVBoxLayout, QWidget
 
 
 class DropdownField(QWidget):
+    value_changed = Signal(str)
 
-
-    value_changed = Signal(
-        str
-    )
-
-
-
-
-
-    def __init__(
-        self,
-        title,
-        items,
-        default=None
-    ):
+    def __init__(self, title, items, default=None):
 
         super().__init__()
 
+        layout = QVBoxLayout(self)
 
+        layout.setSpacing(5)
 
-        layout = QVBoxLayout(
+        self.label = QLabel(title)
 
-            self
-
-        )
-
-
-        layout.setSpacing(
-
-            5
-
-        )
-
-
-
-        self.label = QLabel(
-
-            title
-
-        )
-
-
-        layout.addWidget(
-
-            self.label
-
-        )
-
-
-
-
+        layout.addWidget(self.label)
 
         self.combo = QComboBox()
 
-
-
-        self.combo.addItems(
-
-            items
-
-        )
-
-
+        self.combo.addItems(items)
 
         if default:
+            self.combo.setCurrentText(default)
 
-            self.combo.setCurrentText(
+        self.combo.currentTextChanged.connect(self.value_changed.emit)
 
-                default
+        layout.addWidget(self.combo)
 
-            )
-
-
-
-        self.combo.currentTextChanged.connect(
-
-            self.value_changed.emit
-
-        )
-
-
-
-        layout.addWidget(
-
-            self.combo
-
-        )
-
-
-
-
-
-
-
-
-    def value(
-        self
-    ):
-
+    def value(self):
 
         return self.combo.currentText()
 
+    def set_value(self, value):
 
-
-
-
-
-
-    def set_value(
-        self,
-        value
-    ):
-
-
-        self.combo.setCurrentText(
-
-            value
-
-        )
+        self.combo.setCurrentText(value)

@@ -1,563 +1,195 @@
 from PySide6.QtWidgets import (
-    QWidget,
-    QLabel,
-    QVBoxLayout,
+    QFrame,
     QHBoxLayout,
+    QLabel,
+    QMessageBox,
     QPushButton,
     QScrollArea,
-    QFrame,
-    QMessageBox
+    QVBoxLayout,
+    QWidget,
 )
 
-
+from ui.components.export_progress import ExportProgress
 from ui.components.image_importer import ImageImporter
+from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.image_list_widget import ImageListWidget
 from ui.components.image_preview import ImagePreview
-from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.output_selector import OutputSelector
-from ui.components.export_progress import ExportProgress
-
-
-from ui.components.processing_options.metadata_options import (
-    MetadataOptions
-)
-
-
-
-
-
+from ui.components.processing_options.metadata_options import MetadataOptions
 
 
 class MetadataPage(QWidget):
-
-
-    def __init__(
-        self,
-        image_service,
-        batch_service
-    ):
+    def __init__(self, image_service, batch_service):
 
         super().__init__()
-
-
 
         self.image_service = image_service
 
         self.batch_service = batch_service
 
-
         self.images = []
 
         self.output_folder = None
-
-
 
         self.setup_ui()
 
         self.connect_events()
 
+    def setup_ui(self):
 
-
-
-
-
-
-    def setup_ui(
-        self
-    ):
-
-
-        root_layout = QVBoxLayout(
-            self
-        )
-
+        root_layout = QVBoxLayout(self)
 
         self.scroll_area = QScrollArea()
 
-
-        self.scroll_area.setWidgetResizable(
-            True
-        )
-
+        self.scroll_area.setWidgetResizable(True)
 
         container = QWidget()
 
+        self.layout = QVBoxLayout(container)
 
-        self.layout = QVBoxLayout(
-            container
-        )
+        self.layout.setSpacing(15)
 
+        title = QLabel("Metadata Processor")
 
-        self.layout.setSpacing(
-            15
-        )
-
-
-
-        title = QLabel(
-            "Metadata Processor"
-        )
-
-
-        title.setObjectName(
-            "page_title"
-        )
-
-
+        title.setObjectName("page_title")
 
         self.importer = ImageImporter()
 
-
         self.image_list = ImageListWidget()
-
-
 
         preview_layout = QHBoxLayout()
 
-
-
         self.preview = ImagePreview()
-
 
         self.info_panel = ImageInfoPanel()
 
+        preview_layout.addWidget(self.preview)
 
-
-        preview_layout.addWidget(
-            self.preview
-        )
-
-
-        preview_layout.addWidget(
-            self.info_panel
-        )
-
-
-
-
+        preview_layout.addWidget(self.info_panel)
 
         # =====================
         # METADATA OPTIONS
         # =====================
 
-
         settings_box = QFrame()
 
+        settings_layout = QVBoxLayout(settings_box)
 
-        settings_layout = QVBoxLayout(
-            settings_box
-        )
-
-
-
-        settings_layout.addWidget(
-            QLabel(
-                "Metadata Settings"
-            )
-        )
-
-
+        settings_layout.addWidget(QLabel("Metadata Settings"))
 
         self.metadata_options = MetadataOptions()
 
-
-
-        settings_layout.addWidget(
-            self.metadata_options
-        )
-
-
-
-
+        settings_layout.addWidget(self.metadata_options)
 
         self.output_selector = OutputSelector()
 
-
-        self.output_folder = (
-            self.output_selector.get_output_folder()
-        )
-
+        self.output_folder = self.output_selector.get_output_folder()
 
         self.progress = ExportProgress()
 
+        self.start_button = QPushButton("Remove Metadata")
 
+        self.layout.addWidget(title)
 
-        self.start_button = QPushButton(
-            "Remove Metadata"
-        )
+        self.layout.addWidget(self.importer)
 
+        self.layout.addWidget(self.image_list)
 
+        self.layout.addLayout(preview_layout)
 
+        self.layout.addWidget(settings_box)
 
+        self.layout.addWidget(self.output_selector)
 
-        self.layout.addWidget(
-            title
-        )
+        self.layout.addWidget(self.progress)
 
-
-        self.layout.addWidget(
-            self.importer
-        )
-
-
-        self.layout.addWidget(
-            self.image_list
-        )
-
-
-        self.layout.addLayout(
-            preview_layout
-        )
-
-
-        self.layout.addWidget(
-            settings_box
-        )
-
-
-        self.layout.addWidget(
-            self.output_selector
-        )
-
-
-        self.layout.addWidget(
-            self.progress
-        )
-
-
-        self.layout.addWidget(
-            self.start_button
-        )
-
+        self.layout.addWidget(self.start_button)
 
         self.layout.addStretch()
 
+        self.scroll_area.setWidget(container)
 
+        root_layout.addWidget(self.scroll_area)
 
-        self.scroll_area.setWidget(
-            container
-        )
+    def connect_events(self):
 
+        self.importer.images_added.connect(self.load_images)
 
-        root_layout.addWidget(
-            self.scroll_area
-        )
+        self.image_list.image_selected.connect(self.show_preview)
 
+        self.output_selector.output_changed.connect(self.set_output_folder)
 
+        self.start_button.clicked.connect(self.start_metadata)
 
+        self.batch_service.progress_changed.connect(self.progress.update_progress)
 
+        self.batch_service.processing_finished.connect(self.metadata_finished)
 
+        self.batch_service.processing_error.connect(self.metadata_error)
 
-
-
-
-    def connect_events(
-        self
-    ):
-
-
-        self.importer.images_added.connect(
-            self.load_images
-        )
-
-
-        self.image_list.image_selected.connect(
-            self.show_preview
-        )
-
-
-        self.output_selector.output_changed.connect(
-            self.set_output_folder
-        )
-
-
-        self.start_button.clicked.connect(
-            self.start_metadata
-        )
-
-
-        self.batch_service.progress_changed.connect(
-            self.progress.update_progress
-        )
-
-
-        self.batch_service.processing_finished.connect(
-            self.metadata_finished
-        )
-
-
-        self.batch_service.processing_error.connect(
-            self.metadata_error
-        )
-
-
-
-
-
-
-
-
-
-    def load_images(
-        self,
-        images
-    ):
-
+    def load_images(self, images):
 
         self.images = images
 
-
-        self.image_list.set_images(
-            images
-        )
-
+        self.image_list.set_images(images)
 
         if images:
+            self.show_preview(images[0])
 
-            self.show_preview(
-                images[0]
-            )
+    def show_preview(self, image):
 
+        self.preview.set_image(image)
 
+        self.info_panel.set_image(image)
 
-
-
-
-
-
-
-    def show_preview(
-        self,
-        image
-    ):
-
-
-        self.preview.set_image(
-            image
-        )
-
-
-        self.info_panel.set_image(
-            image
-        )
-
-
-
-
-
-
-
-
-
-    def set_output_folder(
-        self,
-        folder
-    ):
-
+    def set_output_folder(self, folder):
 
         self.output_folder = folder
 
+    def build_config(self):
 
+        operation = self.metadata_options.get_settings()
 
+        operation["type"] = "metadata"
 
+        return {"operations": [operation], "output": {"keep_format": True}}
 
-
-
-
-
-
-    def build_config(
-        self
-    ):
-
-
-        operation = (
-
-            self.metadata_options.get_settings()
-
-        )
-
-
-        operation["type"] = (
-
-            "metadata"
-
-        )
-
-
-
-        return {
-
-
-            "operations":
-
-            [
-
-                operation
-
-            ],
-
-
-
-            "output":
-
-            {
-
-                "keep_format":
-
-                    True
-
-            }
-
-        }
-
-
-
-
-
-
-
-
-
-    def start_metadata(
-        self
-    ):
-
+    def start_metadata(self):
 
         if not self.images:
-
-
-            QMessageBox.warning(
-
-                self,
-
-                "Metadata",
-
-                "No images selected"
-
-            )
-
+            QMessageBox.warning(self, "Metadata", "No images selected")
 
             return
-
-
-
-
 
         if not self.output_folder:
-
-
-            QMessageBox.warning(
-
-                self,
-
-                "Metadata",
-
-                "Output folder not selected"
-
-            )
-
+            QMessageBox.warning(self, "Metadata", "Output folder not selected")
 
             return
 
-
-
-
-
-        self.start_button.setEnabled(
-            False
-        )
-
+        self.start_button.setEnabled(False)
 
         self.progress.reset()
 
-
-
-
-
         try:
-
-
             self.batch_service.start_batch(
-
-                self.images,
-
-                self.output_folder,
-
-                self.build_config()
-
+                self.images, self.output_folder, self.build_config()
             )
 
-
-
-            self.progress.set_output_folder(
-
-                self.output_folder
-
-            )
-
-
-
-
+            self.progress.set_output_folder(self.output_folder)
 
         except Exception as error:
+            self.start_button.setEnabled(True)
 
+            QMessageBox.critical(self, "Metadata Error", str(error))
 
-            self.start_button.setEnabled(
-                True
-            )
+    def metadata_finished(self, result):
 
-
-            QMessageBox.critical(
-
-                self,
-
-                "Metadata Error",
-
-                str(error)
-
-            )
-
-
-
-
-
-
-
-
-
-    def metadata_finished(
-        self,
-        result
-    ):
-
-
-        self.start_button.setEnabled(
-            True
-        )
-
+        self.start_button.setEnabled(True)
 
         self.progress.finished()
 
+    def metadata_error(self, error):
 
+        self.start_button.setEnabled(True)
 
-
-
-
-
-
-
-    def metadata_error(
-        self,
-        error
-    ):
-
-
-        self.start_button.setEnabled(
-            True
-        )
-
-
-        self.progress.failed(
-            error
-        )
+        self.progress.failed(error)

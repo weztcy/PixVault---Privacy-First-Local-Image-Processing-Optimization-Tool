@@ -1,43 +1,14 @@
 from pathlib import Path
 
-
-from PySide6.QtWidgets import (
-    QWidget,
-    QLabel,
-    QVBoxLayout,
-    QFileDialog
-)
-
-
-from PySide6.QtCore import (
-    Signal,
-    Qt
-)
-
-
-from PySide6.QtGui import (
-    QDragEnterEvent,
-    QDropEvent,
-    QCursor
-)
-
-
-
-
-
+from PySide6.QtCore import Qt, Signal
+from PySide6.QtGui import QCursor, QDragEnterEvent, QDropEvent
+from PySide6.QtWidgets import QFileDialog, QLabel, QVBoxLayout, QWidget
 
 
 class DropArea(QWidget):
-
-
-    files_dropped = Signal(
-        list
-    )
-
-
+    files_dropped = Signal(list)
 
     SUPPORTED_EXTENSIONS = {
-
         ".jpg",
         ".jpeg",
         ".png",
@@ -50,93 +21,32 @@ class DropArea(QWidget):
         ".heic",
         ".heif",
         ".ico",
-        ".svg"
-
+        ".svg",
     }
 
-
-
-
-
-
-
-    def __init__(
-        self
-    ):
+    def __init__(self):
 
         super().__init__()
 
-
-        self.setAcceptDrops(
-            True
-        )
-
+        self.setAcceptDrops(True)
 
         self.setup_ui()
 
+    def setup_ui(self):
 
+        layout = QVBoxLayout(self)
 
+        layout.setContentsMargins(10, 10, 10, 10)
 
+        self.label = QLabel("📂 Click or Drag & Drop Images / Folder Here")
 
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
+        self.label.setMinimumHeight(120)
 
-    def setup_ui(
-        self
-    ):
+        self.label.setObjectName("drop_area")
 
-
-        layout = QVBoxLayout(
-            self
-        )
-
-
-        layout.setContentsMargins(
-            10,
-            10,
-            10,
-            10
-        )
-
-
-
-        self.label = QLabel(
-
-            "📂 Click or Drag & Drop Images / Folder Here"
-
-        )
-
-
-        self.label.setAlignment(
-
-            Qt.AlignmentFlag.AlignCenter
-
-        )
-
-
-        self.label.setMinimumHeight(
-
-            120
-
-        )
-
-
-        self.label.setObjectName(
-
-            "drop_area"
-
-        )
-
-
-        self.label.setCursor(
-
-            QCursor(
-
-                Qt.CursorShape.PointingHandCursor
-
-            )
-
-        )
-
+        self.label.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
         self.label.setStyleSheet(
             """
@@ -165,262 +75,87 @@ class DropArea(QWidget):
             """
         )
 
+        layout.addWidget(self.label)
 
-
-        layout.addWidget(
-
-            self.label
-
-        )
-
-
-
-        self.setLayout(
-
-            layout
-
-        )
-
-
-
-
-
-
-
-
-
+        self.setLayout(layout)
 
     # =====================
     # CLICK IMPORT
     # =====================
 
-
-    def mousePressEvent(
-        self,
-        event
-    ):
-
+    def mousePressEvent(self, event):
 
         if event.button() == Qt.MouseButton.LeftButton:
-
-
             self.open_file_dialog()
 
+        super().mousePressEvent(event)
 
-
-        super().mousePressEvent(
-            event
-        )
-
-
-
-
-
-
-
-
-    def open_file_dialog(
-        self
-    ):
-
+    def open_file_dialog(self):
 
         files, _ = QFileDialog.getOpenFileNames(
-
             self,
-
             "Select Images",
-
             "",
-
             (
                 "Images "
                 "(*.jpg *.jpeg *.png *.webp *.avif "
                 "*.gif *.bmp *.tiff *.tif "
                 "*.heic *.heif *.ico *.svg)"
-            )
-
+            ),
         )
-
-
 
         result = []
 
-
-
         for file in files:
+            path = Path(file)
 
-
-            path = Path(
-                file
-            )
-
-
-            if self.is_supported_image(
-                path
-            ):
-
-
-                result.append(
-                    path
-                )
-
-
+            if self.is_supported_image(path):
+                result.append(path)
 
         if result:
-
-
-            self.files_dropped.emit(
-                result
-            )
-
-
-
-
-
-
-
-
-
+            self.files_dropped.emit(result)
 
     # =====================
     # DRAG DROP
     # =====================
 
-
-    def dragEnterEvent(
-        self,
-        event: QDragEnterEvent
-    ):
-
+    def dragEnterEvent(self, event: QDragEnterEvent):
 
         if event.mimeData().hasUrls():
-
-
             event.acceptProposedAction()
 
-
-
-
-
-
-
-    def dropEvent(
-        self,
-        event: QDropEvent
-    ):
-
+    def dropEvent(self, event: QDropEvent):
 
         urls = event.mimeData().urls()
 
-
         files = []
 
-
-
         for url in urls:
-
-
-            path = Path(
-
-                url.toLocalFile()
-
-            )
-
-
+            path = Path(url.toLocalFile())
 
             if path.is_file():
-
-
-                if self.is_supported_image(
-                    path
-                ):
-
-
-                    files.append(
-                        path
-                    )
-
-
+                if self.is_supported_image(path):
+                    files.append(path)
 
             elif path.is_dir():
-
-
-                files.extend(
-
-                    self.scan_folder(
-                        path
-                    )
-
-                )
-
-
+                files.extend(self.scan_folder(path))
 
         if files:
-
-
-            self.files_dropped.emit(
-                files
-            )
-
-
+            self.files_dropped.emit(files)
 
         event.acceptProposedAction()
 
-
-
-
-
-
-
-    def scan_folder(
-        self,
-        folder
-    ):
-
+    def scan_folder(self, folder):
 
         result = []
 
-
-
-        for file in folder.rglob(
-            "*"
-        ):
-
-
+        for file in folder.rglob("*"):
             if file.is_file():
-
-
-                if self.is_supported_image(
-                    file
-                ):
-
-
-                    result.append(
-                        file
-                    )
-
-
+                if self.is_supported_image(file):
+                    result.append(file)
 
         return result
 
+    def is_supported_image(self, path):
 
-
-
-
-
-
-    def is_supported_image(
-        self,
-        path
-    ):
-
-
-        return (
-
-            path.suffix.lower()
-
-            in
-
-            self.SUPPORTED_EXTENSIONS
-
-        )
+        return path.suffix.lower() in self.SUPPORTED_EXTENSIONS

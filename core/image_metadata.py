@@ -4,7 +4,6 @@ from PIL import Image
 
 
 class ImageData:
-
     def __init__(self):
 
         self.path = None
@@ -19,16 +18,12 @@ class ImageData:
         self.thumbnail = None
 
 
-
 class ImageMetadata:
-
-
     def read(self, file_path):
 
         path = Path(file_path)
 
         data = ImageData()
-
 
         data.path = str(path)
 
@@ -38,11 +33,8 @@ class ImageMetadata:
 
         data.size_bytes = path.stat().st_size
 
-
         try:
-
             with Image.open(path) as image:
-
                 data.format = image.format
 
                 data.width = image.width
@@ -51,15 +43,10 @@ class ImageMetadata:
 
                 data.mode = image.mode
 
-
                 if image.info:
-
                     data.has_metadata = True
 
-
         except Exception:
-
             data.format = "Unknown"
-
 
         return data

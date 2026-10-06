@@ -1,91 +1,35 @@
-from PySide6.QtWidgets import (
-    QWidget,
-    QLabel,
-    QVBoxLayout,
-    QGroupBox
-)
-
-
 from PySide6.QtCore import Qt
-
-
-
+from PySide6.QtWidgets import QGroupBox, QLabel, QVBoxLayout, QWidget
 
 
 class PrivacyPage(QWidget):
-
-
-
-    def __init__(
-        self
-    ):
+    def __init__(self):
 
         super().__init__()
 
-
         self.setup_ui()
 
-
-
-
-
-
-
-    def setup_ui(
-        self
-    ):
-
+    def setup_ui(self):
 
         layout = QVBoxLayout()
 
-
-        layout.setSpacing(
-
-            15
-
-        )
-
-
-
-
+        layout.setSpacing(15)
 
         # =====================
         # TITLE
         # =====================
 
+        title = QLabel("Privacy & Security")
 
-        title = QLabel(
+        title.setObjectName("privacy_title")
 
-            "Privacy & Security"
-
-        )
-
-
-        title.setObjectName(
-
-            "privacy_title"
-
-        )
-
-
-        title.setAlignment(
-
-            Qt.AlignmentFlag.AlignCenter
-
-        )
-
-
-
-
-
+        title.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         # =====================
         # INTRO
         # =====================
 
-
         description = QLabel(
-
             """
 PixVault is designed as a local-first image processing application.
 
@@ -95,56 +39,23 @@ No cloud upload or external processing service is required.
 You control the source files, processing options,
 and output destination.
             """
-
         )
 
+        description.setWordWrap(True)
 
-        description.setWordWrap(
-
-            True
-
-        )
-
-
-
-        description.setAlignment(
-
-            Qt.AlignmentFlag.AlignCenter
-
-        )
-
-
-
-
-
-
+        description.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         # =====================
         # LOCAL PROCESSING
         # =====================
 
+        local_box = QGroupBox("Local Processing")
 
-        local_box = QGroupBox(
-
-            "Local Processing"
-
-        )
-
-
-        local_box.setObjectName(
-
-            "privacy_card"
-
-        )
-
-
+        local_box.setObjectName("privacy_card")
 
         local_layout = QVBoxLayout()
 
-
-
         local_text = QLabel(
-
             """
 ✓ Image processing runs locally
 
@@ -154,63 +65,25 @@ and output destination.
 
 ✓ Works without cloud dependency
             """
-
         )
 
+        local_text.setWordWrap(True)
 
-        local_text.setWordWrap(
+        local_layout.addWidget(local_text)
 
-            True
-
-        )
-
-
-
-        local_layout.addWidget(
-
-            local_text
-
-        )
-
-
-        local_box.setLayout(
-
-            local_layout
-
-        )
-
-
-
-
-
-
+        local_box.setLayout(local_layout)
 
         # =====================
         # DATA HANDLING
         # =====================
 
+        data_box = QGroupBox("Data Handling")
 
-        data_box = QGroupBox(
-
-            "Data Handling"
-
-        )
-
-
-        data_box.setObjectName(
-
-            "privacy_card"
-
-        )
-
-
+        data_box.setObjectName("privacy_card")
 
         data_layout = QVBoxLayout()
 
-
-
         data_text = QLabel(
-
             """
 Source images remain under your control.
 
@@ -219,64 +92,25 @@ selected by the user.
 
 History records are stored locally.
             """
-
         )
 
+        data_text.setWordWrap(True)
 
-        data_text.setWordWrap(
+        data_layout.addWidget(data_text)
 
-            True
-
-        )
-
-
-
-        data_layout.addWidget(
-
-            data_text
-
-        )
-
-
-        data_box.setLayout(
-
-            data_layout
-
-        )
-
-
-
-
-
-
-
+        data_box.setLayout(data_layout)
 
         # =====================
         # FILE LIFECYCLE
         # =====================
 
+        lifecycle_box = QGroupBox("File Lifecycle")
 
-        lifecycle_box = QGroupBox(
-
-            "File Lifecycle"
-
-        )
-
-
-        lifecycle_box.setObjectName(
-
-            "privacy_card"
-
-        )
-
-
+        lifecycle_box.setObjectName("privacy_card")
 
         lifecycle_layout = QVBoxLayout()
 
-
-
         lifecycle_text = QLabel(
-
             """
 1. User selects source image
 
@@ -286,83 +120,28 @@ History records are stored locally.
 
 4. Final output is saved to selected location
             """
-
         )
 
+        lifecycle_text.setWordWrap(True)
 
-        lifecycle_text.setWordWrap(
+        lifecycle_layout.addWidget(lifecycle_text)
 
-            True
-
-        )
-
-
-
-        lifecycle_layout.addWidget(
-
-            lifecycle_text
-
-        )
-
-
-        lifecycle_box.setLayout(
-
-            lifecycle_layout
-
-        )
-
-
-
-
-
-
+        lifecycle_box.setLayout(lifecycle_layout)
 
         # =====================
         # ADD
         # =====================
 
+        layout.addWidget(title)
 
-        layout.addWidget(
+        layout.addWidget(description)
 
-            title
+        layout.addWidget(local_box)
 
-        )
+        layout.addWidget(data_box)
 
-
-        layout.addWidget(
-
-            description
-
-        )
-
-
-        layout.addWidget(
-
-            local_box
-
-        )
-
-
-        layout.addWidget(
-
-            data_box
-
-        )
-
-
-        layout.addWidget(
-
-            lifecycle_box
-
-        )
-
+        layout.addWidget(lifecycle_box)
 
         layout.addStretch()
 
-
-
-        self.setLayout(
-
-            layout
-
-        )
+        self.setLayout(layout)
