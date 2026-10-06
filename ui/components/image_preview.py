@@ -64,9 +64,9 @@ class ImagePreview(QWidget):
 
         self.preview_label.setFixedSize(
 
-            400,
+            800,
 
-            300
+            450
 
         )
 

@@ -1,5 +1,6 @@
 from pathlib import Path
 
+
 from PySide6.QtCore import (
     QThread,
     Signal
@@ -17,10 +18,13 @@ class BatchWorker:
 
 
 
-    def __init__(self):
+    def __init__(
+        self
+    ):
 
 
         self.naming = NamingEngine()
+
 
 
 
@@ -38,6 +42,13 @@ class BatchWorker:
     ):
 
 
+        if not files:
+
+            raise ValueError(
+                "No files to process"
+            )
+
+
 
         output_folder = Path(
             output_folder
@@ -46,13 +57,9 @@ class BatchWorker:
 
 
         output_folder.mkdir(
-
             parents=True,
-
             exist_ok=True
-
         )
-
 
 
 
@@ -77,8 +84,6 @@ class BatchWorker:
 
 
 
-
-
         total = len(files)
 
 
@@ -88,11 +93,15 @@ class BatchWorker:
         for index, file in enumerate(files):
 
 
+            source = Path(
+                file
+            )
+
+
 
             # =====================
-            # CANCEL CHECK
+            # CANCEL
             # =====================
-
 
             if cancel_check and cancel_check():
 
@@ -100,15 +109,26 @@ class BatchWorker:
                 results["cancelled"] = True
 
 
+
+                if progress_callback:
+
+
+                    progress_callback(
+
+                        index,
+
+                        total,
+
+                        source.name,
+
+                        "Cancelled"
+
+                    )
+
+
                 break
 
 
-
-
-
-            source = Path(
-                file
-            )
 
 
 
@@ -129,6 +149,25 @@ class BatchWorker:
 
 
 
+                if progress_callback:
+
+
+                    progress_callback(
+
+                        index,
+
+                        total,
+
+                        source.name,
+
+                        "Processing"
+
+                    )
+
+
+
+
+
                 output_path = self.create_output_path(
 
                     source,
@@ -138,7 +177,6 @@ class BatchWorker:
                     config
 
                 )
-
 
 
 
@@ -161,11 +199,19 @@ class BatchWorker:
 
 
 
+
                 results["success"].append(
 
                     str(result)
 
                 )
+
+
+
+
+
+                status = "Completed"
+
 
 
 
@@ -195,6 +241,11 @@ class BatchWorker:
 
 
 
+                status = "Failed"
+
+
+
+
 
 
 
@@ -203,7 +254,6 @@ class BatchWorker:
 
 
                 results["processed"] = index + 1
-
 
 
 
@@ -219,7 +269,7 @@ class BatchWorker:
 
                         source.name,
 
-                        results
+                        status
 
                     )
 
@@ -227,7 +277,11 @@ class BatchWorker:
 
 
 
+
         return results
+
+
+
 
 
 
@@ -267,11 +321,6 @@ class BatchWorker:
 
 
 
-        # hanya kandidat awal
-        # collision ditangani NamingEngine
-        # saat export
-
-
         format_name = output_settings.get(
 
             "format"
@@ -280,12 +329,46 @@ class BatchWorker:
 
 
 
-        if not format_name:
 
 
-            raise ValueError(
+        #
+        # keep original format
+        #
 
-                "Output format missing"
+        if output_settings.get(
+
+            "keep_format"
+
+        ):
+
+
+            extension = source.suffix.replace(
+
+                ".",
+
+                ""
+
+            )
+
+
+
+        else:
+
+
+            if not format_name:
+
+
+                raise ValueError(
+
+                    "Output format missing"
+
+                )
+
+
+
+            extension = self.naming.normalize_extension(
+
+                format_name
 
             )
 
@@ -293,22 +376,36 @@ class BatchWorker:
 
 
 
-        extension = self.naming.normalize_extension(
 
-            format_name
+
+        filename = (
+
+            source.stem
+
+            +
+
+            "_processed"
+
+            +
+
+            "."
+
+            +
+
+            extension
 
         )
 
 
 
+        return output_folder / filename
 
 
 
-        return output_folder / (
 
-            f"{source.stem}.{extension}"
 
-        )
+
+
 
 
 
@@ -330,7 +427,7 @@ class WorkerThread(QThread):
 
         str,
 
-        dict
+        str
 
     )
 
@@ -349,6 +446,7 @@ class WorkerThread(QThread):
         str
 
     )
+
 
 
 
@@ -428,6 +526,7 @@ class WorkerThread(QThread):
 
 
 
+
         except Exception as error:
 
 
@@ -445,12 +544,14 @@ class WorkerThread(QThread):
 
 
 
+
+
     def emit_progress(
         self,
         current,
         total,
         filename,
-        results
+        status
     ):
 
 
@@ -462,9 +563,10 @@ class WorkerThread(QThread):
 
             filename,
 
-            results
+            status
 
         )
+
 
 
 

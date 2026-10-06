@@ -4,13 +4,19 @@ from pathlib import Path
 from PySide6.QtWidgets import (
     QWidget,
     QVBoxLayout,
-    QListWidget,
+    QHBoxLayout,
     QPushButton,
-    QHBoxLayout
+    QScrollArea,
+    QGridLayout,
+    QMenu
 )
 
 
-from PySide6.QtCore import Signal
+from PySide6.QtCore import (
+    Signal,
+    QSize
+)
+
 
 
 
@@ -30,6 +36,8 @@ class ImageListWidget(QWidget):
 
 
 
+
+
     def __init__(
         self
     ):
@@ -38,6 +46,8 @@ class ImageListWidget(QWidget):
 
 
         self.images = []
+
+        self.buttons = []
 
 
         self.setup_ui()
@@ -53,39 +63,94 @@ class ImageListWidget(QWidget):
     ):
 
 
-        layout = QVBoxLayout()
+        layout = QVBoxLayout(
+            self
+        )
 
 
-        self.list_widget = QListWidget()
-
-
-
-        # static height
-        self.list_widget.setFixedHeight(
-            250
+        layout.setSpacing(
+            8
         )
 
 
 
-        self.list_widget.itemClicked.connect(
-            self.select_item
+        # =====================
+        # IMAGE GRID
+        # =====================
+
+
+        self.scroll = QScrollArea()
+
+
+        self.scroll.setWidgetResizable(
+            True
         )
 
+
+        self.scroll.setFixedHeight(
+            150
+        )
+
+
+
+        self.container = QWidget()
+
+
+        self.grid = QGridLayout(
+            self.container
+        )
+
+
+        self.grid.setSpacing(
+            5
+        )
+
+
+        self.grid.setContentsMargins(
+            5,
+            5,
+            5,
+            5
+        )
+
+
+
+        self.scroll.setWidget(
+            self.container
+        )
+
+
+
+
+
+        # =====================
+        # BUTTON BAR
+        # =====================
 
 
         button_layout = QHBoxLayout()
 
 
 
+        self.sort_button = QPushButton(
+            "↕ Sort Name"
+        )
+
+
         self.remove_button = QPushButton(
-            "Remove Selected"
+            "✖ Remove Selected"
         )
 
 
         self.delete_all_button = QPushButton(
-            "Delete All"
+            "🗑 Delete All"
         )
 
+
+
+        self.sort_button.clicked.connect(
+            self.show_sort_menu
+        )
 
 
         self.remove_button.clicked.connect(
@@ -100,6 +165,11 @@ class ImageListWidget(QWidget):
 
 
         button_layout.addWidget(
+            self.sort_button
+        )
+
+
+        button_layout.addWidget(
             self.remove_button
         )
 
@@ -111,7 +181,7 @@ class ImageListWidget(QWidget):
 
 
         layout.addWidget(
-            self.list_widget
+            self.scroll
         )
 
 
@@ -120,10 +190,6 @@ class ImageListWidget(QWidget):
         )
 
 
-
-        self.setLayout(
-            layout
-        )
 
 
 
@@ -159,17 +225,88 @@ class ImageListWidget(QWidget):
     ):
 
 
-        self.list_widget.clear()
+        self.clear_grid()
 
 
 
-        for image in self.images:
+        for index, image in enumerate(
+            self.images
+        ):
 
 
-            self.list_widget.addItem(
-
+            button = QPushButton(
                 image.name
+            )
 
+
+            button.setToolTip(
+                str(image)
+            )
+
+
+            button.setMinimumHeight(
+                30
+            )
+
+
+            # rata kiri
+
+            button.setStyleSheet(
+                """
+                QPushButton {
+                    text-align: left;
+                    padding-left: 8px;
+                }
+                """
+            )
+
+
+
+            button.clicked.connect(
+
+                lambda checked=False,
+                path=image:
+
+                self.image_selected.emit(
+                    path
+                )
+
+            )
+
+
+
+            row = index // 6
+
+
+            column = index % 6
+
+
+
+            self.grid.addWidget(
+
+                button,
+
+                row,
+
+                column
+
+            )
+
+
+
+            self.buttons.append(
+                button
+            )
+
+
+
+        # fixed 6 columns
+
+        for column in range(6):
+
+            self.grid.setColumnStretch(
+                column,
+                1
             )
 
 
@@ -186,32 +323,82 @@ class ImageListWidget(QWidget):
 
 
 
-    def select_item(
-        self,
-        item
+
+    def clear_grid(
+        self
     ):
 
 
-        index = self.list_widget.row(
+        while self.grid.count():
 
-            item
+
+            item = self.grid.takeAt(
+                0
+            )
+
+
+            widget = item.widget()
+
+
+            if widget:
+
+                widget.deleteLater()
+
+
+
+        self.buttons.clear()
+
+
+
+
+
+
+
+    def show_sort_menu(
+        self
+    ):
+
+
+        menu = QMenu(
+            self
+        )
+
+
+
+        asc_action = menu.addAction(
+            "↑ Sort Ascending"
+        )
+
+
+        desc_action = menu.addAction(
+            "↓ Sort Descending"
+        )
+
+
+
+        action = menu.exec(
+
+            self.sort_button.mapToGlobal(
+
+                self.sort_button.rect().bottomLeft()
+
+            )
 
         )
 
 
-        if index >= 0 and index < len(
 
-            self.images
-
-        ):
+        if action == asc_action:
 
 
-            self.image_selected.emit(
+            self.sort_ascending_names()
 
-                self.images[index]
 
-            )
 
+        elif action == desc_action:
+
+
+            self.sort_descending_names()
 
 
 
@@ -224,17 +411,22 @@ class ImageListWidget(QWidget):
     ):
 
 
-        row = self.list_widget.currentRow()
+        selected = self.focusWidget()
 
 
 
-        if row < 0:
+        if selected not in self.buttons:
 
             return
 
 
 
-        del self.images[row]
+        index = self.buttons.index(
+            selected
+        )
+
+
+        del self.images[index]
 
 
         self.refresh()
@@ -251,6 +443,52 @@ class ImageListWidget(QWidget):
 
 
         self.images.clear()
+
+
+        self.refresh()
+
+
+
+
+
+
+
+    def sort_ascending_names(
+        self
+    ):
+
+
+        self.images.sort(
+
+            key=lambda x:
+
+            x.name.lower()
+
+        )
+
+
+        self.refresh()
+
+
+
+
+
+
+
+    def sort_descending_names(
+        self
+    ):
+
+
+        self.images.sort(
+
+            key=lambda x:
+
+            x.name.lower(),
+
+            reverse=True
+
+        )
 
 
         self.refresh()

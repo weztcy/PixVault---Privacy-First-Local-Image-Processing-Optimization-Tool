@@ -325,6 +325,10 @@ class CropPage(QWidget):
 
         self.output_selector = OutputSelector()
 
+        self.output_folder = (
+            self.output_selector.get_output_folder()
+        )
+
 
         self.progress = ExportProgress()
 

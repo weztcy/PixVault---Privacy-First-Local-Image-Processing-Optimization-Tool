@@ -10,13 +10,16 @@ from PySide6.QtWidgets import (
 )
 
 
-from PySide6.QtCore import Signal
+from PySide6.QtCore import (
+    Signal,
+    QUrl
+)
 
 
-from PySide6.QtGui import QDesktopServices
+from PySide6.QtGui import (
+    QDesktopServices
+)
 
-
-from PySide6.QtCore import QUrl
 
 
 
@@ -35,6 +38,7 @@ class ExportProgress(QWidget):
         self
     ):
 
+
         super().__init__()
 
 
@@ -49,12 +53,20 @@ class ExportProgress(QWidget):
 
 
 
+
     def setup_ui(
         self
     ):
 
 
-        layout = QVBoxLayout()
+        layout = QVBoxLayout(
+            self
+        )
+
+
+        layout.setSpacing(
+            8
+        )
 
 
 
@@ -63,24 +75,25 @@ class ExportProgress(QWidget):
         )
 
 
+        title.setObjectName(
+            "section_title"
+        )
+
+
 
         self.progress_bar = QProgressBar()
 
 
-
         self.progress_bar.setRange(
-
             0,
-
             100
-
         )
 
 
-
-        self.status_label = QLabel(
-            "Ready"
+        self.progress_bar.setValue(
+            0
         )
+
 
 
         self.file_label = QLabel(
@@ -95,67 +108,61 @@ class ExportProgress(QWidget):
 
 
 
-        self.open_button = QPushButton(
-            "Open Folder"
+        self.status_label = QLabel(
+            "Ready"
         )
 
+
+
+        self.open_button = QPushButton(
+            "Open Output Folder"
+        )
 
 
         self.open_button.clicked.connect(
-
             self.open_folder
+        )
 
+
+        self.open_button.setEnabled(
+            False
         )
 
 
 
         layout.addWidget(
-
             title
-
         )
 
 
         layout.addWidget(
-
             self.progress_bar
-
         )
 
 
         layout.addWidget(
-
             self.file_label
-
         )
 
 
         layout.addWidget(
-
             self.counter_label
-
         )
 
 
         layout.addWidget(
-
             self.status_label
-
         )
 
 
         layout.addWidget(
-
             self.open_button
-
         )
 
 
 
         self.setLayout(
-
             layout
-
         )
 
 
@@ -171,10 +178,25 @@ class ExportProgress(QWidget):
     ):
 
 
+        if not folder:
+
+            self.output_folder = None
+
+            self.open_button.setEnabled(
+                False
+            )
+
+            return
+
+
+
         self.output_folder = Path(
-
             folder
+        )
 
+
+        self.open_button.setEnabled(
+            True
         )
 
 
@@ -188,7 +210,8 @@ class ExportProgress(QWidget):
         self,
         current,
         total,
-        filename
+        filename,
+        status
     ):
 
 
@@ -216,19 +239,34 @@ class ExportProgress(QWidget):
 
 
 
+        percentage = max(
+
+            0,
+
+            min(
+
+                100,
+
+                percentage
+
+            )
+
+        )
+
+
+
         self.progress_bar.setValue(
-
             percentage
-
         )
 
 
 
         self.file_label.setText(
 
-            f"Processing: {filename}"
+            f"File: {filename}"
 
         )
+
 
 
         self.counter_label.setText(
@@ -238,9 +276,10 @@ class ExportProgress(QWidget):
         )
 
 
+
         self.status_label.setText(
 
-            "Processing"
+            status
 
         )
 
@@ -257,23 +296,17 @@ class ExportProgress(QWidget):
 
 
         self.progress_bar.setValue(
-
             100
-
         )
 
 
         self.status_label.setText(
-
             "Completed"
-
         )
 
 
         self.file_label.setText(
-
-            "Finished"
-
+            "All files finished"
         )
 
 
@@ -290,16 +323,12 @@ class ExportProgress(QWidget):
 
 
         self.status_label.setText(
-
             "Failed"
-
         )
 
 
         self.file_label.setText(
-
             str(error)
-
         )
 
 
@@ -315,30 +344,22 @@ class ExportProgress(QWidget):
 
 
         self.progress_bar.setValue(
-
             0
-
-        )
-
-
-        self.status_label.setText(
-
-            "Ready"
-
         )
 
 
         self.file_label.setText(
-
             "File: -"
-
         )
 
 
         self.counter_label.setText(
-
             "0 / 0"
+        )
 
+
+        self.status_label.setText(
+            "Ready"
         )
 
 
@@ -359,19 +380,20 @@ class ExportProgress(QWidget):
 
 
 
-        if self.output_folder.exists():
+        if not self.output_folder.exists():
+
+            return
 
 
-            QDesktopServices.openUrl(
 
-                QUrl.fromLocalFile(
+        QDesktopServices.openUrl(
 
-                    str(
+            QUrl.fromLocalFile(
 
-                        self.output_folder
-
-                    )
-
+                str(
+                    self.output_folder
                 )
 
             )
+
+        )

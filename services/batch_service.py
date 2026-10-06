@@ -7,24 +7,39 @@ from core.worker import WorkerThread
 
 
 
+
 class BatchService(QObject):
 
 
     progress_changed = Signal(
+
         int,
+
         int,
+
+        str,
+
         str
+
     )
+
 
 
     processing_finished = Signal(
+
         dict
+
     )
+
 
 
     processing_error = Signal(
+
         str
+
     )
+
+
 
 
 
@@ -33,6 +48,7 @@ class BatchService(QObject):
     def __init__(
         self
     ):
+
 
         super().__init__()
 
@@ -53,6 +69,7 @@ class BatchService(QObject):
     ):
 
 
+
         if self.is_running():
 
 
@@ -61,6 +78,8 @@ class BatchService(QObject):
                 "Batch processing is already running"
 
             )
+
+
 
 
 
@@ -75,6 +94,8 @@ class BatchService(QObject):
 
 
 
+
+
         if not output_folder:
 
 
@@ -86,6 +107,8 @@ class BatchService(QObject):
 
 
 
+
+
         if not config:
 
 
@@ -94,6 +117,7 @@ class BatchService(QObject):
                 "Processing configuration missing"
 
             )
+
 
 
 
@@ -126,14 +150,20 @@ class BatchService(QObject):
 
 
 
+
+
     def connect_thread(
         self
     ):
 
 
+
         if not self.thread:
 
             return
+
+
+
 
 
 
@@ -145,11 +175,15 @@ class BatchService(QObject):
 
 
 
+
+
         self.thread.processing_finished.connect(
 
             self.processing_finished.emit
 
         )
+
+
 
 
 
@@ -161,11 +195,15 @@ class BatchService(QObject):
 
 
 
+
+
         self.thread.finished.connect(
 
             self.cleanup_thread
 
         )
+
+
 
 
 
@@ -185,10 +223,15 @@ class BatchService(QObject):
 
 
 
+
+
         if self.thread.isRunning():
 
 
             self.thread.cancel()
+
+
+
 
 
 
@@ -201,10 +244,12 @@ class BatchService(QObject):
     ):
 
 
+
         if not self.thread:
 
 
             return False
+
 
 
 
@@ -216,9 +261,13 @@ class BatchService(QObject):
 
 
 
+
+
+
     def cleanup_thread(
         self
     ):
+
 
 
         if self.thread:
