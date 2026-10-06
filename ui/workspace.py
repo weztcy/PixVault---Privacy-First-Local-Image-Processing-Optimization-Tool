@@ -1,12 +1,10 @@
 from PySide6.QtWidgets import (
     QStackedWidget,
-    QScrollArea,
-    QWidget
+    QScrollArea
 )
 
 
 from ui.pages.home_page import HomePage
-from ui.pages.all_processing_page import AllProcessingPage
 
 
 from ui.pages.convert_page import ConvertPage
@@ -27,7 +25,9 @@ from ui.pages.privacy_page import PrivacyPage
 
 
 
+
 class Workspace(QStackedWidget):
+
 
 
     def __init__(
@@ -37,7 +37,33 @@ class Workspace(QStackedWidget):
         history_service
     ):
 
+
         super().__init__()
+
+
+
+        if image_service is None:
+
+            raise ValueError(
+                "ImageService is required"
+            )
+
+
+
+        if batch_service is None:
+
+            raise ValueError(
+                "BatchService is required"
+            )
+
+
+
+        if history_service is None:
+
+            raise ValueError(
+                "HistoryService is required"
+            )
+
 
 
         self.image_service = image_service
@@ -47,10 +73,16 @@ class Workspace(QStackedWidget):
         self.history_service = history_service
 
 
+
         self.pages = {}
 
 
+
         self.setup_pages()
+
+
+
+
 
 
 
@@ -74,6 +106,11 @@ class Workspace(QStackedWidget):
 
 
 
+
+
+
+
+
     def wrap_page(
         self,
         widget
@@ -89,7 +126,7 @@ class Workspace(QStackedWidget):
 
 
         scroll.setFrameShape(
-            QScrollArea.NoFrame
+            QScrollArea.Shape.NoFrame
         )
 
 
@@ -102,25 +139,38 @@ class Workspace(QStackedWidget):
 
 
 
+
+
+
+
+    # =====================
+    # MAIN
+    # =====================
+
+
     def register_main_pages(
         self
     ):
 
 
         self.add_page(
+
             "home",
+
             HomePage()
+
         )
 
 
-        self.add_page(
-            "all_processing",
-            AllProcessingPage(
-                self.image_service,
-                self.batch_service
-            )
-        )
 
+
+
+
+
+
+    # =====================
+    # PROCESSING TOOLS
+    # =====================
 
 
     def register_tool_pages(
@@ -131,60 +181,124 @@ class Workspace(QStackedWidget):
         tools = {
 
 
+
             "convert":
+
                 ConvertPage(
-                    self.image_service
+
+                    self.image_service,
+
+                    self.batch_service
+
                 ),
+
+
 
 
             "compress":
+
                 CompressPage(
-                    self.image_service
+
+                    self.image_service,
+
+                    self.batch_service
+
                 ),
+
+
 
 
             "resize":
+
                 ResizePage(
-                    self.image_service
+
+                    self.image_service,
+
+                    self.batch_service
+
                 ),
+
+
 
 
             "crop":
+
                 CropPage(
-                    self.image_service
+
+                    self.image_service,
+
+                    self.batch_service
+
                 ),
+
+
 
 
             "transform":
+
                 TransformPage(
-                    self.image_service
+
+                    self.image_service,
+
+                    self.batch_service
+
                 ),
+
+
 
 
             "dpi":
+
                 DPIPage(
-                    self.image_service
+
+                    self.image_service,
+
+                    self.batch_service
+
                 ),
+
+
 
 
             "metadata":
+
                 MetadataPage(
-                    self.image_service
+
+                    self.image_service,
+
+                    self.batch_service
+
                 ),
+
+
 
 
             "colorspace":
+
                 ColorSpacePage(
-                    self.image_service
+
+                    self.image_service,
+
+                    self.batch_service
+
                 ),
 
 
+
+
             "bitdepth":
+
                 BitDepthPage(
-                    self.image_service
+
+                    self.image_service,
+
+                    self.batch_service
+
                 )
 
         }
+
+
 
 
 
@@ -192,10 +306,23 @@ class Workspace(QStackedWidget):
 
 
             self.add_page(
+
                 name,
+
                 page
+
             )
 
+
+
+
+
+
+
+
+    # =====================
+    # SYSTEM
+    # =====================
 
 
     def register_system_pages(
@@ -204,24 +331,47 @@ class Workspace(QStackedWidget):
 
 
         self.add_page(
+
             "history",
+
             HistoryPage(
+
                 self.history_service
+
             )
+
         )
 
 
+
         self.add_page(
+
             "settings",
+
             SettingsPage()
+
         )
+
 
 
         self.add_page(
+
             "privacy",
+
             PrivacyPage()
+
         )
 
+
+
+
+
+
+
+
+    # =====================
+    # PAGE MANAGEMENT
+    # =====================
 
 
     def add_page(
@@ -237,17 +387,38 @@ class Workspace(QStackedWidget):
 
 
 
+        if widget is None:
+
+            raise ValueError(
+
+                f"Invalid page widget: {name}"
+
+            )
+
+
+
         scroll_page = self.wrap_page(
+
             widget
+
         )
+
 
 
         self.pages[name] = scroll_page
 
 
+
         self.addWidget(
+
             scroll_page
+
         )
+
+
+
+
+
 
 
 
@@ -258,14 +429,20 @@ class Workspace(QStackedWidget):
 
 
         page = self.pages.get(
+
             name
+
         )
+
 
 
         if page:
 
+
             self.setCurrentWidget(
+
                 page
+
             )
 
 
@@ -277,5 +454,7 @@ class Workspace(QStackedWidget):
 
 
         return self.pages.get(
+
             name
+
         )

@@ -6,7 +6,10 @@ from formats import BaseEncoder
 
 
 
+
+
 class GIFEncoder(BaseEncoder):
+
 
 
     def save(
@@ -16,73 +19,342 @@ class GIFEncoder(BaseEncoder):
         settings
     ):
 
-        output = Path(output_path)
+
+        output = Path(
+            output_path
+        )
+
+
+        output.parent.mkdir(
+
+            parents=True,
+
+            exist_ok=True
+
+        )
+
+
+
 
 
         colors = settings.get(
+
             "colors",
+
             256
+
         )
+
+
+        dithering = str(
+
+            settings.get(
+
+                "dithering",
+
+                "floyd"
+
+            )
+
+        ).lower()
+
 
 
         transparency = settings.get(
+
             "transparency",
-            False
+
+            True
+
         )
 
 
-        loop = settings.get(
+        animation = settings.get(
+
+            "animation",
+
+            False
+
+        )
+
+
+        loop_mode = settings.get(
+
             "loop",
-            0
+
+            "infinite"
+
         )
 
 
         duration = settings.get(
+
             "duration",
+
             100
+
         )
 
 
-        if image.mode not in [
-            "P",
-            "RGBA"
-        ]:
+        frames = settings.get(
 
-            image = image.convert(
+            "frames"
+
+        )
+
+
+
+
+
+
+        try:
+
+
+            colors = int(colors)
+
+            duration = int(duration)
+
+
+        except Exception:
+
+
+            raise ValueError(
+
+                "Invalid GIF settings"
+
+            )
+
+
+
+        colors = max(
+
+            2,
+
+            min(
+
+                256,
+
+                colors
+
+            )
+
+        )
+
+
+
+        duration = max(
+
+            10,
+
+            duration
+
+        )
+
+
+
+
+
+
+
+
+        if dithering == "none":
+
+
+            dither = Image.Dither.NONE
+
+
+
+        else:
+
+
+            dither = Image.Dither.FLOYDSTEINBERG
+
+
+
+
+
+
+
+        def prepare_frame(
+            frame
+        ):
+
+
+            rgba = frame.convert(
+
                 "RGBA"
+
             )
 
 
-        if colors:
 
-            image = image.convert(
+            return rgba.convert(
+
                 "P",
-                colors=colors
+
+                colors=colors,
+
+                dither=dither
+
             )
+
+
+
+
+
+
+
+
+        processed_frames = []
+
+
+
+
+
+
+
+        if animation and frames:
+
+
+            for frame in frames:
+
+
+                processed_frames.append(
+
+                    prepare_frame(frame)
+
+                )
+
+
+
+        else:
+
+
+            processed_frames.append(
+
+                prepare_frame(image)
+
+            )
+
+
+
+
+
+
 
 
         save_settings = {
 
-            "format": "GIF",
 
-            "loop": loop,
+            "format":
 
-            "duration": duration
+                "GIF",
+
+
+            "duration":
+
+                duration
 
         }
 
 
+
+
+
+
+
+
+        if animation and len(processed_frames) > 1:
+
+
+            save_settings.update({
+
+
+                "save_all":
+
+                    True,
+
+
+                "append_images":
+
+                    processed_frames[1:]
+
+
+            })
+
+
+
+
+
+
+
+
+
+        if loop_mode == "infinite":
+
+
+            save_settings["loop"] = 0
+
+
+
+        else:
+
+
+            loop_count = settings.get(
+
+                "loop_count",
+
+                1
+
+            )
+
+
+            try:
+
+
+                loop_count = max(
+
+                    0,
+
+                    int(loop_count)
+
+                )
+
+
+            except Exception:
+
+
+                loop_count = 1
+
+
+
+            save_settings["loop"] = loop_count
+
+
+
+
+
+
+
         if transparency:
 
-            save_settings[
-                "transparency"
-            ] = 0
+
+            save_settings["transparency"] = 0
 
 
-        image.save(
+
+
+
+
+
+        processed_frames[0].save(
+
             output,
+
             **save_settings
+
         )
+
 
 
         return output

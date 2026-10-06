@@ -7,6 +7,7 @@ from PySide6.QtWidgets import (
 )
 
 
+
 class Sidebar(QWidget):
 
 
@@ -32,6 +33,7 @@ class Sidebar(QWidget):
         layout = QVBoxLayout()
 
 
+
         layout.setContentsMargins(
             10,
             10,
@@ -47,7 +49,7 @@ class Sidebar(QWidget):
 
 
         # =====================
-        # HEADER
+        # BRAND
         # =====================
 
 
@@ -87,23 +89,18 @@ class Sidebar(QWidget):
 
 
         # =====================
-        # TOOLS
+        # IMAGE PROCESSING
         # =====================
 
 
         self.add_section(
             layout,
-            "TOOLS"
+            "PROCESSING"
         )
 
 
 
         tools = [
-
-            (
-                "⚡  All Processing",
-                "all_processing"
-            ),
 
             (
                 "⇄  Convert",

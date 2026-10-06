@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 
 
 from PySide6.QtWidgets import (
@@ -8,7 +9,6 @@ from PySide6.QtWidgets import (
     QPushButton,
     QFileDialog,
     QLineEdit,
-    QComboBox,
     QSpinBox,
     QMessageBox
 )
@@ -16,12 +16,15 @@ from PySide6.QtWidgets import (
 
 
 
+
 class DPIPage(QWidget):
+
 
 
     def __init__(
         self,
-        image_service
+        image_service,
+        batch_service=None
     ):
 
         super().__init__()
@@ -29,11 +32,17 @@ class DPIPage(QWidget):
 
         self.image_service = image_service
 
+        self.batch_service = batch_service
+
 
         self.selected_file = None
 
 
         self.setup_ui()
+
+
+
+
 
 
 
@@ -45,11 +54,18 @@ class DPIPage(QWidget):
         layout = QVBoxLayout()
 
 
+        layout.setSpacing(
+            10
+        )
+
+
 
         layout.addWidget(
+
             QLabel(
                 "DPI Processor"
             )
+
         )
 
 
@@ -85,49 +101,34 @@ class DPIPage(QWidget):
 
 
 
-        layout.addWidget(
-            QLabel(
-                "Unit"
-            )
-        )
-
-
-
-        self.unit_box = QComboBox()
-
-
-        self.unit_box.addItems(
-            [
-                "dpi",
-                "dpcm"
-            ]
-        )
 
 
         layout.addWidget(
-            self.unit_box
-        )
 
-
-
-        layout.addWidget(
             QLabel(
                 "Horizontal DPI"
             )
+
         )
+
 
 
         self.horizontal_spin = QSpinBox()
 
 
         self.horizontal_spin.setRange(
+
             1,
+
             5000
+
         )
 
 
         self.horizontal_spin.setValue(
+
             300
+
         )
 
 
@@ -137,24 +138,36 @@ class DPIPage(QWidget):
 
 
 
+
+
+
+
         layout.addWidget(
+
             QLabel(
                 "Vertical DPI"
             )
+
         )
+
 
 
         self.vertical_spin = QSpinBox()
 
 
         self.vertical_spin.setRange(
+
             1,
+
             5000
+
         )
 
 
         self.vertical_spin.setValue(
+
             300
+
         )
 
 
@@ -164,38 +177,20 @@ class DPIPage(QWidget):
 
 
 
-        layout.addWidget(
-            QLabel(
-                "Output Format"
-            )
-        )
-
-
-        self.format_box = QComboBox()
-
-
-        self.format_box.addItems(
-            [
-                "JPEG",
-                "PNG",
-                "WEBP"
-            ]
-        )
-
-
-        layout.addWidget(
-            self.format_box
-        )
 
 
 
         process = QPushButton(
-            "Change DPI"
+
+            "Apply DPI"
+
         )
 
 
         process.clicked.connect(
+
             self.change_dpi
+
         )
 
 
@@ -213,10 +208,17 @@ class DPIPage(QWidget):
         )
 
 
+        layout.addStretch()
+
+
 
         self.setLayout(
             layout
         )
+
+
+
+
 
 
 
@@ -226,23 +228,112 @@ class DPIPage(QWidget):
 
 
         file, _ = QFileDialog.getOpenFileName(
+
             self,
-            "Select Image"
+
+            "Select Image",
+
+            "",
+
+            (
+                "Images "
+                "(*.jpg *.jpeg *.png *.webp *.avif "
+                "*.gif *.bmp *.tiff *.tif *.heic *.ico)"
+            )
+
         )
+
 
 
         if file:
 
+
             self.selected_file = Path(
+
                 file
+
             )
 
 
             self.file_input.setText(
+
                 str(
                     self.selected_file
                 )
+
             )
+
+
+
+
+
+
+
+    def get_output_folder(
+        self
+    ):
+
+
+        config_file = Path(
+
+            "config/app_settings.json"
+
+        )
+
+
+
+        if config_file.exists():
+
+
+            try:
+
+
+                with open(
+
+                    config_file,
+
+                    "r",
+
+                    encoding="utf-8"
+
+                ) as file:
+
+
+                    data = json.load(file)
+
+
+                    folder = data.get(
+
+                        "output_folder"
+
+                    )
+
+
+                    if folder:
+
+
+                        return Path(
+
+                            folder
+
+                        )
+
+
+
+            except Exception:
+
+                pass
+
+
+
+        return Path(
+            "output"
+        )
+
+
+
+
+
 
 
 
@@ -255,9 +346,13 @@ class DPIPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Warning",
+
                 "Select image first"
+
             )
 
 
@@ -265,61 +360,105 @@ class DPIPage(QWidget):
 
 
 
-        output_format = self.format_box.currentText()
-
-
-
-        output_path = Path(
-            "test_data/output/ui_dpi"
-        ) / (
-
-            self.selected_file.stem
-
-            +
-
-            "."
-
-            +
-
-            output_format.lower()
-
-        )
 
 
 
         operation = {
 
-            "type":"dpi",
 
-            "unit":
-                self.unit_box.currentText(),
+            "type":
+
+                "dpi",
+
+
 
             "horizontal":
+
                 self.horizontal_spin.value(),
 
+
+
             "vertical":
+
                 self.vertical_spin.value()
 
         }
 
 
 
+
+
+
+
+        output_folder = self.get_output_folder()
+
+
+        output_folder.mkdir(
+
+            parents=True,
+
+            exist_ok=True
+
+        )
+
+
+
+        output_path = output_folder / (
+
+            self.selected_file.stem
+
+            +
+
+            "_dpi"
+
+            +
+
+            self.selected_file.suffix
+
+        )
+
+
+
+
+
+
+
+
         config = {
 
-            "operations":[
-                operation
-            ],
 
-            "output":{
+            "operations":
 
-                "format":
-                    output_format,
+                [
 
-                "quality":85
+                    operation
 
-            }
+                ],
+
+
+
+            "output":
+
+                {
+
+
+                    "format":
+
+                        self.selected_file.suffix.replace(
+
+                            ".",
+
+                            ""
+
+                        ).upper()
+
+                }
 
         }
+
+
+
+
 
 
 
@@ -337,8 +476,11 @@ class DPIPage(QWidget):
             )
 
 
+
             self.result_label.setText(
+
                 f"Completed:\n{result}"
+
             )
 
 
@@ -347,7 +489,11 @@ class DPIPage(QWidget):
 
 
             QMessageBox.critical(
+
                 self,
-                "Error",
+
+                "DPI Error",
+
                 str(error)
+
             )

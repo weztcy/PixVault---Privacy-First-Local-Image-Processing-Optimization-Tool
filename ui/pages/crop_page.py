@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 
 
 from PySide6.QtWidgets import (
@@ -16,12 +17,15 @@ from PySide6.QtWidgets import (
 
 
 
+
 class CropPage(QWidget):
+
 
 
     def __init__(
         self,
-        image_service
+        image_service,
+        batch_service=None
     ):
 
         super().__init__()
@@ -29,11 +33,17 @@ class CropPage(QWidget):
 
         self.image_service = image_service
 
+        self.batch_service = batch_service
+
 
         self.selected_file = None
 
 
         self.setup_ui()
+
+
+
+
 
 
 
@@ -45,187 +55,342 @@ class CropPage(QWidget):
         layout = QVBoxLayout()
 
 
+        layout.setSpacing(
+
+            10
+
+        )
+
+
 
         layout.addWidget(
+
             QLabel(
-                "Crop"
+                "Crop Image"
             )
+
         )
 
 
 
         self.file_input = QLineEdit()
 
+
         self.file_input.setReadOnly(
+
             True
+
         )
 
 
+
         browse = QPushButton(
+
             "Select Image"
+
         )
 
 
         browse.clicked.connect(
+
             self.select_file
+
         )
 
 
         layout.addWidget(
+
             self.file_input
+
         )
 
 
         layout.addWidget(
+
             browse
+
         )
 
 
 
+
+
+
         layout.addWidget(
+
             QLabel(
                 "Crop Mode"
             )
+
         )
+
 
 
         self.mode_box = QComboBox()
 
 
         self.mode_box.addItems(
+
             [
+
                 "fixed",
+
                 "percentage",
-                "coordinates",
-                "aspect_ratio"
+
+                "aspect_ratio",
+
+                "coordinates"
+
             ]
+
+        )
+
+
+        self.mode_box.currentTextChanged.connect(
+
+            self.update_mode
+
         )
 
 
         layout.addWidget(
+
             self.mode_box
+
         )
 
 
 
-        layout.addWidget(
-            QLabel(
-                "Width"
-            )
-        )
+
+
 
 
         self.width_spin = QSpinBox()
 
 
         self.width_spin.setRange(
+
             1,
-            10000
+
+            100000
+
         )
 
 
         self.width_spin.setValue(
+
             500
+
         )
 
-
-        layout.addWidget(
-            self.width_spin
-        )
-
-
-
-        layout.addWidget(
-            QLabel(
-                "Height"
-            )
-        )
 
 
         self.height_spin = QSpinBox()
 
 
         self.height_spin.setRange(
+
             1,
-            10000
+
+            100000
+
         )
 
 
         self.height_spin.setValue(
+
             500
+
         )
 
-
-        layout.addWidget(
-            self.height_spin
-        )
-
-
-
-        layout.addWidget(
-            QLabel(
-                "Percentage (%)"
-            )
-        )
 
 
         self.percent_spin = QSpinBox()
 
 
         self.percent_spin.setRange(
+
             1,
+
             100
+
         )
 
 
         self.percent_spin.setValue(
+
             50
-        )
 
-
-        layout.addWidget(
-            self.percent_spin
         )
 
 
 
-        layout.addWidget(
-            QLabel(
-                "Output Format"
-            )
-        )
+        self.ratio_box = QComboBox()
 
 
-        self.format_box = QComboBox()
+        self.ratio_box.addItems(
 
-
-        self.format_box.addItems(
             [
-                "WEBP",
-                "JPEG",
-                "PNG"
+
+                "1:1",
+
+                "4:3",
+
+                "16:9",
+
+                "3:2",
+
+                "9:16"
+
             ]
+
         )
+
+
+
+
+
+        self.x_spin = QSpinBox()
+
+
+        self.x_spin.setRange(
+
+            0,
+
+            100000
+
+        )
+
+
+        self.y_spin = QSpinBox()
+
+
+        self.y_spin.setRange(
+
+            0,
+
+            100000
+
+        )
+
 
 
         layout.addWidget(
-            self.format_box
+
+            QLabel(
+                "Width"
+            )
+
         )
+
+        layout.addWidget(
+
+            self.width_spin
+
+        )
+
+
+
+        layout.addWidget(
+
+            QLabel(
+                "Height"
+            )
+
+        )
+
+        layout.addWidget(
+
+            self.height_spin
+
+        )
+
+
+
+        layout.addWidget(
+
+            QLabel(
+                "Percentage"
+            )
+
+        )
+
+        layout.addWidget(
+
+            self.percent_spin
+
+        )
+
+
+
+        layout.addWidget(
+
+            QLabel(
+                "Aspect Ratio"
+            )
+
+        )
+
+        layout.addWidget(
+
+            self.ratio_box
+
+        )
+
+
+
+        layout.addWidget(
+
+            QLabel(
+                "X Coordinate"
+            )
+
+        )
+
+        layout.addWidget(
+
+            self.x_spin
+
+        )
+
+
+
+        layout.addWidget(
+
+            QLabel(
+                "Y Coordinate"
+            )
+
+        )
+
+        layout.addWidget(
+
+            self.y_spin
+
+        )
+
+
 
 
 
         process = QPushButton(
+
             "Crop"
+
         )
 
 
         process.clicked.connect(
+
             self.crop_image
+
         )
 
 
         layout.addWidget(
+
             process
+
         )
 
 
@@ -233,15 +398,31 @@ class CropPage(QWidget):
         self.result_label = QLabel()
 
 
+
         layout.addWidget(
+
             self.result_label
+
         )
+
+
+
+        layout.addStretch()
 
 
 
         self.setLayout(
+
             layout
+
         )
+
+
+        self.update_mode()
+
+
+
+
 
 
 
@@ -251,23 +432,181 @@ class CropPage(QWidget):
 
 
         file, _ = QFileDialog.getOpenFileName(
+
             self,
-            "Select Image"
+
+            "Select Image",
+
+            "",
+
+            (
+                "Images "
+                "(*.jpg *.jpeg *.png *.webp *.avif "
+                "*.gif *.bmp *.tiff *.tif *.heic *.ico)"
+            )
+
         )
+
 
 
         if file:
 
+
             self.selected_file = Path(
+
                 file
+
             )
 
 
             self.file_input.setText(
+
                 str(
                     self.selected_file
                 )
+
             )
+
+
+
+
+
+
+
+    def update_mode(
+        self
+    ):
+
+
+        mode = self.mode_box.currentText()
+
+
+
+        self.width_spin.setEnabled(
+
+            mode in [
+
+                "fixed",
+
+                "coordinates"
+
+            ]
+
+        )
+
+
+        self.height_spin.setEnabled(
+
+            mode in [
+
+                "fixed",
+
+                "coordinates"
+
+            ]
+
+        )
+
+
+        self.percent_spin.setEnabled(
+
+            mode == "percentage"
+
+        )
+
+
+        self.ratio_box.setEnabled(
+
+            mode == "aspect_ratio"
+
+        )
+
+
+        self.x_spin.setEnabled(
+
+            mode == "coordinates"
+
+        )
+
+
+        self.y_spin.setEnabled(
+
+            mode == "coordinates"
+
+        )
+
+
+
+
+
+
+
+    def get_output_folder(
+        self
+    ):
+
+
+        config = Path(
+
+            "config/app_settings.json"
+
+        )
+
+
+        if config.exists():
+
+
+            try:
+
+
+                with open(
+
+                    config,
+
+                    "r",
+
+                    encoding="utf-8"
+
+                ) as file:
+
+
+                    data = json.load(file)
+
+
+                    folder = data.get(
+
+                        "output_folder"
+
+                    )
+
+
+                    if folder:
+
+
+                        return Path(
+
+                            folder
+
+                        )
+
+
+
+            except Exception:
+
+                pass
+
+
+
+        return Path(
+
+            "output"
+
+        )
+
+
+
+
+
 
 
 
@@ -280,9 +619,13 @@ class CropPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Warning",
+
                 "Select image first"
+
             )
 
 
@@ -290,24 +633,6 @@ class CropPage(QWidget):
 
 
 
-        output_format = self.format_box.currentText()
-
-
-        output_path = Path(
-            "test_data/output/ui_crop"
-        ) / (
-
-            self.selected_file.stem
-
-            +
-
-            "."
-
-            +
-
-            output_format.lower()
-
-        )
 
 
 
@@ -317,22 +642,33 @@ class CropPage(QWidget):
 
         operation = {
 
-            "type":"crop",
 
-            "mode":mode
+            "type":
+
+                "crop",
+
+
+            "mode":
+
+                mode
 
         }
 
 
 
+
         if mode == "fixed":
+
 
             operation.update({
 
                 "width":
+
                     self.width_spin.value(),
 
+
                 "height":
+
                     self.height_spin.value()
 
             })
@@ -341,64 +677,126 @@ class CropPage(QWidget):
 
         elif mode == "percentage":
 
-            operation.update({
 
-                "value":
-                    self.percent_spin.value()
+            operation["value"] = (
 
-            })
+                self.percent_spin.value()
+
+            )
 
 
 
         elif mode == "aspect_ratio":
 
-            operation.update({
 
-                "width":
-                    self.width_spin.value(),
+            operation["ratio"] = (
 
-                "height":
-                    self.height_spin.value()
+                self.ratio_box.currentText()
 
-            })
+            )
 
 
 
         elif mode == "coordinates":
 
+
             operation.update({
 
-                "x":0,
+                "x":
 
-                "y":0,
+                    self.x_spin.value(),
+
+
+                "y":
+
+                    self.y_spin.value(),
+
 
                 "width":
+
                     self.width_spin.value(),
 
+
                 "height":
+
                     self.height_spin.value()
 
             })
 
 
 
+
+
+
+
+
+        output_folder = self.get_output_folder()
+
+
+        output_folder.mkdir(
+
+            parents=True,
+
+            exist_ok=True
+
+        )
+
+
+
+        output_path = output_folder / (
+
+            self.selected_file.stem
+
+            +
+
+            "_cropped"
+
+            +
+
+            self.selected_file.suffix
+
+        )
+
+
+
+
+
+
+
         config = {
 
-            "operations":[
-                operation
-            ],
+
+            "operations":
+
+                [
+
+                    operation
+
+                ],
 
 
-            "output":{
 
-                "format":
-                    output_format,
+            "output":
 
-                "quality":85
+                {
 
-            }
+
+                    "format":
+
+                        self.selected_file.suffix.replace(
+
+                            ".",
+
+                            ""
+
+                        ).upper()
+
+                }
 
         }
+
+
+
 
 
 
@@ -417,7 +815,9 @@ class CropPage(QWidget):
 
 
             self.result_label.setText(
+
                 f"Completed:\n{result}"
+
             )
 
 
@@ -426,7 +826,11 @@ class CropPage(QWidget):
 
 
             QMessageBox.critical(
+
                 self,
-                "Error",
+
+                "Crop Error",
+
                 str(error)
+
             )

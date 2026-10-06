@@ -1,14 +1,14 @@
 from pathlib import Path
 
-
 from PySide6.QtCore import (
-    QObject,
     QThread,
     Signal
 )
 
 
 from core.pipeline import ImagePipeline
+from export.naming import NamingEngine
+
 
 
 
@@ -19,7 +19,12 @@ class BatchWorker:
 
     def __init__(self):
 
-        self.pipeline = ImagePipeline()
+
+        self.naming = NamingEngine()
+
+
+
+
 
 
 
@@ -33,37 +38,71 @@ class BatchWorker:
     ):
 
 
+
         output_folder = Path(
             output_folder
         )
 
 
+
         output_folder.mkdir(
+
             parents=True,
+
             exist_ok=True
+
         )
+
+
 
 
         results = {
 
+
             "success": [],
 
-            "failed": []
+
+            "failed": [],
+
+
+            "cancelled": False,
+
+
+            "total": len(files),
+
+
+            "processed": 0
 
         }
 
 
-        total = len(
-            files
-        )
+
+
+
+        total = len(files)
+
+
+
 
 
         for index, file in enumerate(files):
 
 
+
+            # =====================
+            # CANCEL CHECK
+            # =====================
+
+
             if cancel_check and cancel_check():
 
+
+                results["cancelled"] = True
+
+
                 break
+
+
 
 
 
@@ -72,51 +111,127 @@ class BatchWorker:
             )
 
 
+
             try:
 
+
+
+                if not source.exists():
+
+
+                    raise FileNotFoundError(
+
+                        f"File not found: {source}"
+
+                    )
+
+
+
+
+
                 output_path = self.create_output_path(
+
                     source,
+
                     output_folder,
+
                     config
+
                 )
 
 
-                result = self.pipeline.run(
+
+
+
+
+                pipeline = ImagePipeline()
+
+
+
+                result = pipeline.run(
+
                     source,
+
                     output_path,
+
                     config
+
                 )
+
+
 
 
                 results["success"].append(
-                    result
+
+                    str(result)
+
                 )
+
+
 
 
 
             except Exception as error:
 
+
+
                 results["failed"].append(
+
                     {
-                        "file": str(source),
 
-                        "error": str(error)
+
+                        "file":
+
+                            str(source),
+
+
+                        "error":
+
+                            str(error)
+
                     }
+
                 )
 
 
 
-            if progress_callback:
 
-                progress_callback(
-                    index + 1,
-                    total,
-                    source.name
-                )
+
+
+            finally:
+
+
+
+                results["processed"] = index + 1
+
+
+
+
+
+                if progress_callback:
+
+
+                    progress_callback(
+
+                        index + 1,
+
+                        total,
+
+                        source.name,
+
+                        results
+
+                    )
+
+
 
 
 
         return results
+
+
+
+
 
 
 
@@ -128,44 +243,76 @@ class BatchWorker:
     ):
 
 
+
         output_settings = config.get(
+
             "output",
+
             {}
+
         )
+
+
+
+        if not output_settings:
+
+
+            raise ValueError(
+
+                "Output configuration missing"
+
+            )
+
+
+
+
+
+        # hanya kandidat awal
+        # collision ditangani NamingEngine
+        # saat export
 
 
         format_name = output_settings.get(
-            "format",
-            source.suffix.replace(
-                ".",
-                ""
-            )
-        ).lower()
 
+            "format"
 
-
-        output_path = output_folder / (
-            f"{source.stem}.{format_name}"
         )
 
 
 
-        counter = 1
+        if not format_name:
 
 
-        while output_path.exists():
+            raise ValueError(
 
+                "Output format missing"
 
-            output_path = output_folder / (
-                f"{source.stem}_{counter:03d}.{format_name}"
             )
 
 
-            counter += 1
 
 
 
-        return output_path
+        extension = self.naming.normalize_extension(
+
+            format_name
+
+        )
+
+
+
+
+
+
+        return output_folder / (
+
+            f"{source.stem}.{extension}"
+
+        )
+
+
+
+
 
 
 
@@ -174,21 +321,37 @@ class BatchWorker:
 class WorkerThread(QThread):
 
 
+
     progress_changed = Signal(
+
         int,
+
         int,
-        str
+
+        str,
+
+        dict
+
     )
+
 
 
     processing_finished = Signal(
+
         dict
+
     )
+
 
 
     processing_error = Signal(
+
         str
+
     )
+
+
+
 
 
 
@@ -199,26 +362,44 @@ class WorkerThread(QThread):
         config
     ):
 
+
         super().__init__()
+
 
 
         self.files = files
 
+
         self.output_folder = output_folder
+
 
         self.config = config
 
 
+
         self.worker = BatchWorker()
+
 
 
         self._cancelled = False
 
 
 
-    def run(self):
+
+
+
+
+    def run(
+        self
+    ):
+
+
+        self._cancelled = False
+
+
 
         try:
+
 
 
             result = self.worker.run(
@@ -236,18 +417,31 @@ class WorkerThread(QThread):
             )
 
 
+
             self.processing_finished.emit(
+
                 result
+
             )
+
+
 
 
 
         except Exception as error:
 
 
+
             self.processing_error.emit(
+
                 str(error)
+
             )
+
+
+
+
+
 
 
 
@@ -255,25 +449,45 @@ class WorkerThread(QThread):
         self,
         current,
         total,
-        filename
+        filename,
+        results
     ):
 
+
         self.progress_changed.emit(
+
             current,
+
             total,
-            filename
+
+            filename,
+
+            results
+
         )
 
 
 
-    def cancel(self):
+
+
+
+
+    def cancel(
+        self
+    ):
+
 
         self._cancelled = True
+
+
+
+
 
 
 
     def is_cancelled(
         self
     ):
+
 
         return self._cancelled

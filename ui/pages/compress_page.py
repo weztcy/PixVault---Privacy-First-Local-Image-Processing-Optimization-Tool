@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 
 
 from PySide6.QtWidgets import (
@@ -9,9 +10,9 @@ from PySide6.QtWidgets import (
     QFileDialog,
     QLineEdit,
     QComboBox,
-    QSpinBox,
     QMessageBox
 )
+
 
 
 
@@ -19,9 +20,11 @@ from PySide6.QtWidgets import (
 class CompressPage(QWidget):
 
 
+
     def __init__(
         self,
-        image_service
+        image_service,
+        batch_service=None
     ):
 
         super().__init__()
@@ -29,11 +32,17 @@ class CompressPage(QWidget):
 
         self.image_service = image_service
 
+        self.batch_service = batch_service
+
 
         self.selected_file = None
 
 
         self.setup_ui()
+
+
+
+
 
 
 
@@ -45,23 +54,29 @@ class CompressPage(QWidget):
         layout = QVBoxLayout()
 
 
-
-        title = QLabel(
-            "Compress"
+        layout.setSpacing(
+            10
         )
 
 
+
         layout.addWidget(
-            title
+
+            QLabel(
+                "Compress Image"
+            )
+
         )
 
 
 
         self.file_input = QLineEdit()
 
+
         self.file_input.setReadOnly(
             True
         )
+
 
 
         browse_button = QPushButton(
@@ -72,6 +87,7 @@ class CompressPage(QWidget):
         browse_button.clicked.connect(
             self.select_file
         )
+
 
 
         layout.addWidget(
@@ -85,79 +101,43 @@ class CompressPage(QWidget):
 
 
 
+
+
+
         layout.addWidget(
+
             QLabel(
-                "Compression Mode"
+                "Compression Method"
             )
+
         )
 
 
-        self.mode_box = QComboBox()
+
+        self.method_box = QComboBox()
 
 
-        self.mode_box.addItems(
+        self.method_box.addItems(
+
             [
-                "quality",
-                "target_size"
+
+                "none",
+
+                "optimize",
+
+                "remove_alpha"
+
             ]
+
         )
 
 
         layout.addWidget(
-            self.mode_box
+            self.method_box
         )
 
 
 
-        layout.addWidget(
-            QLabel(
-                "Quality"
-            )
-        )
-
-
-        self.quality_spin = QSpinBox()
-
-
-        self.quality_spin.setRange(
-            1,
-            100
-        )
-
-
-        self.quality_spin.setValue(
-            85
-        )
-
-
-        layout.addWidget(
-            self.quality_spin
-        )
-
-
-
-        layout.addWidget(
-            QLabel(
-                "Output Format"
-            )
-        )
-
-
-        self.format_box = QComboBox()
-
-
-        self.format_box.addItems(
-            [
-                "WEBP",
-                "JPEG",
-                "PNG"
-            ]
-        )
-
-
-        layout.addWidget(
-            self.format_box
-        )
 
 
 
@@ -180,9 +160,13 @@ class CompressPage(QWidget):
         self.result_label = QLabel()
 
 
+
         layout.addWidget(
             self.result_label
         )
+
+
+        layout.addStretch()
 
 
 
@@ -192,29 +176,125 @@ class CompressPage(QWidget):
 
 
 
+
+
+
+
+
     def select_file(
         self
     ):
 
 
         file, _ = QFileDialog.getOpenFileName(
+
             self,
-            "Select Image"
+
+            "Select Image",
+
+            "",
+
+            (
+                "Images "
+                "(*.jpg *.jpeg *.png *.webp *.avif "
+                "*.gif *.bmp *.tiff *.tif *.heic *.ico)"
+            )
+
         )
+
 
 
         if file:
 
+
             self.selected_file = Path(
+
                 file
+
             )
 
 
             self.file_input.setText(
+
                 str(
                     self.selected_file
                 )
+
             )
+
+
+
+
+
+
+
+
+    def get_output_folder(
+        self
+    ):
+
+
+        config_file = Path(
+
+            "config/app_settings.json"
+
+        )
+
+
+
+        if config_file.exists():
+
+
+            try:
+
+
+                with open(
+
+                    config_file,
+
+                    "r",
+
+                    encoding="utf-8"
+
+                ) as file:
+
+
+                    data = json.load(file)
+
+
+                    folder = data.get(
+
+                        "output_folder"
+
+                    )
+
+
+                    if folder:
+
+
+                        return Path(
+
+                            folder
+
+                        )
+
+
+
+            except Exception:
+
+                pass
+
+
+
+        return Path(
+            "output"
+        )
+
+
+
+
+
+
 
 
 
@@ -227,9 +307,13 @@ class CompressPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Warning",
+
                 "Select image first"
+
             )
 
 
@@ -237,56 +321,97 @@ class CompressPage(QWidget):
 
 
 
-        output_format = self.format_box.currentText()
 
 
-        output_path = Path(
-            "test_data/output/ui_compress"
-        ) / (
+
+        operation = {
+
+
+            "type":
+
+                "compression",
+
+
+            "method":
+
+                self.method_box.currentText()
+
+        }
+
+
+
+
+
+
+
+        output_folder = self.get_output_folder()
+
+
+        output_folder.mkdir(
+
+            parents=True,
+
+            exist_ok=True
+
+        )
+
+
+
+        output_path = output_folder / (
 
             self.selected_file.stem
 
             +
 
-            "."
+            "_compressed"
 
             +
 
-            output_format.lower()
+            self.selected_file.suffix
 
         )
+
+
+
+
 
 
 
         config = {
 
 
-            "operations":[
+            "operations":
+
+                [
+
+                    operation
+
+                ],
+
+
+
+            "output":
 
                 {
-                    "type":"compression",
 
-                    "mode":
-                        self.mode_box.currentText(),
 
-                    "quality":
-                        self.quality_spin.value()
+                    "format":
+
+                        self.selected_file.suffix.replace(
+
+                            ".",
+
+                            ""
+
+                        ).upper()
 
                 }
 
-            ],
-
-
-            "output":{
-
-                "format":
-                    output_format,
-
-                "quality":85
-
-            }
-
         }
+
+
+
+
 
 
 
@@ -305,7 +430,9 @@ class CompressPage(QWidget):
 
 
             self.result_label.setText(
+
                 f"Completed:\n{result}"
+
             )
 
 
@@ -314,7 +441,11 @@ class CompressPage(QWidget):
 
 
             QMessageBox.critical(
+
                 self,
-                "Error",
+
+                "Compression Error",
+
                 str(error)
+
             )

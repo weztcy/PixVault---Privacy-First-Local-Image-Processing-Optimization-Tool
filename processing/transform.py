@@ -4,7 +4,10 @@ from PIL import Image
 
 
 
+
+
 class ImageTransformer:
+
 
 
     def process(
@@ -14,25 +17,53 @@ class ImageTransformer:
         settings
     ):
 
-        source = Path(source_path)
 
-        output = Path(output_path)
+        source = Path(
+            source_path
+        )
+
+
+        output = Path(
+            output_path
+        )
+
+
+        output.parent.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
 
 
         with Image.open(source) as image:
 
+
             transformed = self.apply_transform(
+
                 image,
+
                 settings
+
             )
 
 
             transformed.save(
-                output
+
+                output,
+
+                format="TIFF",
+
+                compression="tiff_lzw"
+
             )
 
 
+
         return output
+
+
+
+
 
 
 
@@ -42,58 +73,183 @@ class ImageTransformer:
         settings
     ):
 
-        operation = settings.get(
-            "operation"
+
+        rotation = settings.get(
+            "rotation",
+            "none"
         )
 
 
-        if operation == "rotate":
-
-            angle = settings.get(
-                "angle",
-                0
-            )
-
-
-            return image.rotate(
-                angle,
-                expand=True
-            )
+        flip = settings.get(
+            "flip",
+            "none"
+        )
 
 
 
-        elif operation == "flip":
+        image = self.apply_rotation(
 
-            direction = settings.get(
-                "direction"
-            )
+            image,
 
+            rotation
 
-            if direction == "horizontal":
-
-                return image.transpose(
-                    Image.Transpose.FLIP_LEFT_RIGHT
-                )
+        )
 
 
-            elif direction == "vertical":
 
-                return image.transpose(
-                    Image.Transpose.FLIP_TOP_BOTTOM
-                )
+        image = self.apply_flip(
 
+            image,
 
-            elif direction == "both":
+            flip
 
-                flipped = image.transpose(
-                    Image.Transpose.FLIP_LEFT_RIGHT
-                )
-
-
-                return flipped.transpose(
-                    Image.Transpose.FLIP_TOP_BOTTOM
-                )
+        )
 
 
 
         return image
+
+
+
+
+
+
+
+    def apply_rotation(
+        self,
+        image,
+        rotation
+    ):
+
+
+        if rotation in [
+            None,
+            "none"
+        ]:
+
+            return image
+
+
+
+        try:
+
+            angle = int(
+                rotation
+            )
+
+
+        except Exception:
+
+            raise ValueError(
+
+                f"Invalid rotation angle: {rotation}"
+
+            )
+
+
+
+        if angle not in [
+            90,
+            180,
+            270,
+            -90,
+            -180,
+            -270
+        ]:
+
+            raise ValueError(
+
+                "Rotation must be 90,180,270"
+
+            )
+
+
+
+        return image.rotate(
+
+            -angle,
+
+            expand=True
+
+        )
+
+
+
+
+
+
+
+
+
+    def apply_flip(
+        self,
+        image,
+        flip
+    ):
+
+
+        if flip in [
+            None,
+            "none"
+        ]:
+
+            return image
+
+
+
+
+
+        if flip == "horizontal":
+
+
+            return image.transpose(
+
+                Image.Transpose.FLIP_LEFT_RIGHT
+
+            )
+
+
+
+
+
+
+        if flip == "vertical":
+
+
+            return image.transpose(
+
+                Image.Transpose.FLIP_TOP_BOTTOM
+
+            )
+
+
+
+
+
+
+        if flip == "both":
+
+
+            image = image.transpose(
+
+                Image.Transpose.FLIP_LEFT_RIGHT
+
+            )
+
+
+            return image.transpose(
+
+                Image.Transpose.FLIP_TOP_BOTTOM
+
+            )
+
+
+
+
+
+
+        raise ValueError(
+
+            f"Unsupported flip mode: {flip}"
+
+        )

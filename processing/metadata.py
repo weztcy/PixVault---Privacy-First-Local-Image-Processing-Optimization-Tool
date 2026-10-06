@@ -4,6 +4,8 @@ from PIL import Image
 
 
 
+
+
 class MetadataProcessor:
 
 
@@ -15,44 +17,91 @@ class MetadataProcessor:
         settings
     ):
 
-        source = Path(source_path)
 
-        output = Path(output_path)
+        source = Path(
+            source_path
+        )
+
+
+        output = Path(
+            output_path
+        )
+
+
+        output.parent.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
 
 
         mode = settings.get(
+
             "mode",
+
             "all"
+
         )
+
 
 
         with Image.open(source) as image:
 
+
             cleaned = self.remove_metadata(
+
                 image,
+
                 mode,
+
                 settings
+
             )
 
 
-            save_kwargs = {}
+
+            save_settings = {
 
 
-            if output.suffix.lower() in [
-                ".jpg",
-                ".jpeg"
-            ]:
+                "format":
 
-                save_kwargs["exif"] = b""
+                    "TIFF",
+
+
+                "compression":
+
+                    "tiff_lzw"
+
+            }
+
+
+
+            if "icc_profile" in cleaned.info:
+
+
+                save_settings["icc_profile"] = (
+
+                    cleaned.info["icc_profile"]
+
+                )
+
 
 
             cleaned.save(
+
                 output,
-                **save_kwargs
+
+                **save_settings
+
             )
 
 
+
         return output
+
+
+
+
 
 
 
@@ -63,20 +112,103 @@ class MetadataProcessor:
         settings
     ):
 
-        clean_image = Image.new(
+
+
+        # =====================
+        # PRESERVE
+        # =====================
+
+
+        if mode == "preserve":
+
+
+            return image.copy()
+
+
+
+
+
+
+        # =====================
+        # CREATE CLEAN IMAGE
+        # =====================
+
+
+        clean = Image.new(
+
             image.mode,
+
             image.size
+
         )
 
 
-        clean_image.putdata(
+        clean.putdata(
+
             list(
+
                 image.getdata()
+
             )
+
         )
 
 
-        return clean_image
+
+
+
+
+        if mode == "all":
+
+
+            return clean
+
+
+
+
+
+
+
+        if mode == "custom":
+
+
+            remove = settings.get(
+
+                "remove",
+
+                []
+
+            )
+
+
+
+            for key, value in image.info.items():
+
+
+                if key not in remove:
+
+
+                    clean.info[key] = value
+
+
+
+            return clean
+
+
+
+
+
+
+        raise ValueError(
+
+            f"Unsupported metadata mode: {mode}"
+
+        )
+
+
+
+
+
 
 
 
@@ -85,6 +217,43 @@ class MetadataProcessor:
         image_path
     ):
 
+
         with Image.open(image_path) as image:
 
-            return image.getexif()
+
+            return {
+
+
+                "format":
+
+                    image.format,
+
+
+                "mode":
+
+                    image.mode,
+
+
+                "size":
+
+                    image.size,
+
+
+                "info":
+
+                    dict(
+
+                        image.info
+
+                    ),
+
+
+                "exif":
+
+                    dict(
+
+                        image.getexif()
+
+                    )
+
+            }

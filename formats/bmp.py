@@ -6,7 +6,10 @@ from formats import BaseEncoder
 
 
 
+
+
 class BMPEncoder(BaseEncoder):
+
 
 
     def save(
@@ -16,76 +19,207 @@ class BMPEncoder(BaseEncoder):
         settings
     ):
 
-        output = Path(output_path)
+
+        output = Path(
+            output_path
+        )
+
+
+        output.parent.mkdir(
+
+            parents=True,
+
+            exist_ok=True
+
+        )
+
 
 
         bit_depth = settings.get(
+
             "bit_depth",
+
             24
+
         )
 
 
-        image = self.prepare_image(
+        alpha = settings.get(
+
+            "alpha",
+
+            False
+
+        )
+
+
+
+        try:
+
+
+            bit_depth = int(
+                bit_depth
+            )
+
+
+        except Exception:
+
+
+            raise ValueError(
+
+                "Invalid BMP bit depth"
+
+            )
+
+
+
+        prepared = self.prepare_image(
+
             image,
-            bit_depth
+
+            bit_depth,
+
+            alpha
+
         )
 
 
-        image.save(
+
+        prepared.save(
+
             output,
+
             format="BMP"
+
         )
+
 
 
         return output
 
 
 
+
+
+
+
     def prepare_image(
         self,
         image,
-        bit_depth
+        bit_depth,
+        alpha
     ):
+
+
+
 
 
         if bit_depth == 32:
 
+
+            if alpha:
+
+
+                return image.convert(
+
+                    "RGBA"
+
+                )
+
+
             return image.convert(
-                "RGBA"
-            )
 
-
-        elif bit_depth == 24:
-
-            return image.convert(
                 "RGB"
+
             )
 
 
-        elif bit_depth == 8:
+
+
+
+
+
+        if bit_depth == 24:
+
 
             return image.convert(
-                "P"
+
+                "RGB"
+
             )
 
 
-        elif bit_depth in [
-            1,
-            4
-        ]:
+
+
+
+
+
+        if bit_depth == 8:
+
 
             return image.convert(
+
+                "P",
+
+                colors=256
+
+            )
+
+
+
+
+
+
+
+        if bit_depth == 4:
+
+
+            return image.convert(
+
+                "P",
+
+                colors=16
+
+            )
+
+
+
+
+
+
+
+        if bit_depth == 1:
+
+
+            return image.convert(
+
                 "1"
+
             )
 
 
-        elif bit_depth == 16:
 
-            return image.convert(
-                "RGB"
+
+
+
+
+        if bit_depth == 16:
+
+
+            raise ValueError(
+
+                "BMP 16-bit output is not supported by this encoder"
+
             )
 
 
-        return image.convert(
-            "RGB"
+
+
+
+
+
+        raise ValueError(
+
+            f"Unsupported BMP bit depth: {bit_depth}"
+
         )

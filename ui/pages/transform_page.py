@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 
 
 from PySide6.QtWidgets import (
@@ -16,12 +17,15 @@ from PySide6.QtWidgets import (
 
 
 
+
 class TransformPage(QWidget):
+
 
 
     def __init__(
         self,
-        image_service
+        image_service,
+        batch_service=None
     ):
 
         super().__init__()
@@ -29,11 +33,17 @@ class TransformPage(QWidget):
 
         self.image_service = image_service
 
+        self.batch_service = batch_service
+
 
         self.selected_file = None
 
 
         self.setup_ui()
+
+
+
+
 
 
 
@@ -45,20 +55,29 @@ class TransformPage(QWidget):
         layout = QVBoxLayout()
 
 
+        layout.setSpacing(
+            10
+        )
+
+
 
         layout.addWidget(
+
             QLabel(
-                "Transform"
+                "Transform Image"
             )
+
         )
 
 
 
         self.file_input = QLineEdit()
 
+
         self.file_input.setReadOnly(
             True
         )
+
 
 
         browse = QPushButton(
@@ -69,6 +88,7 @@ class TransformPage(QWidget):
         browse.clicked.connect(
             self.select_file
         )
+
 
 
         layout.addWidget(
@@ -82,6 +102,8 @@ class TransformPage(QWidget):
 
 
 
+
+
         layout.addWidget(
             QLabel(
                 "Operation"
@@ -89,22 +111,39 @@ class TransformPage(QWidget):
         )
 
 
+
         self.operation_box = QComboBox()
 
 
         self.operation_box.addItems(
+
             [
+
                 "rotate",
+
                 "flip_horizontal",
+
                 "flip_vertical",
+
                 "flip_both"
+
             ]
+
+        )
+
+
+        self.operation_box.currentTextChanged.connect(
+
+            self.update_operation
+
         )
 
 
         layout.addWidget(
             self.operation_box
         )
+
+
 
 
 
@@ -119,13 +158,18 @@ class TransformPage(QWidget):
 
 
         self.angle_spin.setRange(
+
             -360,
+
             360
+
         )
 
 
         self.angle_spin.setValue(
+
             90
+
         )
 
 
@@ -135,38 +179,20 @@ class TransformPage(QWidget):
 
 
 
-        layout.addWidget(
-            QLabel(
-                "Output Format"
-            )
-        )
-
-
-        self.format_box = QComboBox()
-
-
-        self.format_box.addItems(
-            [
-                "WEBP",
-                "JPEG",
-                "PNG"
-            ]
-        )
-
-
-        layout.addWidget(
-            self.format_box
-        )
 
 
 
         process = QPushButton(
+
             "Transform"
+
         )
 
 
         process.clicked.connect(
+
             self.transform_image
+
         )
 
 
@@ -184,10 +210,20 @@ class TransformPage(QWidget):
         )
 
 
+        layout.addStretch()
+
+
 
         self.setLayout(
             layout
         )
+
+
+        self.update_operation()
+
+
+
+
 
 
 
@@ -197,12 +233,25 @@ class TransformPage(QWidget):
 
 
         file, _ = QFileDialog.getOpenFileName(
+
             self,
-            "Select Image"
+
+            "Select Image",
+
+            "",
+
+            (
+                "Images "
+                "(*.jpg *.jpeg *.png *.webp *.avif "
+                "*.gif *.bmp *.tiff *.tif *.heic *.ico)"
+            )
+
         )
 
 
+
         if file:
+
 
             self.selected_file = Path(
                 file
@@ -210,10 +259,99 @@ class TransformPage(QWidget):
 
 
             self.file_input.setText(
+
                 str(
                     self.selected_file
                 )
+
             )
+
+
+
+
+
+
+
+    def update_operation(
+        self
+    ):
+
+
+        operation = self.operation_box.currentText()
+
+
+        self.angle_spin.setEnabled(
+
+            operation == "rotate"
+
+        )
+
+
+
+
+
+
+
+    def get_output_folder(
+        self
+    ):
+
+
+        config_file = Path(
+
+            "config/app_settings.json"
+
+        )
+
+
+        if config_file.exists():
+
+
+            try:
+
+
+                with open(
+
+                    config_file,
+
+                    "r",
+
+                    encoding="utf-8"
+
+                ) as file:
+
+
+                    data = json.load(file)
+
+
+                    folder = data.get(
+
+                        "output_folder"
+
+                    )
+
+
+                    if folder:
+
+
+                        return Path(folder)
+
+
+
+            except Exception:
+
+                pass
+
+
+
+        return Path(
+            "output"
+        )
+
+
+
+
+
 
 
 
@@ -226,9 +364,13 @@ class TransformPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Warning",
+
                 "Select image first"
+
             )
 
 
@@ -236,24 +378,6 @@ class TransformPage(QWidget):
 
 
 
-        output_format = self.format_box.currentText()
-
-
-        output_path = Path(
-            "test_data/output/ui_transform"
-        ) / (
-
-            self.selected_file.stem
-
-            +
-
-            "."
-
-            +
-
-            output_format.lower()
-
-        )
 
 
 
@@ -263,78 +387,131 @@ class TransformPage(QWidget):
 
         operation = {
 
-            "type":"transform"
+
+            "type":
+
+                "transform"
 
         }
+
 
 
 
         if operation_name == "rotate":
 
-            operation.update({
 
-                "operation":"rotate",
+            operation["rotation"] = (
 
-                "angle":
-                    self.angle_spin.value()
+                self.angle_spin.value()
 
-            })
+            )
 
 
 
         elif operation_name == "flip_horizontal":
 
-            operation.update({
 
-                "operation":"flip",
+            operation["flip"] = (
 
-                "direction":"horizontal"
+                "horizontal"
 
-            })
+            )
 
 
 
         elif operation_name == "flip_vertical":
 
-            operation.update({
 
-                "operation":"flip",
+            operation["flip"] = (
 
-                "direction":"vertical"
+                "vertical"
 
-            })
+            )
 
 
 
         elif operation_name == "flip_both":
 
-            operation.update({
 
-                "operation":"flip",
+            operation["flip"] = (
 
-                "direction":"both"
+                "both"
 
-            })
+            )
+
+
+
+
+
+
+
+        output_folder = self.get_output_folder()
+
+
+        output_folder.mkdir(
+
+            parents=True,
+
+            exist_ok=True
+
+        )
+
+
+
+        output_path = output_folder / (
+
+            self.selected_file.stem
+
+            +
+
+            "_transformed"
+
+            +
+
+            self.selected_file.suffix
+
+        )
+
+
+
+
 
 
 
         config = {
 
-            "operations":[
-                operation
-            ],
+
+            "operations":
+
+                [
+
+                    operation
+
+                ],
 
 
-            "output":{
 
-                "format":
-                    output_format,
+            "output":
 
-                "quality":85
+                {
 
-            }
+
+                    "format":
+
+                        self.selected_file.suffix.replace(
+
+                            ".",
+
+                            ""
+
+                        ).upper()
+
+                }
 
         }
+
+
+
 
 
 
@@ -352,8 +529,11 @@ class TransformPage(QWidget):
             )
 
 
+
             self.result_label.setText(
+
                 f"Completed:\n{result}"
+
             )
 
 
@@ -362,7 +542,11 @@ class TransformPage(QWidget):
 
 
             QMessageBox.critical(
+
                 self,
-                "Error",
+
+                "Transform Error",
+
                 str(error)
+
             )

@@ -459,6 +459,23 @@ class AllProcessingPage(QWidget):
 
 
 
+        # DEBUG PIPELINE
+        print(
+            "\n=== PROCESSING OPERATIONS ==="
+        )
+
+
+        print(
+            operations
+        )
+
+
+        print(
+            "============================\n"
+        )
+
+
+
         output_config = self.encoder_panel.get_config()
 
 
@@ -472,6 +489,22 @@ class AllProcessingPage(QWidget):
             "output": output_config
 
         }
+
+
+
+        print(
+            "=== FINAL CONFIG ==="
+        )
+
+
+        print(
+            config
+        )
+
+
+        print(
+            "====================\n"
+        )
 
 
 
@@ -531,16 +564,18 @@ class AllProcessingPage(QWidget):
         result
     ):
 
-
         self.process_button.setEnabled(
             True
         )
 
 
+        print("\n===== BATCH RESULT =====")
+        print(result)
+        print("========================\n")
+
+
         self.result_label.setText(
-
-            f"Completed:\n{result}"
-
+            str(result)
         )
 
 
@@ -565,3 +600,4 @@ class AllProcessingPage(QWidget):
             str(error)
 
         )
+    

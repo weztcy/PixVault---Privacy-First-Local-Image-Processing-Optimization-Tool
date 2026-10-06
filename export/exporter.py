@@ -1,9 +1,8 @@
 from pathlib import Path
 
-
 from formats.encoder import EncoderManager
-
 from export.naming import NamingEngine
+
 
 
 
@@ -12,11 +11,17 @@ class Exporter:
 
 
 
-    def __init__(self):
+    def __init__(
+        self
+    ):
+
 
         self.encoder = EncoderManager()
 
         self.naming = NamingEngine()
+
+
+
 
 
 
@@ -29,28 +34,193 @@ class Exporter:
     ):
 
 
+        if image is None:
+
+
+            raise ValueError(
+
+                "Image data is missing"
+
+            )
+
+
+
+        if not settings:
+
+
+            raise ValueError(
+
+                "Export settings missing"
+
+            )
+
+
+
+        output_folder = Path(
+
+            output_folder
+
+        )
+
+
+
+        output_folder.mkdir(
+
+            parents=True,
+
+            exist_ok=True
+
+        )
+
+
+
+
+
+        format_name = settings.get(
+
+            "format"
+
+        )
+
+
+
+        if not format_name:
+
+
+            raise ValueError(
+
+                "Output format missing"
+
+            )
+
+
+
+
+
+        format_name = self.encoder.normalize_format(
+
+            format_name
+
+        )
+
+
+
+
+
+        if not self.encoder.is_supported(
+
+            format_name
+
+        ):
+
+
+            raise ValueError(
+
+                f"Unsupported output format: {format_name}"
+
+            )
+
+
+
+
+
+
+        # clone settings
+
+        export_settings = dict(
+
+            settings
+
+        )
+
+
+
+        export_settings["format"] = format_name
+
+
+
+
+
+
+
         output_path = self.naming.generate(
+
             source_path,
+
             output_folder,
-            settings
+
+            export_settings
+
         )
 
 
-        self.encoder.save(
+
+        output_path = Path(
+
+            output_path
+
+        )
+
+
+
+
+
+
+        result = self.encoder.save(
+
             image,
+
             output_path,
-            settings
+
+            export_settings
+
         )
+
+
+
+        result = Path(
+
+            result
+
+        )
+
+
+
+
+
+
+
+        if not result.exists():
+
+
+            raise RuntimeError(
+
+                f"Encoder failed creating file: {result}"
+
+            )
+
+
+
+
+
 
 
         return {
 
-            "path": output_path,
 
-            "format": settings.get(
-                "format"
-            ),
+            "path":
 
-            "size": output_path.stat().st_size
+                result,
+
+
+            "format":
+
+                format_name,
+
+
+            "size":
+
+                result.stat().st_size
+
 
         }

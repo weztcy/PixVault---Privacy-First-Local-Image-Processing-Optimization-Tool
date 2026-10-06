@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 
 
 from PySide6.QtWidgets import (
@@ -15,12 +16,15 @@ from PySide6.QtWidgets import (
 
 
 
+
 class ColorSpacePage(QWidget):
+
 
 
     def __init__(
         self,
-        image_service
+        image_service,
+        batch_service=None
     ):
 
         super().__init__()
@@ -28,11 +32,17 @@ class ColorSpacePage(QWidget):
 
         self.image_service = image_service
 
+        self.batch_service = batch_service
+
 
         self.selected_file = None
 
 
         self.setup_ui()
+
+
+
+
 
 
 
@@ -44,11 +54,18 @@ class ColorSpacePage(QWidget):
         layout = QVBoxLayout()
 
 
+        layout.setSpacing(
+            10
+        )
+
+
 
         layout.addWidget(
+
             QLabel(
-                "Color Space"
+                "Color Space Processor"
             )
+
         )
 
 
@@ -61,6 +78,7 @@ class ColorSpacePage(QWidget):
         )
 
 
+
         browse = QPushButton(
             "Select Image"
         )
@@ -69,6 +87,7 @@ class ColorSpacePage(QWidget):
         browse.clicked.connect(
             self.select_file
         )
+
 
 
         layout.addWidget(
@@ -82,24 +101,34 @@ class ColorSpacePage(QWidget):
 
 
 
+
+
+
         layout.addWidget(
+
             QLabel(
                 "Target Color Space"
             )
+
         )
+
 
 
         self.colorspace_box = QComboBox()
 
 
         self.colorspace_box.addItems(
+
             [
+
                 "sRGB",
+
                 "grayscale",
-                "CMYK",
-                "Adobe RGB",
-                "Display P3"
+
+                "CMYK"
+
             ]
+
         )
 
 
@@ -109,38 +138,20 @@ class ColorSpacePage(QWidget):
 
 
 
-        layout.addWidget(
-            QLabel(
-                "Output Format"
-            )
-        )
-
-
-        self.format_box = QComboBox()
-
-
-        self.format_box.addItems(
-            [
-                "JPEG",
-                "PNG",
-                "WEBP"
-            ]
-        )
-
-
-        layout.addWidget(
-            self.format_box
-        )
 
 
 
         process = QPushButton(
-            "Convert Color Space"
+
+            "Apply Color Space"
+
         )
 
 
         process.clicked.connect(
+
             self.convert_colorspace
+
         )
 
 
@@ -158,9 +169,18 @@ class ColorSpacePage(QWidget):
         )
 
 
+        layout.addStretch()
+
+
+
         self.setLayout(
             layout
         )
+
+
+
+
+
 
 
 
@@ -170,23 +190,115 @@ class ColorSpacePage(QWidget):
 
 
         file, _ = QFileDialog.getOpenFileName(
+
             self,
-            "Select Image"
+
+            "Select Image",
+
+            "",
+
+            (
+                "Images "
+                "(*.jpg *.jpeg *.png *.webp *.avif "
+                "*.gif *.bmp *.tiff *.tif *.heic *.ico)"
+            )
+
         )
+
 
 
         if file:
 
+
             self.selected_file = Path(
+
                 file
+
             )
 
 
             self.file_input.setText(
+
                 str(
                     self.selected_file
                 )
+
             )
+
+
+
+
+
+
+
+
+    def get_output_folder(
+        self
+    ):
+
+
+        config_file = Path(
+
+            "config/app_settings.json"
+
+        )
+
+
+        if config_file.exists():
+
+
+            try:
+
+
+                with open(
+
+                    config_file,
+
+                    "r",
+
+                    encoding="utf-8"
+
+                ) as file:
+
+
+                    data = json.load(file)
+
+
+
+                    folder = data.get(
+
+                        "output_folder"
+
+                    )
+
+
+                    if folder:
+
+
+                        return Path(
+
+                            folder
+
+                        )
+
+
+
+            except Exception:
+
+                pass
+
+
+
+        return Path(
+
+            "output"
+
+        )
+
+
+
+
+
 
 
 
@@ -199,9 +311,13 @@ class ColorSpacePage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Warning",
+
                 "Select image first"
+
             )
 
 
@@ -209,55 +325,99 @@ class ColorSpacePage(QWidget):
 
 
 
-        output_format = self.format_box.currentText()
 
-
-
-        output_path = Path(
-            "test_data/output/ui_colorspace"
-        ) / (
-
-            self.selected_file.stem
-
-            +
-
-            "."
-
-            +
-
-            output_format.lower()
-
-        )
 
 
 
         operation = {
 
-            "type":"colorspace",
+
+            "type":
+
+                "colorspace",
+
+
 
             "target":
+
                 self.colorspace_box.currentText()
 
         }
 
 
 
+
+
+
+
+        output_folder = self.get_output_folder()
+
+
+        output_folder.mkdir(
+
+            parents=True,
+
+            exist_ok=True
+
+        )
+
+
+
+        output_path = output_folder / (
+
+            self.selected_file.stem
+
+            +
+
+            "_colorspace"
+
+            +
+
+            self.selected_file.suffix
+
+        )
+
+
+
+
+
+
+
         config = {
 
-            "operations":[
-                operation
-            ],
 
-            "output":{
+            "operations":
 
-                "format":
-                    output_format,
+                [
 
-                "quality":85
+                    operation
 
-            }
+                ],
+
+
+
+            "output":
+
+                {
+
+
+                    "format":
+
+                        self.selected_file.suffix.replace(
+
+                            ".",
+
+                            ""
+
+                        ).upper()
+
+                }
 
         }
+
+
+
+
 
 
 
@@ -275,8 +435,11 @@ class ColorSpacePage(QWidget):
             )
 
 
+
             self.result_label.setText(
+
                 f"Completed:\n{result}"
+
             )
 
 
@@ -285,7 +448,11 @@ class ColorSpacePage(QWidget):
 
 
             QMessageBox.critical(
+
                 self,
-                "Error",
+
+                "Color Space Error",
+
                 str(error)
+
             )

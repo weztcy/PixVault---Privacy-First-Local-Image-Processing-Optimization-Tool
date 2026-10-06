@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 
 
 from PySide6.QtWidgets import (
@@ -16,7 +17,15 @@ from PySide6.QtWidgets import (
 
 
 
+
 class SettingsPage(QWidget):
+
+
+
+    SETTINGS_FILE = Path(
+        "config/app_settings.json"
+    )
+
 
 
     def __init__(
@@ -27,6 +36,13 @@ class SettingsPage(QWidget):
 
 
         self.setup_ui()
+
+
+        self.load_settings()
+
+
+
+
 
 
 
@@ -47,7 +63,9 @@ class SettingsPage(QWidget):
 
 
 
-        # Default format
+        # =====================
+        # FORMAT
+        # =====================
 
 
         layout.addWidget(
@@ -65,7 +83,9 @@ class SettingsPage(QWidget):
                 "WEBP",
                 "JPEG",
                 "PNG",
-                "AVIF"
+                "AVIF",
+                "TIFF",
+                "HEIC"
             ]
         )
 
@@ -76,7 +96,10 @@ class SettingsPage(QWidget):
 
 
 
-        # Quality
+
+        # =====================
+        # QUALITY
+        # =====================
 
 
         layout.addWidget(
@@ -84,6 +107,7 @@ class SettingsPage(QWidget):
                 "Default Quality"
             )
         )
+
 
 
         self.quality_spin = QSpinBox()
@@ -106,7 +130,12 @@ class SettingsPage(QWidget):
 
 
 
-        # Output folder
+
+
+
+        # =====================
+        # OUTPUT FOLDER
+        # =====================
 
 
         layout.addWidget(
@@ -116,7 +145,9 @@ class SettingsPage(QWidget):
         )
 
 
+
         self.output_folder = QLineEdit()
+
 
 
         browse = QPushButton(
@@ -124,9 +155,11 @@ class SettingsPage(QWidget):
         )
 
 
+
         browse.clicked.connect(
             self.select_folder
         )
+
 
 
         layout.addWidget(
@@ -138,6 +171,14 @@ class SettingsPage(QWidget):
             browse
         )
 
+
+
+
+
+
+        # =====================
+        # SAVE
+        # =====================
 
 
         save = QPushButton(
@@ -159,6 +200,7 @@ class SettingsPage(QWidget):
         self.status_label = QLabel()
 
 
+
         layout.addWidget(
             self.status_label
         )
@@ -174,22 +216,144 @@ class SettingsPage(QWidget):
 
 
 
+
+
+
+
+
     def select_folder(
         self
     ):
 
 
+
         folder = QFileDialog.getExistingDirectory(
+
             self,
+
             "Select Output Folder"
+
         )
+
 
 
         if folder:
 
+
             self.output_folder.setText(
+
                 folder
+
             )
+
+
+
+
+
+
+
+
+    def load_settings(
+        self
+    ):
+
+
+
+        if not self.SETTINGS_FILE.exists():
+
+            return
+
+
+
+
+        try:
+
+
+
+            with open(
+
+                self.SETTINGS_FILE,
+
+                "r",
+
+                encoding="utf-8"
+
+            ) as file:
+
+
+                settings = json.load(file)
+
+
+
+
+
+            format_name = settings.get(
+
+                "format"
+
+            )
+
+
+
+            if format_name:
+
+
+                index = self.format_box.findText(
+
+                    format_name
+
+                )
+
+
+                if index >= 0:
+
+
+                    self.format_box.setCurrentIndex(
+
+                        index
+
+                    )
+
+
+
+
+
+            self.quality_spin.setValue(
+
+                settings.get(
+
+                    "quality",
+
+                    85
+
+                )
+
+            )
+
+
+
+            self.output_folder.setText(
+
+                settings.get(
+
+                    "output_folder",
+
+                    ""
+
+                )
+
+            )
+
+
+
+        except Exception:
+
+
+            pass
+
+
+
+
 
 
 
@@ -198,25 +362,110 @@ class SettingsPage(QWidget):
     ):
 
 
+
+        folder = self.output_folder.text().strip()
+
+
+
+        if folder and not Path(folder).exists():
+
+
+            QMessageBox.warning(
+
+                self,
+
+                "Invalid Folder",
+
+                "Output folder does not exist."
+
+            )
+
+
+            return
+
+
+
+
+
         settings = {
 
+
             "format":
+
                 self.format_box.currentText(),
 
+
+
             "quality":
+
                 self.quality_spin.value(),
 
+
+
             "output_folder":
-                self.output_folder.text()
+
+                folder
 
         }
 
 
-        self.status_label.setText(
-            "Settings saved"
-        )
 
 
-        print(
-            settings
-        )
+
+        try:
+
+
+            self.SETTINGS_FILE.parent.mkdir(
+
+                parents=True,
+
+                exist_ok=True
+
+            )
+
+
+
+            with open(
+
+                self.SETTINGS_FILE,
+
+                "w",
+
+                encoding="utf-8"
+
+            ) as file:
+
+
+                json.dump(
+
+                    settings,
+
+                    file,
+
+                    indent=4
+
+                )
+
+
+
+            self.status_label.setText(
+
+                "Settings saved"
+
+            )
+
+
+
+        except Exception as error:
+
+
+
+            QMessageBox.critical(
+
+                self,
+
+                "Save Error",
+
+                str(error)
+
+            )

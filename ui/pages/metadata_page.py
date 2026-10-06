@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 
 
 from PySide6.QtWidgets import (
@@ -8,9 +9,9 @@ from PySide6.QtWidgets import (
     QPushButton,
     QFileDialog,
     QLineEdit,
-    QComboBox,
     QMessageBox
 )
+
 
 
 
@@ -18,9 +19,11 @@ from PySide6.QtWidgets import (
 class MetadataPage(QWidget):
 
 
+
     def __init__(
         self,
-        image_service
+        image_service,
+        batch_service=None
     ):
 
         super().__init__()
@@ -28,11 +31,17 @@ class MetadataPage(QWidget):
 
         self.image_service = image_service
 
+        self.batch_service = batch_service
+
 
         self.selected_file = None
 
 
         self.setup_ui()
+
+
+
+
 
 
 
@@ -44,20 +53,29 @@ class MetadataPage(QWidget):
         layout = QVBoxLayout()
 
 
+        layout.setSpacing(
+            10
+        )
+
+
 
         layout.addWidget(
+
             QLabel(
-                "Metadata"
+                "Metadata Processor"
             )
+
         )
 
 
 
         self.file_input = QLineEdit()
 
+
         self.file_input.setReadOnly(
             True
         )
+
 
 
         browse = QPushButton(
@@ -82,34 +100,10 @@ class MetadataPage(QWidget):
 
 
 
-        layout.addWidget(
-            QLabel(
-                "Output Format"
-            )
-        )
-
-
-
-        self.format_box = QComboBox()
-
-
-        self.format_box.addItems(
-            [
-                "JPEG",
-                "PNG",
-                "WEBP"
-            ]
-        )
-
-
-        layout.addWidget(
-            self.format_box
-        )
-
 
 
         remove_button = QPushButton(
-            "Remove Metadata"
+            "Remove All Metadata"
         )
 
 
@@ -132,10 +126,18 @@ class MetadataPage(QWidget):
         )
 
 
+        layout.addStretch()
+
+
 
         self.setLayout(
             layout
         )
+
+
+
+
+
 
 
 
@@ -145,24 +147,114 @@ class MetadataPage(QWidget):
 
 
         file, _ = QFileDialog.getOpenFileName(
+
             self,
-            "Select Image"
+
+            "Select Image",
+
+            "",
+
+            (
+                "Images "
+                "(*.jpg *.jpeg *.png *.webp *.avif "
+                "*.gif *.bmp *.tiff *.tif *.heic *.ico)"
+            )
+
         )
+
 
 
         if file:
 
 
             self.selected_file = Path(
+
                 file
+
             )
 
 
             self.file_input.setText(
+
                 str(
                     self.selected_file
                 )
+
             )
+
+
+
+
+
+
+
+
+    def get_output_folder(
+        self
+    ):
+
+
+        config_file = Path(
+
+            "config/app_settings.json"
+
+        )
+
+
+
+        if config_file.exists():
+
+
+            try:
+
+
+                with open(
+
+                    config_file,
+
+                    "r",
+
+                    encoding="utf-8"
+
+                ) as file:
+
+
+                    data = json.load(file)
+
+
+
+                    folder = data.get(
+
+                        "output_folder"
+
+                    )
+
+
+                    if folder:
+
+
+                        return Path(
+
+                            folder
+
+                        )
+
+
+
+            except Exception:
+
+                pass
+
+
+
+        return Path(
+            "output"
+        )
+
+
+
+
+
 
 
 
@@ -175,9 +267,13 @@ class MetadataPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Warning",
+
                 "Select image first"
+
             )
 
 
@@ -185,56 +281,99 @@ class MetadataPage(QWidget):
 
 
 
-        output_format = self.format_box.currentText()
 
-
-
-        output_path = Path(
-            "test_data/output/ui_metadata"
-        ) / (
-
-            self.selected_file.stem
-
-            +
-
-            "."
-
-            +
-
-            output_format.lower()
-
-        )
 
 
 
         operation = {
 
-            "type":"metadata",
 
-            "mode":"all"
+            "type":
+
+                "metadata",
+
+
+
+            "mode":
+
+                "all"
 
         }
+
+
+
+
+
+
+
+        output_folder = self.get_output_folder()
+
+
+        output_folder.mkdir(
+
+            parents=True,
+
+            exist_ok=True
+
+        )
+
+
+
+        output_path = output_folder / (
+
+            self.selected_file.stem
+
+            +
+
+            "_clean"
+
+            +
+
+            self.selected_file.suffix
+
+        )
+
+
+
+
 
 
 
         config = {
 
-            "operations":[
 
-                operation
+            "operations":
 
-            ],
+                [
 
-            "output":{
+                    operation
 
-                "format":
-                    output_format,
+                ],
 
-                "quality":85
 
-            }
+
+            "output":
+
+                {
+
+
+                    "format":
+
+                        self.selected_file.suffix.replace(
+
+                            ".",
+
+                            ""
+
+                        ).upper()
+
+                }
 
         }
+
+
+
+
 
 
 
@@ -252,8 +391,11 @@ class MetadataPage(QWidget):
             )
 
 
+
             self.result_label.setText(
+
                 f"Completed:\n{result}"
+
             )
 
 
@@ -262,7 +404,11 @@ class MetadataPage(QWidget):
 
 
             QMessageBox.critical(
+
                 self,
-                "Error",
+
+                "Metadata Error",
+
                 str(error)
+
             )

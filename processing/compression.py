@@ -4,6 +4,8 @@ from PIL import Image
 
 
 
+
+
 class ImageCompressor:
 
 
@@ -15,123 +17,188 @@ class ImageCompressor:
         settings
     ):
 
-        source = Path(source_path)
 
-        output = Path(output_path)
-
-
-        mode = settings.get(
-            "mode",
-            "quality"
+        source = Path(
+            source_path
         )
+
+
+        output = Path(
+            output_path
+        )
+
+
+        output.parent.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
 
 
         with Image.open(source) as image:
 
-            self.compress_image(
+
+            processed = self.compress_image(
+
                 image,
-                output,
-                settings,
-                mode
+
+                settings
+
             )
+
+
+            processed.save(
+
+                output,
+
+                format="TIFF",
+
+                compression="tiff_lzw"
+
+            )
+
 
 
         return output
 
 
 
+
+
+
+
     def compress_image(
         self,
         image,
-        output,
-        settings,
-        mode
-    ):
-
-
-        if mode == "quality":
-
-            quality = settings.get(
-                "quality",
-                85
-            )
-
-
-            image.save(
-                output,
-                quality=quality,
-                optimize=True
-            )
-
-
-
-        elif mode == "target_size":
-
-            self.compress_target_size(
-                image,
-                output,
-                settings
-            )
-
-
-
-    def compress_target_size(
-        self,
-        image,
-        output,
         settings
     ):
 
-        target_kb = settings.get(
-            "size_kb",
-            500
+
+        method = settings.get(
+
+            "method",
+
+            "none"
+
         )
 
 
-        priority = settings.get(
-            "priority",
-            "balanced"
+
+
+
+        # =====================
+        # NONE
+        # =====================
+
+
+        if method == "none":
+
+
+            return image.copy()
+
+
+
+
+
+
+
+        # =====================
+        # OPTIMIZE
+        # =====================
+
+
+        if method == "optimize":
+
+
+            optimized = image.copy()
+
+
+            optimized.info.clear()
+
+
+            return optimized
+
+
+
+
+
+
+
+        # =====================
+        # REMOVE ALPHA
+        # =====================
+
+
+        if method == "remove_alpha":
+
+
+            return self.remove_alpha(
+                image
+            )
+
+
+
+
+
+
+
+        raise ValueError(
+
+            f"Unsupported compression method: {method}"
+
         )
 
 
-        quality = 90
-
-
-        if priority == "prioritize_size":
-
-            quality = 50
-
-
-        elif priority == "balanced":
-
-            quality = 70
-
-
-        elif priority == "prioritize_quality":
-
-            quality = 85
 
 
 
-        while quality > 10:
-
-            image.save(
-                output,
-                quality=quality,
-                optimize=True
-            )
 
 
-            size_kb = (
-                output.stat().st_size
-                /
-                1024
-            )
+    def remove_alpha(
+        self,
+        image
+    ):
 
 
-            if size_kb <= target_kb:
+        if image.mode not in [
 
-                break
+            "RGBA",
+
+            "LA"
+
+        ]:
 
 
-            quality -= 5
+            return image.copy()
+
+
+
+        background = Image.new(
+
+            "RGB",
+
+            image.size,
+
+            "white"
+
+        )
+
+
+
+        alpha = image.getchannel(
+            "A"
+        )
+
+
+
+        background.paste(
+
+            image,
+
+            mask=alpha
+
+        )
+
+
+
+        return background

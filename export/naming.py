@@ -4,7 +4,59 @@ from datetime import datetime
 
 
 
+
+
 class NamingEngine:
+
+
+
+    FORMAT_EXTENSION = {
+
+
+        "JPEG":
+            "jpg",
+
+
+        "PNG":
+            "png",
+
+
+        "WEBP":
+            "webp",
+
+
+        "AVIF":
+            "avif",
+
+
+        "GIF":
+            "gif",
+
+
+        "BMP":
+            "bmp",
+
+
+        "TIFF":
+            "tiff",
+
+
+        "HEIC":
+            "heic",
+
+
+        "ICO":
+            "ico",
+
+
+        "SVG":
+            "svg"
+
+    }
+
+
+
+
 
 
 
@@ -14,6 +66,7 @@ class NamingEngine:
         output_folder,
         settings
     ):
+
 
         source = Path(
             source_path
@@ -26,23 +79,83 @@ class NamingEngine:
 
 
         output_folder.mkdir(
+
             parents=True,
+
             exist_ok=True
+
         )
+
 
 
         filename = self.create_filename(
+
             source,
+
             settings
+
         )
 
-
-        output_path = output_folder / filename
 
 
         return self.resolve_collision(
-            output_path
+
+            output_folder / filename
+
         )
+
+
+
+
+
+
+
+
+
+    def normalize_extension(
+        self,
+        format_name
+    ):
+
+
+        if not format_name:
+
+
+            return None
+
+
+
+        format_name = str(
+
+            format_name
+
+        ).upper().strip().lstrip(".")
+
+
+
+
+        extension = self.FORMAT_EXTENSION.get(
+
+            format_name
+
+        )
+
+
+
+        if extension:
+
+
+            return extension
+
+
+
+
+
+        return format_name.lower()
+
+
+
+
 
 
 
@@ -53,50 +166,98 @@ class NamingEngine:
     ):
 
 
-        output_format = settings.get(
-            "format",
-            source.suffix.replace(
-                ".",
-                ""
+        extension = self.normalize_extension(
+
+            settings.get(
+
+                "format"
+
             )
-        ).lower()
+
+        )
+
+
+
+        if not extension:
+
+
+            extension = source.suffix.replace(
+
+                ".",
+
+                ""
+
+            )
+
+
 
 
 
         pattern = settings.get(
+
             "pattern"
+
         )
 
 
         suffix = settings.get(
+
             "suffix"
+
         )
+
+
+
 
 
 
         if pattern:
 
 
-            filename = pattern.format(
+            try:
 
-                name=source.stem,
 
-                format=output_format,
+                filename = pattern.format(
 
-                date=datetime.now().strftime(
-                    "%Y-%m-%d"
+                    name=source.stem,
+
+                    format=extension,
+
+                    date=datetime.now().strftime(
+
+                        "%Y-%m-%d"
+
+                    )
+
                 )
 
-            )
+
+            except KeyError as error:
 
 
-            return (
-                filename
-                +
-                "."
-                +
-                output_format
-            )
+                raise ValueError(
+
+                    f"Invalid filename pattern: {error}"
+
+                )
+
+
+
+            if not filename.lower().endswith(
+
+                f".{extension}"
+
+            ):
+
+
+                filename += f".{extension}"
+
+
+
+            return filename
+
+
+
 
 
 
@@ -104,25 +265,112 @@ class NamingEngine:
 
 
 
+
+
         if suffix:
 
-            name = (
-                name
-                +
-                "_"
-                +
+
+            suffix = self.sanitize_name(
+
                 suffix
+
             )
+
+
+            if suffix:
+
+
+                name += (
+
+                    "_"
+
+                    +
+
+                    suffix
+
+                )
+
+
 
 
 
         return (
+
             name
+
             +
+
             "."
+
             +
-            output_format
+
+            extension
+
         )
+
+
+
+
+
+
+
+
+    def sanitize_name(
+        self,
+        value
+    ):
+
+
+        value = str(
+
+            value
+
+        )
+
+
+
+        forbidden = [
+
+            "/",
+
+            "\\",
+
+            ":",
+
+            "*",
+
+            "?",
+
+            "\"",
+
+            "<",
+
+            ">",
+
+            "|"
+
+        ]
+
+
+
+        for char in forbidden:
+
+
+            value = value.replace(
+
+                char,
+
+                "_"
+
+            )
+
+
+
+        return value.strip()
+
+
+
+
 
 
 
@@ -134,11 +382,14 @@ class NamingEngine:
 
         if not output_path.exists():
 
+
             return output_path
 
 
 
+
         counter = 1
+
 
 
         while True:
@@ -146,7 +397,9 @@ class NamingEngine:
 
             new_path = output_path.parent / (
 
-                f"{output_path.stem}_{counter:03d}"
+                f"{output_path.stem}_"
+
+                f"{counter:03d}"
 
                 f"{output_path.suffix}"
 
@@ -155,6 +408,7 @@ class NamingEngine:
 
 
             if not new_path.exists():
+
 
                 return new_path
 

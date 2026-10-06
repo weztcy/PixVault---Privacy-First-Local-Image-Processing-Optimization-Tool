@@ -1,5 +1,3 @@
-from formats import BaseEncoder
-
 from formats.jpeg import JPEGEncoder
 from formats.png import PNGEncoder
 from formats.webp import WEBPEncoder
@@ -9,37 +7,180 @@ from formats.bmp import BMPEncoder
 from formats.tiff import TIFFEncoder
 from formats.heic import HEICEncoder
 from formats.ico import ICOEncoder
+from formats.svg import SVGEncoder
+
+
 
 
 
 class EncoderManager:
 
 
+
     def __init__(self):
 
-        self.encoders = {
 
-            "JPG": JPEGEncoder(),
-            "JPEG": JPEGEncoder(),
+        self.encoder_registry = {
 
-            "PNG": PNGEncoder(),
 
-            "WEBP": WEBPEncoder(),
+            "JPEG":
+                JPEGEncoder,
 
-            "AVIF": AVIFEncoder(),
 
-            "GIF": GIFEncoder(),
+            "PNG":
+                PNGEncoder,
 
-            "BMP": BMPEncoder(),
 
-            "TIFF": TIFFEncoder(),
-            "TIF": TIFFEncoder(),
+            "WEBP":
+                WEBPEncoder,
 
-            "HEIC": HEICEncoder(),
 
-            "ICO": ICOEncoder(),
+            "AVIF":
+                AVIFEncoder,
+
+
+            "GIF":
+                GIFEncoder,
+
+
+            "BMP":
+                BMPEncoder,
+
+
+            "TIFF":
+                TIFFEncoder,
+
+
+            "HEIC":
+                HEICEncoder,
+
+
+            "ICO":
+                ICOEncoder,
+
+
+            "SVG":
+                SVGEncoder
 
         }
+
+
+
+
+
+        self.aliases = {
+
+
+            "JPG":
+                "JPEG",
+
+
+            "JPE":
+                "JPEG",
+
+
+            "JFIF":
+                "JPEG",
+
+
+            "TIF":
+                "TIFF",
+
+
+            "HEIF":
+                "HEIC"
+
+        }
+
+
+
+
+
+
+
+    def normalize_format(
+        self,
+        format_name
+    ):
+
+
+        if not format_name:
+
+
+            raise ValueError(
+
+                "Output format is missing"
+
+            )
+
+
+
+        format_name = str(
+
+            format_name
+
+        ).strip().upper()
+
+
+
+        format_name = format_name.lstrip(
+            "."
+        )
+
+
+
+        return self.aliases.get(
+
+            format_name,
+
+            format_name
+
+        )
+
+
+
+
+
+
+
+    def get_encoder(
+        self,
+        format_name
+    ):
+
+
+        format_name = self.normalize_format(
+
+            format_name
+
+        )
+
+
+
+        encoder_class = self.encoder_registry.get(
+
+            format_name
+
+        )
+
+
+
+        if encoder_class is None:
+
+
+            raise ValueError(
+
+                f"Unsupported encoder: {format_name}"
+
+            )
+
+
+
+        return encoder_class()
+
+
+
+
 
 
 
@@ -51,28 +192,86 @@ class EncoderManager:
     ):
 
 
-        format_name = settings.get(
-            "format"
-        )
+        if not settings:
 
-
-        format_name = format_name.upper()
-
-
-        encoder = self.encoders.get(
-            format_name
-        )
-
-
-        if not encoder:
 
             raise ValueError(
-                f"Unsupported format: {format_name}"
+
+                "Encoder settings are empty"
+
             )
 
 
-        return encoder.save(
-            image,
-            output_path,
-            settings
+
+        format_name = settings.get(
+
+            "format"
+
         )
+
+
+
+        encoder = self.get_encoder(
+
+            format_name
+
+        )
+
+
+
+        return encoder.save(
+
+            image,
+
+            output_path,
+
+            settings
+
+        )
+
+
+
+
+
+
+
+    def available_formats(
+        self
+    ):
+
+
+        return sorted(
+
+            self.encoder_registry.keys()
+
+        )
+
+
+
+
+
+
+    def is_supported(
+        self,
+        format_name
+    ):
+
+
+        try:
+
+
+            normalized = self.normalize_format(
+
+                format_name
+
+            )
+
+
+            return normalized in self.encoder_registry
+
+
+
+        except Exception:
+
+
+            return False

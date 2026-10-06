@@ -4,6 +4,8 @@ from PIL import Image
 
 
 
+
+
 class BitDepthProcessor:
 
 
@@ -15,31 +17,78 @@ class BitDepthProcessor:
         settings
     ):
 
-        source = Path(source_path)
 
-        output = Path(output_path)
-
-
-        bit_depth = settings.get(
-            "bit_depth",
-            8
+        source = Path(
+            source_path
         )
+
+
+        output = Path(
+            output_path
+        )
+
+
+        output.parent.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
+
+
+        value = settings.get(
+            "value",
+            settings.get(
+                "bit_depth",
+                8
+            )
+        )
+
+
+
+        try:
+
+            bit_depth = int(
+                value
+            )
+
+        except Exception:
+
+            raise ValueError(
+                "Invalid bit depth value"
+            )
+
 
 
         with Image.open(source) as image:
 
+
             converted = self.convert_bitdepth(
+
                 image,
+
                 bit_depth
+
             )
+
 
 
             converted.save(
-                output
+
+                output,
+
+                format="TIFF",
+
+                compression="tiff_lzw"
+
             )
 
 
+
         return output
+
+
+
+
 
 
 
@@ -57,21 +106,33 @@ class BitDepthProcessor:
             )
 
 
-        elif bit_depth == 16:
+
+        if bit_depth == 16:
 
             return self.convert_16bit(
                 image
             )
 
 
-        elif bit_depth == 32:
+
+        if bit_depth == 32:
 
             return self.convert_32bit(
                 image
             )
 
 
-        return image
+
+        raise ValueError(
+
+            f"Unsupported bit depth: {bit_depth}"
+
+        )
+
+
+
+
+
 
 
 
@@ -80,13 +141,19 @@ class BitDepthProcessor:
         image
     ):
 
+
         if image.mode in [
+
             "RGB",
+
             "RGBA",
+
             "L"
+
         ]:
 
             return image
+
 
 
         return image.convert(
@@ -95,24 +162,45 @@ class BitDepthProcessor:
 
 
 
+
+
+
+
+
     def convert_16bit(
         self,
         image
     ):
 
-        if image.mode != "L":
 
-            image = image.convert(
-                "L"
-            )
+        if image.mode == "I;16":
+
+            return image
 
 
-        return image.point(
-            lambda value:
-            value * 257
-        ).convert(
-            "I;16"
+
+        grayscale = image.convert(
+            "L"
         )
+
+
+
+        return grayscale.point(
+
+            lambda value:
+
+            value * 257
+
+        ).convert(
+
+            "I;16"
+
+        )
+
+
+
+
+
 
 
 
@@ -120,6 +208,7 @@ class BitDepthProcessor:
         self,
         image
     ):
+
 
         grayscale = image.convert(
             "L"
