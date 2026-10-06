@@ -1,13 +1,18 @@
-from PySide6.QtWidgets import (
-    QLabel,
-    QCheckBox,
-    QComboBox
-)
-
-
 from ui.components.format_options.base_format_options import (
     BaseFormatOptions
 )
+
+
+from ui.components.format_options.common.checkbox_field import (
+    CheckboxField
+)
+
+
+from ui.components.format_options.common.dropdown_field import (
+    DropdownField
+)
+
+
 
 
 
@@ -23,6 +28,8 @@ class ICOOptions(
     ):
 
         super().__init__()
+
+        self.setup_connections()
 
 
 
@@ -48,20 +55,9 @@ class ICOOptions(
         # =====================
 
 
-        self.add_widget(
+        self.size = DropdownField(
 
-            QLabel(
-                "Icon Size"
-            )
-
-        )
-
-
-        self.size = QComboBox()
-
-
-
-        self.size.addItems(
+            "Icon Size",
 
             [
 
@@ -77,12 +73,7 @@ class ICOOptions(
 
                 "256"
 
-            ]
-
-        )
-
-
-        self.size.setCurrentText(
+            ],
 
             "256"
 
@@ -108,20 +99,9 @@ class ICOOptions(
         # =====================
 
 
-        self.add_widget(
+        self.bit_depth = DropdownField(
 
-            QLabel(
-                "Bit Depth"
-            )
-
-        )
-
-
-        self.bit_depth = QComboBox()
-
-
-
-        self.bit_depth.addItems(
+            "Bit Depth",
 
             [
 
@@ -135,12 +115,7 @@ class ICOOptions(
 
                 "32"
 
-            ]
-
-        )
-
-
-        self.bit_depth.setCurrentText(
+            ],
 
             "32"
 
@@ -166,14 +141,9 @@ class ICOOptions(
         # =====================
 
 
-        self.alpha = QCheckBox(
+        self.alpha = CheckboxField(
 
-            "Preserve Alpha Channel"
-
-        )
-
-
-        self.alpha.setChecked(
+            "Preserve Alpha Channel",
 
             True
 
@@ -199,14 +169,9 @@ class ICOOptions(
         # =====================
 
 
-        self.multiple_sizes = QCheckBox(
+        self.multiple_sizes = CheckboxField(
 
-            "Generate Multiple Icon Sizes"
-
-        )
-
-
-        self.multiple_sizes.setChecked(
+            "Generate Multiple Icon Sizes",
 
             True
 
@@ -227,6 +192,73 @@ class ICOOptions(
 
 
 
+    def setup_connections(
+        self
+    ):
+
+
+        self.bit_depth.value_changed.connect(
+
+            self.update_alpha
+
+        )
+
+
+        self.update_alpha(
+
+            "32"
+
+        )
+
+
+
+
+
+
+
+
+
+    def update_alpha(
+        self,
+        depth
+    ):
+
+
+        enabled = (
+
+            int(depth) == 32
+
+        )
+
+
+
+        self.alpha.setEnabled(
+
+            enabled
+
+        )
+
+
+
+        if not enabled:
+
+
+            self.alpha.set_value(
+
+                False
+
+            )
+
+
+
+        self.emit_settings_changed()
+
+
+
+
+
+
+
     def get_settings(
         self
     ):
@@ -239,7 +271,7 @@ class ICOOptions(
 
                 int(
 
-                    self.size.currentText()
+                    self.size.value()
 
                 ),
 
@@ -249,7 +281,7 @@ class ICOOptions(
 
                 int(
 
-                    self.bit_depth.currentText()
+                    self.bit_depth.value()
 
                 ),
 
@@ -257,13 +289,13 @@ class ICOOptions(
 
             "alpha":
 
-                self.alpha.isChecked(),
+                self.alpha.value(),
 
 
 
             "multiple_sizes":
 
-                self.multiple_sizes.isChecked()
+                self.multiple_sizes.value()
 
         }
 
@@ -280,28 +312,28 @@ class ICOOptions(
     ):
 
 
-        self.size.setCurrentText(
+        self.size.set_value(
 
             "256"
 
         )
 
 
-        self.bit_depth.setCurrentText(
+        self.bit_depth.set_value(
 
             "32"
 
         )
 
 
-        self.alpha.setChecked(
+        self.alpha.set_value(
 
             True
 
         )
 
 
-        self.multiple_sizes.setChecked(
+        self.multiple_sizes.set_value(
 
             True
 

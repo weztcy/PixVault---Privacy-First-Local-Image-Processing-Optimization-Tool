@@ -1,14 +1,24 @@
-from PySide6.QtWidgets import (
-    QLabel,
-    QCheckBox,
-    QComboBox,
-    QLineEdit
-)
-
-
 from ui.components.format_options.base_format_options import (
     BaseFormatOptions
 )
+
+
+from ui.components.format_options.common.checkbox_field import (
+    CheckboxField
+)
+
+
+from ui.components.format_options.common.dropdown_field import (
+    DropdownField
+)
+
+
+from PySide6.QtWidgets import (
+    QLineEdit,
+    QLabel
+)
+
+
 
 
 
@@ -24,6 +34,8 @@ class TIFFOptions(
     ):
 
         super().__init__()
+
+        self.setup_connections()
 
 
 
@@ -48,20 +60,9 @@ class TIFFOptions(
         # =====================
 
 
-        self.add_widget(
+        self.compression = DropdownField(
 
-            QLabel(
-                "Compression"
-            )
-
-        )
-
-
-        self.compression = QComboBox()
-
-
-
-        self.compression.addItems(
+            "Compression",
 
             [
 
@@ -77,12 +78,7 @@ class TIFFOptions(
 
                 "zstd"
 
-            ]
-
-        )
-
-
-        self.compression.setCurrentText(
+            ],
 
             "lzw"
 
@@ -102,25 +98,15 @@ class TIFFOptions(
 
 
 
+
         # =====================
         # PREDICTOR
         # =====================
 
 
-        self.add_widget(
+        self.predictor = DropdownField(
 
-            QLabel(
-                "Predictor"
-            )
-
-        )
-
-
-        self.predictor = QComboBox()
-
-
-
-        self.predictor.addItems(
+            "Predictor",
 
             [
 
@@ -130,12 +116,7 @@ class TIFFOptions(
 
                 "floating_point"
 
-            ]
-
-        )
-
-
-        self.predictor.setCurrentText(
+            ],
 
             "horizontal"
 
@@ -155,19 +136,15 @@ class TIFFOptions(
 
 
 
+
         # =====================
         # BIG TIFF
         # =====================
 
 
-        self.bigtiff = QCheckBox(
+        self.bigtiff = CheckboxField(
 
-            "Enable BigTIFF"
-
-        )
-
-
-        self.bigtiff.setChecked(
+            "Enable BigTIFF",
 
             False
 
@@ -187,19 +164,15 @@ class TIFFOptions(
 
 
 
+
         # =====================
         # TILED
         # =====================
 
 
-        self.tiled = QCheckBox(
+        self.tiled = CheckboxField(
 
-            "Enable Tiled Image"
-
-        )
-
-
-        self.tiled.setChecked(
+            "Enable Tiled Image",
 
             False
 
@@ -219,16 +192,22 @@ class TIFFOptions(
 
 
 
+
         # =====================
         # TILE WIDTH
         # =====================
 
 
+        self.tile_width_label = QLabel(
+
+            "Tile Width"
+
+        )
+
+
         self.add_widget(
 
-            QLabel(
-                "Tile Width"
-            )
+            self.tile_width_label
 
         )
 
@@ -253,16 +232,22 @@ class TIFFOptions(
 
 
 
+
         # =====================
         # TILE HEIGHT
         # =====================
 
 
+        self.tile_height_label = QLabel(
+
+            "Tile Height"
+
+        )
+
+
         self.add_widget(
 
-            QLabel(
-                "Tile Height"
-            )
+            self.tile_height_label
 
         )
 
@@ -287,16 +272,22 @@ class TIFFOptions(
 
 
 
+
         # =====================
         # DPI
         # =====================
 
 
+        self.dpi_label = QLabel(
+
+            "Resolution DPI"
+
+        )
+
+
         self.add_widget(
 
-            QLabel(
-                "Resolution DPI"
-            )
+            self.dpi_label
 
         )
 
@@ -322,6 +313,121 @@ class TIFFOptions(
 
 
 
+    def setup_connections(
+        self
+    ):
+
+
+        self.compression.value_changed.connect(
+
+            self.update_predictor
+
+        )
+
+
+        self.tiled.value_changed.connect(
+
+            self.update_tiles
+
+        )
+
+
+        self.update_predictor(
+
+            self.compression.value()
+
+        )
+
+
+        self.update_tiles(
+
+            False
+
+        )
+
+
+
+
+
+
+
+
+
+    def update_predictor(
+        self,
+        compression
+    ):
+
+
+        enabled = compression in [
+
+            "lzw",
+
+            "deflate",
+
+            "zstd"
+
+        ]
+
+
+        self.predictor.setEnabled(
+
+            enabled
+
+        )
+
+
+
+        self.emit_settings_changed()
+
+
+
+
+
+
+
+    def update_tiles(
+        self,
+        enabled
+    ):
+
+
+        self.tile_width.setEnabled(
+
+            enabled
+
+        )
+
+
+        self.tile_height.setEnabled(
+
+            enabled
+
+        )
+
+
+        self.tile_width_label.setEnabled(
+
+            enabled
+
+        )
+
+
+        self.tile_height_label.setEnabled(
+
+            enabled
+
+        )
+
+
+        self.emit_settings_changed()
+
+
+
+
+
+
+
     def get_settings(
         self
     ):
@@ -332,43 +438,55 @@ class TIFFOptions(
 
             "compression":
 
-                self.compression.currentText(),
+                self.compression.value(),
 
 
 
             "predictor":
 
-                self.predictor.currentText(),
+                self.predictor.value(),
 
 
 
             "bigtiff":
 
-                self.bigtiff.isChecked(),
+                self.bigtiff.value(),
 
 
 
             "tiled":
 
-                self.tiled.isChecked(),
+                self.tiled.value(),
 
 
 
             "tile_width":
 
-                self.tile_width.text(),
+                int(
+
+                    self.tile_width.text()
+
+                ),
 
 
 
             "tile_height":
 
-                self.tile_height.text(),
+                int(
+
+                    self.tile_height.text()
+
+                ),
 
 
 
             "dpi":
 
-                self.dpi.text()
+                int(
+
+                    self.dpi.text()
+
+                )
 
         }
 
@@ -385,28 +503,28 @@ class TIFFOptions(
     ):
 
 
-        self.compression.setCurrentText(
+        self.compression.set_value(
 
             "lzw"
 
         )
 
 
-        self.predictor.setCurrentText(
+        self.predictor.set_value(
 
             "horizontal"
 
         )
 
 
-        self.bigtiff.setChecked(
+        self.bigtiff.set_value(
 
             False
 
         )
 
 
-        self.tiled.setChecked(
+        self.tiled.set_value(
 
             False
 

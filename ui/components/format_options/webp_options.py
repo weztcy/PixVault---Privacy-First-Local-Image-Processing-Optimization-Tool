@@ -1,19 +1,33 @@
 from PySide6.QtWidgets import (
-    QLabel,
-    QCheckBox,
-    QSlider,
-    QComboBox
-)
-
-
-from PySide6.QtCore import (
-    Qt
+    QLabel
 )
 
 
 from ui.components.format_options.base_format_options import (
     BaseFormatOptions
 )
+
+
+from ui.components.format_options.common.slider_field import (
+    SliderField
+)
+
+
+from ui.components.format_options.common.checkbox_field import (
+    CheckboxField
+)
+
+
+from ui.components.format_options.common.dropdown_field import (
+    DropdownField
+)
+
+
+from ui.components.format_options.common.radio_mode_selector import (
+    RadioModeSelector
+)
+
+
 
 
 
@@ -30,6 +44,7 @@ class WEBPOptions(
 
         super().__init__()
 
+        self.setup_connections()
 
 
 
@@ -48,30 +63,35 @@ class WEBPOptions(
 
 
 
+
         # =====================
-        # LOSSLESS
+        # COMPRESSION MODE
         # =====================
 
 
-        self.lossless = QCheckBox(
+        self.mode = RadioModeSelector(
 
-            "Lossless Compression"
+            "Compression Mode",
 
-        )
+            [
 
+                "Lossless",
 
-        self.lossless.setChecked(
+                "Lossy"
 
-            False
+            ],
+
+            "Lossy"
 
         )
 
 
         self.add_widget(
 
-            self.lossless
+            self.mode
 
         )
+
 
 
 
@@ -81,35 +101,17 @@ class WEBPOptions(
 
         # =====================
         # QUALITY
+        # LOSSY ONLY
         # =====================
 
 
-        self.add_widget(
+        self.quality = SliderField(
 
-            QLabel(
-                "Quality"
-            )
-
-        )
-
-
-        self.quality = QSlider(
-
-            Qt.Orientation.Horizontal
-
-        )
-
-
-        self.quality.setRange(
+            "Quality",
 
             1,
 
-            100
-
-        )
-
-
-        self.quality.setValue(
+            100,
 
             85
 
@@ -128,26 +130,17 @@ class WEBPOptions(
 
 
 
+
+
         # =====================
         # METHOD
+        # GLOBAL
         # =====================
 
 
-        self.add_widget(
+        self.method = DropdownField(
 
-            QLabel(
-                "Compression Method"
-            )
-
-        )
-
-
-
-        self.method = QComboBox()
-
-
-
-        self.method.addItems(
+            "Compression Method",
 
             [
 
@@ -165,12 +158,7 @@ class WEBPOptions(
 
                 "6"
 
-            ]
-
-        )
-
-
-        self.method.setCurrentText(
+            ],
 
             "4"
 
@@ -189,38 +177,21 @@ class WEBPOptions(
 
 
 
+
+
         # =====================
         # ALPHA QUALITY
+        # GLOBAL
         # =====================
 
 
-        self.add_widget(
+        self.alpha_quality = SliderField(
 
-            QLabel(
-                "Alpha Quality"
-            )
-
-        )
-
-
-
-        self.alpha_quality = QSlider(
-
-            Qt.Orientation.Horizontal
-
-        )
-
-
-        self.alpha_quality.setRange(
+            "Alpha Quality",
 
             0,
 
-            100
-
-        )
-
-
-        self.alpha_quality.setValue(
+            100,
 
             100
 
@@ -239,19 +210,17 @@ class WEBPOptions(
 
 
 
+
+
         # =====================
         # NEAR LOSSLESS
+        # LOSSY ONLY
         # =====================
 
 
-        self.near_lossless = QCheckBox(
+        self.near_lossless = CheckboxField(
 
-            "Near Lossless"
-
-        )
-
-
-        self.near_lossless.setChecked(
+            "Near Lossless",
 
             False
 
@@ -270,19 +239,17 @@ class WEBPOptions(
 
 
 
+
+
         # =====================
         # EXACT
+        # LOSSLESS ONLY
         # =====================
 
 
-        self.exact = QCheckBox(
+        self.exact = CheckboxField(
 
-            "Preserve Exact RGB"
-
-        )
-
-
-        self.exact.setChecked(
+            "Preserve Exact RGB",
 
             False
 
@@ -303,23 +270,90 @@ class WEBPOptions(
 
 
 
+    def setup_connections(
+        self
+    ):
+
+
+        self.mode.mode_changed.connect(
+
+            self.update_mode
+
+        )
+
+
+        self.update_mode(
+
+            self.mode.value()
+
+        )
+
+
+
+
+
+
+
+
+
+    def update_mode(
+        self,
+        mode
+    ):
+
+
+        is_lossless = (
+
+            mode == "Lossless"
+
+        )
+
+
+
+        self.quality.setVisible(
+
+            not is_lossless
+
+        )
+
+
+        self.near_lossless.setVisible(
+
+            not is_lossless
+
+        )
+
+
+        self.exact.setVisible(
+
+            is_lossless
+
+        )
+
+
+        self.emit_settings_changed()
+
+
+
+
+
+
+
     def get_settings(
         self
     ):
 
 
-        return {
-
-
-            "lossless":
-
-                self.lossless.isChecked(),
+        mode = self.mode.value()
 
 
 
-            "quality":
+        settings = {
 
-                self.quality.value(),
+
+            "mode":
+
+                mode,
 
 
 
@@ -327,7 +361,7 @@ class WEBPOptions(
 
                 int(
 
-                    self.method.currentText()
+                    self.method.value()
 
                 ),
 
@@ -335,23 +369,47 @@ class WEBPOptions(
 
             "alpha_quality":
 
-                self.alpha_quality.value(),
-
-
-
-            "near_lossless":
-
-                self.near_lossless.isChecked(),
-
-
-
-            "exact":
-
-                self.exact.isChecked()
+                self.alpha_quality.value()
 
         }
 
 
+
+
+
+
+        if mode == "Lossless":
+
+
+            settings.update({
+
+                "exact":
+
+                    self.exact.value()
+
+            })
+
+
+
+        else:
+
+
+            settings.update({
+
+                "quality":
+
+                    self.quality.value(),
+
+
+                "near_lossless":
+
+                    self.near_lossless.value()
+
+            })
+
+
+
+        return settings
 
 
 
@@ -364,42 +422,42 @@ class WEBPOptions(
     ):
 
 
-        self.lossless.setChecked(
+        self.mode.set_value(
 
-            False
+            "Lossy"
 
         )
 
 
-        self.quality.setValue(
+        self.quality.set_value(
 
             85
 
         )
 
 
-        self.method.setCurrentText(
+        self.method.set_value(
 
             "4"
 
         )
 
 
-        self.alpha_quality.setValue(
+        self.alpha_quality.set_value(
 
             100
 
         )
 
 
-        self.near_lossless.setChecked(
+        self.near_lossless.set_value(
 
             False
 
         )
 
 
-        self.exact.setChecked(
+        self.exact.set_value(
 
             False
 

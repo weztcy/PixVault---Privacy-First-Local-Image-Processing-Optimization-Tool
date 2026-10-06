@@ -1,19 +1,23 @@
-from PySide6.QtWidgets import (
-    QLabel,
-    QCheckBox,
-    QSlider,
-    QComboBox
-)
-
-
-from PySide6.QtCore import (
-    Qt
-)
-
-
 from ui.components.format_options.base_format_options import (
     BaseFormatOptions
 )
+
+
+from ui.components.format_options.common.slider_field import (
+    SliderField
+)
+
+
+from ui.components.format_options.common.checkbox_field import (
+    CheckboxField
+)
+
+
+from ui.components.format_options.common.dropdown_field import (
+    DropdownField
+)
+
+
 
 
 
@@ -22,7 +26,6 @@ from ui.components.format_options.base_format_options import (
 class PNGOptions(
     BaseFormatOptions
 ):
-
 
 
     def __init__(
@@ -50,43 +53,23 @@ class PNGOptions(
 
 
 
+
         # =====================
         # COMPRESSION LEVEL
         # =====================
 
 
-        self.add_widget(
+        self.compression_level = SliderField(
 
-            QLabel(
-                "Compression Level"
-            )
-
-        )
-
-
-
-        self.compression_level = QSlider(
-
-            Qt.Orientation.Horizontal
-
-        )
-
-
-        self.compression_level.setRange(
+            "Compression Level",
 
             0,
 
-            9
-
-        )
-
-
-        self.compression_level.setValue(
+            9,
 
             6
 
         )
-
 
 
         self.add_widget(
@@ -101,19 +84,16 @@ class PNGOptions(
 
 
 
+
+
         # =====================
         # OPTIMIZE
         # =====================
 
 
-        self.optimize = QCheckBox(
+        self.optimize = CheckboxField(
 
-            "Optimize PNG"
-
-        )
-
-
-        self.optimize.setChecked(
+            "Optimize PNG",
 
             True
 
@@ -132,19 +112,16 @@ class PNGOptions(
 
 
 
+
+
         # =====================
         # INTERLACE
         # =====================
 
 
-        self.interlace = QCheckBox(
+        self.interlace = CheckboxField(
 
-            "Interlaced PNG"
-
-        )
-
-
-        self.interlace.setChecked(
+            "Interlaced PNG",
 
             False
 
@@ -163,26 +140,16 @@ class PNGOptions(
 
 
 
+
+
         # =====================
         # FILTER
         # =====================
 
 
-        self.add_widget(
+        self.filter_mode = DropdownField(
 
-            QLabel(
-                "Filter Strategy"
-            )
-
-        )
-
-
-
-        self.filter_mode = QComboBox()
-
-
-
-        self.filter_mode.addItems(
+            "Filter Strategy",
 
             [
 
@@ -198,18 +165,11 @@ class PNGOptions(
 
                 "adaptive"
 
-            ]
-
-        )
-
-
-
-        self.filter_mode.setCurrentText(
+            ],
 
             "adaptive"
 
         )
-
 
 
         self.add_widget(
@@ -242,19 +202,19 @@ class PNGOptions(
 
             "optimize":
 
-                self.optimize.isChecked(),
+                self.optimize.value(),
 
 
 
             "interlace":
 
-                self.interlace.isChecked(),
+                self.interlace.value(),
 
 
 
             "filter":
 
-                self.filter_mode.currentText()
+                self.filter_mode.value()
 
         }
 
@@ -271,28 +231,28 @@ class PNGOptions(
     ):
 
 
-        self.compression_level.setValue(
+        self.compression_level.set_value(
 
             6
 
         )
 
 
-        self.optimize.setChecked(
+        self.optimize.set_value(
 
             True
 
         )
 
 
-        self.interlace.setChecked(
+        self.interlace.set_value(
 
             False
 
         )
 
 
-        self.filter_mode.setCurrentText(
+        self.filter_mode.set_value(
 
             "adaptive"
 

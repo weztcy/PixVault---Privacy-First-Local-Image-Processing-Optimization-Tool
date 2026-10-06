@@ -39,6 +39,7 @@ class ConvertPage(QWidget):
         batch_service
     ):
 
+
         super().__init__()
 
 
@@ -53,14 +54,21 @@ class ConvertPage(QWidget):
         self.output_folder = None
 
 
+        self.format_settings = {}
+
+
+
         self.setup_ui()
 
 
         self.connect_events()
 
 
+
         self.format_options.set_format(
+
             self.format_box.currentText()
+
         )
 
 
@@ -85,7 +93,9 @@ class ConvertPage(QWidget):
 
 
         self.scroll_area.setWidgetResizable(
+
             True
+
         )
 
 
@@ -95,13 +105,19 @@ class ConvertPage(QWidget):
 
 
         self.layout = QVBoxLayout(
+
             container
+
         )
 
 
         self.layout.setSpacing(
+
             15
+
         )
+
+
 
 
 
@@ -109,13 +125,18 @@ class ConvertPage(QWidget):
 
 
         title = QLabel(
+
             "Convert Image"
+
         )
 
 
         title.setObjectName(
+
             "page_title"
+
         )
+
 
 
 
@@ -148,12 +169,16 @@ class ConvertPage(QWidget):
 
 
         preview_layout.addWidget(
+
             self.preview
+
         )
 
 
         preview_layout.addWidget(
+
             self.info_panel
+
         )
 
 
@@ -169,18 +194,36 @@ class ConvertPage(QWidget):
 
 
         settings_layout = QVBoxLayout(
+
             settings_box
+
         )
+
+
+
+        settings_layout.setSpacing(
+
+            10
+
+        )
+
+
 
 
 
         settings_layout.addWidget(
 
             QLabel(
+
                 "Conversion Settings"
+
             )
 
         )
+
+
+
+
 
 
 
@@ -189,10 +232,14 @@ class ConvertPage(QWidget):
         settings_layout.addWidget(
 
             QLabel(
+
                 "Target Format"
+
             )
 
         )
+
+
 
 
 
@@ -248,22 +295,21 @@ class ConvertPage(QWidget):
 
 
 
-        # =====================
-        # FORMAT OPTIONS
-        # =====================
-
-
-        self.format_options = FormatOptionsPanel()
-
-
 
         settings_layout.addWidget(
 
             QLabel(
+
                 "Format Options"
+
             )
 
         )
+
+
+
+        self.format_options = FormatOptionsPanel()
+
 
 
         settings_layout.addWidget(
@@ -293,6 +339,10 @@ class ConvertPage(QWidget):
 
 
 
+
+
+
+
         self.progress = ExportProgress()
 
 
@@ -312,44 +362,59 @@ class ConvertPage(QWidget):
 
 
         self.layout.addWidget(
+
             title
+
         )
 
 
         self.layout.addWidget(
+
             self.importer
+
         )
 
 
         self.layout.addWidget(
+
             self.image_list
+
         )
 
 
         self.layout.addLayout(
+
             preview_layout
+
         )
 
 
         self.layout.addWidget(
+
             settings_box
+
         )
 
 
         self.layout.addWidget(
+
             self.output_selector
+
         )
 
 
         self.layout.addWidget(
+
             self.progress
+
         )
 
 
         self.layout.addWidget(
-            self.start_button
-        )
 
+            self.start_button
+
+        )
 
 
         self.layout.addStretch()
@@ -358,14 +423,19 @@ class ConvertPage(QWidget):
 
 
 
+
+
         self.scroll_area.setWidget(
+
             container
+
         )
 
 
-
         root_layout.addWidget(
+
             self.scroll_area
+
         )
 
 
@@ -379,7 +449,6 @@ class ConvertPage(QWidget):
     def connect_events(
         self
     ):
-
 
 
         self.importer.images_added.connect(
@@ -408,7 +477,15 @@ class ConvertPage(QWidget):
 
         self.format_box.currentTextChanged.connect(
 
-            self.format_options.set_format
+            self.change_format
+
+        )
+
+
+
+        self.format_options.settings_changed.connect(
+
+            self.update_format_settings
 
         )
 
@@ -445,6 +522,42 @@ class ConvertPage(QWidget):
         )
 
 
+
+
+
+
+
+
+
+    def change_format(
+        self,
+        format_name
+    ):
+
+
+        self.format_options.set_format(
+
+            format_name
+
+        )
+
+
+
+        self.format_options.reset()
+
+
+
+
+
+
+
+    def update_format_settings(
+        self,
+        settings
+    ):
+
+
+        self.format_settings = settings
 
 
 
@@ -536,9 +649,7 @@ class ConvertPage(QWidget):
     ):
 
 
-
         return {
-
 
 
             "operations":
@@ -560,7 +671,7 @@ class ConvertPage(QWidget):
 
                     "options":
 
-                        self.format_options.get_settings()
+                        self.format_settings
 
                 }
 
@@ -600,8 +711,8 @@ class ConvertPage(QWidget):
 
 
 
-        if not self.output_folder:
 
+        if not self.output_folder:
 
 
             QMessageBox.warning(
@@ -616,6 +727,7 @@ class ConvertPage(QWidget):
 
 
             return
+
 
 
 
@@ -639,7 +751,6 @@ class ConvertPage(QWidget):
         try:
 
 
-
             self.batch_service.start_batch(
 
                 self.images,
@@ -661,8 +772,6 @@ class ConvertPage(QWidget):
 
 
 
-
-
         except Exception as error:
 
 
@@ -672,7 +781,6 @@ class ConvertPage(QWidget):
                 True
 
             )
-
 
 
             QMessageBox.critical(

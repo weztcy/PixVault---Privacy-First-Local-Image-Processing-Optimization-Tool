@@ -4,10 +4,25 @@ from PySide6.QtWidgets import (
 )
 
 
+from PySide6.QtCore import (
+    Signal
+)
+
+
+
+
 
 
 
 class BaseFormatOptions(QWidget):
+
+
+    settings_changed = Signal(
+        dict
+    )
+
+
+
 
 
     def __init__(
@@ -17,7 +32,11 @@ class BaseFormatOptions(QWidget):
         super().__init__()
 
 
+        self.widgets = []
+
+
         self.setup_ui()
+
 
 
 
@@ -40,6 +59,16 @@ class BaseFormatOptions(QWidget):
         )
 
 
+        self.layout.setContentsMargins(
+            0,
+            0,
+            0,
+            0
+        )
+
+
+
+
 
 
 
@@ -51,9 +80,125 @@ class BaseFormatOptions(QWidget):
     ):
 
 
-        self.layout.addWidget(
+        self.widgets.append(
+
             widget
+
         )
+
+
+        self.layout.addWidget(
+
+            widget
+
+        )
+
+
+
+
+
+
+
+
+
+    def remove_widget(
+        self,
+        widget
+    ):
+
+
+        if widget in self.widgets:
+
+
+            self.widgets.remove(
+
+                widget
+
+            )
+
+
+        self.layout.removeWidget(
+
+            widget
+
+        )
+
+
+        widget.deleteLater()
+
+
+
+
+
+
+
+
+
+    def clear_options(
+        self
+    ):
+
+
+        for widget in self.widgets:
+
+
+            self.layout.removeWidget(
+
+                widget
+
+            )
+
+
+            widget.deleteLater()
+
+
+
+        self.widgets.clear()
+
+
+
+
+
+
+
+
+
+    def set_widget_visible(
+        self,
+        widget,
+        visible
+    ):
+
+
+        if widget:
+
+
+            widget.setVisible(
+
+                visible
+
+            )
+
+
+
+
+
+
+
+
+
+    def emit_settings_changed(
+        self
+    ):
+
+
+        self.settings_changed.emit(
+
+            self.get_settings()
+
+        )
+
+
 
 
 
@@ -80,8 +225,9 @@ class BaseFormatOptions(QWidget):
 
         """
 
-
         return {}
+
+
 
 
 
@@ -95,11 +241,10 @@ class BaseFormatOptions(QWidget):
 
 
         """
-        Reset all widgets to default value.
+        Reset all widgets.
 
-        Override if format needs reset logic.
+        Child classes should override.
         """
-
 
         pass
 
@@ -109,16 +254,24 @@ class BaseFormatOptions(QWidget):
 
 
 
+
+
     def set_defaults(
-        self
+        self,
+        settings=None
     ):
 
 
         """
-        Optional method.
+        Load saved encoder settings.
 
-        Used when loading saved settings.
+        Example:
+
+        {
+            "quality":85,
+            "lossless":False
+        }
+
         """
-
 
         pass

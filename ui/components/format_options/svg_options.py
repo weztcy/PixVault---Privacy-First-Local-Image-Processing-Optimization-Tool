@@ -1,19 +1,23 @@
-from PySide6.QtWidgets import (
-    QLabel,
-    QCheckBox,
-    QSlider,
-    QComboBox
-)
-
-
-from PySide6.QtCore import (
-    Qt
-)
-
-
 from ui.components.format_options.base_format_options import (
     BaseFormatOptions
 )
+
+
+from ui.components.format_options.common.checkbox_field import (
+    CheckboxField
+)
+
+
+from ui.components.format_options.common.dropdown_field import (
+    DropdownField
+)
+
+
+from ui.components.format_options.common.slider_field import (
+    SliderField
+)
+
+
 
 
 
@@ -48,25 +52,15 @@ class SVGOptions(
 
 
 
+
         # =====================
         # SVG VERSION
         # =====================
 
 
-        self.add_widget(
+        self.version = DropdownField(
 
-            QLabel(
-                "SVG Version"
-            )
-
-        )
-
-
-        self.version = QComboBox()
-
-
-
-        self.version.addItems(
+            "SVG Version",
 
             [
 
@@ -76,12 +70,7 @@ class SVGOptions(
 
                 "2.0"
 
-            ]
-
-        )
-
-
-        self.version.setCurrentText(
+            ],
 
             "1.1"
 
@@ -101,37 +90,19 @@ class SVGOptions(
 
 
 
+
         # =====================
         # PRECISION
         # =====================
 
 
-        self.add_widget(
+        self.precision = SliderField(
 
-            QLabel(
-                "Decimal Precision"
-            )
-
-        )
-
-
-        self.precision = QSlider(
-
-            Qt.Orientation.Horizontal
-
-        )
-
-
-        self.precision.setRange(
+            "Decimal Precision",
 
             0,
 
-            10
-
-        )
-
-
-        self.precision.setValue(
+            10,
 
             3
 
@@ -151,19 +122,15 @@ class SVGOptions(
 
 
 
+
         # =====================
         # OPTIMIZE PATH
         # =====================
 
 
-        self.optimize_path = QCheckBox(
+        self.optimize_path = CheckboxField(
 
-            "Optimize SVG Paths"
-
-        )
-
-
-        self.optimize_path.setChecked(
+            "Optimize SVG Paths",
 
             True
 
@@ -183,19 +150,15 @@ class SVGOptions(
 
 
 
+
         # =====================
         # REMOVE METADATA
         # =====================
 
 
-        self.remove_metadata = QCheckBox(
+        self.remove_metadata = CheckboxField(
 
-            "Remove Metadata"
-
-        )
-
-
-        self.remove_metadata.setChecked(
+            "Remove Metadata",
 
             True
 
@@ -215,19 +178,15 @@ class SVGOptions(
 
 
 
+
         # =====================
         # EMBED IMAGES
         # =====================
 
 
-        self.embed_images = QCheckBox(
+        self.embed_images = CheckboxField(
 
-            "Embed Raster Images"
-
-        )
-
-
-        self.embed_images.setChecked(
+            "Embed Raster Images",
 
             False
 
@@ -247,19 +206,15 @@ class SVGOptions(
 
 
 
+
         # =====================
-        # TEXT AS PATH
+        # TEXT PATH
         # =====================
 
 
-        self.text_as_path = QCheckBox(
+        self.text_as_path = CheckboxField(
 
-            "Convert Text To Path"
-
-        )
-
-
-        self.text_as_path.setChecked(
+            "Convert Text To Path",
 
             False
 
@@ -290,7 +245,7 @@ class SVGOptions(
 
             "version":
 
-                self.version.currentText(),
+                self.version.value(),
 
 
 
@@ -302,25 +257,25 @@ class SVGOptions(
 
             "optimize_path":
 
-                self.optimize_path.isChecked(),
+                self.optimize_path.value(),
 
 
 
             "remove_metadata":
 
-                self.remove_metadata.isChecked(),
+                self.remove_metadata.value(),
 
 
 
             "embed_images":
 
-                self.embed_images.isChecked(),
+                self.embed_images.value(),
 
 
 
             "text_as_path":
 
-                self.text_as_path.isChecked()
+                self.text_as_path.value()
 
         }
 
@@ -337,42 +292,42 @@ class SVGOptions(
     ):
 
 
-        self.version.setCurrentText(
+        self.version.set_value(
 
             "1.1"
 
         )
 
 
-        self.precision.setValue(
+        self.precision.set_value(
 
             3
 
         )
 
 
-        self.optimize_path.setChecked(
+        self.optimize_path.set_value(
 
             True
 
         )
 
 
-        self.remove_metadata.setChecked(
+        self.remove_metadata.set_value(
 
             True
 
         )
 
 
-        self.embed_images.setChecked(
+        self.embed_images.set_value(
 
             False
 
         )
 
 
-        self.text_as_path.setChecked(
+        self.text_as_path.set_value(
 
             False
 

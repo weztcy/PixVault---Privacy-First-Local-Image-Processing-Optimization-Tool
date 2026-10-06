@@ -1,19 +1,23 @@
-from PySide6.QtWidgets import (
-    QLabel,
-    QCheckBox,
-    QSlider,
-    QComboBox
-)
-
-
-from PySide6.QtCore import (
-    Qt
-)
-
-
 from ui.components.format_options.base_format_options import (
     BaseFormatOptions
 )
+
+
+from ui.components.format_options.common.slider_field import (
+    SliderField
+)
+
+
+from ui.components.format_options.common.checkbox_field import (
+    CheckboxField
+)
+
+
+from ui.components.format_options.common.dropdown_field import (
+    DropdownField
+)
+
+
 
 
 
@@ -33,9 +37,6 @@ class JPEGOptions(
 
 
 
-
-
-
     def setup_ui(
         self
     ):
@@ -45,43 +46,26 @@ class JPEGOptions(
 
 
 
+
+
+
+
         # =====================
         # QUALITY
         # =====================
 
 
-        self.add_widget(
+        self.quality = SliderField(
 
-            QLabel(
-                "Quality"
-            )
-
-        )
-
-
-
-        self.quality = QSlider(
-
-            Qt.Orientation.Horizontal
-
-        )
-
-
-        self.quality.setRange(
+            "Quality",
 
             1,
 
-            100
-
-        )
-
-
-        self.quality.setValue(
+            100,
 
             85
 
         )
-
 
 
         self.add_widget(
@@ -96,19 +80,16 @@ class JPEGOptions(
 
 
 
+
+
         # =====================
         # PROGRESSIVE
         # =====================
 
 
-        self.progressive = QCheckBox(
+        self.progressive = CheckboxField(
 
-            "Progressive JPEG"
-
-        )
-
-
-        self.progressive.setChecked(
+            "Progressive JPEG",
 
             True
 
@@ -127,19 +108,16 @@ class JPEGOptions(
 
 
 
+
+
         # =====================
         # OPTIMIZE
         # =====================
 
 
-        self.optimize = QCheckBox(
+        self.optimize = CheckboxField(
 
-            "Optimize Huffman Coding"
-
-        )
-
-
-        self.optimize.setChecked(
+            "Optimize Huffman Coding",
 
             True
 
@@ -158,26 +136,16 @@ class JPEGOptions(
 
 
 
+
+
         # =====================
         # SUBSAMPLING
         # =====================
 
 
-        self.add_widget(
+        self.subsampling = DropdownField(
 
-            QLabel(
-                "Chroma Subsampling"
-            )
-
-        )
-
-
-
-        self.subsampling = QComboBox()
-
-
-
-        self.subsampling.addItems(
+            "Chroma Subsampling",
 
             [
 
@@ -187,18 +155,11 @@ class JPEGOptions(
 
                 "4:2:0"
 
-            ]
-
-        )
-
-
-
-        self.subsampling.setCurrentText(
+            ],
 
             "4:2:0"
 
         )
-
 
 
         self.add_widget(
@@ -231,21 +192,23 @@ class JPEGOptions(
 
             "progressive":
 
-                self.progressive.isChecked(),
+                self.progressive.value(),
 
 
 
             "optimize":
 
-                self.optimize.isChecked(),
+                self.optimize.value(),
 
 
 
             "subsampling":
 
-                self.subsampling.currentText()
+                self.subsampling.value()
 
         }
+
+
 
 
 
@@ -258,28 +221,28 @@ class JPEGOptions(
     ):
 
 
-        self.quality.setValue(
+        self.quality.set_value(
 
             85
 
         )
 
 
-        self.progressive.setChecked(
+        self.progressive.set_value(
 
             True
 
         )
 
 
-        self.optimize.setChecked(
+        self.optimize.set_value(
 
             True
 
         )
 
 
-        self.subsampling.setCurrentText(
+        self.subsampling.set_value(
 
             "4:2:0"
 

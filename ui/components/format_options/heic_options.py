@@ -1,19 +1,28 @@
-from PySide6.QtWidgets import (
-    QLabel,
-    QCheckBox,
-    QSlider,
-    QComboBox
-)
-
-
-from PySide6.QtCore import (
-    Qt
-)
-
-
 from ui.components.format_options.base_format_options import (
     BaseFormatOptions
 )
+
+
+from ui.components.format_options.common.slider_field import (
+    SliderField
+)
+
+
+from ui.components.format_options.common.checkbox_field import (
+    CheckboxField
+)
+
+
+from ui.components.format_options.common.dropdown_field import (
+    DropdownField
+)
+
+
+from ui.components.format_options.common.radio_mode_selector import (
+    RadioModeSelector
+)
+
+
 
 
 
@@ -30,6 +39,7 @@ class HEICOptions(
 
         super().__init__()
 
+        self.setup_connections()
 
 
 
@@ -51,36 +61,54 @@ class HEICOptions(
 
 
         # =====================
-        # QUALITY
+        # MODE
         # =====================
+
+
+        self.mode = RadioModeSelector(
+
+            "Compression Mode",
+
+            [
+
+                "Lossy",
+
+                "Lossless"
+
+            ],
+
+            "Lossy"
+
+        )
 
 
         self.add_widget(
 
-            QLabel(
-                "Quality"
-            )
+            self.mode
 
         )
 
 
-        self.quality = QSlider(
-
-            Qt.Orientation.Horizontal
-
-        )
 
 
-        self.quality.setRange(
+
+
+
+
+
+        # =====================
+        # QUALITY
+        # LOSSY ONLY
+        # =====================
+
+
+        self.quality = SliderField(
+
+            "Quality",
 
             1,
 
-            100
-
-        )
-
-
-        self.quality.setValue(
+            100,
 
             85
 
@@ -102,57 +130,14 @@ class HEICOptions(
 
 
         # =====================
-        # LOSSLESS
-        # =====================
-
-
-        self.lossless = QCheckBox(
-
-            "Lossless Compression"
-
-        )
-
-
-        self.lossless.setChecked(
-
-            False
-
-        )
-
-
-        self.add_widget(
-
-            self.lossless
-
-        )
-
-
-
-
-
-
-
-
-
-        # =====================
         # COMPRESSION
+        # GLOBAL
         # =====================
 
 
-        self.add_widget(
+        self.compression = DropdownField(
 
-            QLabel(
-                "Compression"
-            )
-
-        )
-
-
-        self.compression = QComboBox()
-
-
-
-        self.compression.addItems(
+            "Compression",
 
             [
 
@@ -160,12 +145,7 @@ class HEICOptions(
 
                 "hevc_lossless"
 
-            ]
-
-        )
-
-
-        self.compression.setCurrentText(
+            ],
 
             "hevc"
 
@@ -188,23 +168,13 @@ class HEICOptions(
 
         # =====================
         # CHROMA
+        # GLOBAL
         # =====================
 
 
-        self.add_widget(
+        self.subsampling = DropdownField(
 
-            QLabel(
-                "Chroma Subsampling"
-            )
-
-        )
-
-
-        self.subsampling = QComboBox()
-
-
-
-        self.subsampling.addItems(
+            "Chroma Subsampling",
 
             [
 
@@ -214,12 +184,7 @@ class HEICOptions(
 
                 "4:2:0"
 
-            ]
-
-        )
-
-
-        self.subsampling.setCurrentText(
+            ],
 
             "4:2:0"
 
@@ -242,17 +207,13 @@ class HEICOptions(
 
         # =====================
         # METADATA
+        # GLOBAL
         # =====================
 
 
-        self.preserve_metadata = QCheckBox(
+        self.preserve_metadata = CheckboxField(
 
-            "Preserve Metadata"
-
-        )
-
-
-        self.preserve_metadata.setChecked(
+            "Preserve Metadata",
 
             False
 
@@ -275,17 +236,13 @@ class HEICOptions(
 
         # =====================
         # ALPHA
+        # GLOBAL
         # =====================
 
 
-        self.alpha = QCheckBox(
+        self.alpha = CheckboxField(
 
-            "Enable Alpha Channel"
-
-        )
-
-
-        self.alpha.setChecked(
+            "Enable Alpha Channel",
 
             True
 
@@ -306,51 +263,130 @@ class HEICOptions(
 
 
 
+    def setup_connections(
+        self
+    ):
+
+
+        self.mode.mode_changed.connect(
+
+            self.update_mode
+
+        )
+
+
+        self.update_mode(
+
+            self.mode.value()
+
+        )
+
+
+
+
+
+
+
+
+
+    def update_mode(
+        self,
+        mode
+    ):
+
+
+        is_lossless = (
+
+            mode == "Lossless"
+
+        )
+
+
+        self.quality.setVisible(
+
+            not is_lossless
+
+        )
+
+
+        self.emit_settings_changed()
+
+
+
+
+
+
+
     def get_settings(
         self
     ):
 
 
-        return {
-
-
-            "quality":
-
-                self.quality.value(),
+        mode = self.mode.value()
 
 
 
-            "lossless":
+        settings = {
 
-                self.lossless.isChecked(),
+
+            "mode":
+
+                mode,
 
 
 
             "compression":
 
-                self.compression.currentText(),
+                self.compression.value(),
 
 
 
             "subsampling":
 
-                self.subsampling.currentText(),
+                self.subsampling.value(),
 
 
 
             "preserve_metadata":
 
-                self.preserve_metadata.isChecked(),
+                self.preserve_metadata.value(),
 
 
 
             "alpha":
 
-                self.alpha.isChecked()
+                self.alpha.value()
 
         }
 
 
+
+
+
+
+        if mode == "Lossy":
+
+
+            settings["quality"] = (
+
+                self.quality.value()
+
+            )
+
+
+
+        else:
+
+
+            settings["compression"] = (
+
+                "hevc_lossless"
+
+            )
+
+
+
+        return settings
 
 
 
@@ -363,42 +399,42 @@ class HEICOptions(
     ):
 
 
-        self.quality.setValue(
+        self.mode.set_value(
+
+            "Lossy"
+
+        )
+
+
+        self.quality.set_value(
 
             85
 
         )
 
 
-        self.lossless.setChecked(
-
-            False
-
-        )
-
-
-        self.compression.setCurrentText(
+        self.compression.set_value(
 
             "hevc"
 
         )
 
 
-        self.subsampling.setCurrentText(
+        self.subsampling.set_value(
 
             "4:2:0"
 
         )
 
 
-        self.preserve_metadata.setChecked(
+        self.preserve_metadata.set_value(
 
             False
 
         )
 
 
-        self.alpha.setChecked(
+        self.alpha.set_value(
 
             True
 

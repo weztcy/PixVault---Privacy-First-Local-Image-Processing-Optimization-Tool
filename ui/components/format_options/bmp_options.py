@@ -1,13 +1,23 @@
 from PySide6.QtWidgets import (
-    QLabel,
-    QCheckBox,
-    QComboBox
+    QLabel
 )
 
 
 from ui.components.format_options.base_format_options import (
     BaseFormatOptions
 )
+
+
+from ui.components.format_options.common.checkbox_field import (
+    CheckboxField
+)
+
+
+from ui.components.format_options.common.dropdown_field import (
+    DropdownField
+)
+
+
 
 
 
@@ -24,6 +34,7 @@ class BMPOptions(
 
         super().__init__()
 
+        self.setup_connections()
 
 
 
@@ -49,20 +60,9 @@ class BMPOptions(
         # =====================
 
 
-        self.add_widget(
+        self.bit_depth = DropdownField(
 
-            QLabel(
-                "Bit Depth"
-            )
-
-        )
-
-
-        self.bit_depth = QComboBox()
-
-
-
-        self.bit_depth.addItems(
+            "Bit Depth",
 
             [
 
@@ -78,12 +78,7 @@ class BMPOptions(
 
                 "32"
 
-            ]
-
-        )
-
-
-        self.bit_depth.setCurrentText(
+            ],
 
             "24"
 
@@ -109,14 +104,9 @@ class BMPOptions(
         # =====================
 
 
-        self.alpha = QCheckBox(
+        self.alpha = CheckboxField(
 
-            "Enable Alpha Channel"
-
-        )
-
-
-        self.alpha.setChecked(
+            "Enable Alpha Channel",
 
             False
 
@@ -142,20 +132,9 @@ class BMPOptions(
         # =====================
 
 
-        self.add_widget(
+        self.compression = DropdownField(
 
-            QLabel(
-                "Compression"
-            )
-
-        )
-
-
-        self.compression = QComboBox()
-
-
-
-        self.compression.addItems(
+            "Compression",
 
             [
 
@@ -163,12 +142,7 @@ class BMPOptions(
 
                 "rle"
 
-            ]
-
-        )
-
-
-        self.compression.setCurrentText(
+            ],
 
             "none"
 
@@ -194,14 +168,9 @@ class BMPOptions(
         # =====================
 
 
-        self.top_down = QCheckBox(
+        self.top_down = CheckboxField(
 
-            "Top Down Orientation"
-
-        )
-
-
-        self.top_down.setChecked(
+            "Top Down Orientation",
 
             False
 
@@ -222,6 +191,117 @@ class BMPOptions(
 
 
 
+    def setup_connections(
+        self
+    ):
+
+
+        self.bit_depth.value_changed.connect(
+
+            self.update_bit_depth
+
+        )
+
+
+        self.update_bit_depth(
+
+            "24"
+
+        )
+
+
+
+
+
+
+
+
+
+    def update_bit_depth(
+        self,
+        depth
+    ):
+
+
+        depth = int(depth)
+
+
+
+        # Alpha hanya valid
+        # pada 16 dan 32 bit
+
+
+        alpha_enabled = depth in [
+
+            16,
+
+            32
+
+        ]
+
+
+        self.alpha.setEnabled(
+
+            alpha_enabled
+
+        )
+
+
+
+        if not alpha_enabled:
+
+
+            self.alpha.set_value(
+
+                False
+
+            )
+
+
+
+
+
+
+        # RLE hanya valid
+        # untuk 8 bit BMP
+
+
+        if depth == 8:
+
+
+            self.compression.setEnabled(
+
+                True
+
+            )
+
+
+        else:
+
+
+            self.compression.set_value(
+
+                "none"
+
+            )
+
+
+            self.compression.setEnabled(
+
+                False
+
+            )
+
+
+
+        self.emit_settings_changed()
+
+
+
+
+
+
+
     def get_settings(
         self
     ):
@@ -234,7 +314,7 @@ class BMPOptions(
 
                 int(
 
-                    self.bit_depth.currentText()
+                    self.bit_depth.value()
 
                 ),
 
@@ -242,19 +322,19 @@ class BMPOptions(
 
             "alpha":
 
-                self.alpha.isChecked(),
+                self.alpha.value(),
 
 
 
             "compression":
 
-                self.compression.currentText(),
+                self.compression.value(),
 
 
 
             "top_down":
 
-                self.top_down.isChecked()
+                self.top_down.value()
 
         }
 
@@ -271,28 +351,28 @@ class BMPOptions(
     ):
 
 
-        self.bit_depth.setCurrentText(
+        self.bit_depth.set_value(
 
             "24"
 
         )
 
 
-        self.alpha.setChecked(
+        self.alpha.set_value(
 
             False
 
         )
 
 
-        self.compression.setCurrentText(
+        self.compression.set_value(
 
             "none"
 
         )
 
 
-        self.top_down.setChecked(
+        self.top_down.set_value(
 
             False
 

@@ -1,20 +1,29 @@
 from PySide6.QtWidgets import (
-    QLabel,
-    QCheckBox,
-    QSlider,
-    QComboBox,
-    QLineEdit
-)
-
-
-from PySide6.QtCore import (
-    Qt
+    QLineEdit,
+    QLabel
 )
 
 
 from ui.components.format_options.base_format_options import (
     BaseFormatOptions
 )
+
+
+from ui.components.format_options.common.slider_field import (
+    SliderField
+)
+
+
+from ui.components.format_options.common.checkbox_field import (
+    CheckboxField
+)
+
+
+from ui.components.format_options.common.dropdown_field import (
+    DropdownField
+)
+
+
 
 
 
@@ -31,6 +40,7 @@ class GIFOptions(
 
         super().__init__()
 
+        self.setup_connections()
 
 
 
@@ -56,32 +66,13 @@ class GIFOptions(
         # =====================
 
 
-        self.add_widget(
+        self.colors = SliderField(
 
-            QLabel(
-                "Color Count"
-            )
-
-        )
-
-
-        self.colors = QSlider(
-
-            Qt.Orientation.Horizontal
-
-        )
-
-
-        self.colors.setRange(
+            "Color Count",
 
             2,
 
-            256
-
-        )
-
-
-        self.colors.setValue(
+            256,
 
             256
 
@@ -107,20 +98,9 @@ class GIFOptions(
         # =====================
 
 
-        self.add_widget(
+        self.dither = DropdownField(
 
-            QLabel(
-                "Dithering"
-            )
-
-        )
-
-
-        self.dither = QComboBox()
-
-
-
-        self.dither.addItems(
+            "Dithering",
 
             [
 
@@ -132,12 +112,7 @@ class GIFOptions(
 
                 "atkinson"
 
-            ]
-
-        )
-
-
-        self.dither.setCurrentText(
+            ],
 
             "floyd_steinberg"
 
@@ -163,14 +138,9 @@ class GIFOptions(
         # =====================
 
 
-        self.optimize = QCheckBox(
+        self.optimize = CheckboxField(
 
-            "Optimize GIF"
-
-        )
-
-
-        self.optimize.setChecked(
+            "Optimize GIF",
 
             True
 
@@ -196,14 +166,9 @@ class GIFOptions(
         # =====================
 
 
-        self.loop = QCheckBox(
+        self.loop = CheckboxField(
 
-            "Enable Animation Loop"
-
-        )
-
-
-        self.loop.setChecked(
+            "Enable Animation Loop",
 
             True
 
@@ -229,13 +194,19 @@ class GIFOptions(
         # =====================
 
 
-        self.add_widget(
+        self.loop_label = QLabel(
 
-            QLabel(
-                "Loop Count (0 = infinite)"
-            )
+            "Loop Count (0 = infinite)"
 
         )
+
+
+        self.add_widget(
+
+            self.loop_label
+
+        )
+
 
 
         self.loop_count = QLineEdit(
@@ -264,14 +235,9 @@ class GIFOptions(
         # =====================
 
 
-        self.transparency = QCheckBox(
+        self.transparency = CheckboxField(
 
-            "Enable Transparency"
-
-        )
-
-
-        self.transparency.setChecked(
+            "Enable Transparency",
 
             True
 
@@ -297,13 +263,19 @@ class GIFOptions(
         # =====================
 
 
-        self.add_widget(
+        self.duration_label = QLabel(
 
-            QLabel(
-                "Frame Duration (ms)"
-            )
+            "Frame Duration (ms)"
 
         )
+
+
+        self.add_widget(
+
+            self.duration_label
+
+        )
+
 
 
         self.duration = QLineEdit(
@@ -327,6 +299,60 @@ class GIFOptions(
 
 
 
+    def setup_connections(
+        self
+    ):
+
+
+        self.loop.value_changed.connect(
+
+            self.update_loop
+
+        )
+
+
+        self.update_loop(
+
+            True
+
+        )
+
+
+
+
+
+
+
+
+
+    def update_loop(
+        self,
+        enabled
+    ):
+
+
+        self.loop_count.setEnabled(
+
+            enabled
+
+        )
+
+
+        self.loop_label.setEnabled(
+
+            enabled
+
+        )
+
+
+        self.emit_settings_changed()
+
+
+
+
+
+
+
     def get_settings(
         self
     ):
@@ -343,37 +369,45 @@ class GIFOptions(
 
             "dither":
 
-                self.dither.currentText(),
+                self.dither.value(),
 
 
 
             "optimize":
 
-                self.optimize.isChecked(),
+                self.optimize.value(),
 
 
 
             "loop":
 
-                self.loop.isChecked(),
+                self.loop.value(),
 
 
 
             "loop_count":
 
-                self.loop_count.text(),
+                int(
+
+                    self.loop_count.text()
+
+                ),
 
 
 
             "transparency":
 
-                self.transparency.isChecked(),
+                self.transparency.value(),
 
 
 
             "duration":
 
-                self.duration.text()
+                int(
+
+                    self.duration.text()
+
+                )
 
         }
 
@@ -390,28 +424,28 @@ class GIFOptions(
     ):
 
 
-        self.colors.setValue(
+        self.colors.set_value(
 
             256
 
         )
 
 
-        self.dither.setCurrentText(
+        self.dither.set_value(
 
             "floyd_steinberg"
 
         )
 
 
-        self.optimize.setChecked(
+        self.optimize.set_value(
 
             True
 
         )
 
 
-        self.loop.setChecked(
+        self.loop.set_value(
 
             True
 
@@ -425,7 +459,7 @@ class GIFOptions(
         )
 
 
-        self.transparency.setChecked(
+        self.transparency.set_value(
 
             True
 

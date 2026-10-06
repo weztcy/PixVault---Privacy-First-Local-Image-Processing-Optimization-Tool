@@ -1,19 +1,28 @@
-from PySide6.QtWidgets import (
-    QLabel,
-    QCheckBox,
-    QSlider,
-    QComboBox
-)
-
-
-from PySide6.QtCore import (
-    Qt
-)
-
-
 from ui.components.format_options.base_format_options import (
     BaseFormatOptions
 )
+
+
+from ui.components.format_options.common.slider_field import (
+    SliderField
+)
+
+
+from ui.components.format_options.common.checkbox_field import (
+    CheckboxField
+)
+
+
+from ui.components.format_options.common.dropdown_field import (
+    DropdownField
+)
+
+
+from ui.components.format_options.common.radio_mode_selector import (
+    RadioModeSelector
+)
+
+
 
 
 
@@ -29,6 +38,8 @@ class AVIFOptions(
     ):
 
         super().__init__()
+
+        self.setup_connections()
 
 
 
@@ -48,37 +59,56 @@ class AVIFOptions(
 
 
 
+
         # =====================
-        # QUALITY
+        # MODE
         # =====================
+
+
+        self.mode = RadioModeSelector(
+
+            "Compression Mode",
+
+            [
+
+                "Lossless",
+
+                "Lossy"
+
+            ],
+
+            "Lossy"
+
+        )
 
 
         self.add_widget(
 
-            QLabel(
-                "Quality"
-            )
+            self.mode
 
         )
 
 
-        self.quality = QSlider(
-
-            Qt.Orientation.Horizontal
-
-        )
 
 
-        self.quality.setRange(
+
+
+
+
+
+        # =====================
+        # QUALITY
+        # LOSSY ONLY
+        # =====================
+
+
+        self.quality = SliderField(
+
+            "Quality",
 
             1,
 
-            100
-
-        )
-
-
-        self.quality.setValue(
+            100,
 
             80
 
@@ -98,69 +128,20 @@ class AVIFOptions(
 
 
 
-        # =====================
-        # LOSSLESS
-        # =====================
-
-
-        self.lossless = QCheckBox(
-
-            "Lossless Compression"
-
-        )
-
-
-        self.lossless.setChecked(
-
-            False
-
-        )
-
-
-        self.add_widget(
-
-            self.lossless
-
-        )
-
-
-
-
-
-
-
 
         # =====================
         # SPEED
+        # GLOBAL
         # =====================
 
 
-        self.add_widget(
+        self.speed = SliderField(
 
-            QLabel(
-                "Encoder Speed"
-            )
-
-        )
-
-
-        self.speed = QSlider(
-
-            Qt.Orientation.Horizontal
-
-        )
-
-
-        self.speed.setRange(
+            "Encoder Speed",
 
             0,
 
-            10
-
-        )
-
-
-        self.speed.setValue(
+            10,
 
             6
 
@@ -180,26 +161,16 @@ class AVIFOptions(
 
 
 
+
         # =====================
         # SUBSAMPLING
+        # GLOBAL
         # =====================
 
 
-        self.add_widget(
+        self.subsampling = DropdownField(
 
-            QLabel(
-                "Chroma Subsampling"
-            )
-
-        )
-
-
-
-        self.subsampling = QComboBox()
-
-
-
-        self.subsampling.addItems(
+            "Chroma Subsampling",
 
             [
 
@@ -211,13 +182,7 @@ class AVIFOptions(
 
                 "monochrome"
 
-            ]
-
-        )
-
-
-
-        self.subsampling.setCurrentText(
+            ],
 
             "4:2:0"
 
@@ -237,37 +202,20 @@ class AVIFOptions(
 
 
 
+
         # =====================
         # ALPHA QUALITY
+        # GLOBAL
         # =====================
 
 
-        self.add_widget(
+        self.alpha_quality = SliderField(
 
-            QLabel(
-                "Alpha Quality"
-            )
-
-        )
-
-
-        self.alpha_quality = QSlider(
-
-            Qt.Orientation.Horizontal
-
-        )
-
-
-        self.alpha_quality.setRange(
+            "Alpha Quality",
 
             0,
 
-            100
-
-        )
-
-
-        self.alpha_quality.setValue(
+            100,
 
             100
 
@@ -287,19 +235,16 @@ class AVIFOptions(
 
 
 
+
         # =====================
         # PROGRESSIVE
+        # LOSSY ONLY
         # =====================
 
 
-        self.progressive = QCheckBox(
+        self.progressive = CheckboxField(
 
-            "Progressive Encoding"
-
-        )
-
-
-        self.progressive.setChecked(
+            "Progressive Encoding",
 
             False
 
@@ -320,23 +265,83 @@ class AVIFOptions(
 
 
 
+    def setup_connections(
+        self
+    ):
+
+
+        self.mode.mode_changed.connect(
+
+            self.update_mode
+
+        )
+
+
+        self.update_mode(
+
+            self.mode.value()
+
+        )
+
+
+
+
+
+
+
+
+
+    def update_mode(
+        self,
+        mode
+    ):
+
+
+        is_lossless = (
+
+            mode == "Lossless"
+
+        )
+
+
+
+        self.quality.setVisible(
+
+            not is_lossless
+
+        )
+
+
+        self.progressive.setVisible(
+
+            not is_lossless
+
+        )
+
+
+        self.emit_settings_changed()
+
+
+
+
+
+
+
     def get_settings(
         self
     ):
 
 
-        return {
-
-
-            "quality":
-
-                self.quality.value(),
+        mode = self.mode.value()
 
 
 
-            "lossless":
+        settings = {
 
-                self.lossless.isChecked(),
+
+            "mode":
+
+                mode,
 
 
 
@@ -348,22 +353,41 @@ class AVIFOptions(
 
             "subsampling":
 
-                self.subsampling.currentText(),
+                self.subsampling.value(),
 
 
 
             "alpha_quality":
 
-                self.alpha_quality.value(),
-
-
-
-            "progressive":
-
-                self.progressive.isChecked()
+                self.alpha_quality.value()
 
         }
 
+
+
+
+
+
+        if mode == "Lossy":
+
+
+            settings.update({
+
+                "quality":
+
+                    self.quality.value(),
+
+
+
+                "progressive":
+
+                    self.progressive.value()
+
+            })
+
+
+
+        return settings
 
 
 
@@ -376,42 +400,42 @@ class AVIFOptions(
     ):
 
 
-        self.quality.setValue(
+        self.mode.set_value(
+
+            "Lossy"
+
+        )
+
+
+        self.quality.set_value(
 
             80
 
         )
 
 
-        self.lossless.setChecked(
-
-            False
-
-        )
-
-
-        self.speed.setValue(
+        self.speed.set_value(
 
             6
 
         )
 
 
-        self.subsampling.setCurrentText(
+        self.subsampling.set_value(
 
             "4:2:0"
 
         )
 
 
-        self.alpha_quality.setValue(
+        self.alpha_quality.set_value(
 
             100
 
         )
 
 
-        self.progressive.setChecked(
+        self.progressive.set_value(
 
             False
 
