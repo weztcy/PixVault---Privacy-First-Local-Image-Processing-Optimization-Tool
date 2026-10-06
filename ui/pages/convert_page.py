@@ -7,9 +7,9 @@ from PySide6.QtWidgets import (
     QScrollArea,
     QFrame,
     QComboBox,
-    QSpinBox,
     QMessageBox
 )
+
 
 
 from ui.components.image_importer import ImageImporter
@@ -18,6 +18,13 @@ from ui.components.image_preview import ImagePreview
 from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.output_selector import OutputSelector
 from ui.components.export_progress import ExportProgress
+
+
+from ui.components.format_options.format_options_panel import (
+    FormatOptionsPanel
+)
+
+
 
 
 
@@ -42,12 +49,20 @@ class ConvertPage(QWidget):
 
         self.images = []
 
+
         self.output_folder = None
 
 
         self.setup_ui()
 
+
         self.connect_events()
+
+
+        self.format_options.set_format(
+            self.format_box.currentText()
+        )
+
 
 
 
@@ -78,6 +93,7 @@ class ConvertPage(QWidget):
         container = QWidget()
 
 
+
         self.layout = QVBoxLayout(
             container
         )
@@ -86,6 +102,9 @@ class ConvertPage(QWidget):
         self.layout.setSpacing(
             15
         )
+
+
+
 
 
 
@@ -100,10 +119,20 @@ class ConvertPage(QWidget):
 
 
 
+
+
+
+
+
         self.importer = ImageImporter()
 
 
+
         self.image_list = ImageListWidget()
+
+
+
+
 
 
 
@@ -129,7 +158,14 @@ class ConvertPage(QWidget):
 
 
 
+
+
+
+
+
+
         settings_box = QFrame()
+
 
 
         settings_layout = QVBoxLayout(
@@ -137,81 +173,124 @@ class ConvertPage(QWidget):
         )
 
 
+
         settings_layout.addWidget(
+
             QLabel(
                 "Conversion Settings"
             )
+
         )
+
+
 
 
 
         settings_layout.addWidget(
+
             QLabel(
                 "Target Format"
             )
+
         )
+
+
+
 
 
 
         self.format_box = QComboBox()
 
 
+
         self.format_box.addItems(
+
             [
+
                 "JPEG",
+
                 "PNG",
+
                 "WEBP",
+
                 "AVIF",
+
                 "GIF",
+
                 "BMP",
+
                 "TIFF",
+
                 "HEIC",
+
                 "HEIF",
+
                 "ICO",
+
                 "SVG"
+
             ]
+
         )
 
 
+
         settings_layout.addWidget(
+
             self.format_box
+
         )
 
 
 
+
+
+
+
+
+        # =====================
+        # FORMAT OPTIONS
+        # =====================
+
+
+        self.format_options = FormatOptionsPanel()
+
+
+
         settings_layout.addWidget(
+
             QLabel(
-                "Quality"
+                "Format Options"
             )
-        )
 
-
-
-        self.quality_spin = QSpinBox()
-
-
-        self.quality_spin.setRange(
-            1,
-            100
-        )
-
-
-        self.quality_spin.setValue(
-            85
         )
 
 
         settings_layout.addWidget(
-            self.quality_spin
+
+            self.format_options
+
         )
+
+
+
+
+
+
 
 
 
         self.output_selector = OutputSelector()
 
+
+
         self.output_folder = (
+
             self.output_selector.get_output_folder()
+
         )
+
+
 
 
         self.progress = ExportProgress()
@@ -219,8 +298,16 @@ class ConvertPage(QWidget):
 
 
         self.start_button = QPushButton(
+
             "Start Conversion"
+
         )
+
+
+
+
+
+
 
 
 
@@ -264,13 +351,17 @@ class ConvertPage(QWidget):
         )
 
 
+
         self.layout.addStretch()
+
+
 
 
 
         self.scroll_area.setWidget(
             container
         )
+
 
 
         root_layout.addWidget(
@@ -284,44 +375,75 @@ class ConvertPage(QWidget):
 
 
 
+
     def connect_events(
         self
     ):
 
 
+
         self.importer.images_added.connect(
+
             self.load_images
+
         )
+
 
 
         self.image_list.image_selected.connect(
+
             self.show_preview
+
         )
+
 
 
         self.output_selector.output_changed.connect(
+
             self.set_output_folder
+
         )
+
+
+
+        self.format_box.currentTextChanged.connect(
+
+            self.format_options.set_format
+
+        )
+
 
 
         self.start_button.clicked.connect(
+
             self.start_convert
+
         )
+
 
 
         self.batch_service.progress_changed.connect(
+
             self.progress.update_progress
+
         )
+
 
 
         self.batch_service.processing_finished.connect(
+
             self.convert_finished
+
         )
+
 
 
         self.batch_service.processing_error.connect(
+
             self.convert_error
+
         )
+
 
 
 
@@ -339,17 +461,24 @@ class ConvertPage(QWidget):
         self.images = images
 
 
+
         self.image_list.set_images(
+
             images
+
         )
+
 
 
         if images:
 
 
             self.show_preview(
+
                 images[0]
+
             )
+
 
 
 
@@ -365,13 +494,18 @@ class ConvertPage(QWidget):
 
 
         self.preview.set_image(
+
             image
+
         )
 
 
         self.info_panel.set_image(
+
             image
+
         )
+
 
 
 
@@ -395,12 +529,16 @@ class ConvertPage(QWidget):
 
 
 
+
+
     def build_config(
         self
     ):
 
 
+
         return {
+
 
 
             "operations":
@@ -420,13 +558,14 @@ class ConvertPage(QWidget):
 
 
 
-                    "quality":
+                    "options":
 
-                        self.quality_spin.value()
+                        self.format_options.get_settings()
 
                 }
 
         }
+
 
 
 
@@ -444,23 +583,35 @@ class ConvertPage(QWidget):
 
 
             QMessageBox.warning(
+
                 self,
+
                 "Convert",
+
                 "No images selected"
+
             )
 
 
             return
+
+
+
 
 
 
         if not self.output_folder:
 
 
+
             QMessageBox.warning(
+
                 self,
+
                 "Convert",
+
                 "Output folder not selected"
+
             )
 
 
@@ -468,8 +619,13 @@ class ConvertPage(QWidget):
 
 
 
+
+
+
         self.start_button.setEnabled(
+
             False
+
         )
 
 
@@ -477,7 +633,11 @@ class ConvertPage(QWidget):
 
 
 
+
+
+
         try:
+
 
 
             self.batch_service.start_batch(
@@ -500,12 +660,19 @@ class ConvertPage(QWidget):
 
 
 
+
+
+
         except Exception as error:
 
 
+
             self.start_button.setEnabled(
+
                 True
+
             )
+
 
 
             QMessageBox.critical(
@@ -525,6 +692,7 @@ class ConvertPage(QWidget):
 
 
 
+
     def convert_finished(
         self,
         result
@@ -532,12 +700,13 @@ class ConvertPage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.finished()
-
 
 
 
@@ -552,10 +721,14 @@ class ConvertPage(QWidget):
 
 
         self.start_button.setEnabled(
+
             True
+
         )
 
 
         self.progress.failed(
+
             error
+
         )
