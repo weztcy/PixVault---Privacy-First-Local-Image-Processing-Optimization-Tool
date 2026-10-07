@@ -7,11 +7,13 @@ from PySide6.QtWidgets import (
     QScrollArea,
     QVBoxLayout,
     QWidget,
+    QSizePolicy,
 )
 
 
 from ui.components.export_progress import ExportProgress
 from ui.components.image_importer import ImageImporter
+from ui.components.drop_area import DropArea
 
 from ui.components.processing_options.common.format_support_info import (
     FormatSupportInfo
@@ -57,11 +59,7 @@ class BitDepthPage(QWidget):
 
 
 
-
-
-    def setup_ui(
-        self
-    ):
+    def setup_ui(self):
 
 
         root_layout = QVBoxLayout(
@@ -91,6 +89,11 @@ class BitDepthPage(QWidget):
 
 
 
+        # =====================
+        # TITLE
+        # =====================
+
+
         title = QLabel(
             "Bit Depth Processor"
         )
@@ -102,11 +105,82 @@ class BitDepthPage(QWidget):
 
 
 
+        # =====================
+        # FORMAT SUPPORT
+        # =====================
+
+
+        self.format_support = FormatSupportInfo(
+            "bitdepth"
+        )
+
+
+
+        # =====================
+        # IMAGE IMPORT AREA
+        # DROP AREA | IMPORTER
+        # =====================
+
+
+        self.drop_area = DropArea()
+
+
         self.importer = ImageImporter()
+
+
+
+        self.drop_area.files_dropped.connect(
+            self.importer.add_files
+        )
+
+
+
+        import_layout = QHBoxLayout()
+
+
+        import_layout.setSpacing(
+            10
+        )
+
+
+        import_layout.addWidget(
+            self.drop_area,
+            2
+        )
+
+
+        import_layout.addWidget(
+            self.importer,
+            1
+        )
+
+
+
+        self.drop_area.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+        self.importer.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+
+        # =====================
+        # IMAGE LIST
+        # =====================
 
 
         self.image_list = ImageListWidget()
 
+
+
+        # =====================
+        # PREVIEW
+        # =====================
 
 
         preview_layout = QHBoxLayout()
@@ -128,10 +202,6 @@ class BitDepthPage(QWidget):
         preview_layout.addWidget(
             self.info_panel
         )
-
-
-
-
 
 
 
@@ -158,31 +228,16 @@ class BitDepthPage(QWidget):
         self.bitdepth_options = BitDepthOptions()
 
 
+
         settings_layout.addWidget(
             self.bitdepth_options
         )
 
 
 
-
-
-
-
-
         # =====================
-        # FORMAT SUPPORT
+        # OUTPUT
         # =====================
-
-
-        self.format_support = FormatSupportInfo(
-            "bitdepth"
-        )
-
-
-
-
-
-
 
 
         self.output_selector = OutputSelector()
@@ -192,6 +247,11 @@ class BitDepthPage(QWidget):
             self.output_selector.get_output_folder()
         )
 
+
+
+        # =====================
+        # ACTION BUTTON
+        # =====================
 
 
         self.start_button = QPushButton(
@@ -212,8 +272,9 @@ class BitDepthPage(QWidget):
 
 
 
-
-
+        # =====================
+        # MAIN LAYOUT
+        # =====================
 
 
         self.layout.addWidget(
@@ -222,7 +283,13 @@ class BitDepthPage(QWidget):
 
 
         self.layout.addWidget(
-            self.importer
+            self.format_support
+        )
+
+
+        self.layout.addLayout(
+            import_layout,
+            1
         )
 
 
@@ -238,11 +305,6 @@ class BitDepthPage(QWidget):
 
         self.layout.addWidget(
             settings_box
-        )
-
-
-        self.layout.addWidget(
-            self.format_support
         )
 
 
@@ -283,13 +345,7 @@ class BitDepthPage(QWidget):
 
 
 
-
-
-
-
-    def connect_events(
-        self
-    ):
+    def connect_events(self):
 
 
         self.importer.images_added.connect(
@@ -335,9 +391,6 @@ class BitDepthPage(QWidget):
 
 
 
-
-
-
     def load_images(
         self,
         images
@@ -362,9 +415,6 @@ class BitDepthPage(QWidget):
 
 
 
-
-
-
     def show_preview(
         self,
         image
@@ -384,9 +434,6 @@ class BitDepthPage(QWidget):
 
 
 
-
-
-
     def set_output_folder(
         self,
         folder
@@ -394,9 +441,6 @@ class BitDepthPage(QWidget):
 
 
         self.output_folder = folder
-
-
-
 
 
 
@@ -430,9 +474,6 @@ class BitDepthPage(QWidget):
 
 
 
-
-
-
     def start_bitdepth(
         self
     ):
@@ -459,9 +500,6 @@ class BitDepthPage(QWidget):
             )
 
             return
-
-
-
 
 
 
@@ -509,18 +547,10 @@ class BitDepthPage(QWidget):
 
 
             QMessageBox.critical(
-
                 self,
-
                 "Bit Depth Error",
-
                 str(error)
-
             )
-
-
-
-
 
 
 
@@ -552,8 +582,6 @@ class BitDepthPage(QWidget):
 
 
 
-
-
     def bitdepth_finished(
         self,
         result
@@ -569,8 +597,6 @@ class BitDepthPage(QWidget):
 
 
         self.progress.finished()
-
-
 
 
 

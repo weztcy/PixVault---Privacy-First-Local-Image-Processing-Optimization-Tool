@@ -7,11 +7,13 @@ from PySide6.QtWidgets import (
     QScrollArea,
     QVBoxLayout,
     QWidget,
+    QSizePolicy,
 )
 
 
 from ui.components.export_progress import ExportProgress
 from ui.components.image_importer import ImageImporter
+from ui.components.drop_area import DropArea
 
 from ui.components.processing_options.common.format_support_info import (
     FormatSupportInfo
@@ -22,6 +24,8 @@ from ui.components.image_list_widget import ImageListWidget
 from ui.components.image_preview import ImagePreview
 from ui.components.output_selector import OutputSelector
 from ui.components.processing_options.transform_options import TransformOptions
+
+
 
 
 
@@ -55,9 +59,7 @@ class TransformPage(QWidget):
 
 
 
-    def setup_ui(
-        self
-    ):
+    def setup_ui(self):
 
 
         root_layout = QVBoxLayout(
@@ -87,6 +89,10 @@ class TransformPage(QWidget):
 
 
 
+        # =====================
+        # TITLE
+        # =====================
+
         title = QLabel(
             "Transform Image"
         )
@@ -98,12 +104,80 @@ class TransformPage(QWidget):
 
 
 
+        # =====================
+        # FORMAT SUPPORT
+        # =====================
+
+        self.format_support = FormatSupportInfo(
+            "transform"
+        )
+
+
+
+        # =====================
+        # IMAGE IMPORT AREA
+        # DROP AREA | IMPORTER
+        # =====================
+
+
+        self.drop_area = DropArea()
+
+
         self.importer = ImageImporter()
 
+
+
+        self.drop_area.files_dropped.connect(
+            self.importer.add_files
+        )
+
+
+
+        import_layout = QHBoxLayout()
+
+
+        import_layout.setSpacing(
+            10
+        )
+
+
+        import_layout.addWidget(
+            self.drop_area,
+            2
+        )
+
+
+        import_layout.addWidget(
+            self.importer,
+            1
+        )
+
+
+
+        self.drop_area.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+        self.importer.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+
+        # =====================
+        # IMAGE LIST
+        # =====================
 
         self.image_list = ImageListWidget()
 
 
+
+        # =====================
+        # PREVIEW
+        # =====================
 
         preview_layout = QHBoxLayout()
 
@@ -127,12 +201,9 @@ class TransformPage(QWidget):
 
 
 
-
-
         # =====================
         # TRANSFORM OPTIONS
         # =====================
-
 
         settings_box = QFrame()
 
@@ -152,26 +223,16 @@ class TransformPage(QWidget):
         self.transform_options = TransformOptions()
 
 
+
         settings_layout.addWidget(
             self.transform_options
         )
 
 
 
-
-
         # =====================
-        # FORMAT SUPPORT
+        # OUTPUT
         # =====================
-
-
-        self.format_support = FormatSupportInfo(
-            "transform"
-        )
-
-
-
-
 
         self.output_selector = OutputSelector()
 
@@ -181,6 +242,10 @@ class TransformPage(QWidget):
         )
 
 
+
+        # =====================
+        # ACTION
+        # =====================
 
         self.start_button = QPushButton(
             "Start Transform"
@@ -200,7 +265,9 @@ class TransformPage(QWidget):
 
 
 
-
+        # =====================
+        # MAIN LAYOUT
+        # =====================
 
 
         self.layout.addWidget(
@@ -209,7 +276,13 @@ class TransformPage(QWidget):
 
 
         self.layout.addWidget(
-            self.importer
+            self.format_support
+        )
+
+
+        self.layout.addLayout(
+            import_layout,
+            1
         )
 
 
@@ -225,11 +298,6 @@ class TransformPage(QWidget):
 
         self.layout.addWidget(
             settings_box
-        )
-
-
-        self.layout.addWidget(
-            self.format_support
         )
 
 
@@ -270,13 +338,7 @@ class TransformPage(QWidget):
 
 
 
-
-
-
-
-    def connect_events(
-        self
-    ):
+    def connect_events(self):
 
 
         self.importer.images_added.connect(
@@ -322,9 +384,6 @@ class TransformPage(QWidget):
 
 
 
-
-
-
     def load_images(
         self,
         images
@@ -349,8 +408,6 @@ class TransformPage(QWidget):
 
 
 
-
-
     def show_preview(
         self,
         image
@@ -370,9 +427,6 @@ class TransformPage(QWidget):
 
 
 
-
-
-
     def set_output_folder(
         self,
         folder
@@ -380,9 +434,6 @@ class TransformPage(QWidget):
 
 
         self.output_folder = folder
-
-
-
 
 
 
@@ -416,9 +467,6 @@ class TransformPage(QWidget):
 
 
 
-
-
-
     def start_transform(
         self
     ):
@@ -445,8 +493,6 @@ class TransformPage(QWidget):
             )
 
             return
-
-
 
 
 
@@ -494,18 +540,10 @@ class TransformPage(QWidget):
 
 
             QMessageBox.critical(
-
                 self,
-
                 "Transform Error",
-
                 str(error)
-
             )
-
-
-
-
 
 
 
@@ -537,8 +575,6 @@ class TransformPage(QWidget):
 
 
 
-
-
     def transform_finished(
         self,
         result
@@ -554,8 +590,6 @@ class TransformPage(QWidget):
 
 
         self.progress.finished()
-
-
 
 
 

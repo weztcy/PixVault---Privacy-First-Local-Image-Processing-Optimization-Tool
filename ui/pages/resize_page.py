@@ -7,11 +7,13 @@ from PySide6.QtWidgets import (
     QScrollArea,
     QVBoxLayout,
     QWidget,
+    QSizePolicy,
 )
 
 
 from ui.components.export_progress import ExportProgress
 from ui.components.image_importer import ImageImporter
+from ui.components.drop_area import DropArea
 
 from ui.components.processing_options.common.format_support_info import (
     FormatSupportInfo
@@ -22,6 +24,8 @@ from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.image_preview import ImagePreview
 from ui.components.output_selector import OutputSelector
 from ui.components.processing_options.resize_options import ResizeOptions
+
+
 
 
 
@@ -55,10 +59,7 @@ class ResizePage(QWidget):
 
 
 
-
-    def setup_ui(
-        self
-    ):
+    def setup_ui(self):
 
 
         root_layout = QVBoxLayout(
@@ -88,6 +89,11 @@ class ResizePage(QWidget):
 
 
 
+        # =====================
+        # TITLE
+        # =====================
+
+
         title = QLabel(
             "Resize Image"
         )
@@ -99,11 +105,83 @@ class ResizePage(QWidget):
 
 
 
+        # =====================
+        # FORMAT SUPPORT
+        # =====================
+
+
+        self.format_support = FormatSupportInfo(
+            "resize"
+        )
+
+
+
+        # =====================
+        # IMAGE IMPORT AREA
+        # DROP AREA | IMPORTER
+        # =====================
+
+
+        self.drop_area = DropArea()
+
+
         self.importer = ImageImporter()
+
+
+
+        self.drop_area.files_dropped.connect(
+            self.importer.add_files
+        )
+
+
+
+        import_layout = QHBoxLayout()
+
+
+        import_layout.setSpacing(
+            10
+        )
+
+
+
+        import_layout.addWidget(
+            self.drop_area,
+            2
+        )
+
+
+        import_layout.addWidget(
+            self.importer,
+            1
+        )
+
+
+
+        self.drop_area.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+        self.importer.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+
+        # =====================
+        # IMAGE LIST
+        # =====================
 
 
         self.image_list = ImageListWidget()
 
+
+
+        # =====================
+        # PREVIEW
+        # =====================
 
 
         preview_layout = QHBoxLayout()
@@ -125,8 +203,6 @@ class ResizePage(QWidget):
         preview_layout.addWidget(
             self.info_panel
         )
-
-
 
 
 
@@ -153,25 +229,16 @@ class ResizePage(QWidget):
         self.resize_options = ResizeOptions()
 
 
+
         settings_layout.addWidget(
             self.resize_options
         )
 
 
 
-
-
         # =====================
-        # FORMAT SUPPORT
+        # OUTPUT
         # =====================
-
-
-        self.format_support = FormatSupportInfo(
-            "resize"
-        )
-
-
-
 
 
         self.output_selector = OutputSelector()
@@ -181,6 +248,11 @@ class ResizePage(QWidget):
             self.output_selector.get_output_folder()
         )
 
+
+
+        # =====================
+        # ACTION
+        # =====================
 
 
         self.start_button = QPushButton(
@@ -202,6 +274,9 @@ class ResizePage(QWidget):
 
 
 
+        # =====================
+        # MAIN LAYOUT
+        # =====================
 
 
         self.layout.addWidget(
@@ -210,7 +285,13 @@ class ResizePage(QWidget):
 
 
         self.layout.addWidget(
-            self.importer
+            self.format_support
+        )
+
+
+        self.layout.addLayout(
+            import_layout,
+            1
         )
 
 
@@ -226,11 +307,6 @@ class ResizePage(QWidget):
 
         self.layout.addWidget(
             settings_box
-        )
-
-
-        self.layout.addWidget(
-            self.format_support
         )
 
 
@@ -271,11 +347,7 @@ class ResizePage(QWidget):
 
 
 
-
-
-    def connect_events(
-        self
-    ):
+    def connect_events(self):
 
 
         self.importer.images_added.connect(
@@ -321,9 +393,6 @@ class ResizePage(QWidget):
 
 
 
-
-
-
     def load_images(
         self,
         images
@@ -348,8 +417,6 @@ class ResizePage(QWidget):
 
 
 
-
-
     def show_preview(
         self,
         image
@@ -369,9 +436,6 @@ class ResizePage(QWidget):
 
 
 
-
-
-
     def set_output_folder(
         self,
         folder
@@ -379,9 +443,6 @@ class ResizePage(QWidget):
 
 
         self.output_folder = folder
-
-
-
 
 
 
@@ -415,9 +476,6 @@ class ResizePage(QWidget):
 
 
 
-
-
-
     def start_resize(
         self
     ):
@@ -444,8 +502,6 @@ class ResizePage(QWidget):
             )
 
             return
-
-
 
 
 
@@ -492,17 +548,10 @@ class ResizePage(QWidget):
 
 
             QMessageBox.critical(
-
                 self,
-
                 "Resize Error",
-
                 str(error)
-
             )
-
-
-
 
 
 
@@ -515,12 +564,10 @@ class ResizePage(QWidget):
 
         try:
 
-
             self.batch_service.cancel()
 
 
         except Exception:
-
 
             pass
 
@@ -532,8 +579,6 @@ class ResizePage(QWidget):
 
 
         self.cancel_button.hide()
-
-
 
 
 
@@ -554,8 +599,6 @@ class ResizePage(QWidget):
 
 
         self.progress.finished()
-
-
 
 
 

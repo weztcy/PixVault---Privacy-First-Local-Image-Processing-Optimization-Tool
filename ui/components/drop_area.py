@@ -36,7 +36,7 @@ class DropArea(QWidget):
 
         layout = QVBoxLayout(self)
 
-        layout.setContentsMargins(10, 10, 10, 10)
+        layout.setContentsMargins(0, 0, 0, 0)
 
         self.label = QLabel("📂 Click or Drag & Drop Images / Folder Here")
 

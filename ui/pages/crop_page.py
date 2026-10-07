@@ -7,19 +7,24 @@ from PySide6.QtWidgets import (
     QScrollArea,
     QVBoxLayout,
     QWidget,
+    QSizePolicy,
 )
 
 
 from ui.components.export_progress import ExportProgress
 from ui.components.image_importer import ImageImporter
+from ui.components.drop_area import DropArea
+
 from ui.components.processing_options.common.format_support_info import (
     FormatSupportInfo
 )
+
 from ui.components.image_info_panel import ImageInfoPanel
 from ui.components.image_list_widget import ImageListWidget
 from ui.components.image_preview import ImagePreview
 from ui.components.output_selector import OutputSelector
 from ui.components.processing_options.crop_options import CropOptions
+
 
 
 
@@ -54,11 +59,7 @@ class CropPage(QWidget):
 
 
 
-
-
-    def setup_ui(
-        self
-    ):
+    def setup_ui(self):
 
 
         root_layout = QVBoxLayout(
@@ -88,6 +89,11 @@ class CropPage(QWidget):
 
 
 
+        # =====================
+        # TITLE
+        # =====================
+
+
         title = QLabel(
             "Crop Image"
         )
@@ -99,11 +105,82 @@ class CropPage(QWidget):
 
 
 
+        # =====================
+        # FORMAT SUPPORT
+        # =====================
+
+
+        self.format_support = FormatSupportInfo(
+            "crop"
+        )
+
+
+
+        # =====================
+        # IMAGE IMPORT AREA
+        # DROP AREA | IMPORTER
+        # =====================
+
+
+        self.drop_area = DropArea()
+
+
         self.importer = ImageImporter()
+
+
+
+        self.drop_area.files_dropped.connect(
+            self.importer.add_files
+        )
+
+
+
+        import_layout = QHBoxLayout()
+
+
+        import_layout.setSpacing(
+            10
+        )
+
+
+        import_layout.addWidget(
+            self.drop_area,
+            2
+        )
+
+
+        import_layout.addWidget(
+            self.importer,
+            1
+        )
+
+
+
+        self.drop_area.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+        self.importer.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+
+        # =====================
+        # IMAGE LIST
+        # =====================
 
 
         self.image_list = ImageListWidget()
 
+
+
+        # =====================
+        # PREVIEW
+        # =====================
 
 
         preview_layout = QHBoxLayout()
@@ -125,8 +202,6 @@ class CropPage(QWidget):
         preview_layout.addWidget(
             self.info_panel
         )
-
-
 
 
 
@@ -159,19 +234,9 @@ class CropPage(QWidget):
 
 
 
-
-
         # =====================
-        # FORMAT SUPPORT
+        # OUTPUT
         # =====================
-
-
-        self.format_support = FormatSupportInfo(
-            "crop"
-        )
-
-
-
 
 
         self.output_selector = OutputSelector()
@@ -181,6 +246,11 @@ class CropPage(QWidget):
             self.output_selector.get_output_folder()
         )
 
+
+
+        # =====================
+        # ACTION
+        # =====================
 
 
         self.start_button = QPushButton(
@@ -201,7 +271,9 @@ class CropPage(QWidget):
 
 
 
-
+        # =====================
+        # MAIN LAYOUT
+        # =====================
 
 
         self.layout.addWidget(
@@ -210,7 +282,13 @@ class CropPage(QWidget):
 
 
         self.layout.addWidget(
-            self.importer
+            self.format_support
+        )
+
+
+        self.layout.addLayout(
+            import_layout,
+            1
         )
 
 
@@ -226,11 +304,6 @@ class CropPage(QWidget):
 
         self.layout.addWidget(
             crop_box
-        )
-
-
-        self.layout.addWidget(
-            self.format_support
         )
 
 
@@ -271,13 +344,7 @@ class CropPage(QWidget):
 
 
 
-
-
-
-
-    def connect_events(
-        self
-    ):
+    def connect_events(self):
 
 
         self.importer.images_added.connect(
@@ -323,9 +390,6 @@ class CropPage(QWidget):
 
 
 
-
-
-
     def load_images(
         self,
         images
@@ -350,9 +414,6 @@ class CropPage(QWidget):
 
 
 
-
-
-
     def show_preview(
         self,
         image
@@ -372,9 +433,6 @@ class CropPage(QWidget):
 
 
 
-
-
-
     def set_output_folder(
         self,
         folder
@@ -382,9 +440,6 @@ class CropPage(QWidget):
 
 
         self.output_folder = folder
-
-
-
 
 
 
@@ -401,6 +456,7 @@ class CropPage(QWidget):
         operation["type"] = "crop"
 
 
+
         return {
 
             "operations": [
@@ -412,9 +468,6 @@ class CropPage(QWidget):
             }
 
         }
-
-
-
 
 
 
@@ -449,7 +502,6 @@ class CropPage(QWidget):
 
 
 
-
         self.start_button.setEnabled(
             False
         )
@@ -480,7 +532,6 @@ class CropPage(QWidget):
             )
 
 
-
         except Exception as error:
 
 
@@ -497,10 +548,6 @@ class CropPage(QWidget):
                 "Crop Error",
                 str(error)
             )
-
-
-
-
 
 
 
@@ -532,8 +579,6 @@ class CropPage(QWidget):
 
 
 
-
-
     def crop_finished(
         self,
         result
@@ -549,8 +594,6 @@ class CropPage(QWidget):
 
 
         self.progress.finished()
-
-
 
 
 

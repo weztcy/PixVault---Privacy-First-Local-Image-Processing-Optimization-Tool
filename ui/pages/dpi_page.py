@@ -7,11 +7,13 @@ from PySide6.QtWidgets import (
     QScrollArea,
     QVBoxLayout,
     QWidget,
+    QSizePolicy,
 )
 
 
 from ui.components.export_progress import ExportProgress
 from ui.components.image_importer import ImageImporter
+from ui.components.drop_area import DropArea
 
 from ui.components.processing_options.common.format_support_info import (
     FormatSupportInfo
@@ -57,10 +59,7 @@ class DPIPage(QWidget):
 
 
 
-
-    def setup_ui(
-        self
-    ):
+    def setup_ui(self):
 
 
         root_layout = QVBoxLayout(
@@ -90,6 +89,10 @@ class DPIPage(QWidget):
 
 
 
+        # =====================
+        # TITLE
+        # =====================
+
         title = QLabel(
             "DPI Processor"
         )
@@ -101,12 +104,81 @@ class DPIPage(QWidget):
 
 
 
+        # =====================
+        # FORMAT SUPPORT
+        # =====================
+
+        self.format_support = FormatSupportInfo(
+            "dpi"
+        )
+
+
+
+        # =====================
+        # IMAGE IMPORT AREA
+        # DROP AREA | IMPORTER
+        # =====================
+
+
+        self.drop_area = DropArea()
+
+
         self.importer = ImageImporter()
 
+
+
+        self.drop_area.files_dropped.connect(
+            self.importer.add_files
+        )
+
+
+
+        import_layout = QHBoxLayout()
+
+
+        import_layout.setSpacing(
+            10
+        )
+
+
+
+        import_layout.addWidget(
+            self.drop_area,
+            2
+        )
+
+
+        import_layout.addWidget(
+            self.importer,
+            1
+        )
+
+
+
+        self.drop_area.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+        self.importer.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+
+        # =====================
+        # IMAGE LIST
+        # =====================
 
         self.image_list = ImageListWidget()
 
 
+
+        # =====================
+        # PREVIEW
+        # =====================
 
         preview_layout = QHBoxLayout()
 
@@ -127,8 +199,6 @@ class DPIPage(QWidget):
         preview_layout.addWidget(
             self.info_panel
         )
-
-
 
 
 
@@ -155,25 +225,16 @@ class DPIPage(QWidget):
         self.dpi_options = DPIOptions()
 
 
+
         settings_layout.addWidget(
             self.dpi_options
         )
 
 
 
-
-
         # =====================
-        # FORMAT SUPPORT
+        # OUTPUT
         # =====================
-
-
-        self.format_support = FormatSupportInfo(
-            "dpi"
-        )
-
-
-
 
 
         self.output_selector = OutputSelector()
@@ -183,6 +244,11 @@ class DPIPage(QWidget):
             self.output_selector.get_output_folder()
         )
 
+
+
+        # =====================
+        # ACTION
+        # =====================
 
 
         self.start_button = QPushButton(
@@ -203,7 +269,9 @@ class DPIPage(QWidget):
 
 
 
-
+        # =====================
+        # MAIN LAYOUT
+        # =====================
 
 
         self.layout.addWidget(
@@ -212,7 +280,13 @@ class DPIPage(QWidget):
 
 
         self.layout.addWidget(
-            self.importer
+            self.format_support
+        )
+
+
+        self.layout.addLayout(
+            import_layout,
+            1
         )
 
 
@@ -228,11 +302,6 @@ class DPIPage(QWidget):
 
         self.layout.addWidget(
             settings_box
-        )
-
-
-        self.layout.addWidget(
-            self.format_support
         )
 
 
@@ -273,13 +342,7 @@ class DPIPage(QWidget):
 
 
 
-
-
-
-
-    def connect_events(
-        self
-    ):
+    def connect_events(self):
 
 
         self.importer.images_added.connect(
@@ -325,9 +388,6 @@ class DPIPage(QWidget):
 
 
 
-
-
-
     def load_images(
         self,
         images
@@ -352,9 +412,6 @@ class DPIPage(QWidget):
 
 
 
-
-
-
     def show_preview(
         self,
         image
@@ -374,9 +431,6 @@ class DPIPage(QWidget):
 
 
 
-
-
-
     def set_output_folder(
         self,
         folder
@@ -384,9 +438,6 @@ class DPIPage(QWidget):
 
 
         self.output_folder = folder
-
-
-
 
 
 
@@ -420,9 +471,6 @@ class DPIPage(QWidget):
 
 
 
-
-
-
     def start_dpi(
         self
     ):
@@ -449,8 +497,6 @@ class DPIPage(QWidget):
             )
 
             return
-
-
 
 
 
@@ -498,17 +544,10 @@ class DPIPage(QWidget):
 
 
             QMessageBox.critical(
-
                 self,
-
                 "DPI Error",
-
                 str(error)
-
             )
-
-
-
 
 
 
@@ -540,8 +579,6 @@ class DPIPage(QWidget):
 
 
 
-
-
     def dpi_finished(
         self,
         result
@@ -557,8 +594,6 @@ class DPIPage(QWidget):
 
 
         self.progress.finished()
-
-
 
 
 

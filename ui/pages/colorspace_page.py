@@ -7,11 +7,13 @@ from PySide6.QtWidgets import (
     QScrollArea,
     QVBoxLayout,
     QWidget,
+    QSizePolicy,
 )
 
 
 from ui.components.export_progress import ExportProgress
 from ui.components.image_importer import ImageImporter
+from ui.components.drop_area import DropArea
 
 from ui.components.processing_options.common.format_support_info import (
     FormatSupportInfo
@@ -57,11 +59,7 @@ class ColorSpacePage(QWidget):
 
 
 
-
-
-    def setup_ui(
-        self
-    ):
+    def setup_ui(self):
 
 
         root_layout = QVBoxLayout(
@@ -91,6 +89,11 @@ class ColorSpacePage(QWidget):
 
 
 
+        # =====================
+        # TITLE
+        # =====================
+
+
         title = QLabel(
             "Color Space Processor"
         )
@@ -102,11 +105,83 @@ class ColorSpacePage(QWidget):
 
 
 
+        # =====================
+        # FORMAT SUPPORT
+        # =====================
+
+
+        self.format_support = FormatSupportInfo(
+            "colorspace"
+        )
+
+
+
+        # =====================
+        # IMAGE IMPORT AREA
+        # DROP AREA | IMPORTER
+        # =====================
+
+
+        self.drop_area = DropArea()
+
+
         self.importer = ImageImporter()
+
+
+
+        self.drop_area.files_dropped.connect(
+            self.importer.add_files
+        )
+
+
+
+        import_layout = QHBoxLayout()
+
+
+        import_layout.setSpacing(
+            10
+        )
+
+
+
+        import_layout.addWidget(
+            self.drop_area,
+            2
+        )
+
+
+        import_layout.addWidget(
+            self.importer,
+            1
+        )
+
+
+
+        self.drop_area.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+        self.importer.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+
+        # =====================
+        # IMAGE LIST
+        # =====================
 
 
         self.image_list = ImageListWidget()
 
+
+
+        # =====================
+        # PREVIEW
+        # =====================
 
 
         preview_layout = QHBoxLayout()
@@ -128,10 +203,6 @@ class ColorSpacePage(QWidget):
         preview_layout.addWidget(
             self.info_panel
         )
-
-
-
-
 
 
 
@@ -158,31 +229,16 @@ class ColorSpacePage(QWidget):
         self.colorspace_options = ColorSpaceOptions()
 
 
+
         settings_layout.addWidget(
             self.colorspace_options
         )
 
 
 
-
-
-
-
-
         # =====================
-        # FORMAT SUPPORT
+        # OUTPUT
         # =====================
-
-
-        self.format_support = FormatSupportInfo(
-            "colorspace"
-        )
-
-
-
-
-
-
 
 
         self.output_selector = OutputSelector()
@@ -192,6 +248,11 @@ class ColorSpacePage(QWidget):
             self.output_selector.get_output_folder()
         )
 
+
+
+        # =====================
+        # ACTION BUTTON
+        # =====================
 
 
         self.start_button = QPushButton(
@@ -212,8 +273,9 @@ class ColorSpacePage(QWidget):
 
 
 
-
-
+        # =====================
+        # MAIN LAYOUT
+        # =====================
 
 
         self.layout.addWidget(
@@ -222,7 +284,13 @@ class ColorSpacePage(QWidget):
 
 
         self.layout.addWidget(
-            self.importer
+            self.format_support
+        )
+
+
+        self.layout.addLayout(
+            import_layout,
+            1
         )
 
 
@@ -238,11 +306,6 @@ class ColorSpacePage(QWidget):
 
         self.layout.addWidget(
             settings_box
-        )
-
-
-        self.layout.addWidget(
-            self.format_support
         )
 
 
@@ -283,13 +346,7 @@ class ColorSpacePage(QWidget):
 
 
 
-
-
-
-
-    def connect_events(
-        self
-    ):
+    def connect_events(self):
 
 
         self.importer.images_added.connect(
@@ -335,10 +392,6 @@ class ColorSpacePage(QWidget):
 
 
 
-
-
-
-
     def load_images(
         self,
         images
@@ -363,9 +416,6 @@ class ColorSpacePage(QWidget):
 
 
 
-
-
-
     def show_preview(
         self,
         image
@@ -385,9 +435,6 @@ class ColorSpacePage(QWidget):
 
 
 
-
-
-
     def set_output_folder(
         self,
         folder
@@ -395,9 +442,6 @@ class ColorSpacePage(QWidget):
 
 
         self.output_folder = folder
-
-
-
 
 
 
@@ -431,9 +475,6 @@ class ColorSpacePage(QWidget):
 
 
 
-
-
-
     def start_colorspace(
         self
     ):
@@ -460,9 +501,6 @@ class ColorSpacePage(QWidget):
             )
 
             return
-
-
-
 
 
 
@@ -510,18 +548,10 @@ class ColorSpacePage(QWidget):
 
 
             QMessageBox.critical(
-
                 self,
-
                 "Color Space Error",
-
                 str(error)
-
             )
-
-
-
-
 
 
 
@@ -553,8 +583,6 @@ class ColorSpacePage(QWidget):
 
 
 
-
-
     def colorspace_finished(
         self,
         result
@@ -570,8 +598,6 @@ class ColorSpacePage(QWidget):
 
 
         self.progress.finished()
-
-
 
 
 

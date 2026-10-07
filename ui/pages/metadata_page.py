@@ -7,11 +7,13 @@ from PySide6.QtWidgets import (
     QScrollArea,
     QVBoxLayout,
     QWidget,
+    QSizePolicy,
 )
 
 
 from ui.components.export_progress import ExportProgress
 from ui.components.image_importer import ImageImporter
+from ui.components.drop_area import DropArea
 
 from ui.components.processing_options.common.format_support_info import (
     FormatSupportInfo
@@ -57,10 +59,7 @@ class MetadataPage(QWidget):
 
 
 
-
-    def setup_ui(
-        self
-    ):
+    def setup_ui(self):
 
 
         root_layout = QVBoxLayout(
@@ -90,6 +89,11 @@ class MetadataPage(QWidget):
 
 
 
+        # =====================
+        # TITLE
+        # =====================
+
+
         title = QLabel(
             "Metadata Processor"
         )
@@ -101,11 +105,82 @@ class MetadataPage(QWidget):
 
 
 
+        # =====================
+        # FORMAT SUPPORT
+        # =====================
+
+
+        self.format_support = FormatSupportInfo(
+            "metadata"
+        )
+
+
+
+        # =====================
+        # IMAGE IMPORT AREA
+        # DROP AREA | IMPORTER
+        # =====================
+
+
+        self.drop_area = DropArea()
+
+
         self.importer = ImageImporter()
+
+
+
+        self.drop_area.files_dropped.connect(
+            self.importer.add_files
+        )
+
+
+
+        import_layout = QHBoxLayout()
+
+
+        import_layout.setSpacing(
+            10
+        )
+
+
+        import_layout.addWidget(
+            self.drop_area,
+            2
+        )
+
+
+        import_layout.addWidget(
+            self.importer,
+            1
+        )
+
+
+
+        self.drop_area.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+        self.importer.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+
+        # =====================
+        # IMAGE LIST
+        # =====================
 
 
         self.image_list = ImageListWidget()
 
+
+
+        # =====================
+        # PREVIEW
+        # =====================
 
 
         preview_layout = QHBoxLayout()
@@ -127,10 +202,6 @@ class MetadataPage(QWidget):
         preview_layout.addWidget(
             self.info_panel
         )
-
-
-
-
 
 
 
@@ -157,31 +228,16 @@ class MetadataPage(QWidget):
         self.metadata_options = MetadataOptions()
 
 
+
         settings_layout.addWidget(
             self.metadata_options
         )
 
 
 
-
-
-
-
-
         # =====================
-        # FORMAT SUPPORT
+        # OUTPUT
         # =====================
-
-
-        self.format_support = FormatSupportInfo(
-            "metadata"
-        )
-
-
-
-
-
-
 
 
         self.output_selector = OutputSelector()
@@ -191,6 +247,11 @@ class MetadataPage(QWidget):
             self.output_selector.get_output_folder()
         )
 
+
+
+        # =====================
+        # ACTION
+        # =====================
 
 
         self.start_button = QPushButton(
@@ -211,8 +272,9 @@ class MetadataPage(QWidget):
 
 
 
-
-
+        # =====================
+        # MAIN LAYOUT
+        # =====================
 
 
         self.layout.addWidget(
@@ -221,7 +283,13 @@ class MetadataPage(QWidget):
 
 
         self.layout.addWidget(
-            self.importer
+            self.format_support
+        )
+
+
+        self.layout.addLayout(
+            import_layout,
+            1
         )
 
 
@@ -237,11 +305,6 @@ class MetadataPage(QWidget):
 
         self.layout.addWidget(
             settings_box
-        )
-
-
-        self.layout.addWidget(
-            self.format_support
         )
 
 
@@ -282,13 +345,7 @@ class MetadataPage(QWidget):
 
 
 
-
-
-
-
-    def connect_events(
-        self
-    ):
+    def connect_events(self):
 
 
         self.importer.images_added.connect(
@@ -334,10 +391,6 @@ class MetadataPage(QWidget):
 
 
 
-
-
-
-
     def load_images(
         self,
         images
@@ -362,9 +415,6 @@ class MetadataPage(QWidget):
 
 
 
-
-
-
     def show_preview(
         self,
         image
@@ -384,9 +434,6 @@ class MetadataPage(QWidget):
 
 
 
-
-
-
     def set_output_folder(
         self,
         folder
@@ -394,9 +441,6 @@ class MetadataPage(QWidget):
 
 
         self.output_folder = folder
-
-
-
 
 
 
@@ -430,9 +474,6 @@ class MetadataPage(QWidget):
 
 
 
-
-
-
     def start_metadata(
         self
     ):
@@ -459,9 +500,6 @@ class MetadataPage(QWidget):
             )
 
             return
-
-
-
 
 
 
@@ -509,18 +547,10 @@ class MetadataPage(QWidget):
 
 
             QMessageBox.critical(
-
                 self,
-
                 "Metadata Error",
-
                 str(error)
-
             )
-
-
-
-
 
 
 
@@ -552,8 +582,6 @@ class MetadataPage(QWidget):
 
 
 
-
-
     def metadata_finished(
         self,
         result
@@ -569,8 +597,6 @@ class MetadataPage(QWidget):
 
 
         self.progress.finished()
-
-
 
 
 

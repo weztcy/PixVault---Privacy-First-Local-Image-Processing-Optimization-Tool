@@ -7,11 +7,13 @@ from PySide6.QtWidgets import (
     QScrollArea,
     QVBoxLayout,
     QWidget,
+    QSizePolicy,
 )
 
 
 from ui.components.export_progress import ExportProgress
 from ui.components.image_importer import ImageImporter
+from ui.components.drop_area import DropArea
 
 from ui.components.processing_options.common.format_support_info import (
     FormatSupportInfo
@@ -22,8 +24,6 @@ from ui.components.image_list_widget import ImageListWidget
 from ui.components.image_preview import ImagePreview
 from ui.components.output_selector import OutputSelector
 from ui.components.processing_options.compression_options import CompressionOptions
-
-
 
 
 
@@ -55,13 +55,7 @@ class CompressPage(QWidget):
 
 
 
-
-
-
-    def setup_ui(
-        self
-    ):
-
+    def setup_ui(self):
 
         root_layout = QVBoxLayout(
             self
@@ -69,7 +63,6 @@ class CompressPage(QWidget):
 
 
         self.scroll_area = QScrollArea()
-
 
         self.scroll_area.setWidgetResizable(
             True
@@ -90,6 +83,10 @@ class CompressPage(QWidget):
 
 
 
+        # =====================
+        # TITLE
+        # =====================
+
         title = QLabel(
             "Compress Image"
         )
@@ -101,15 +98,84 @@ class CompressPage(QWidget):
 
 
 
+        # =====================
+        # FORMAT SUPPORT
+        # =====================
+
+        self.format_support = FormatSupportInfo(
+            "compression"
+        )
+
+
+
+        # =====================
+        # IMAGE IMPORT AREA
+        # DROP AREA | IMPORTER
+        # =====================
+
+
+        self.drop_area = DropArea()
+
+
         self.importer = ImageImporter()
+
+
+
+        self.drop_area.files_dropped.connect(
+            self.importer.add_files
+        )
+
+
+
+        import_layout = QHBoxLayout()
+
+
+        import_layout.setSpacing(
+            10
+        )
+
+
+        import_layout.addWidget(
+            self.drop_area,
+            2
+        )
+
+
+        import_layout.addWidget(
+            self.importer,
+            1
+        )
+
+
+
+        self.drop_area.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+        self.importer.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Expanding
+        )
+
+
+
+        # =====================
+        # IMAGE LIST
+        # =====================
 
 
         self.image_list = ImageListWidget()
 
 
 
-        preview_layout = QHBoxLayout()
+        # =====================
+        # PREVIEW
+        # =====================
 
+
+        preview_layout = QHBoxLayout()
 
 
         self.preview = ImagePreview()
@@ -127,9 +193,6 @@ class CompressPage(QWidget):
         preview_layout.addWidget(
             self.info_panel
         )
-
-
-
 
 
 
@@ -162,21 +225,9 @@ class CompressPage(QWidget):
 
 
 
-
-
-
         # =====================
-        # FORMAT SUPPORT
+        # OUTPUT
         # =====================
-
-
-        self.format_support = FormatSupportInfo(
-            "compression"
-        )
-
-
-
-
 
 
         self.output_selector = OutputSelector()
@@ -186,6 +237,11 @@ class CompressPage(QWidget):
             self.output_selector.get_output_folder()
         )
 
+
+
+        # =====================
+        # ACTION BUTTON
+        # =====================
 
 
         self.start_button = QPushButton(
@@ -206,7 +262,9 @@ class CompressPage(QWidget):
 
 
 
-
+        # =====================
+        # MAIN LAYOUT
+        # =====================
 
 
         self.layout.addWidget(
@@ -214,8 +272,16 @@ class CompressPage(QWidget):
         )
 
 
+        # FORMAT DI ATAS DROP AREA
         self.layout.addWidget(
-            self.importer
+            self.format_support
+        )
+
+
+        # DROP AREA + BUTTON
+        self.layout.addLayout(
+            import_layout,
+            1
         )
 
 
@@ -231,11 +297,6 @@ class CompressPage(QWidget):
 
         self.layout.addWidget(
             settings_box
-        )
-
-
-        self.layout.addWidget(
-            self.format_support
         )
 
 
@@ -274,16 +335,7 @@ class CompressPage(QWidget):
 
 
 
-
-
-
-
-
-
-    def connect_events(
-        self
-    ):
-
+    def connect_events(self):
 
         self.importer.images_added.connect(
             self.load_images
@@ -326,16 +378,10 @@ class CompressPage(QWidget):
 
 
 
-
-
-
-
-
     def load_images(
         self,
         images
     ):
-
 
         self.images = images
 
@@ -353,16 +399,10 @@ class CompressPage(QWidget):
 
 
 
-
-
-
-
-
     def show_preview(
         self,
         image
     ):
-
 
         self.preview.set_image(
             image
@@ -375,23 +415,12 @@ class CompressPage(QWidget):
 
 
 
-
-
-
-
-
     def set_output_folder(
         self,
         folder
     ):
 
-
         self.output_folder = folder
-
-
-
-
-
 
 
 
@@ -400,7 +429,9 @@ class CompressPage(QWidget):
     ):
 
 
-        operation = self.compression_options.get_settings()
+        operation = (
+            self.compression_options.get_settings()
+        )
 
 
         operation["type"] = "compression"
@@ -418,11 +449,6 @@ class CompressPage(QWidget):
             }
 
         }
-
-
-
-
-
 
 
 
@@ -452,8 +478,6 @@ class CompressPage(QWidget):
             )
 
             return
-
-
 
 
 
@@ -487,7 +511,6 @@ class CompressPage(QWidget):
             )
 
 
-
         except Exception as error:
 
 
@@ -500,27 +523,14 @@ class CompressPage(QWidget):
 
 
             QMessageBox.critical(
-
                 self,
-
                 "Compression Error",
-
                 str(error)
-
             )
 
 
 
-
-
-
-
-
-
-    def cancel_processing(
-        self
-    ):
-
+    def cancel_processing(self):
 
         try:
 
@@ -541,15 +551,10 @@ class CompressPage(QWidget):
 
 
 
-
-
-
-
     def compress_finished(
         self,
         result
     ):
-
 
         self.start_button.setEnabled(
             True
@@ -563,15 +568,10 @@ class CompressPage(QWidget):
 
 
 
-
-
-
-
     def compress_error(
         self,
         error
     ):
-
 
         self.start_button.setEnabled(
             True
