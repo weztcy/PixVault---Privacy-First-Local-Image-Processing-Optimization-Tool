@@ -58,7 +58,7 @@ class DPIOptions(BaseProcessingOptions):
         # LINK
         # =====================
 
-        self.link = QCheckBox("Keep Horizontal & Vertical Linked")
+        self.link = QCheckBox("Keep Horizontal and Vertical Linked")
 
         self.link.setChecked(True)
 
