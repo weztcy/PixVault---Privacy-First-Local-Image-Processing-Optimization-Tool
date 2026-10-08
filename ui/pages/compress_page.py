@@ -656,9 +656,16 @@ class CompressPage(QWidget):
 
     def on_images_changed(self, images):
 
-        self.images = [Path(image) for image in images]
+        self.images = [
+            Path(image)
+            for image in images
+        ]
 
-        self.change_format(self.format_box.currentText())
+        self.change_format(
+            self.format_box.currentText()
+        )
+
+        self.update_queue_state()
 
 
 
@@ -751,7 +758,6 @@ class CompressPage(QWidget):
         self.format_hint.setText(
 
             "All files in a batch must have the same supported source format "
-
             "for 'Same as source'. Select an explicit format for mixed batches."
 
             if selection == "Same as source"
@@ -761,34 +767,37 @@ class CompressPage(QWidget):
         )
 
 
-
-        # CompressionOptions exposes a format capability method. The PNG
-
-        # encoder, however, supports a real lossless compression level rather
-
-        # than lossy quality; map the existing slider to that level.
-
         self.compression_options.mode.setEnabled(True)
 
-        self.compression_options.quality_label.setText("Quality")
+        self.compression_options.quality_label.setText(
+            "Quality"
+        )
+
 
         if fmt == "PNG":
 
             self.compression_options.current_format = fmt
 
-            self.compression_options.mode.model().item(0).setEnabled(True)
+
+            self.compression_options.mode.model().item(0).setEnabled(
+                True
+            )
+
 
             self.compression_options.mode.setCurrentText(
                 "Quality"
             )
 
+
             self.compression_options.mode.setEnabled(
                 False
             )
 
+
             self.compression_options.quality_label.setText(
                 "Compression effort (lossless)"
             )
+
 
             self.compression_options.show_warning(
                 "PNG is lossless. A higher slider value means stronger "
@@ -796,24 +805,31 @@ class CompressPage(QWidget):
             )
 
 
+
         else:
+
 
             self.compression_options.set_format(
                 fmt or "JPEG"
             )
 
-            # PENTING:
-            # hapus warning dari format sebelumnya
+
+            # reset warning dari format sebelumnya
             self.compression_options.show_warning(
                 ""
             )
 
+
             if fmt == "TIFF":
 
                 self.compression_options.show_warning(
-                    "TIFF quality mode uses JPEG compression and converts "
-                    "the image to RGB (transparency is not retained)."
+                    "TIFF uses lossless compression (LZW/Deflate). "
+                    "Quality controls compression strategy, not image quality."
                 )
+
+
+        # refresh button/status setelah format berubah
+        self.update_queue_state()
 
 
     def build_config(self):
@@ -854,7 +870,12 @@ class CompressPage(QWidget):
 
         elif fmt == "TIFF":
 
-            output_settings.update({"compression": "JPEG", "quality": quality})
+            output_settings.update(
+                {
+                    "compression": "deflate",
+                    "quality": quality
+                }
+            )
 
         else:
 
@@ -1217,22 +1238,9 @@ class CompressPage(QWidget):
             self.action_layout.setDirection(action_direction)
 
 
-
     def apply_styles(self):
 
         apply_page_theme(self)
-
-
-
-        self.start_button.setEnabled(True)
-
-
-
-        self.cancel_button.hide()
-
-
-
-        self.progress.finished()
 
 
 

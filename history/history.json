@@ -3333,5 +3333,5202 @@
         ],
         "status": "failed",
         "error": "Unsupported TIFF compression: JPEG"
+    },
+    {
+        "id": "9a92a47d-1ad2-4e27-a34a-66a275174da3",
+        "timestamp": "2026-10-09 01:06:50",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "6ac26950-373a-4d89-ba7f-1cb15064e904",
+        "timestamp": "2026-10-09 01:06:50",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-10.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-10_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "06be8f05-4c83-4123-9381-efd26d543a7d",
+        "timestamp": "2026-10-09 01:06:50",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-100.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-100_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5722b3e9-a1dc-4dd1-8d42-4933ad7d4579",
+        "timestamp": "2026-10-09 01:06:50",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1000.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1000_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "358ebc2d-2c8c-4a75-bbd4-dcded926752e",
+        "timestamp": "2026-10-09 01:06:50",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1001.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1001_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "75d00aec-521f-480d-bfe4-5f571e28de24",
+        "timestamp": "2026-10-09 01:06:50",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1002.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1002_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a96c0c4e-1ab6-4ab8-ba4a-dbaab20aac34",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1003.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1003_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "50d02996-6715-47fe-83a3-f201c114e287",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1004.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1004_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "64b6c9b6-f3d5-42fb-8359-83d0bde3abb7",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1005.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1005_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7daeeb52-b496-4e30-9436-253d9c8ecd0c",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1006.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1006_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4ef72245-dbb6-4e7a-b17e-d7b6d773a110",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1007.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1007_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "01952999-c83a-4df8-9550-b66aa685cc37",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1008.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1008_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "aa26ef00-f207-438f-a118-790d413af583",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1009.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1009_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1727071a-a892-4dc2-a06f-062dc52d081f",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-101.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-101_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8deb0c0e-73df-457c-a538-9059de762664",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1010.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1010_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "217af04f-24b2-4dfd-af3a-a44c34743b0b",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1011.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1011_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c934ac1d-5ef2-40bb-9e91-6a36a11f5654",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1012.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1012_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a1f95122-23ca-4990-a448-427190f3d995",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1013.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1013_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a19a231c-c73e-4f5d-9356-baf5fece570b",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1014.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1014_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ed17df7b-4653-454f-81b0-d729455913d1",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1015.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1015_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8eee998d-158c-4956-9922-62d6c6449ecf",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1016.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1016_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "670958b0-c539-4198-bc12-49a15ae1691a",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1017.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1017_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e29befeb-1f8c-4764-8df7-4285be6c8268",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1018.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1018_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4d6fd73c-a443-402d-9094-379bb9670d48",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1019.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1019_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "56b32986-b068-433b-8db1-408fcaf9af87",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-102.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-102_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "841c4f5f-3422-42f7-aa27-db2255d589b5",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1020.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1020_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "cdc1a0d1-b0aa-4147-ad54-c6b402d979a1",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1021.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1021_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "20210823-764e-43c1-b12a-599a1b2acfe7",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1022.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1022_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5fa777f4-10e2-4b02-88fb-1cbb9f2b60e3",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1023.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1023_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "12307732-6820-4f41-8804-1df4e11c7d3e",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1024.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1024_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "abeb31db-9c11-440a-a267-3590ddec2038",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1025.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1025_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b4fffdca-dc0d-43c2-b0ea-e381ddbe2ad1",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1026.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1026_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "16b48c2e-2d44-427e-a6b9-9bb9211b9aff",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1027.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1027_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "604d74cc-6fc4-4cda-be0a-08a4b9c146b2",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1028.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1028_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8f8cb9a6-4c55-4ab3-9788-73bd9de1f379",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1029.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1029_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c68e6c01-8cc7-4a06-9417-e6b765ff08e6",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-103.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-103_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "94dbb4f2-6ee9-44cd-80af-878c0c5d9257",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1030.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1030_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8e9af2f0-dcc7-4752-b349-d0d12faef2af",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1031.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1031_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8c84a89c-bbf7-4d64-a9f3-e415a7ad6c70",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1032.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1032_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "6ff3269f-b961-4964-93b9-0bd0b8d7041e",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1033.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1033_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e8795d8a-34b7-47e2-a012-504efcd2327d",
+        "timestamp": "2026-10-09 01:06:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1034.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1034_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "94906a35-dea6-4c9b-8e0f-0dbbbc0052a0",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1035.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1035_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "79302b2c-f36f-49f1-81d7-57e151a837e5",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1036.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1036_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2281e700-be08-450c-951b-c6bc0257420f",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1037.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1037_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "157bcc38-ae39-49fe-83ab-6b2d92fefc3a",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1038.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1038_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a7f1dbd0-c0ab-4210-8589-1c5490f46d2d",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1039.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1039_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d83d6b53-37ce-4c86-bb33-746add5acefa",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-104.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-104_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "03b7ce6c-5684-442c-b21d-9bf9161e9b8c",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1040.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1040_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "80e336a4-30eb-4686-85f2-26c8e037b8e1",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1041.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1041_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "addf4768-7b5c-42e6-ad7a-a2a0dde30ea9",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1042.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1042_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a51eda53-cd48-4ca9-a40a-9868d9311290",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1043.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1043_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "167ee572-5f35-448d-9968-3cdc3517a4cd",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1044.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1044_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "aa5ee0fc-7559-489e-b4d5-8bf5cf34dc43",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1045.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1045_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c6ae0883-e43d-4331-a770-bf88bf6d0890",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1046.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1046_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "076d3f2d-700f-4e2b-9ee7-bcf073e42c44",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1047.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1047_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "56fcd1d2-ca4f-4cee-a51d-70737819dad8",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1048.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1048_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "af3de75d-3754-4d66-81d0-deba5a8e7ece",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1049.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1049_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3ec0b6f2-c9cf-4971-8e4e-dce087eaa681",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-105.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-105_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b15ccc95-cd76-49e3-bd64-18ec883646f5",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1050.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1050_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c6957e38-c3fc-49a5-8042-af362c0d1821",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1051.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1051_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1ce3e49d-3408-4beb-86f6-c474adb9c179",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1052.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1052_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1caaed48-d0ce-4402-a7c2-4d34cc6485d9",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1053.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1053_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3f0df6d9-0985-4ff2-9663-ed94c19f5dd6",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1054.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1054_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "030ca876-2ba9-4853-9cf6-226d6fafeb70",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1055.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1055_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "91c3e65c-c0fa-4dab-8f7c-0dfc865d3824",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1056.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1056_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "36d14784-8479-4f91-a507-7cb5cae87cdf",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1057.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1057_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d132c8fe-6047-41e4-ada0-c3294739abe6",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1058.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1058_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2933446c-8a41-4fc3-9fbb-9a07be603f37",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1059.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1059_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9ce54d40-c5b7-4752-a82e-748351c85ae9",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-106.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-106_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e2f07ad0-b1e7-41ea-9fdb-73fde83ed8eb",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1060.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1060_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "33f68d44-b26c-4d9f-9a11-12d9239237fd",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1061.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1061_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "6532f3fd-0be1-4fe6-9953-c950d329608e",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1062.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1062_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "fe07ddad-44ba-4676-b17a-3798e5835149",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1063.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1063_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e93fdf99-eb02-44d6-a72f-076697e99770",
+        "timestamp": "2026-10-09 01:06:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1064.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1064_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8bf07261-61c5-44e6-a012-e4e65129a37a",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1065.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1065_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "dfc07dc2-868d-497e-af5b-54d33fa2011b",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1066.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1066_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "18dee085-8f4e-4a60-a06b-8641699af29d",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1067.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1067_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c45d34e5-e009-432b-97cb-4c4e5659399b",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1068.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1068_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "80b25ed0-776a-4c1b-bfbe-f954c10b6299",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1069.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1069_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "106114f0-3630-41a0-a436-056d56d288a5",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-107.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-107_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8c0b48af-3d59-4fa8-8a65-34fcc52a94d7",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1070.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1070_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5ab9e677-02f3-4e0a-8646-8cc06aca2608",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1071.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1071_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "613c3ab5-e03a-4439-9750-ffc5521315c7",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1072.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1072_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ad4f801b-a7eb-47b1-8c9d-dc7c1a090211",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1073.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1073_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0708e693-caba-4ccd-9152-c95af583f60f",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1074.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1074_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0257a136-248a-4b06-8121-eb574d216bf2",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1075.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1075_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f1983234-23c7-4bef-af99-2fbd5f004ad8",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1076.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1076_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "405270c9-c1f7-4f15-8d10-6f69608eea39",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1077.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1077_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a667c2f8-4c65-47d1-ad8a-71c0a34f55bf",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1078.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1078_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c14a43ce-6d72-4504-a861-0fe2874770e3",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1079.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1079_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "061553c7-1381-4a49-832a-0a140b87a9fa",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-108.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-108_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c3162b54-02bd-40bb-a068-33aba29fe25e",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1080.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1080_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "66e567fc-0f84-4f05-9b79-df3bb53098ee",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1081.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1081_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "69c1c02e-5538-4b7b-8a06-f1cd2431a56e",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1082.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1082_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "120e6626-07e4-4e21-b65f-8437d75b89eb",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1083.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1083_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "679d29e7-daf5-4ed7-842d-4c76f82416b4",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1084.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1084_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "71e6215c-c36f-40b2-98fa-4ab38dd16d9b",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1085.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1085_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f409015b-ba4e-4360-9d35-07461f590f47",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1086.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1086_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "91170df1-ebaa-4cbf-b29b-bd43a64facbb",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1087.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1087_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f8817c3c-8e9c-420b-a80c-2f1d4a4fec2a",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1088.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1088_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ac15e4cb-ae20-4206-b54b-8c5381b342bf",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1089.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1089_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "419c1c5a-8c81-487c-89e1-dc439b4ed61b",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-109.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-109_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ee3a98f0-1d18-4ac6-89ef-c8d905688f19",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1090.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1090_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4aa63a1c-27a5-4fa5-8240-145ba686e0b5",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1091.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1091_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "808f54ba-eabd-400d-985f-a627f5b012a0",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1092.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1092_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "92629592-a8af-4962-8f39-75e9e3f3ab59",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1093.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1093_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a88a716a-beaa-48d4-b782-4468ef230024",
+        "timestamp": "2026-10-09 01:06:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1094.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1094_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e8687607-de56-4a0e-8c37-6e0eaec467e3",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1095.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1095_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e8ffcb12-bf50-4f7c-b3eb-06e81db304a8",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1096.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1096_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7afbf3a3-faa7-4e58-adb6-29447acf2070",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1097.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1097_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2d3baec1-41c3-4e72-8a8a-9eafef6f8a3b",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1098.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1098_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1523c847-5109-412d-85ae-c3d86b2f6eb2",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1099.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1099_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "197eed33-e947-442a-a8c5-f5f753cb0dcc",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-11.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-11_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1c61487c-5504-4c99-a335-c3258085e531",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-110.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-110_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f27af66b-589d-40a4-926f-af91d3c16104",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1100.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1100_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5c6c932c-c4cf-49ea-a4c9-535ef851169b",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1101.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1101_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3a5ee0b2-ad88-4164-97d4-9238b593e9a4",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1102.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1102_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ee9e09b7-dfda-4c9a-8876-1bf405a4edae",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1103.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1103_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4ed6708e-3334-40a0-9459-477b23a26d7c",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1104.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1104_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f6d8871d-0618-4a10-9142-6aa24f2d4e08",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1105.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1105_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1ced7621-020c-460a-aea7-fb042c3203e9",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1106.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1106_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c2647259-6276-4da5-8530-3036be4adcac",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1107.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1107_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "870f6361-4fe4-4b3b-b664-a207942fa21d",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1108.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1108_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ba7a3730-907b-4435-a791-8edebcc58bc9",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1109.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1109_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "54fe1df3-ca23-4350-839e-c4124e0bca68",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-111.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-111_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "25f0216a-6c25-4af2-967a-095fd15729d4",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1110.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1110_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "08600696-58aa-44f8-9922-5a7081169c9c",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1111.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1111_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "912a5daf-b8d9-4bdc-8cff-aa6fbddb5feb",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1112.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1112_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "eb0182e5-499f-4e49-b480-4bd0ade4f6cb",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1113.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1113_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9dbb3dc8-28a1-4a6b-810d-8f9c11c225f8",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1114.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1114_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "096fbdb4-20d4-42b2-87bd-db46c3fc2a9b",
+        "timestamp": "2026-10-09 01:06:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1115.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1115_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2c3b60d8-3f13-4293-b9b4-5b6879567555",
+        "timestamp": "2026-10-09 01:07:07",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "28da6c2a-ddd5-48db-a6f1-26715233ff1b",
+        "timestamp": "2026-10-09 01:07:07",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-10.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-10_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9c7e2725-0a48-4d53-8870-2065679677ea",
+        "timestamp": "2026-10-09 01:07:07",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-100.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-100_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5d64b273-326c-43e0-8a0a-717c9686fb37",
+        "timestamp": "2026-10-09 01:07:07",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1000.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1000_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2aea04e9-0014-40ee-a415-4382dd031e43",
+        "timestamp": "2026-10-09 01:07:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1001.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1001_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "bbad6204-23eb-4ce6-a648-16cab40ab078",
+        "timestamp": "2026-10-09 01:07:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1002.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1002_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f52b25c6-f397-47cb-876b-8fd9fe514f7c",
+        "timestamp": "2026-10-09 01:07:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1003.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1003_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ce8946ce-1355-4a0a-95f6-ecbb35d95518",
+        "timestamp": "2026-10-09 01:07:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1004.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1004_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9def6c1d-6578-4def-a916-aa0401365cc3",
+        "timestamp": "2026-10-09 01:07:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1005.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1005_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "49dbcd33-24eb-4043-b0ee-841253ec042e",
+        "timestamp": "2026-10-09 01:07:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1006.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1006_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a28e2629-41b1-49d4-aed0-55a4cfa9c915",
+        "timestamp": "2026-10-09 01:07:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1007.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1007_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2e3e77f3-9e17-46f1-a13c-449296b2aace",
+        "timestamp": "2026-10-09 01:07:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1008.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1008_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "723745e5-a5f0-441b-a33a-6098ef67fbc2",
+        "timestamp": "2026-10-09 01:07:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1009.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1009_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "60e9d5b9-0528-44d8-bc46-7809c9724bc0",
+        "timestamp": "2026-10-09 01:07:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-101.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-101_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9257d2a9-77b3-4178-b59a-9cae77cb6720",
+        "timestamp": "2026-10-09 01:07:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1010.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1010_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "302c0180-3ea5-484b-906a-03904a6163cb",
+        "timestamp": "2026-10-09 01:07:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1011.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1011_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "58c2cd9e-65aa-4b0a-8fbe-475a34d53927",
+        "timestamp": "2026-10-09 01:07:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1012.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1012_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f26784e9-4b90-46a0-bc2d-e82bba3986e9",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1013.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1013_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7ff80062-ab76-4370-b140-7a2cda9f809f",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1014.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1014_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a12dcd8b-5f75-4631-8c5b-910dbd99ee8c",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1015.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1015_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b11a2de5-1190-4ccc-ad89-68d069540ceb",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1016.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1016_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3fba9214-882d-4d7a-a2de-11ac8f18a06e",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1017.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1017_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7d1a4259-1e80-452b-a774-df124f0a7bd4",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1018.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1018_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "32e14660-8310-41f3-b255-e753333d24e0",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1019.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1019_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "cc758aee-e106-469a-aee1-e773ad0661e4",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-102.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-102_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3bc6a008-f641-4f8d-920d-c517be3d00d7",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1020.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1020_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4ca0c58a-da2e-4f9f-9709-882647d9b1c3",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1021.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1021_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c96db33c-14c1-4b84-bd10-ee8bef8af941",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1022.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1022_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3c88b29a-970a-4eeb-95e8-aa6bd27d373c",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1023.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1023_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b99c7fdd-cdf0-4fea-b424-cc8c01e43485",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1024.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1024_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "87a023ac-658b-48b8-b01b-9296bf38537b",
+        "timestamp": "2026-10-09 01:07:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1025.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1025_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "10ddd199-f29a-4077-ba6e-c74161217729",
+        "timestamp": "2026-10-09 01:07:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1026.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1026_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1c4f2cc2-8141-40fb-bcc5-5caf0dac32b5",
+        "timestamp": "2026-10-09 01:07:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1027.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1027_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d193cbfc-7379-4c76-95c2-a05d2cece7e2",
+        "timestamp": "2026-10-09 01:07:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1028.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1028_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "45b0a4c6-f28d-4aa0-b96d-7f36175b8c27",
+        "timestamp": "2026-10-09 01:07:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1029.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1029_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9d3983d1-e8d8-4df4-aba0-83e1e5b91168",
+        "timestamp": "2026-10-09 01:07:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-103.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-103_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "cc37143e-a262-4e97-93c6-33c0866b3dae",
+        "timestamp": "2026-10-09 01:07:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1030.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1030_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "20deefd4-0e17-46f5-b905-e30fbc6e0c73",
+        "timestamp": "2026-10-09 01:07:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1031.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1031_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1a469a97-0dfb-42c6-84a9-6940a2942739",
+        "timestamp": "2026-10-09 01:07:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1032.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1032_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "29e6fe0a-6557-42ca-bb56-772d2b5fdaa3",
+        "timestamp": "2026-10-09 01:07:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1033.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1033_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c36c6041-325f-4d42-8247-66bc3a0d4b1a",
+        "timestamp": "2026-10-09 01:07:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1034.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1034_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a6262580-8d63-478f-aba4-cf6ce5219140",
+        "timestamp": "2026-10-09 01:07:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1035.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1035_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "957d6d42-7564-4966-95fb-2739d966543b",
+        "timestamp": "2026-10-09 01:07:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1036.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1036_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5ea84c56-f4e0-4d11-a2e0-febab9bdb5f3",
+        "timestamp": "2026-10-09 01:07:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1037.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1037_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "26fb430e-75a9-450f-a274-f795b7b42dd8",
+        "timestamp": "2026-10-09 01:08:35",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ae7c1e36-b998-4aa7-9544-8a99b3761abf",
+        "timestamp": "2026-10-09 01:08:35",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-10.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-10_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "661f2746-8008-49e4-9948-c9d60af0cb1b",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-100.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-100_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3a11334d-2d28-4ecc-a5a3-7435345efe6b",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1000.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1000_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "eba642b7-e95d-4d6e-a803-31597280f165",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1001.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1001_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b1da5ac1-f828-47ca-834c-46af770871fb",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1002.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1002_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b7ec7132-aab7-4506-97ee-25c80c8ea2fa",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1003.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1003_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "580ce8d2-e536-4ad7-93c6-c3f72b32dc22",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1004.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1004_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d5c6a1bd-9d25-48b2-994a-87d3c7778a38",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1005.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1005_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3eab134b-59d6-4065-b589-423c6c36d9b8",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1006.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1006_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3a3b92df-816c-4b96-b8f5-0099f41dacb6",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1007.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1007_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4ff9cdd6-fa27-4874-90ac-00b57305c434",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1008.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1008_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b4ce2d86-d6b0-48df-9094-846172a2680c",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1009.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1009_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d5eace96-532f-4335-97e9-5c100ed73115",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-101.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-101_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9b7257bf-47dd-430a-a8ed-7df5b9a5c9ae",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1010.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1010_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b4f534de-3700-41fb-9653-c88e82049931",
+        "timestamp": "2026-10-09 01:08:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1011.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1011_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c4bcffed-b9df-4642-a6c6-230ae3552666",
+        "timestamp": "2026-10-09 01:08:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1012.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1012_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b2024ed0-4c2c-48f4-bc8d-53c4f5a2d49a",
+        "timestamp": "2026-10-09 01:08:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1013.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1013_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d186c3f5-4aa3-4641-aaf4-34fbfc9fa794",
+        "timestamp": "2026-10-09 01:08:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1014.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1014_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1c387a77-e306-48fb-9325-69fdf4099aeb",
+        "timestamp": "2026-10-09 01:08:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1015.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1015_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ae648a06-5581-47a6-9f4d-44cbf1c02ee3",
+        "timestamp": "2026-10-09 01:08:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1016.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1016_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "aa29c244-3971-4a2e-a07c-5c905104490d",
+        "timestamp": "2026-10-09 01:08:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1017.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1017_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "dd44c408-f604-4efb-8e47-9dca3e67a8ba",
+        "timestamp": "2026-10-09 01:08:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1018.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1018_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ac18766b-515c-4c2d-811a-aa4c40b5d7c7",
+        "timestamp": "2026-10-09 01:08:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1019.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1019_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "bd065319-3989-4d21-9810-72b21e9276ba",
+        "timestamp": "2026-10-09 01:08:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-102.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-102_compressed_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1024,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "579f7698-821f-4801-843e-3ede1d46a050",
+        "timestamp": "2026-10-09 01:08:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1_compressed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ce41968a-807c-46d6-b826-811b33423cd5",
+        "timestamp": "2026-10-09 01:08:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-10.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-10_compressed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4469fedb-3f3a-4fc1-917d-21b1c8e12107",
+        "timestamp": "2026-10-09 01:08:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-100.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-100_compressed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "58c07150-4f1a-48ba-b8e7-c329e6af82ac",
+        "timestamp": "2026-10-09 01:08:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1000.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1000_compressed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d2cbbe1d-066f-48ba-a40d-d785567fcb0b",
+        "timestamp": "2026-10-09 01:08:44",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1001.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1001_compressed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2bcbda02-5419-478b-bdb0-8d5e72525d55",
+        "timestamp": "2026-10-09 01:08:44",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1002.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1002_compressed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7c56e478-048b-494c-be91-d93e4b59612a",
+        "timestamp": "2026-10-09 01:08:44",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1003.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1003_compressed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1c355cf0-433b-412f-9b44-8232831b932d",
+        "timestamp": "2026-10-09 01:20:57",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_transformed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8226f8c4-25c6-4423-8fb9-90e1897ed3e1",
+        "timestamp": "2026-10-09 01:20:58",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "failed",
+        "error": "'int' object has no attribute 'get'"
+    },
+    {
+        "id": "0745a1a7-e4f2-465d-923a-c641f62e1bab",
+        "timestamp": "2026-10-09 01:20:58",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_transformed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "564dd1b4-ef15-4552-b216-57b65237f7b9",
+        "timestamp": "2026-10-09 01:20:58",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_transformed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4b87ea37-157a-4f9a-8180-20c07ce4b8ff",
+        "timestamp": "2026-10-09 01:21:13",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_transformed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0cb8b191-a367-46e1-be7a-94df325c1c3c",
+        "timestamp": "2026-10-09 01:21:13",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "failed",
+        "error": "'int' object has no attribute 'get'"
+    },
+    {
+        "id": "359b82e7-99f5-459a-895f-f6c20e3b8139",
+        "timestamp": "2026-10-09 01:21:13",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_transformed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e42103a5-60da-48b4-b46d-39f2e0ba32c8",
+        "timestamp": "2026-10-09 01:21:13",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_transformed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5e3d9955-dcee-4e0f-85ad-8feac326d07b",
+        "timestamp": "2026-10-09 01:22:02",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_transformed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ce553f50-1a52-4bcc-8bb8-c639e206f167",
+        "timestamp": "2026-10-09 01:22:02",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "failed",
+        "error": "'int' object has no attribute 'get'"
+    },
+    {
+        "id": "01d0eeea-cd87-45ed-a633-7ab2f98a1ccd",
+        "timestamp": "2026-10-09 01:22:02",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_transformed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "75b5af55-e8c6-498c-85b2-e20b8361d0ab",
+        "timestamp": "2026-10-09 01:22:03",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_transformed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ae79ba8f-e7c9-4aa8-aef6-b53800614423",
+        "timestamp": "2026-10-09 01:22:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_transformed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "498d9152-eb65-422c-ac1a-82bf4c82b3cc",
+        "timestamp": "2026-10-09 01:22:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_processed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "failed",
+        "error": "'int' object has no attribute 'get'"
+    },
+    {
+        "id": "aa410727-ed7f-4b90-9723-0594b72d3ebe",
+        "timestamp": "2026-10-09 01:22:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_transformed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "fa996cae-6ceb-4ec1-8c96-3f84da56cf78",
+        "timestamp": "2026-10-09 01:22:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_transformed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "69a2604f-3e27-4826-b697-e7727c37633a",
+        "timestamp": "2026-10-09 01:22:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_transformed.bmp",
+        "format": "BMP",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ae1d77c8-bc33-406c-98d1-92667cd6e520",
+        "timestamp": "2026-10-09 01:22:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_transformed.bmp",
+        "format": "BMP",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "35fcce3f-662b-423c-b564-9f4d932bb610",
+        "timestamp": "2026-10-09 01:22:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_transformed.bmp",
+        "format": "BMP",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0fb8b7fc-d160-4953-9fe1-5032d422ebae",
+        "timestamp": "2026-10-09 01:22:13",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_transformed.bmp",
+        "format": "BMP",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a3549d30-dbcd-466a-810e-247050083e12",
+        "timestamp": "2026-10-09 01:22:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_transformed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0f89fab0-5b45-4e3e-b2fb-076765294ff3",
+        "timestamp": "2026-10-09 01:22:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "failed",
+        "error": "'int' object has no attribute 'get'"
+    },
+    {
+        "id": "111acbcf-a875-40f5-bf14-fb6b3c7bc3d2",
+        "timestamp": "2026-10-09 01:22:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_transformed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b39c783b-d190-4935-93c6-e734dcc64e33",
+        "timestamp": "2026-10-09 01:22:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_transformed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "transform",
+                "rotation": -90,
+                "flip": "vertical"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3de9294c-c9fe-4626-a96c-091ab44dcb21",
+        "timestamp": "2026-10-09 01:23:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_dpi.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpi",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b76eaae0-3d59-4765-bd7b-d7fb2be2c6a0",
+        "timestamp": "2026-10-09 01:23:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpi",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "failed",
+        "error": "dictionary update sequence element #0 has length 1; 2 is required"
+    },
+    {
+        "id": "638c6d7c-90d2-45a3-81cd-7b41512c10cd",
+        "timestamp": "2026-10-09 01:23:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_dpi.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpi",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "28358727-7a37-4024-bdb0-65ac9f0f41bd",
+        "timestamp": "2026-10-09 01:23:44",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_dpi_001.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpcm",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d9f93de2-a6e6-4bbe-969e-d41c19b68b41",
+        "timestamp": "2026-10-09 01:23:44",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpcm",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "failed",
+        "error": "dictionary update sequence element #0 has length 1; 2 is required"
+    },
+    {
+        "id": "d5678df0-71c3-49ed-9ca1-f2fa011274ff",
+        "timestamp": "2026-10-09 01:23:44",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_dpi_001.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpcm",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "eb5aa9ae-2037-470b-805e-eaf88da943dc",
+        "timestamp": "2026-10-09 01:23:48",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_dpi.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpcm",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c02ed515-a4d1-472b-a8b0-30a46e42e082",
+        "timestamp": "2026-10-09 01:23:48",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpcm",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "failed",
+        "error": "dictionary update sequence element #0 has length 1; 2 is required"
+    },
+    {
+        "id": "be7566d8-8712-41ce-b736-2ec2935359bf",
+        "timestamp": "2026-10-09 01:23:49",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_dpi.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpcm",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "47b90d2f-c75e-44fb-a3e3-2afe3994e005",
+        "timestamp": "2026-10-09 01:23:55",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_dpi_001.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpi",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0b9027cc-6dc8-4f07-8860-09aae6a144cf",
+        "timestamp": "2026-10-09 01:23:55",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpi",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "failed",
+        "error": "dictionary update sequence element #0 has length 1; 2 is required"
+    },
+    {
+        "id": "78a45e0b-b996-43f5-b41d-4a681b7d4dde",
+        "timestamp": "2026-10-09 01:23:56",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_dpi_001.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpi",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5531177c-a7df-4e4d-9aed-766e5032f464",
+        "timestamp": "2026-10-09 01:24:00",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_dpi.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpi",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2677a940-052a-49e3-8b5c-c20f2982b229",
+        "timestamp": "2026-10-09 01:24:00",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpi",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "failed",
+        "error": "dictionary update sequence element #0 has length 1; 2 is required"
+    },
+    {
+        "id": "d2e7ab3c-295a-4413-a25e-0e90c87bc652",
+        "timestamp": "2026-10-09 01:24:00",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_dpi.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpi",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2157a4cf-9581-48b9-a30e-db624d51443a",
+        "timestamp": "2026-10-09 01:24:05",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_dpi_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpcm",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "04d4e323-1bc8-45a1-a8e5-9c4dddc5a4cd",
+        "timestamp": "2026-10-09 01:24:05",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpcm",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "failed",
+        "error": "dictionary update sequence element #0 has length 1; 2 is required"
+    },
+    {
+        "id": "cb8212f2-d802-4efb-8102-959f30224c0d",
+        "timestamp": "2026-10-09 01:24:05",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_dpi_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "dpi",
+                "unit": "dpcm",
+                "horizontal": 300,
+                "vertical": 300,
+                "linked": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "20ed6764-fca2-481d-8857-5488ffebdc82",
+        "timestamp": "2026-10-09 01:25:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_metadata.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "metadata",
+                "mode": "all"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b04ebc93-b9bb-47a2-9d28-b2d489d7d769",
+        "timestamp": "2026-10-09 01:25:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_metadata.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "metadata",
+                "mode": "all"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "54564500-1908-46aa-9ce9-b7c51ceeb307",
+        "timestamp": "2026-10-09 01:25:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration_metadata.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "metadata",
+                "mode": "all"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "71e49155-70dc-4d0e-9d68-176c225d91de",
+        "timestamp": "2026-10-09 01:26:48",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "srgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "45c5f509-0dc1-4f4b-8e90-3cfcb6560c59",
+        "timestamp": "2026-10-09 01:26:48",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "srgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "bcd909b6-9d80-4864-9929-95c3e4dcdc7e",
+        "timestamp": "2026-10-09 01:26:48",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "srgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "e7c09df6-d321-4819-8e87-933581225c46",
+        "timestamp": "2026-10-09 01:26:56",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "adobe_rgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "3eb58da6-2740-445f-821c-3708f6ea09be",
+        "timestamp": "2026-10-09 01:26:56",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "adobe_rgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "54c02b22-2803-4993-9a87-5071ecb40b4b",
+        "timestamp": "2026-10-09 01:26:56",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "adobe_rgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "61b59704-d45d-4813-81c5-179b7d7fef6b",
+        "timestamp": "2026-10-09 01:27:00",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "display_p3",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "534f920e-9270-450e-a19c-479a23b49264",
+        "timestamp": "2026-10-09 01:27:00",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "display_p3",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "a26dfe25-d30a-4f7b-8086-a5753a153ee2",
+        "timestamp": "2026-10-09 01:27:01",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "display_p3",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "a9d66f01-dff1-422d-916f-e5f02b6b8190",
+        "timestamp": "2026-10-09 01:27:04",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "cmyk",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "cf7f2db0-bb02-46e4-ae5b-e5f441b922c4",
+        "timestamp": "2026-10-09 01:27:04",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "cmyk",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "13890908-e47e-474a-98ba-e508ea5c5472",
+        "timestamp": "2026-10-09 01:27:05",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "cmyk",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "834fb9cf-23f6-4f70-a54a-62d72efeb693",
+        "timestamp": "2026-10-09 01:27:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "2382112d-640e-4a4e-a5b8-8019a19366aa",
+        "timestamp": "2026-10-09 01:27:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "f288794f-3650-4f9c-a7a8-424e0f616eb8",
+        "timestamp": "2026-10-09 01:27:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "ec730e5d-7c28-492a-a80b-1cf0d76a8431",
+        "timestamp": "2026-10-09 01:27:16",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "srgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "988d9339-22f6-4930-937c-d498e986cd28",
+        "timestamp": "2026-10-09 01:27:16",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "srgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "260a382a-bc79-42ca-b873-978147a10ecc",
+        "timestamp": "2026-10-09 01:27:17",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "srgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "0f9bfee3-3bed-4d8c-8850-c41b3c504ac4",
+        "timestamp": "2026-10-09 01:27:19",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "adobe_rgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "dda5319f-1a41-4c11-a747-f4f33ef019dc",
+        "timestamp": "2026-10-09 01:27:19",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "adobe_rgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "a35cc0bc-314f-4918-b647-95e467efec64",
+        "timestamp": "2026-10-09 01:27:20",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "adobe_rgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "a3b00c0d-4056-479e-ae55-8b1cd0fb1842",
+        "timestamp": "2026-10-09 01:27:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "display_p3",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "b04cc0ec-9c16-4eb9-8416-a94dc353df2e",
+        "timestamp": "2026-10-09 01:27:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "display_p3",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "105980d8-4080-46b9-ad74-0c3760c17d3e",
+        "timestamp": "2026-10-09 01:27:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "display_p3",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "e50f8425-9fba-47f5-b7a2-e5099f07a924",
+        "timestamp": "2026-10-09 01:27:26",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "79a9387d-7dbd-4ff0-a37f-22f54596a802",
+        "timestamp": "2026-10-09 01:27:26",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "e7237082-10cd-40cb-b6e0-24124aa4f402",
+        "timestamp": "2026-10-09 01:27:26",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "c1fc67e8-17ec-406d-a12d-5cae2ad9692b",
+        "timestamp": "2026-10-09 01:27:32",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "6811a9e7-020d-4159-8296-a03b9d90eafd",
+        "timestamp": "2026-10-09 01:27:32",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "077dfd0f-2f7a-47b6-ac81-2955812d662d",
+        "timestamp": "2026-10-09 01:27:32",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "228c28db-d165-43dc-9c9a-663b70085283",
+        "timestamp": "2026-10-09 01:27:35",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "srgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "015bb19d-dd81-49c4-9a0f-bcb4f9025727",
+        "timestamp": "2026-10-09 01:27:35",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "srgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "4f482cde-d30d-4734-87f5-1cca8d8e1b45",
+        "timestamp": "2026-10-09 01:27:35",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "srgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "90f9c263-c575-4926-9b03-27190b054d0a",
+        "timestamp": "2026-10-09 01:27:38",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "adobe_rgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "107fb412-1e9c-4643-bd62-44ae1908f58c",
+        "timestamp": "2026-10-09 01:27:38",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "adobe_rgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "30aae169-490e-4109-87d9-c3201d77d194",
+        "timestamp": "2026-10-09 01:27:38",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "adobe_rgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "be31d495-e512-41a8-87e6-93b71b1eecc3",
+        "timestamp": "2026-10-09 01:27:41",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "display_p3",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "6787c516-5256-46e2-8bfe-c05887814d2d",
+        "timestamp": "2026-10-09 01:27:41",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "display_p3",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "cda57a14-d2b4-4808-aa64-ddef4248307a",
+        "timestamp": "2026-10-09 01:27:41",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "display_p3",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "87e121e4-f08e-4d89-9954-ab3c44c644de",
+        "timestamp": "2026-10-09 01:27:44",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "cmyk",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "abc717f0-58c6-4f05-9359-45ba65e5ddf6",
+        "timestamp": "2026-10-09 01:27:44",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "cmyk",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "80cccfc7-68c2-4397-a83d-2f9fb06fd1db",
+        "timestamp": "2026-10-09 01:27:45",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "cmyk",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "0bc1c6ab-e704-483b-8421-589a69c78cb7",
+        "timestamp": "2026-10-09 01:27:47",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "6ca018c1-a72e-4c74-a2fd-40a79e1ed8ed",
+        "timestamp": "2026-10-09 01:27:47",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "0f57d551-3966-4ac5-a893-d00f6c9bc5ca",
+        "timestamp": "2026-10-09 01:27:47",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "90c3bc2a-4536-4cca-82d8-7a1183b7c4c4",
+        "timestamp": "2026-10-09 01:28:15",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_bitdepth.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ea8ab348-6755-42e0-81fb-24960a41c45f",
+        "timestamp": "2026-10-09 01:28:15",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "failed",
+        "error": "dictionary update sequence element #0 has length 1; 2 is required"
+    },
+    {
+        "id": "fb5e3fe8-6840-48db-9cee-497cc8a57b6e",
+        "timestamp": "2026-10-09 01:28:20",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_bitdepth.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "09f4aacf-8122-4b86-859f-aaa8832c2c3d",
+        "timestamp": "2026-10-09 01:28:20",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "failed",
+        "error": "dictionary update sequence element #0 has length 1; 2 is required"
+    },
+    {
+        "id": "3993acda-37dc-4bdd-b54e-ff219f67361c",
+        "timestamp": "2026-10-09 01:28:25",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_bitdepth_001.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "value": 16
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "17fa023f-0710-47c5-892a-d3329cf11f9f",
+        "timestamp": "2026-10-09 01:28:25",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "value": 16
+            }
+        ],
+        "status": "failed",
+        "error": "dictionary update sequence element #0 has length 1; 2 is required"
+    },
+    {
+        "id": "1e57b022-1d18-408c-97de-2b22ffadff54",
+        "timestamp": "2026-10-09 01:28:30",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_bitdepth_002.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "value": 32
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ea76a6c0-60d6-4bb1-b888-574366dfb4a2",
+        "timestamp": "2026-10-09 01:28:30",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "value": 32
+            }
+        ],
+        "status": "failed",
+        "error": "dictionary update sequence element #0 has length 1; 2 is required"
+    },
+    {
+        "id": "61e191c6-1496-42e5-a391-e61f0aee3079",
+        "timestamp": "2026-10-09 01:28:35",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_bitdepth_001.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "79cae246-6607-4e4a-a695-8c4c9f9eccda",
+        "timestamp": "2026-10-09 01:28:35",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "value": 8
+            }
+        ],
+        "status": "failed",
+        "error": "dictionary update sequence element #0 has length 1; 2 is required"
+    },
+    {
+        "id": "52b14940-6fca-41b8-818e-dc437af01f2b",
+        "timestamp": "2026-10-09 01:28:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_bitdepth_002.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "value": 16
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8d6dd333-dd82-4a35-bf23-75bed91f5381",
+        "timestamp": "2026-10-09 01:28:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "bitdepth",
+                "value": 16
+            }
+        ],
+        "status": "failed",
+        "error": "dictionary update sequence element #0 has length 1; 2 is required"
     }
 ]
