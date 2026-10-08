@@ -38,7 +38,6 @@ class ConvertPage(QWidget):
         "BMP",
         "TIFF",
         "HEIC",
-        "HEIF",
         "ICO",
         "SVG",
     ]

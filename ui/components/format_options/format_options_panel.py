@@ -27,7 +27,6 @@ class FormatOptionsPanel(QWidget):
         "GIF": GIFOptions,
         "BMP": BMPOptions,
         "HEIC": HEICOptions,
-        "HEIF": HEICOptions,
         "ICO": ICOOptions,
         "SVG": SVGOptions,
     }

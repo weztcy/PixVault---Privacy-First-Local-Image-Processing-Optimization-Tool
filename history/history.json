@@ -6847,5 +6847,1165 @@
         "operations": [],
         "status": "success",
         "error": null
+    },
+    {
+        "id": "c4a55099-8d26-4fcf-9c00-d4df95e2312a",
+        "timestamp": "2026-10-08 16:23:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB.jpg",
+        "format": "JPEG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "54121dbc-7975-45b4-9739-790a403bad83",
+        "timestamp": "2026-10-08 16:23:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.jpg",
+        "format": "JPEG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "55ac487a-1774-40e6-8f36-d4cf9dbc60bf",
+        "timestamp": "2026-10-08 16:23:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720.jpg",
+        "format": "JPEG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "49cf2d7e-dbe2-427e-94f9-e708199d4883",
+        "timestamp": "2026-10-08 16:23:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2.jpg",
+        "format": "JPEG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "125a4356-d289-40dc-8c51-d409e3185c55",
+        "timestamp": "2026-10-08 16:23:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300.jpg",
+        "format": "JPEG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1d48de6c-b73a-4aeb-943d-4bf63499f9ea",
+        "timestamp": "2026-10-08 16:23:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300.jpg",
+        "format": "JPEG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "82e18ea0-fda3-4d3a-98e0-dd08bb568992",
+        "timestamp": "2026-10-08 16:23:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160.jpg",
+        "format": "JPEG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "bb1404d4-fc27-477b-85df-924fe4eb67b5",
+        "timestamp": "2026-10-08 16:23:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853.jpg",
+        "format": "JPEG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "78362921-7834-497e-9a7f-a70bf64de5f3",
+        "timestamp": "2026-10-08 16:23:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration.jpg",
+        "format": "JPEG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "82cbc825-0198-47dc-83bc-ce0786d975fa",
+        "timestamp": "2026-10-08 16:23:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.jpg",
+        "format": "JPEG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "9f12ad00-1b9b-4e13-bf61-8f913ee2cf49",
+        "timestamp": "2026-10-08 16:24:27",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c6d0a1fc-42d4-4560-8f5f-eb908b04be0d",
+        "timestamp": "2026-10-08 16:24:27",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "78d0c3d9-22f5-41e0-898f-2769b9010d5f",
+        "timestamp": "2026-10-08 16:24:27",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5e84540b-05fb-4c35-9823-31f69a782f24",
+        "timestamp": "2026-10-08 16:24:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "fb99751b-ad28-45f7-8838-b98ea43de1af",
+        "timestamp": "2026-10-08 16:24:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "dc470d45-8ac4-4930-b244-9e9c608bb5a0",
+        "timestamp": "2026-10-08 16:24:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2373518b-c695-42c1-92cc-ce7b5c83ff56",
+        "timestamp": "2026-10-08 16:24:29",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1f20821c-edb1-40f9-809d-3fe2377c4a44",
+        "timestamp": "2026-10-08 16:24:29",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "cad0c152-0896-4e17-aedd-352ccab943fc",
+        "timestamp": "2026-10-08 16:24:31",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1f01ee87-0620-4d4a-a723-29360e86b711",
+        "timestamp": "2026-10-08 16:24:31",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "7005c2fc-b519-40ec-a4d5-f5da7844172e",
+        "timestamp": "2026-10-08 16:25:03",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "28014059-ee42-432e-8363-8f96ee3987bb",
+        "timestamp": "2026-10-08 16:25:03",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "df72c5d4-6a34-43e7-a33f-0ba4ef3ff4f1",
+        "timestamp": "2026-10-08 16:25:03",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "06275363-1533-4951-af78-9d4d86f9f1dc",
+        "timestamp": "2026-10-08 16:25:04",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7ebe6c19-ef58-4fcb-821e-908b73fc12b4",
+        "timestamp": "2026-10-08 16:25:04",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8735f28e-f6e9-4a39-99b0-07bdcef0a56f",
+        "timestamp": "2026-10-08 16:25:04",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ad46c300-98dc-493d-99ad-2ebd83e9ef23",
+        "timestamp": "2026-10-08 16:25:06",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "725e6725-7f9c-4791-9ed5-c694f3858f02",
+        "timestamp": "2026-10-08 16:25:06",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "fee28ad2-d979-4f3b-b43d-c8df888cfa3b",
+        "timestamp": "2026-10-08 16:25:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a79f8399-8224-4d4a-bbc9-bacdaec1f330",
+        "timestamp": "2026-10-08 16:25:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "00c0240b-c86f-4165-aed0-0574dafa316d",
+        "timestamp": "2026-10-08 16:25:44",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB.avif",
+        "format": "AVIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ef4597ea-e8cb-4dd0-8cbc-95549ed888d3",
+        "timestamp": "2026-10-08 16:25:44",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.avif",
+        "format": "AVIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "704ee3ba-efdb-4819-be4b-fd9f2fb926bf",
+        "timestamp": "2026-10-08 16:25:45",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720.avif",
+        "format": "AVIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8dc32034-9ab8-482b-b168-03f69421c631",
+        "timestamp": "2026-10-08 16:25:45",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2.avif",
+        "format": "AVIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "adfdd9a0-a8f0-414d-b8fc-7b6f7def9e4e",
+        "timestamp": "2026-10-08 16:25:45",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300.avif",
+        "format": "AVIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a63f7a69-1522-42b6-8a96-a4ca1fb40ba3",
+        "timestamp": "2026-10-08 16:25:45",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300.avif",
+        "format": "AVIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e497e9f1-c752-48ff-86a5-8d4005e3316e",
+        "timestamp": "2026-10-08 16:25:45",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160.avif",
+        "format": "AVIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "eb01f803-9dfd-4967-9ee5-3a75afd22c8f",
+        "timestamp": "2026-10-08 16:25:46",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853.avif",
+        "format": "AVIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "02c31ab5-00ec-4fdb-99be-cc0932489160",
+        "timestamp": "2026-10-08 16:25:46",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration.avif",
+        "format": "AVIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "04d2fd8b-e59c-451b-9aae-8069aa6e5eb1",
+        "timestamp": "2026-10-08 16:25:46",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.avif",
+        "format": "AVIF",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "a83f1b14-8d9f-490f-b1ed-8ad52f004c5a",
+        "timestamp": "2026-10-08 16:26:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB.gif",
+        "format": "GIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "fbabcc83-8dcd-4880-af47-227277242691",
+        "timestamp": "2026-10-08 16:26:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.gif",
+        "format": "GIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1ed459f4-26e4-4935-b385-a6dff71522ca",
+        "timestamp": "2026-10-08 16:26:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720.gif",
+        "format": "GIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5ab65175-fd3a-4c34-887f-eeae6b8a0540",
+        "timestamp": "2026-10-08 16:26:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2.gif",
+        "format": "GIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "277482aa-a4cc-4213-a96e-466f3fbf3f94",
+        "timestamp": "2026-10-08 16:26:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300.gif",
+        "format": "GIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2ee072fd-95a1-41d3-ac26-e393c76ae5dc",
+        "timestamp": "2026-10-08 16:26:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300.gif",
+        "format": "GIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "665186b3-1a3d-4a35-a956-bdb0cb2e734e",
+        "timestamp": "2026-10-08 16:26:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160.gif",
+        "format": "GIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1373e50e-902e-4e5e-b5d9-3160cd879870",
+        "timestamp": "2026-10-08 16:26:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853.gif",
+        "format": "GIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9973e0e3-26ed-43c7-b504-1d68cf98174e",
+        "timestamp": "2026-10-08 16:26:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration.gif",
+        "format": "GIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "42738538-aad7-496e-b69b-079f5c7d3273",
+        "timestamp": "2026-10-08 16:26:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.gif",
+        "format": "GIF",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "b326d446-f3b7-41b0-9896-8624d2c43542",
+        "timestamp": "2026-10-08 16:27:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB.bmp",
+        "format": "BMP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "17cf68c8-62be-4d31-ab41-57c50579d9dd",
+        "timestamp": "2026-10-08 16:27:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.bmp",
+        "format": "BMP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "04a9f51b-a59b-41c1-908e-e43e0e920a78",
+        "timestamp": "2026-10-08 16:27:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720.bmp",
+        "format": "BMP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7d75daf9-ed23-468c-8ca3-8389ecc46222",
+        "timestamp": "2026-10-08 16:27:11",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2.bmp",
+        "format": "BMP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "eb0efdb7-aff9-4b0f-bf43-45f586a902b5",
+        "timestamp": "2026-10-08 16:27:11",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300.bmp",
+        "format": "BMP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "36f01013-7d76-4981-9b7c-f7d69b9dfcc3",
+        "timestamp": "2026-10-08 16:27:11",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300.bmp",
+        "format": "BMP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f15f9b93-4ad7-4749-84d9-9e6b8a93a9a9",
+        "timestamp": "2026-10-08 16:27:11",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160.bmp",
+        "format": "BMP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a8d20343-58a2-4ae5-af00-2965e893ddd7",
+        "timestamp": "2026-10-08 16:27:11",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853.bmp",
+        "format": "BMP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a8496caa-95a7-4e71-a18d-d1093be299cc",
+        "timestamp": "2026-10-08 16:27:11",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration.bmp",
+        "format": "BMP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "72cc8a9b-2fdc-40fe-96b6-762a94b819b6",
+        "timestamp": "2026-10-08 16:27:11",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.bmp",
+        "format": "BMP",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "dbe6a713-4340-4cd3-97f4-e70e8fe28b0c",
+        "timestamp": "2026-10-08 16:27:55",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8b74a6c2-1605-4993-841a-9350b9227784",
+        "timestamp": "2026-10-08 16:27:55",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "77401000-4aea-4519-80ae-7c7178eec6e1",
+        "timestamp": "2026-10-08 16:27:55",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "534969bd-7ca4-46ff-b8f8-7256aeb2120a",
+        "timestamp": "2026-10-08 16:27:55",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7957aa0d-4281-4366-b9c0-05c4103ab5b2",
+        "timestamp": "2026-10-08 16:27:55",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5c9df2cf-048b-4d8b-9338-b6718812e3dd",
+        "timestamp": "2026-10-08 16:27:55",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4e3326f5-b0ba-4159-8768-21cd34465665",
+        "timestamp": "2026-10-08 16:27:55",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d4e4ed80-20d6-4fe1-b3d4-19cd2e95b5e0",
+        "timestamp": "2026-10-08 16:27:55",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "353cb2a9-bbf9-4023-a186-ce9382e66ceb",
+        "timestamp": "2026-10-08 16:27:56",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "759ce8f0-c081-4c1c-a75d-cc7f365daccd",
+        "timestamp": "2026-10-08 16:27:56",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "5418435d-4b49-4e4c-9f2f-311e0c89a809",
+        "timestamp": "2026-10-08 16:31:50",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "05bc65e5-ccff-4ce0-9901-1b7267cce1d4",
+        "timestamp": "2026-10-08 16:31:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e99e242c-5640-4501-a125-0e6b98521f79",
+        "timestamp": "2026-10-08 16:31:51",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "98ebeb71-085e-438b-acab-3cd0795c19e9",
+        "timestamp": "2026-10-08 16:31:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d0e1d141-3ad4-4cba-bfab-eaa4e69d4250",
+        "timestamp": "2026-10-08 16:31:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "40fd1407-570e-4e7a-8de1-a74fcdb45924",
+        "timestamp": "2026-10-08 16:31:52",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "029779cb-4fea-4cb9-b1f4-143b4060487a",
+        "timestamp": "2026-10-08 16:31:55",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "19fc776a-d8fb-4fb7-a3b2-871b256948ff",
+        "timestamp": "2026-10-08 16:31:56",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ee32a2fd-653e-40f6-8335-0c91d4dd65aa",
+        "timestamp": "2026-10-08 16:32:06",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "48e05386-a47f-452b-bb8b-8c025e887f14",
+        "timestamp": "2026-10-08 16:32:06",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "a9533792-dc90-47be-91c4-c19c1a1cd620",
+        "timestamp": "2026-10-08 16:32:27",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB.ico",
+        "format": "ICO",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9b7011ca-6f7e-4cd5-8671-32158761db59",
+        "timestamp": "2026-10-08 16:32:27",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "format": "ICO",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "04ecb5d1-d83c-47c6-9385-40bd33e2695a",
+        "timestamp": "2026-10-08 16:32:27",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720.ico",
+        "format": "ICO",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f47d19f4-64fb-43bb-8528-5289c38d2160",
+        "timestamp": "2026-10-08 16:32:27",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2.ico",
+        "format": "ICO",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ed1d2261-f6e6-4784-91b1-8dbede77c1b1",
+        "timestamp": "2026-10-08 16:32:27",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300.ico",
+        "format": "ICO",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "503f1597-e978-4bea-b4ca-fc5e50402eac",
+        "timestamp": "2026-10-08 16:32:27",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300.ico",
+        "format": "ICO",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "6cc1c5c1-3bef-4716-9b0f-40a6b92971a9",
+        "timestamp": "2026-10-08 16:32:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160.ico",
+        "format": "ICO",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a6044fcd-791a-49c6-861b-957316174a66",
+        "timestamp": "2026-10-08 16:32:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853.ico",
+        "format": "ICO",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "444f175d-7577-4194-b1a0-fdc45142fb5e",
+        "timestamp": "2026-10-08 16:32:29",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration.ico",
+        "format": "ICO",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2564bd40-8b16-4cec-a425-15a22081491a",
+        "timestamp": "2026-10-08 16:32:29",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.ico",
+        "format": "ICO",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "ac4738d1-2053-45c5-b94d-14f958ebba44",
+        "timestamp": "2026-10-08 16:32:57",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e5b46545-e61e-4a1b-b434-3c955b87a33b",
+        "timestamp": "2026-10-08 16:32:57",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e5f7d9e1-4ee4-41f6-ba64-541d77386f65",
+        "timestamp": "2026-10-08 16:32:57",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ad31e884-2a65-4a96-81ab-735ffec21b74",
+        "timestamp": "2026-10-08 16:32:58",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "452081ad-ee29-4ee0-b45e-6fbdb70e7522",
+        "timestamp": "2026-10-08 16:32:58",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7e9c7d66-226d-41b1-8b9f-7d41f7593bdd",
+        "timestamp": "2026-10-08 16:32:58",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "63793ebd-45be-4191-a73b-a16cc5e6ac7e",
+        "timestamp": "2026-10-08 16:33:00",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a202ee03-2875-40ce-a176-4de3056192f5",
+        "timestamp": "2026-10-08 16:33:00",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "034eaa7f-39e6-42f8-ba65-cf477d9ec107",
+        "timestamp": "2026-10-08 16:33:05",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2e731c46-08c3-4759-a207-ecfa64b73e04",
+        "timestamp": "2026-10-08 16:33:05",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "a153641e-7c87-4aaa-bc82-1fa3433fc95f",
+        "timestamp": "2026-10-08 16:36:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "c6570060-8296-4812-8d23-46be8960cfbe",
+        "timestamp": "2026-10-08 16:36:11",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "bc2aecaf-0f9b-47e0-8a3b-f59a2a2dd1bf",
+        "timestamp": "2026-10-08 16:38:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "3a1958f6-0d65-4c0c-82db-4ffc01776131",
+        "timestamp": "2026-10-08 16:38:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "2713b9b1-c6ff-4826-91fb-5c9a2b960ff1",
+        "timestamp": "2026-10-08 16:38:11",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "511adab1-e0eb-426a-a20e-25d0d49a8902",
+        "timestamp": "2026-10-08 16:38:11",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "5147cd3f-3c42-4c8d-b918-e7d1a677a609",
+        "timestamp": "2026-10-08 16:38:11",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "8f15c923-d03d-4cc5-86fb-0ba62ad3a07b",
+        "timestamp": "2026-10-08 16:38:11",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.svg",
+        "format": "SVG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "d9980e13-b3b2-413f-b615-0f926d8e2e98",
+        "timestamp": "2026-10-08 16:38:26",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "0a9ca2d7-00db-4f70-9e16-bf9751e8758c",
+        "timestamp": "2026-10-08 16:38:27",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "9c86805e-04fa-4b1e-bdf9-a630c1359bba",
+        "timestamp": "2026-10-08 16:38:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "22359219-abfb-411a-960e-42f7d0eac51c",
+        "timestamp": "2026-10-08 16:38:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "71b71ed4-f882-47c0-bce9-610c0b7076ca",
+        "timestamp": "2026-10-08 16:38:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "5e22fd31-f230-4fb1-9ff7-41974d645e9e",
+        "timestamp": "2026-10-08 16:38:29",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "af14aa1c-c32d-4b16-a9e1-b82d29aef077",
+        "timestamp": "2026-10-08 16:38:29",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Steps.svg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Steps_processed.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "failed",
+        "error": "cannot identify image file 'C:\\\\Users\\\\yohan\\\\OneDrive\\\\Pictures\\\\sample\\\\Steps.svg'"
+    },
+    {
+        "id": "8bb2e83f-ac54-4563-b8e5-9effe1b7f933",
+        "timestamp": "2026-10-08 16:39:50",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\profile2.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\profile2.jpg",
+        "format": "JPEG",
+        "operations": [],
+        "status": "success",
+        "error": null
     }
 ]
