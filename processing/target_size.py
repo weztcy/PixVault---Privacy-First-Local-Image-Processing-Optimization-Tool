@@ -4,10 +4,8 @@ from io import BytesIO
 
 
 class TargetSizeOptimizer:
-
     MIN_QUALITY = 5
     MAX_QUALITY = 95
-
 
     def to_bytes(self, value, unit="KB"):
         value = float(value)
@@ -17,8 +15,9 @@ class TargetSizeOptimizer:
 
         return int(value * 1024)
 
-
-    def optimize_jpeg_webp(self, image, output_format, target_bytes, base_settings=None):
+    def optimize_jpeg_webp(
+        self, image, output_format, target_bytes, base_settings=None
+    ):
 
         settings = dict(base_settings or {})
 
@@ -29,9 +28,7 @@ class TargetSizeOptimizer:
         best_quality = None
         best_diff = None
 
-
         while low <= high:
-
             quality = (low + high) // 2
 
             buffer = BytesIO()
@@ -55,23 +52,18 @@ class TargetSizeOptimizer:
                 best_quality = quality
                 best_diff = diff
 
-
             if size > target_bytes:
                 high = quality - 1
             else:
                 low = quality + 1
 
-
         return best, best_quality
-
-
 
     def optimize_png(self, image, target_bytes):
 
         best = None
 
         for level in range(9, -1, -1):
-
             buffer = BytesIO()
 
             image.save(
@@ -81,19 +73,18 @@ class TargetSizeOptimizer:
                 optimize=True,
             )
 
-            if best is None or abs(buffer.tell() - target_bytes) < abs(len(best)-target_bytes):
+            if best is None or abs(buffer.tell() - target_bytes) < abs(
+                len(best) - target_bytes
+            ):
                 best = buffer.getvalue()
 
         return best
-
-
 
     def optimize_tiff(self, image, target_bytes):
 
         best = None
 
         for compression in ["deflate", "tiff_lzw"]:
-
             buffer = BytesIO()
 
             image.save(
@@ -102,7 +93,9 @@ class TargetSizeOptimizer:
                 compression=compression,
             )
 
-            if best is None or abs(buffer.tell()-target_bytes) < abs(len(best)-target_bytes):
+            if best is None or abs(buffer.tell() - target_bytes) < abs(
+                len(best) - target_bytes
+            ):
                 best = buffer.getvalue()
 
         return best

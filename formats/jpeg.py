@@ -15,7 +15,9 @@ class JPEGEncoder(BaseEncoder):
 
         compression = image.info.get("compression", {})
         if compression.get("mode") == "quality":
-            settings["quality"] = compression.get("quality", settings.get("quality", 85))
+            settings["quality"] = compression.get(
+                "quality", settings.get("quality", 85)
+            )
 
         quality = max(1, min(95, int(settings.get("quality", 85))))
 

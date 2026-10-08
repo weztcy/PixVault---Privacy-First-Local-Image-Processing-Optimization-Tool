@@ -19,7 +19,7 @@ class BitDepthOptions(BaseProcessingOptions):
         super().setup_ui()
         self.bit_depth_field = self.add_widget(
             DropdownField("Bit Depth", self.BIT_DEPTHS, "8-bit")
-        )   
+        )
         self.bit_depth = self.bit_depth_field.combo
         self.bit_depth.currentTextChanged.connect(self.emit_settings)
 

@@ -14,7 +14,9 @@ class WEBPEncoder(BaseEncoder):
 
         compression = image.info.get("compression", {})
         if compression.get("mode") == "quality":
-            settings["quality"] = compression.get("quality", settings.get("quality", 85))
+            settings["quality"] = compression.get(
+                "quality", settings.get("quality", 85)
+            )
 
         lossless = settings.get("lossless", False)
 

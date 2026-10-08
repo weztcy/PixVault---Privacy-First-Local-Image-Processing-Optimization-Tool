@@ -3,22 +3,17 @@
 from ui.components.processing_options.base_processing_options import (
     BaseProcessingOptions,
 )
-
 from ui.components.processing_options.common.dropdown_field import DropdownField
 from ui.components.processing_options.common.number_field import NumberField
 from ui.components.processing_options.common.slider_field import SliderField
 
 
-
 class CompressionOptions(BaseProcessingOptions):
-
-
     PRIORITY_KEYS = {
         "Prioritize Size": "size",
         "Balanced": "balanced",
         "Prioritize Quality": "quality",
     }
-
 
     QUALITY_SUPPORTED = {
         "JPEG",
@@ -27,7 +22,6 @@ class CompressionOptions(BaseProcessingOptions):
         "HEIC",
         "TIFF",
     }
-
 
     TARGET_SIZE_SUPPORTED = {
         "JPEG",
@@ -38,13 +32,9 @@ class CompressionOptions(BaseProcessingOptions):
         "HEIC",
     }
 
-
-
-
     def setup_ui(self):
 
         super().setup_ui()
-
 
         self.mode_field = self.add_widget(
             DropdownField(
@@ -57,7 +47,6 @@ class CompressionOptions(BaseProcessingOptions):
             )
         )
 
-
         self.quality_field = self.add_widget(
             SliderField(
                 "Quality",
@@ -67,7 +56,6 @@ class CompressionOptions(BaseProcessingOptions):
             )
         )
 
-
         self.size_field = self.add_widget(
             NumberField(
                 "Target Size",
@@ -76,7 +64,6 @@ class CompressionOptions(BaseProcessingOptions):
                 1024,
             )
         )
-
 
         self.unit_field = self.add_widget(
             DropdownField(
@@ -89,7 +76,6 @@ class CompressionOptions(BaseProcessingOptions):
             )
         )
 
-
         self.accuracy_field = self.add_widget(
             DropdownField(
                 "Target Accuracy",
@@ -97,8 +83,6 @@ class CompressionOptions(BaseProcessingOptions):
                 "Balanced",
             )
         )
-
-
 
         # ==========================================
         # Compatibility references
@@ -119,13 +103,7 @@ class CompressionOptions(BaseProcessingOptions):
 
         self.accuracy = self.accuracy_field.combo
 
-
-
-        self.mode.currentTextChanged.connect(
-            self._on_mode_changed
-        )
-
-
+        self.mode.currentTextChanged.connect(self._on_mode_changed)
 
         for control in (
             self.quality_field,
@@ -133,18 +111,9 @@ class CompressionOptions(BaseProcessingOptions):
             self.unit_field,
             self.accuracy_field,
         ):
-
-            control.value_changed.connect(
-                self.emit_settings
-            )
-
-
+            control.value_changed.connect(self.emit_settings)
 
         self.update_ui()
-
-
-
-
 
     def _on_mode_changed(self, *_args):
 
@@ -154,349 +123,132 @@ class CompressionOptions(BaseProcessingOptions):
 
         self.emit_settings()
 
-
-
-
-
     def update_ui(self):
 
+        quality_mode = self.mode.currentText() == "Quality"
 
-        quality_mode = (
-            self.mode.currentText()
-            ==
-            "Quality"
-        )
+        self.quality_field.setVisible(quality_mode)
 
+        self.size_field.setVisible(not quality_mode)
 
-        self.quality_field.setVisible(
-            quality_mode
-        )
+        self.unit_field.setVisible(not quality_mode)
 
-
-        self.size_field.setVisible(
-            not quality_mode
-        )
-
-
-        self.unit_field.setVisible(
-            not quality_mode
-        )
-
-
-        self.accuracy_field.setVisible(
-            not quality_mode
-        )
-
-
-
-
+        self.accuracy_field.setVisible(not quality_mode)
 
     def get_settings(self):
 
-
         if self.mode.currentText() == "Quality":
-
             return {
-
                 "type": "compression",
-
                 "mode": "quality",
-
                 "quality": self.quality.value(),
-
                 "optimize": True,
-
             }
 
-
-
         return {
-
             "type": "compression",
-
             "mode": "target_size",
-
             "size": self.size.value(),
-
             "unit": self.unit.currentText().lower(),
-
-            "priority": self.PRIORITY_KEYS[
-                self.accuracy.currentText()
-            ],
-
+            "priority": self.PRIORITY_KEYS[self.accuracy.currentText()],
         }
-
-
-
-
 
     def reset(self):
 
+        self.mode.setCurrentText("Quality")
 
-        self.mode.setCurrentText(
-            "Quality"
-        )
+        self.quality.setValue(85)
 
+        self.size.setValue(1024)
 
-        self.quality.setValue(
-            85
-        )
+        self.unit.setCurrentText("KB")
 
-
-        self.size.setValue(
-            1024
-        )
-
-
-        self.unit.setCurrentText(
-            "KB"
-        )
-
-
-        self.accuracy.setCurrentText(
-            "Balanced"
-        )
-
+        self.accuracy.setCurrentText("Balanced")
 
         self.update_capability()
 
         self.update_ui()
 
 
-
-
-
 def update_capability(self):
 
-    format_name = (
-        self.current_format
-        or
-        ""
-    )
-
+    format_name = self.current_format or ""
 
     model = self.mode.model()
-
 
     quality_item = model.item(0)
 
     target_item = model.item(1)
 
+    quality_supported = format_name in self.QUALITY_SUPPORTED
 
-
-    quality_supported = (
-        format_name
-        in
-        self.QUALITY_SUPPORTED
-    )
-
-
-    target_supported = (
-        format_name
-        in
-        self.TARGET_SIZE_SUPPORTED
-    )
-
-
+    target_supported = format_name in self.TARGET_SIZE_SUPPORTED
 
     if quality_item:
-
-        quality_item.setEnabled(
-            quality_supported
-        )
-
-
+        quality_item.setEnabled(quality_supported)
 
     if target_item:
-
-        target_item.setEnabled(
-            target_supported
-        )
-
-
+        target_item.setEnabled(target_supported)
 
     current_mode = self.mode.currentText()
 
-
-
     if current_mode == "Quality":
-
-
         if not quality_supported:
-
-            self.show_warning(
-                f"{format_name} does not support quality compression."
-            )
-
+            self.show_warning(f"{format_name} does not support quality compression.")
 
         else:
-
-            self.show_warning(
-                ""
-            )
-
-
+            self.show_warning("")
 
     elif current_mode == "Target File Size":
-
-
         if not target_supported:
-
             self.show_warning(
                 f"{format_name} does not support target file size compression."
             )
 
-
         else:
-
-            self.show_warning(
-                "Target size compression enabled."
-            )
-
-
+            self.show_warning("Target size compression enabled.")
 
     self.update_ui()
 
-
-
-
-
     def validate(self):
 
-
-        format_name = (
-            self.current_format
-            or
-            ""
-        )
-
+        format_name = self.current_format or ""
 
         mode = self.mode.currentText()
 
+        if mode == "Quality" and format_name not in self.QUALITY_SUPPORTED:
+            return (False, f"{format_name} does not support quality compression.")
 
-
-        if (
-            mode == "Quality"
-            and
-            format_name not in self.QUALITY_SUPPORTED
-        ):
-
+        if mode == "Target File Size" and format_name not in self.TARGET_SIZE_SUPPORTED:
             return (
-
                 False,
-
-                f"{format_name} does not support quality compression."
-
+                f"{format_name} does not support target file size compression.",
             )
-
-
-
-        if (
-            mode == "Target File Size"
-            and
-            format_name not in self.TARGET_SIZE_SUPPORTED
-        ):
-
-            return (
-
-                False,
-
-                f"{format_name} does not support target file size compression."
-
-            )
-
-
 
         return True, ""
 
-
-
-
-
     def set_defaults(self, settings):
-
 
         s = settings or {}
 
-
-
         self.mode.setCurrentText(
-
-            "Target File Size"
-
-            if s.get("mode") == "target_size"
-
-            else "Quality"
-
+            "Target File Size" if s.get("mode") == "target_size" else "Quality"
         )
 
+        self.quality.setValue(int(s.get("quality", 85)))
 
+        self.size.setValue(int(s.get("size", 1024)))
 
-        self.quality.setValue(
-            int(
-                s.get(
-                    "quality",
-                    85
-                )
-            )
-        )
+        self.unit.setCurrentText(str(s.get("unit", "KB")).upper())
 
-
-
-        self.size.setValue(
-            int(
-                s.get(
-                    "size",
-                    1024
-                )
-            )
-        )
-
-
-
-        self.unit.setCurrentText(
-            str(
-                s.get(
-                    "unit",
-                    "KB"
-                )
-            ).upper()
-        )
-
-
-
-        priority = str(
-            s.get(
-                "priority",
-                "balanced"
-            )
-        ).lower()
-
-
+        priority = str(s.get("priority", "balanced")).lower()
 
         label = next(
-
-            (
-                name
-
-                for name, value
-
-                in self.PRIORITY_KEYS.items()
-
-                if value == priority
-
-            ),
-
-            "Balanced"
-
+            (name for name, value in self.PRIORITY_KEYS.items() if value == priority),
+            "Balanced",
         )
 
-
-
-        self.accuracy.setCurrentText(
-            label
-        )
-
+        self.accuracy.setCurrentText(label)
 
         self.update_capability()
 
