@@ -1,7 +1,6 @@
 """PixVault bit-depth workspace using the shared ConvertPage visual structure.
 
-The existing backend supports 8-bit output and 16-bit grayscale PNG/TIFF.
-32-bit output, and 16-bit multi-channel output, require encoder changes.
+Exports 8-/16-bit PNG and 8-/16-/32-bit TIFF (bit depth per channel).
 """
 
 from pathlib import Path
@@ -258,7 +257,7 @@ class BitDepthPage(QWidget):
         layout.addWidget(self.text("BIT DEPTH OPTIONS", "fieldTitle"))
         layout.addWidget(
             self.text(
-                "8-bit is broadly supported; 16-bit requires grayscale input.",
+                "PNG: 8/16-bit per channel. TIFF: 8/16/32-bit per channel.",
                 "hint",
                 True,
             )
@@ -278,9 +277,9 @@ class BitDepthPage(QWidget):
         layout.addWidget(self.bitdepth_options)
 
         self.capability_hint = self.text(
-            "Current encoder support: 8-bit PNG/TIFF; conversion from 8-bit "
-            "grayscale to 16-bit grayscale PNG/TIFF. 16-bit RGB and 32-bit "
-            "output are not yet supported.",
+            "16-bit PNG supports grayscale, RGB and alpha. TIFF also supports "
+            "32-bit floating-point color and grayscale. Increasing bit depth "
+            "does not recover detail missing from the original image.",
             "hint",
             True,
         )
@@ -393,18 +392,6 @@ class BitDepthPage(QWidget):
         choice = self.format_box.currentText()
         return self.source_format() if choice == "Same as source" else choice.upper()
 
-    def disable_unimplemented_depths(self):
-        """Base BitDepthOptions allows TIFF 32-bit; exporter does not."""
-        chooser = self.bitdepth_options.bit_depth
-        model = chooser.model()
-        index = chooser.findText("32-bit")
-        if index >= 0 and hasattr(model, "item"):
-            item = model.item(index)
-            if item is not None:
-                item.setEnabled(False)
-        if chooser.currentText() == "32-bit":
-            chooser.setCurrentText("8-bit")
-
     def change_format(self, _format_name):
         output_format = self.selected_output_format()
         if self.format_box.currentText() == "Same as source":
@@ -415,7 +402,6 @@ class BitDepthPage(QWidget):
         else:
             self.format_hint.setText(f"All images will be exported as {output_format}.")
         self.bitdepth_options.set_format(output_format or "PNG")
-        self.disable_unimplemented_depths()
         self.update_queue_state()
 
     def selected_bit_depth(self):
@@ -429,15 +415,21 @@ class BitDepthPage(QWidget):
         )
         depth = self.selected_bit_depth()
         output_format = self.selected_output_format()
-        if depth == 16:
+        if depth == 32:
             self.encoding_hint.setText(
-                "16-bit output currently accepts 8-bit grayscale (L) sources only. "
-                "An 8-bit grayscale source is stored in a 16-bit container; "
-                "this does not create additional image detail."
+                "32-bit means floating-point per channel in TIFF only. "
+                "8-bit sources are normalized to [0, 1]; added precision "
+                "does not add source detail."
+            )
+        elif depth == 16:
+            self.encoding_hint.setText(
+                "16-bit PNG/TIFF supports grayscale, RGB and alpha; "
+                "8-bit sources are scaled to the 16-bit range (0–65535)."
             )
         else:
             self.encoding_hint.setText(
-                "8-bit output may change image mode based on the selected encoder."
+                "8-bit per channel; converting high-bit grayscale to 8-bit "
+                "reduces precision."
             )
 
         if not count:
@@ -451,14 +443,18 @@ class BitDepthPage(QWidget):
                 f"Output: {output_format or 'choose format'}"
             )
             self.start_button.setText(f"Process {count} {noun.title()} →")
-        self.start_button.setEnabled(count > 0 and not self._processing_active)
+        self.start_button.setEnabled(
+            count > 0
+            and output_format in {"PNG", "TIFF"}
+            and not self._processing_active
+        )
 
     # =====================
     # CONFIGURATION / VALIDATION
     # =====================
 
     def validate_inputs(self, depth):
-        """Raise useful errors before starting a background worker."""
+        """Reject unsupported sources or target depths before starting a job."""
         invalid = [
             path.name
             for path in self.images
@@ -466,81 +462,47 @@ class BitDepthPage(QWidget):
         ]
         if invalid:
             raise ValueError(
-                "Bit Depth currently supports PNG and TIFF inputs. "
-                "Unsupported: "
+                "Bit Depth supports PNG and TIFF inputs only. Unsupported: "
                 + ", ".join(invalid[:5])
                 + (" ..." if len(invalid) > 5 else "")
             )
-        if depth == 16:
-            not_grayscale = []
-            for path in self.images:
-                try:
-                    with Image.open(path) as image:
-                        if image.mode not in ("L",):
-                            not_grayscale.append(path.name)
-                except Exception as error:
-                    raise ValueError(
-                        f"Unable to inspect image '{path.name}': {error}"
-                    ) from error
-            if not_grayscale:
+        if depth not in (8, 16, 32):
+            raise ValueError(f"Unsupported bit depth: {depth}")
+        for path in self.images:
+            try:
+                with Image.open(path) as image:
+                    image.verify()
+            except Exception as error:
                 raise ValueError(
-                    "16-bit output currently requires 8-bit grayscale (L) sources. "
-                    "Unsupported color images: "
-                    + ", ".join(not_grayscale[:5])
-                    + (" ..." if len(not_grayscale) > 5 else "")
-                )
+                    f"Unable to read image '{path.name}': {error}"
+                ) from error
 
     def build_config(self):
         output_format = self.selected_output_format()
         if output_format not in {"PNG", "TIFF"}:
             raise ValueError(
                 "Choose PNG or TIFF output. 'Same as source' only works "
-                "when all files share a supported format."
+                "when all inputs use one supported format."
             )
 
         operation = dict(self.bitdepth_options.get_settings())
         depth = int(operation.get("value", 8))
-        if depth not in (8, 16):
-            raise ValueError(
-                "32-bit export is not yet supported by the current encoders."
-            )
+        if depth not in (8, 16, 32):
+            raise ValueError(f"Unsupported bit depth: {depth}")
+        if output_format == "PNG" and depth == 32:
+            raise ValueError("PNG does not support 32-bit per channel. Choose TIFF.")
         self.validate_inputs(depth)
         operation["type"] = "bitdepth"
 
+        # Do not force a batch-wide color mode: each image may be L, RGB or
+        # RGBA. The updated PNG/TIFF encoders preserve color and alpha.
         output = {
             "format": output_format,
             "bit_depth": depth,
             "suffix": "bitdepth",
         }
-        if depth == 16:
-            # Existing encoders require the target grayscale mode explicitly.
-            if output_format == "PNG":
-                output["color_type"] = "grayscale"
-            else:
-                output["color"] = "GRAYSCALE"
-        else:
-            # Avoid forcing an unnecessary grayscale -> RGB conversion when
-            # all selected sources are 8-bit grayscale.
-            source_modes = set()
-            try:
-                for path in self.images:
-                    with Image.open(path) as image:
-                        source_modes.add(image.mode)
-            except Exception:
-                source_modes = set()
-            if output_format == "PNG":
-                if source_modes == {"L"}:
-                    output["color_type"] = "grayscale"
-                elif source_modes and source_modes.issubset({"RGB", "L", "P"}):
-                    output["color_type"] = "rgb"
-                else:
-                    output["color_type"] = "rgba"
-            elif source_modes == {"L"}:
-                output["color"] = "GRAYSCALE"
-            elif source_modes == {"RGBA"}:
-                output["color"] = "RGBA"
-            else:
-                output["color"] = "RGB"
+        if output_format == "PNG":
+            output["color_type"] = "auto"
         return {"operations": [operation], "output": output}
 
     # =====================

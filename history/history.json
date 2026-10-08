@@ -6471,5 +6471,381 @@
         ],
         "status": "success",
         "error": null
+    },
+    {
+        "id": "8db37ee5-bd27-44da-a9bb-e0a1d94edd04",
+        "timestamp": "2026-10-08 15:59:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "023ea390-2e81-4227-94c7-56e9a5051ff9",
+        "timestamp": "2026-10-08 15:59:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "bd69e8ca-b2fd-4277-9e93-548b61224f8a",
+        "timestamp": "2026-10-08 16:00:05",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "92cee114-764f-4819-9efa-aaa405462c5f",
+        "timestamp": "2026-10-08 16:00:06",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "6573643d-c04b-430f-9f94-e1fe8127f966",
+        "timestamp": "2026-10-08 16:00:07",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "1333eefe-5f03-4d98-b74e-a821017aa92f",
+        "timestamp": "2026-10-08 16:00:31",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "cmyk",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "91eb6817-e5eb-4786-bbe4-3a813a01096c",
+        "timestamp": "2026-10-08 16:00:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "display_p3",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "2b635608-4194-4135-903c-28bd57049d16",
+        "timestamp": "2026-10-08 16:00:40",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "adobe_rgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "df2efe04-0177-4d28-b7a4-d60816ffc205",
+        "timestamp": "2026-10-08 16:00:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "srgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "ff9496fb-e939-4d20-ae68-75a99475d313",
+        "timestamp": "2026-10-08 16:00:48",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "srgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "e9c2c7b3-4ded-477d-848a-306878f27777",
+        "timestamp": "2026-10-08 16:00:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "srgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "24e25a5d-a283-4cc8-b5eb-307449698d99",
+        "timestamp": "2026-10-08 16:00:56",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "srgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "8ca56929-9acf-4f41-b077-1de8fee45cf6",
+        "timestamp": "2026-10-08 16:00:59",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "adobe_rgb",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "4f7dbbc7-c726-4e52-acdf-1c1a8f0a6c03",
+        "timestamp": "2026-10-08 16:01:03",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "display_p3",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "7f011317-be12-4b50-88ec-acf8e1ee2121",
+        "timestamp": "2026-10-08 16:01:06",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "cmyk",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "f5cc145b-e778-4d55-86f5-c834515ed1ab",
+        "timestamp": "2026-10-08 16:01:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_processed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "colorspace",
+                "target": "grayscale",
+                "intent": "perceptual"
+            }
+        ],
+        "status": "failed",
+        "error": "Invalid type for Profile"
+    },
+    {
+        "id": "5ff31361-69cf-4590-9990-bce23ee04ddb",
+        "timestamp": "2026-10-08 16:01:27",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpg",
+        "format": "JPEG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "bb914167-e0f1-4648-872a-e3f1adf11a9a",
+        "timestamp": "2026-10-08 16:01:30",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM.png",
+        "format": "PNG",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3a3ea561-cb6f-4b02-b6f3-027253f7c99c",
+        "timestamp": "2026-10-08 16:01:35",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM.webp",
+        "format": "WEBP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "de498171-d8ef-42a9-be94-076c67402c30",
+        "timestamp": "2026-10-08 16:01:39",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM.avif",
+        "format": "AVIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1fe5aaf9-afff-4af7-8bb6-f3088059f90a",
+        "timestamp": "2026-10-08 16:01:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM.gif",
+        "format": "GIF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "6bcbb352-fb98-454b-9828-f6b1c73748c6",
+        "timestamp": "2026-10-08 16:01:46",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM.bmp",
+        "format": "BMP",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "52aeaa49-94a4-4541-aaea-4760f6a5c824",
+        "timestamp": "2026-10-08 16:01:50",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5edb5c8f-2222-46a7-87df-ad85bf72371f",
+        "timestamp": "2026-10-08 16:01:55",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5299b6f0-6731-4228-b63e-c6f57dd693ff",
+        "timestamp": "2026-10-08 16:01:59",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_001.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b0e7143b-8682-4d8a-9ea1-ce3bc006beaf",
+        "timestamp": "2026-10-08 16:02:02",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM.ico",
+        "format": "ICO",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9a0cb3d2-29e9-4c7d-874e-548e34775e74",
+        "timestamp": "2026-10-08 16:05:01",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b6282682-ce4f-4c41-b5b9-bc92440d6135",
+        "timestamp": "2026-10-08 16:05:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\WhatsApp Image 2026-10-01 at 11.03.37 PM.jpeg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\WhatsApp Image 2026-10-01 at 11.03.37 PM_001.heic",
+        "format": "HEIC",
+        "operations": [],
+        "status": "success",
+        "error": null
     }
 ]
