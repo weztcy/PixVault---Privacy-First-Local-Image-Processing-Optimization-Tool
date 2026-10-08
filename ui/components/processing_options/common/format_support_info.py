@@ -4,7 +4,6 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QLabel,
     QLayout,
-    QPushButton,
     QScrollArea,
     QSizePolicy,
     QVBoxLayout,
@@ -74,7 +73,6 @@ class FormatSupportInfo(QWidget):
             "BMP",
             "TIFF",
             "HEIC",
-            "HEIF",
             "ICO",
             "SVG",
         ],
@@ -86,7 +84,6 @@ class FormatSupportInfo(QWidget):
             "BMP",
             "TIFF",
             "HEIC",
-            "HEIF",
         ],
         "crop": [
             "JPEG",
@@ -126,7 +123,6 @@ class FormatSupportInfo(QWidget):
             "JPEG",
             "TIFF",
             "HEIC",
-            "HEIF",
         ],
     }
 
@@ -376,7 +372,6 @@ class FormatSupportInfo(QWidget):
         # Reset horizontal position.
 
         self.scroll_area.horizontalScrollBar().setValue(0)
-
 
     # =====================
     # CLEAR EXISTING CARDS

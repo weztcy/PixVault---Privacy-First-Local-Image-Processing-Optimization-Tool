@@ -35,7 +35,6 @@ class ColorSpaceOptions(BaseProcessingOptions):
         "PNG": {"CMYK"},
         "AVIF": {"CMYK"},
         "HEIC": {"CMYK"},
-        "HEIF": {"CMYK"},
     }
 
     def setup_ui(self):
