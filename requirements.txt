@@ -20,5 +20,5 @@ rawpy
 svgwrite
 
 
-# Utilities
-requests
+# TIFF Support
+tifffile
