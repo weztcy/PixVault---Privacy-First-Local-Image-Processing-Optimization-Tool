@@ -1318,5 +1318,1565 @@
         "operations": [],
         "status": "success",
         "error": null
+    },
+    {
+        "id": "81398c1e-26ca-4fef-b821-7a039d757178",
+        "timestamp": "2026-10-08 20:11:21",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_resized.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "exact",
+                "keep_ratio": false,
+                "resampling": "lanczos",
+                "width": 3232,
+                "height": 3232
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8d7d1171-d9b7-4fb8-9ede-0f1ef840c979",
+        "timestamp": "2026-10-08 20:11:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01_resized.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "exact",
+                "keep_ratio": false,
+                "resampling": "lanczos",
+                "width": 3232,
+                "height": 3232
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ac1ec1c9-49f8-4140-ab45-4f2752b0c171",
+        "timestamp": "2026-10-08 20:11:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720_resized.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "exact",
+                "keep_ratio": false,
+                "resampling": "lanczos",
+                "width": 3232,
+                "height": 3232
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5d5e1438-08d0-4ade-adee-a25550eb43e2",
+        "timestamp": "2026-10-08 20:11:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_resized.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "exact",
+                "keep_ratio": false,
+                "resampling": "lanczos",
+                "width": 3232,
+                "height": 3232
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "182f8930-be1f-467b-81b9-ebcbbcadca61",
+        "timestamp": "2026-10-08 20:11:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300_resized.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "exact",
+                "keep_ratio": false,
+                "resampling": "lanczos",
+                "width": 3232,
+                "height": 3232
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "df66a08d-ec3a-41be-a16c-fd00d5e07707",
+        "timestamp": "2026-10-08 20:11:22",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_resized.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "exact",
+                "keep_ratio": false,
+                "resampling": "lanczos",
+                "width": 3232,
+                "height": 3232
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a3d73c1e-1315-480c-8638-8909a34229a6",
+        "timestamp": "2026-10-08 20:11:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_resized.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "exact",
+                "keep_ratio": false,
+                "resampling": "lanczos",
+                "width": 3232,
+                "height": 3232
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "07809fd6-1599-44aa-8046-e287413ea1d8",
+        "timestamp": "2026-10-08 20:11:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_resized.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "exact",
+                "keep_ratio": false,
+                "resampling": "lanczos",
+                "width": 3232,
+                "height": 3232
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1d2a62c7-58eb-4a3e-857c-59dcc618ca59",
+        "timestamp": "2026-10-08 20:11:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration_resized.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "exact",
+                "keep_ratio": false,
+                "resampling": "lanczos",
+                "width": 3232,
+                "height": 3232
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "552247a3-4b05-465b-bf0f-e99ba7c24ff9",
+        "timestamp": "2026-10-08 20:12:57",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_resized.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "07f1605e-81af-4c81-bcb7-0e974255a98a",
+        "timestamp": "2026-10-08 20:12:57",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01_resized.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "046e5137-2cf3-4612-a8b2-964259566674",
+        "timestamp": "2026-10-08 20:12:57",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720_resized.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a13d11b7-bd03-446d-a84a-77c6dfd9992a",
+        "timestamp": "2026-10-08 20:12:57",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_resized.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "68fe8ad6-154a-4100-bcbd-1ca21220fdd6",
+        "timestamp": "2026-10-08 20:12:57",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300_resized.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "6a9a1599-96c2-4221-84b8-5cbdf649cbcf",
+        "timestamp": "2026-10-08 20:12:57",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_resized.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "62a9eeab-905d-4d4c-ad91-d795acb89c8e",
+        "timestamp": "2026-10-08 20:12:57",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_resized.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "65fb7cba-208e-4ad3-b08b-9bb428db4a92",
+        "timestamp": "2026-10-08 20:12:58",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_resized.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7075d128-3e31-4539-b12b-727ab4cbaeb8",
+        "timestamp": "2026-10-08 20:12:58",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration_resized.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "width",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ad52f044-31e4-4659-9059-66a01887bad2",
+        "timestamp": "2026-10-08 20:13:15",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_resized.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a7d29a35-f1ef-4725-a795-a993106c90bc",
+        "timestamp": "2026-10-08 20:13:15",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01_resized.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0e0c379e-2cd9-4b07-97d8-cc2119659501",
+        "timestamp": "2026-10-08 20:13:16",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720_resized.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9d472ca7-114f-4c16-b739-31cca690bac1",
+        "timestamp": "2026-10-08 20:13:16",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_resized.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "29f2e519-ded7-4b44-ab73-01dc2a40689d",
+        "timestamp": "2026-10-08 20:13:16",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300_resized.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f39d41a8-cd79-4236-8575-d4fe1ac1f4b4",
+        "timestamp": "2026-10-08 20:13:17",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_resized.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a6d29be5-af4f-42d1-a39b-f751c4bb5471",
+        "timestamp": "2026-10-08 20:13:17",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_resized.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d340e4fd-6648-47d0-bf0b-39d6cb940bb7",
+        "timestamp": "2026-10-08 20:13:18",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_resized.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "11998d94-97bb-4944-8a45-064fd8d66b0e",
+        "timestamp": "2026-10-08 20:13:18",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration_resized.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 1200
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "725c1ed8-a803-47b2-8e6f-0cc03ee11c39",
+        "timestamp": "2026-10-08 20:14:05",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_resized_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 3600
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "09ef4eb9-767f-4205-b5c2-5d6f0893ff31",
+        "timestamp": "2026-10-08 20:14:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01_resized_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 3600
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "f9b5790f-661c-41bc-b47f-cd8c5e19791f",
+        "timestamp": "2026-10-08 20:14:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720_resized_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 3600
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d3c6dcca-d37b-47fb-b290-c8235564b80d",
+        "timestamp": "2026-10-08 20:14:15",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_resized_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 3600
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2d64e8a8-cddd-4241-b711-956ee3373fcc",
+        "timestamp": "2026-10-08 20:14:16",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300_resized_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 3600
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "481b7f8c-b16f-4740-a49d-676a9d9d0a09",
+        "timestamp": "2026-10-08 20:14:18",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_resized_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 3600
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8928676a-3c0d-4904-9da6-3abc1ed29f9c",
+        "timestamp": "2026-10-08 20:14:23",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_resized_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 3600
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7a0df0a7-6c7c-4f48-842d-6be04b9496bc",
+        "timestamp": "2026-10-08 20:14:26",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_resized_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 3600
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "6f8b59d0-6bb9-4b2a-b8e9-c764caae7038",
+        "timestamp": "2026-10-08 20:14:29",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration_resized_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "height",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 3600
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "54c36731-76d4-414d-a54b-beaad7ee0777",
+        "timestamp": "2026-10-08 20:15:24",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_resized.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8b5e4bcd-f74a-49ca-a7ad-e7293f82044f",
+        "timestamp": "2026-10-08 20:15:24",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01_resized.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "438d5f37-495a-422a-a214-dde1c7cfe9e1",
+        "timestamp": "2026-10-08 20:15:24",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720_resized.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "66499da5-88c9-4df0-933a-0aafc3b4bc78",
+        "timestamp": "2026-10-08 20:15:24",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_resized.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9e4ee761-e8ef-446f-b83d-0111c13f442d",
+        "timestamp": "2026-10-08 20:15:24",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300_resized.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "482a8616-cc55-4857-bacb-22b5c17683fb",
+        "timestamp": "2026-10-08 20:15:25",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_resized.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "10f0eef6-a99a-4874-a72f-095616d71ac0",
+        "timestamp": "2026-10-08 20:15:25",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_resized.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0e83f0c8-cba0-4a62-84e0-5fbcab2e55ab",
+        "timestamp": "2026-10-08 20:15:25",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_resized.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "bf072467-52d3-4d6d-9724-22144257a191",
+        "timestamp": "2026-10-08 20:15:25",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration_resized.avif",
+        "format": "AVIF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1c2c1161-52d5-4e19-9ab2-67aaaa5c0f6d",
+        "timestamp": "2026-10-08 20:15:47",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_resized.bmp",
+        "format": "BMP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b62aa9b9-84ef-40c3-a0da-612db4389f5d",
+        "timestamp": "2026-10-08 20:15:47",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01_resized.bmp",
+        "format": "BMP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5046749e-5918-4898-8457-fe38f39a4c32",
+        "timestamp": "2026-10-08 20:15:47",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720_resized.bmp",
+        "format": "BMP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "63cdc1cf-335c-4d9f-a825-0d06847d1b3a",
+        "timestamp": "2026-10-08 20:15:47",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_resized.bmp",
+        "format": "BMP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "4d44439b-9733-4719-8bc5-c06e06b2c7e4",
+        "timestamp": "2026-10-08 20:15:47",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300_resized.bmp",
+        "format": "BMP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "61b7585d-6899-4db7-a121-41f53f876542",
+        "timestamp": "2026-10-08 20:15:47",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_resized.bmp",
+        "format": "BMP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "fef47a67-3621-4e2c-9763-547a898ec260",
+        "timestamp": "2026-10-08 20:15:47",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_resized.bmp",
+        "format": "BMP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "5e5d7c42-eee7-4766-b9bd-a72ae2d71a68",
+        "timestamp": "2026-10-08 20:15:48",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_resized.bmp",
+        "format": "BMP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "85a68f9c-046c-4ded-96dd-91416c1933e8",
+        "timestamp": "2026-10-08 20:15:48",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration_resized.bmp",
+        "format": "BMP",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "39a1c16f-c669-4add-8760-253c3b3006eb",
+        "timestamp": "2026-10-08 20:16:31",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_resized.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "39394e17-1d48-404c-bbb6-88fe992d5184",
+        "timestamp": "2026-10-08 20:16:31",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01_resized.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "fd313559-0563-420a-b129-a4d049ad1dd5",
+        "timestamp": "2026-10-08 20:16:31",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720_resized.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "18bf6092-419e-409f-bdce-3cd5f0e6c233",
+        "timestamp": "2026-10-08 20:16:31",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_resized.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2fb87fb4-faa2-47d8-a952-9f3bc6d33b66",
+        "timestamp": "2026-10-08 20:16:31",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300_resized.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "cc23b2b0-e62c-46aa-8102-191a6511e2f6",
+        "timestamp": "2026-10-08 20:16:31",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_resized.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "67987c68-855f-48bb-95ec-9fdf732a06a6",
+        "timestamp": "2026-10-08 20:16:31",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_resized.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "00fafd66-023a-4dcb-bff4-e2c935d2fe8e",
+        "timestamp": "2026-10-08 20:16:31",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_resized.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "dc5f36c5-2a3a-46d1-9316-80a3e93a07c2",
+        "timestamp": "2026-10-08 20:16:32",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration_resized.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "313ed345-59ec-4937-8514-792902f68ec1",
+        "timestamp": "2026-10-08 20:16:35",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_resized.heic",
+        "format": "HEIC",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a726d6ce-4448-43d5-a841-bdd6c43738ac",
+        "timestamp": "2026-10-08 20:16:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01.ico",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Hopstarter-Adobe-Cs4-File-Adobe-Dreamweaver-XML-01_resized.heic",
+        "format": "HEIC",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "542abd5e-e02b-4351-bafa-ad26691dcc88",
+        "timestamp": "2026-10-08 20:16:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\itool-sample-avif-1280x720.avif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\itool-sample-avif-1280x720_resized.heic",
+        "format": "HEIC",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "89d695c8-a259-481f-b477-1e41fe888d9f",
+        "timestamp": "2026-10-08 20:16:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-2.bmp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-2_resized.heic",
+        "format": "HEIC",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "fe051cc3-68b9-4eb2-8d96-e6077fa07002",
+        "timestamp": "2026-10-08 20:16:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-animated-400x300.gif",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-animated-400x300_resized.heic",
+        "format": "HEIC",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "de25a756-7ac4-42bc-891b-10a74532cdbe",
+        "timestamp": "2026-10-08 20:16:36",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_resized.heic",
+        "format": "HEIC",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0653f873-7cf4-4af6-b087-d87866709680",
+        "timestamp": "2026-10-08 20:16:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_resized.heic",
+        "format": "HEIC",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "75915138-6b94-4130-9294-7305df717b67",
+        "timestamp": "2026-10-08 20:16:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_resized.heic",
+        "format": "HEIC",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "6673ad5c-6e13-4a5f-9cf3-5f55dd27f0ef",
+        "timestamp": "2026-10-08 20:16:40",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\shelf-christmas-decoration.heic",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\shelf-christmas-decoration_resized.heic",
+        "format": "HEIC",
+        "operations": [
+            {
+                "type": "resize",
+                "method": "percentage",
+                "keep_ratio": true,
+                "resampling": "lanczos",
+                "value": 40
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2d5337ee-8f6b-4499-9b6a-8b417c582af9",
+        "timestamp": "2026-10-08 20:20:33",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "e8100267-d28d-42f2-93b9-3dbf61f6a3ea",
+        "timestamp": "2026-10-08 20:20:33",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0720b9f0-36b3-48fd-b435-070f1764bc35",
+        "timestamp": "2026-10-08 20:20:33",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ed3729b3-8c47-49d0-80fe-93f3c403a1ea",
+        "timestamp": "2026-10-08 20:20:38",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_compressed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "779828bc-6cd4-48a9-98da-c53b5dd416ca",
+        "timestamp": "2026-10-08 20:20:38",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_compressed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "d2693fb4-f405-4e6f-808b-d3dc302cd84f",
+        "timestamp": "2026-10-08 20:20:41",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_compressed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0ccaf52a-9bbc-4e41-a48b-d2a222b37502",
+        "timestamp": "2026-10-08 20:20:45",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_compressed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "311fdf84-c771-4c2f-a5f4-f86451b4c816",
+        "timestamp": "2026-10-08 20:20:45",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_compressed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "41bbda85-2e64-4fab-b728-102d24f742bd",
+        "timestamp": "2026-10-08 20:20:47",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_compressed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "51194f66-baf7-46b0-96b2-dca28c4732b3",
+        "timestamp": "2026-10-08 20:20:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "failed",
+        "error": "Unsupported TIFF compression: JPEG"
+    },
+    {
+        "id": "ef03d4f5-b99f-45df-8914-e3c5f6da5a3b",
+        "timestamp": "2026-10-08 20:20:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "failed",
+        "error": "Unsupported TIFF compression: JPEG"
+    },
+    {
+        "id": "10e96daf-96a5-48b9-a590-3b5c3285a76b",
+        "timestamp": "2026-10-08 20:20:54",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "failed",
+        "error": "Unsupported TIFF compression: JPEG"
+    },
+    {
+        "id": "b4a4b4cd-f232-4dbd-8980-e80efec12977",
+        "timestamp": "2026-10-08 20:21:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "failed",
+        "error": "Unsupported TIFF compression: JPEG"
+    },
+    {
+        "id": "1b102b46-6ff4-4887-bba1-88523444647e",
+        "timestamp": "2026-10-08 20:21:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "failed",
+        "error": "Unsupported TIFF compression: JPEG"
+    },
+    {
+        "id": "aff61a55-cdab-4db6-b978-875402f33ec8",
+        "timestamp": "2026-10-08 20:21:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "failed",
+        "error": "Unsupported TIFF compression: JPEG"
     }
 ]
