@@ -85,7 +85,7 @@ class ColorSpaceOptions(BaseProcessingOptions):
         if target in self.LIMITED.get(self.current_format, set()):
             return False, f"{self.current_format} cannot use {target}."
         if target in ("Adobe RGB", "Display P3", "CMYK"):
-            return False, "ICC conversion to this space is not implemented in processing/colorspace.py."
+            return True, ""
         return True, ""
 
     def set_defaults(self, settings):

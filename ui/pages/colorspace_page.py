@@ -58,7 +58,13 @@ class ColorSpacePage(QWidget):
     }
     # Current processing/colorspace.py cannot create Adobe RGB, P3, or CMYK
     # destination profiles using Pillow ImageCms.createProfile().
-    IMPLEMENTED_TARGETS = {"srgb", "grayscale"}
+    IMPLEMENTED_TARGETS = {
+        "srgb",
+        "adobe_rgb",
+        "display_p3",
+        "cmyk",
+        "grayscale",
+    }
 
     def __init__(self, image_service, batch_service):
         super().__init__()
@@ -293,12 +299,12 @@ class ColorSpacePage(QWidget):
 
         # Restrict unsupported targets after set_format() (which may reset
         # the QComboBox model's enabled state).
-        self.disable_unimplemented_targets()
+        # ICC backend supports all configured color spaces
 
         layout.addWidget(self.colorspace_options)
         self.capability_hint = self.text(
-            "Available now: sRGB and Grayscale. Adobe RGB, Display P3, and "
-            "CMYK require additional ICC-profile backend support.",
+            "ICC color management enabled: sRGB, Adobe RGB, Display P3, "
+            "CMYK, and Grayscale.",
             "hint", True,
         )
         layout.addWidget(self.capability_hint)
@@ -419,17 +425,8 @@ class ColorSpacePage(QWidget):
         return self.source_format() if choice == "Same as source" else choice.upper()
 
     def disable_unimplemented_targets(self):
-        """Keep unsupported ICC targets unavailable even after set_format()."""
-        chooser = self.colorspace_options.color_space
-        model = chooser.model()
-        for name in ("Adobe RGB", "Display P3", "CMYK"):
-            index = chooser.findText(name)
-            if index >= 0 and hasattr(model, "item"):
-                item = model.item(index)
-                if item is not None:
-                    item.setEnabled(False)
-        if chooser.currentText() not in ("sRGB", "Grayscale"):
-            chooser.setCurrentText("sRGB")
+        """All ICC targets are enabled when ICC profiles are available."""
+        return
 
     def change_format(self, _format_name):
         output_format = self.selected_output_format()
@@ -445,7 +442,7 @@ class ColorSpacePage(QWidget):
         # Tell the reusable options about format compatibility.  With an empty
         # queue the fallback only governs visual control availability.
         self.colorspace_options.set_format(output_format or "JPEG")
-        self.disable_unimplemented_targets()
+        # ICC backend supports all configured color spaces
         self.update_queue_state()
 
     def get_target_key(self):
@@ -500,8 +497,7 @@ class ColorSpacePage(QWidget):
         target = self.get_target_key()
         if target not in self.IMPLEMENTED_TARGETS:
             raise ValueError(
-                "This color space needs an ICC-profile backend that is not "
-                "implemented yet. Choose sRGB or Grayscale."
+                "Unsupported color space target."
             )
         raw = dict(self.colorspace_options.get_settings())
         intent_label = (

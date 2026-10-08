@@ -46,5 +46,225 @@
         ],
         "status": "success",
         "error": null
+    },
+    {
+        "id": "26f40a64-7df5-4ab9-87e6-23157ff590a1",
+        "timestamp": "2026-10-08 12:39:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1ff745c5-dfca-4f49-988d-fcf6d93402ce",
+        "timestamp": "2026-10-08 12:39:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-2.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-2.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "70dcabc1-9868-4072-9898-3340f953490e",
+        "timestamp": "2026-10-08 12:39:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-3.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-3.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "18fe797d-7c41-4a3d-9565-2ede833a6f7f",
+        "timestamp": "2026-10-08 12:39:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-4.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-4.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "9356d1ba-e263-4cce-941e-5b7bfca669bf",
+        "timestamp": "2026-10-08 12:39:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-5.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-5.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "938aff51-57a2-4ce0-81be-76f87337db50",
+        "timestamp": "2026-10-08 12:39:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-6.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-6.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "afa2e25a-2ed2-4207-beef-43d63caae204",
+        "timestamp": "2026-10-08 12:39:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-7.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-7.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8b6a32ca-46b1-4695-84f3-16c70df034a4",
+        "timestamp": "2026-10-08 12:39:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-8.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-8.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "fd5edb09-ed81-4031-b3a1-1b2f2cffb3ba",
+        "timestamp": "2026-10-08 12:39:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-9.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-9.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "2a3c507e-2263-469b-a3b8-da4c4d7d02fc",
+        "timestamp": "2026-10-08 12:39:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-10.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-10.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a6de725f-eef2-4c2b-b3b7-925804ea25f5",
+        "timestamp": "2026-10-08 12:39:12",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-11.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-11.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "eb5dc931-5b69-48d4-9bb0-bcf0d5404d27",
+        "timestamp": "2026-10-08 12:42:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-1.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-1_001.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b776d787-dd7b-4e61-9601-b4de1a0869ac",
+        "timestamp": "2026-10-08 12:42:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-2.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-2_001.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "76e1fbd2-31df-4005-8a54-8685d7f6cc75",
+        "timestamp": "2026-10-08 12:42:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-3.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-3_001.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "782bc509-5008-4e21-b1aa-76a5ab46a4aa",
+        "timestamp": "2026-10-08 12:42:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-4.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-4_001.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ae1282ff-fc82-4cb8-bdf7-de7524ca9637",
+        "timestamp": "2026-10-08 12:42:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-5.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-5_001.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "056573f4-1eb9-4c19-8a87-12abf8c0aa36",
+        "timestamp": "2026-10-08 12:42:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-6.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-6_001.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c6c927df-f194-465b-bf98-de2de2f88c13",
+        "timestamp": "2026-10-08 12:42:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-7.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-7_001.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "585819d7-7039-46b1-8a91-31f267f22e37",
+        "timestamp": "2026-10-08 12:42:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-8.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-8_001.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "471c91dc-ac44-4528-bc38-8fb2aea1dd06",
+        "timestamp": "2026-10-08 12:42:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-9.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-9_001.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "341309d6-979f-4871-b283-01e34533a811",
+        "timestamp": "2026-10-08 12:42:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-10.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-10_001.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7c7ac2b8-5e87-4c3d-821c-3c89f8b0c924",
+        "timestamp": "2026-10-08 12:42:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\docs\\image-11.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\image-11_001.tiff",
+        "format": "TIFF",
+        "operations": [],
+        "status": "success",
+        "error": null
     }
 ]

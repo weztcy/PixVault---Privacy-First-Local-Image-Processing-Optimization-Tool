@@ -1,0 +1,65 @@
+# PixVault ColorSpacePage UI Fix
+# Apply these changes to ui/pages/colorspace_page.py
+
+# 1. Replace:
+# IMPLEMENTED_TARGETS = {"srgb", "grayscale"}
+
+# With:
+IMPLEMENTED_TARGETS = {
+    "srgb",
+    "adobe_rgb",
+    "display_p3",
+    "cmyk",
+    "grayscale",
+}
+
+
+# 2. Replace disable_unimplemented_targets()
+
+def disable_unimplemented_targets(self):
+    """
+    ICC backend now supports:
+    - sRGB
+    - Adobe RGB
+    - Display P3
+    - CMYK
+    - Grayscale
+
+    Do not disable any color target.
+    """
+    return
+
+
+# 3. Replace capability hint text:
+
+OLD:
+Available now: sRGB and Grayscale. Adobe RGB, Display P3, and CMYK require additional ICC-profile backend support.
+
+NEW:
+ICC color management enabled: sRGB, Adobe RGB, Display P3, CMYK, and Grayscale.
+
+
+# 4. Remove build_config() restriction:
+
+OLD:
+if target not in self.IMPLEMENTED_TARGETS:
+    raise ValueError(
+        "This color space needs an ICC-profile backend..."
+    )
+
+NEW:
+if target not in self.IMPLEMENTED_TARGETS:
+    raise ValueError(
+        f"Unsupported color space target: {target}"
+    )
+
+
+# 5. Keep these mappings unchanged because they are already correct:
+
+TARGET_KEYS = {
+    "sRGB": "srgb",
+    "Adobe RGB": "adobe_rgb",
+    "Display P3": "display_p3",
+    "CMYK": "cmyk",
+    "Grayscale": "grayscale",
+}

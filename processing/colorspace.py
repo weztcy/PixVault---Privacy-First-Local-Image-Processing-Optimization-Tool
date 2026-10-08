@@ -1,11 +1,22 @@
+"""
+PixVault ICC Color Space Engine
+"""
+
+from io import BytesIO
+from pathlib import Path
 from PIL import ImageCms
 
 
 class ColorSpaceProcessor:
-    PROFILES = {
-        "srgb": "sRGB",
-        "adobe_rgb": "Adobe RGB (1998)",
-        "display_p3": "DisplayP3",
+
+    PROFILE_DIR = Path(__file__).parent / "profiles"
+
+    PROFILE_FILES = {
+        "srgb": "sRGB.icc",
+        "adobe_rgb": "AdobeRGB1998.icc",
+        "display_p3": "DisplayP3.icc",
+        "cmyk": "FOGRA39.icc",
+        "grayscale": "Gray.icc",
     }
 
     INTENTS = {
@@ -16,70 +27,58 @@ class ColorSpaceProcessor:
     }
 
     def process(self, image, settings):
+        return self.convert_colorspace(
+            image,
+            settings.get("target", "srgb"),
+            settings.get("intent", "perceptual")
+        )
 
-        target = settings.get("target", "sRGB")
+    def load_profile(self, target):
+        path = self.PROFILE_DIR / self.PROFILE_FILES[target]
+        if not path.exists():
+            raise FileNotFoundError(f"Missing ICC profile: {path}")
+        return ImageCms.getOpenProfile(str(path))
 
-        intent = settings.get("intent", "perceptual")
-
-        return self.convert_colorspace(image, target, intent)
+    def source_profile(self, image):
+        profile = image.info.get("icc_profile")
+        if profile:
+            return ImageCms.ImageCmsProfile(BytesIO(profile))
+        return ImageCms.createProfile("sRGB")
 
     def convert_colorspace(self, image, target, intent):
-
-        target = str(target).lower().strip()
-
-        intent = str(intent).lower().strip()
+        target = str(target).lower()
 
         if target == "grayscale":
-            return image.convert("L")
+            return self.convert_grayscale(image)
 
-        if target == "cmyk":
-            return self.convert_cmyk(image, intent)
+        if image.mode not in ("RGB", "CMYK"):
+            image = image.convert("RGB")
 
-        if target in self.PROFILES:
-            return self.convert_icc(image, target, intent)
+        src = self.source_profile(image)
+        dst = self.load_profile(target)
 
-        raise ValueError(f"Unsupported color space: {target}")
-
-    def convert_icc(self, image, target, intent):
-
-        source_profile = image.info.get("icc_profile")
-
-        if source_profile:
-            input_profile = ImageCms.ImageCmsProfile(bytes(source_profile))
-
-        else:
-            input_profile = ImageCms.createProfile("sRGB")
-
-        output_profile = ImageCms.createProfile(self.PROFILES[target])
+        mode = "CMYK" if target == "cmyk" else "RGB"
 
         transform = ImageCms.buildTransform(
-            input_profile,
-            output_profile,
+            src,
+            dst,
             image.mode,
-            image.mode,
-            renderingIntent=self.INTENTS.get(intent, ImageCms.Intent.PERCEPTUAL),
+            mode,
+            renderingIntent=self.INTENTS.get(
+                intent,
+                ImageCms.Intent.PERCEPTUAL
+            )
         )
 
         result = ImageCms.applyTransform(image, transform)
-
-        result.info["icc_profile"] = ImageCms.ImageCmsProfile(output_profile).tobytes()
-
+        result.info["icc_profile"] = ImageCms.ImageCmsProfile(dst).tobytes()
         return result
 
-    def convert_cmyk(self, image, intent):
-
-        rgb = image.convert("RGB")
-
-        rgb_profile = ImageCms.createProfile("sRGB")
-
-        cmyk_profile = ImageCms.createProfile("CMYK")
-
-        transform = ImageCms.buildTransform(
-            rgb_profile,
-            cmyk_profile,
-            "RGB",
-            "CMYK",
-            renderingIntent=self.INTENTS.get(intent, ImageCms.Intent.PERCEPTUAL),
-        )
-
-        return ImageCms.applyTransform(rgb, transform)
+    def convert_grayscale(self, image):
+        result = image.convert("L")
+        try:
+            profile = self.load_profile("grayscale")
+            result.info["icc_profile"] = ImageCms.ImageCmsProfile(profile).tobytes()
+        except FileNotFoundError:
+            pass
+        return result
