@@ -1,4 +1,3 @@
-
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QColor
 from PySide6.QtWidgets import (
@@ -40,9 +39,7 @@ class HomePage(QWidget):
         self.scroll_area.setObjectName("home_scroll")
 
         self.scroll_area.setWidgetResizable(True)
-        self.scroll_area.setFrameShape(
-            QFrame.Shape.NoFrame
-        )
+        self.scroll_area.setFrameShape(QFrame.Shape.NoFrame)
 
         self.scroll_area.setHorizontalScrollBarPolicy(
             Qt.ScrollBarPolicy.ScrollBarAlwaysOff
@@ -57,13 +54,9 @@ class HomePage(QWidget):
         self.container = QWidget()
         self.container.setObjectName("home_container")
 
-        self.content_layout = QVBoxLayout(
-            self.container
-        )
+        self.content_layout = QVBoxLayout(self.container)
 
-        self.content_layout.setContentsMargins(
-            28, 26, 28, 26
-        )
+        self.content_layout.setContentsMargins(28, 26, 28, 26)
 
         self.content_layout.setSpacing(20)
 
@@ -71,9 +64,7 @@ class HomePage(QWidget):
         # TOP CONTENT
         # =====================
 
-        self.top_layout = QBoxLayout(
-            QBoxLayout.Direction.LeftToRight
-        )
+        self.top_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight)
 
         self.top_layout.setSpacing(18)
 
@@ -81,49 +72,31 @@ class HomePage(QWidget):
         self.privacy_card = self.create_privacy_card()
         self.features_card = self.create_features_card()
 
-        self.top_layout.addWidget(
-            self.hero_card, 5
-        )
+        self.top_layout.addWidget(self.hero_card, 5)
 
-        self.top_layout.addWidget(
-            self.privacy_card, 4
-        )
+        self.top_layout.addWidget(self.privacy_card, 4)
 
-        self.top_layout.addWidget(
-            self.features_card, 5
-        )
+        self.top_layout.addWidget(self.features_card, 5)
 
-        self.content_layout.addLayout(
-            self.top_layout, 1
-        )
+        self.content_layout.addLayout(self.top_layout, 1)
 
         # =====================
         # WORKFLOW
         # =====================
 
-        self.workflow_card = (
-            self.create_workflow_card()
-        )
+        self.workflow_card = self.create_workflow_card()
 
-        self.content_layout.addWidget(
-            self.workflow_card
-        )
+        self.content_layout.addWidget(self.workflow_card)
 
         # =====================
         # FOOTER
         # =====================
 
-        self.content_layout.addWidget(
-            self.create_footer()
-        )
+        self.content_layout.addWidget(self.create_footer())
 
-        self.scroll_area.setWidget(
-            self.container
-        )
+        self.scroll_area.setWidget(self.container)
 
-        main_layout.addWidget(
-            self.scroll_area
-        )
+        main_layout.addWidget(self.scroll_area)
 
     # =====================
     # COMMON HELPERS
@@ -161,9 +134,7 @@ class HomePage(QWidget):
         shadow.setBlurRadius(26)
         shadow.setOffset(0, 6)
 
-        shadow.setColor(
-            QColor(0, 0, 0, 50)
-        )
+        shadow.setColor(QColor(0, 0, 0, 50))
 
         card.setGraphicsEffect(shadow)
 
@@ -174,15 +145,11 @@ class HomePage(QWidget):
     # =====================
 
     def create_hero_card(self):
-        card = self.create_card(
-            "home_hero_card"
-        )
+        card = self.create_card("home_hero_card")
 
         layout = QVBoxLayout(card)
 
-        layout.setContentsMargins(
-            26, 28, 26, 26
-        )
+        layout.setContentsMargins(26, 28, 26, 26)
 
         layout.setSpacing(12)
 
@@ -201,8 +168,7 @@ class HomePage(QWidget):
         )
 
         subtitle = self.create_label(
-            "Powerful image processing.\n"
-            "Complete local control.",
+            "Powerful image processing.\nComplete local control.",
             "home_hero_subtitle",
         )
 
@@ -216,31 +182,21 @@ class HomePage(QWidget):
         )
 
         privacy_note = self.create_label(
-            "No cloud uploads required. "
-            "Your images remain under "
-            "your control.",
+            "No cloud uploads required. Your images remain under your control.",
             "home_hero_note",
         )
 
         # Action Button
 
-        start_button = QPushButton(
-            "Start Processing   →"
-        )
+        start_button = QPushButton("Start Processing   →")
 
-        start_button.setObjectName(
-            "home_start_button"
-        )
+        start_button.setObjectName("home_start_button")
 
         start_button.setMinimumHeight(48)
 
-        start_button.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        start_button.setCursor(Qt.CursorShape.PointingHandCursor)
 
-        start_button.clicked.connect(
-            self.open_processing
-        )
+        start_button.clicked.connect(self.open_processing)
 
         # Layout
 
@@ -267,9 +223,7 @@ class HomePage(QWidget):
 
         layout = QVBoxLayout(card)
 
-        layout.setContentsMargins(
-            24, 26, 24, 26
-        )
+        layout.setContentsMargins(24, 26, 24, 26)
 
         layout.setSpacing(13)
 
@@ -284,8 +238,7 @@ class HomePage(QWidget):
         )
 
         description = self.create_label(
-            "Built around privacy, local "
-            "processing, and file ownership.",
+            "Built around privacy, local processing, and file ownership.",
             "home_card_description",
         )
 
@@ -332,9 +285,7 @@ class HomePage(QWidget):
 
         icon.setFixedSize(27, 27)
 
-        icon.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        icon.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         label = self.create_label(
             text,
@@ -360,9 +311,7 @@ class HomePage(QWidget):
 
         layout = QVBoxLayout(card)
 
-        layout.setContentsMargins(
-            22, 26, 22, 26
-        )
+        layout.setContentsMargins(22, 26, 22, 26)
 
         layout.setSpacing(12)
 
@@ -377,8 +326,7 @@ class HomePage(QWidget):
         )
 
         description = self.create_label(
-            "Everything you need to prepare "
-            "and optimize your images.",
+            "Everything you need to prepare and optimize your images.",
             "home_card_description",
         )
 
@@ -395,22 +343,20 @@ class HomePage(QWidget):
         tools_grid.setSpacing(8)
 
         tools = [
-            ("⇄", "Convert Images"),
-            ("↔", "Resize Images"),
-            ("✂", "Crop Images"),
-            ("▣", "Compress Images"),
-            ("◇", "Optimize Images"),
-            ("⟳", "Rotate Images"),
-            ("⇵", "Flip Images"),
-            ("▦", "Manage DPI"),
-            ("◈", "Manage Color Space"),
-            ("◎", "Manage Metadata"),
-            ("◐", "Adjust Bit Depth"),
+            ("⇄", "Convert Images to Different Formats"),
+            ("▣", "Compress Images to Reduce File Size"),
+            ("↔", "Resize Images to Custom Dimensions"),
+            ("✂", "Crop Images to Selected Areas"),
+            ("⟳", "Rotate, Flip, and Transform Images"),
+            ("▦", "Adjust Image DPI and Resolution"),
+            ("◇", "Manage and Remove Image Metadata"),
+            ("◈", "Convert and Manage Image Color Space"),
+            ("◐", "Adjust Image Bit Depth to Various Levels"),
         ]
 
         for index, (symbol, name) in enumerate(tools):
-            row = index // 2
-            column = index % 2
+            row = index // 1
+            column = index % 1
 
             tool_card = self.create_tool_item(
                 symbol,
@@ -452,9 +398,7 @@ class HomePage(QWidget):
 
         layout = QHBoxLayout(item)
 
-        layout.setContentsMargins(
-            9, 7, 8, 7
-        )
+        layout.setContentsMargins(9, 7, 8, 7)
 
         layout.setSpacing(7)
 
@@ -466,9 +410,7 @@ class HomePage(QWidget):
 
         icon.setFixedWidth(17)
 
-        icon.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        icon.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         name = self.create_label(
             text,
@@ -486,15 +428,11 @@ class HomePage(QWidget):
 
     def create_workflow_card(self):
         card = QFrame()
-        card.setObjectName(
-            "home_workflow_card"
-        )
+        card.setObjectName("home_workflow_card")
 
         layout = QVBoxLayout(card)
 
-        layout.setContentsMargins(
-            24, 22, 24, 24
-        )
+        layout.setContentsMargins(24, 22, 24, 24)
 
         layout.setSpacing(15)
 
@@ -511,9 +449,7 @@ class HomePage(QWidget):
         )
 
         description = self.create_label(
-            "From importing your image "
-            "to exporting the result "
-            "in five simple steps.",
+            "From importing your image to exporting the result in five simple steps.",
             "home_card_description",
         )
 
@@ -561,9 +497,7 @@ class HomePage(QWidget):
                 subtitle,
             )
 
-            steps_layout.addWidget(
-                step, 1
-            )
+            steps_layout.addWidget(step, 1)
 
         layout.addLayout(steps_layout)
 
@@ -581,15 +515,11 @@ class HomePage(QWidget):
     ):
         step = QFrame()
 
-        step.setObjectName(
-            "home_workflow_step"
-        )
+        step.setObjectName("home_workflow_step")
 
         layout = QVBoxLayout(step)
 
-        layout.setContentsMargins(
-            12, 14, 12, 14
-        )
+        layout.setContentsMargins(12, 14, 12, 14)
 
         layout.setSpacing(7)
 
@@ -637,9 +567,7 @@ class HomePage(QWidget):
             "home_footer_text",
         )
 
-        right.setAlignment(
-            Qt.AlignmentFlag.AlignRight
-        )
+        right.setAlignment(Qt.AlignmentFlag.AlignRight)
 
         layout.addWidget(left)
         layout.addStretch()
@@ -658,13 +586,9 @@ class HomePage(QWidget):
             return
 
         if self.width() < 850:
-            self.top_layout.setDirection(
-                QBoxLayout.Direction.TopToBottom
-            )
+            self.top_layout.setDirection(QBoxLayout.Direction.TopToBottom)
         else:
-            self.top_layout.setDirection(
-                QBoxLayout.Direction.LeftToRight
-            )
+            self.top_layout.setDirection(QBoxLayout.Direction.LeftToRight)
 
     # =====================
     # PREMIUM STYLING

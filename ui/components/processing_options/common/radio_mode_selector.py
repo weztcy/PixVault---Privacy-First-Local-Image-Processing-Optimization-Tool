@@ -1,4 +1,3 @@
-
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import (
     QButtonGroup,
@@ -21,9 +20,7 @@ class RadioModeSelector(QWidget):
     ):
         super().__init__()
 
-        self.setObjectName(
-            "radio_mode_selector"
-        )
+        self.setObjectName("radio_mode_selector")
 
         self.buttons = {}
         self.group = QButtonGroup(self)
@@ -49,9 +46,7 @@ class RadioModeSelector(QWidget):
     ):
         main_layout = QVBoxLayout(self)
 
-        main_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        main_layout.setContentsMargins(0, 0, 0, 0)
 
         main_layout.setSpacing(10)
 
@@ -61,15 +56,11 @@ class RadioModeSelector(QWidget):
 
         self.title_label = QLabel(title)
 
-        self.title_label.setObjectName(
-            "radio_selector_title"
-        )
+        self.title_label.setObjectName("radio_selector_title")
 
         self.title_label.setWordWrap(True)
 
-        main_layout.addWidget(
-            self.title_label
-        )
+        main_layout.addWidget(self.title_label)
 
         main_layout.addSpacing(3)
 
@@ -81,58 +72,38 @@ class RadioModeSelector(QWidget):
 
         self.options_layout.setSpacing(8)
 
-        self.options_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        self.options_layout.setContentsMargins(0, 0, 0, 0)
 
         for mode in modes:
-            button = self.create_radio_option(
-                mode
-            )
+            button = self.create_radio_option(mode)
 
             self.buttons[mode] = button
 
-            self.group.addButton(
-                button
-            )
+            self.group.addButton(button)
 
-            self.options_layout.addWidget(
-                button
-            )
+            self.options_layout.addWidget(button)
 
             button.toggled.connect(
-                lambda checked, value=mode:
-                self.changed(checked, value)
+                lambda checked, value=mode: self.changed(checked, value)
             )
 
-        main_layout.addLayout(
-            self.options_layout
-        )
+        main_layout.addLayout(self.options_layout)
 
         # =====================
         # DEFAULT SELECTION
         # =====================
 
-        if (
-            default is not None
-            and default in self.buttons
-        ):
-            self.buttons[default].setChecked(
-                True
-            )
+        if default is not None and default in self.buttons:
+            self.buttons[default].setChecked(True)
 
     # =====================
     # RADIO OPTION FACTORY
     # =====================
 
     def create_radio_option(self, mode):
-        button = QRadioButton(
-            str(mode)
-        )
+        button = QRadioButton(str(mode))
 
-        button.setObjectName(
-            "premium_radio_option"
-        )
+        button.setObjectName("premium_radio_option")
 
         button.setMinimumHeight(48)
 
@@ -141,17 +112,11 @@ class RadioModeSelector(QWidget):
             QSizePolicy.Policy.Fixed,
         )
 
-        button.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        button.setCursor(Qt.CursorShape.PointingHandCursor)
 
-        button.setFocusPolicy(
-            Qt.FocusPolicy.StrongFocus
-        )
+        button.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
 
-        button.setAccessibleName(
-            str(mode)
-        )
+        button.setAccessibleName(str(mode))
 
         return button
 
@@ -165,9 +130,7 @@ class RadioModeSelector(QWidget):
         mode,
     ):
         if checked:
-            self.mode_changed.emit(
-                str(mode)
-            )
+            self.mode_changed.emit(str(mode))
 
     # =====================
     # GET CURRENT VALUE
@@ -186,9 +149,7 @@ class RadioModeSelector(QWidget):
 
     def set_value(self, value):
         if value in self.buttons:
-            self.buttons[value].setChecked(
-                True
-            )
+            self.buttons[value].setChecked(True)
 
     # =====================
     # PREMIUM STYLING

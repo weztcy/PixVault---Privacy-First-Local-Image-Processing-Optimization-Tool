@@ -1,4 +1,5 @@
 """Reusable, styled integer input consistent with DropdownField/SliderField."""
+
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import QLabel, QSpinBox, QVBoxLayout, QWidget
 
@@ -6,8 +7,9 @@ from PySide6.QtWidgets import QLabel, QSpinBox, QVBoxLayout, QWidget
 class NumberField(QWidget):
     value_changed = Signal(int)
 
-    def __init__(self, title, minimum=0, maximum=100000, default=0,
-                 suffix="", parent=None):
+    def __init__(
+        self, title, minimum=0, maximum=100000, default=0, suffix="", parent=None
+    ):
         super().__init__(parent)
         self.setObjectName("number_field")
         layout = QVBoxLayout(self)

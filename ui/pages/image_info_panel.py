@@ -193,9 +193,7 @@ class ImageInfoPanel(QWidget):
                 self.format_label.setText(
                     str(image.format or file.suffix.lstrip(".") or "Unknown").upper()
                 )
-                self.resolution_label.setText(
-                    f"{image.width:,} × {image.height:,}"
-                )
+                self.resolution_label.setText(f"{image.width:,} × {image.height:,}")
                 self.mode_label.setText(str(image.mode))
                 self.depth_label.setText(self.get_bit_depth(image))
 
@@ -213,9 +211,20 @@ class ImageInfoPanel(QWidget):
         if mode.startswith("I;16"):
             return "16 bit"
         depths = {
-            "1": 1, "L": 8, "LA": 8, "P": 8, "PA": 8,
-            "RGB": 8, "RGBA": 8, "RGBX": 8, "CMYK": 8,
-            "YCbCr": 8, "HSV": 8, "LAB": 8, "I": 32, "F": 32,
+            "1": 1,
+            "L": 8,
+            "LA": 8,
+            "P": 8,
+            "PA": 8,
+            "RGB": 8,
+            "RGBA": 8,
+            "RGBX": 8,
+            "CMYK": 8,
+            "YCbCr": 8,
+            "HSV": 8,
+            "LAB": 8,
+            "I": 32,
+            "F": 32,
         }
         depth = depths.get(mode)
         return f"{depth} bit" if depth is not None else "Unknown"

@@ -1,16 +1,17 @@
 from pathlib import Path
+
 from PIL import Image
+
 from formats import BaseEncoder
 
 
 class JPEGEncoder(BaseEncoder):
-
     def save(self, image, output_path, settings):
 
         output = Path(output_path)
         output.parent.mkdir(parents=True, exist_ok=True)
 
-        quality = max(1, min(95, int(settings.get("quality",85))))
+        quality = max(1, min(95, int(settings.get("quality", 85))))
 
         # Preserve CMYK when requested
         if image.mode in ["RGBA", "LA"]:
@@ -24,8 +25,8 @@ class JPEGEncoder(BaseEncoder):
         save_settings = {
             "format": "JPEG",
             "quality": quality,
-            "progressive": bool(settings.get("progressive",False)),
-            "optimize": bool(settings.get("optimize",True)),
+            "progressive": bool(settings.get("progressive", False)),
+            "optimize": bool(settings.get("optimize", True)),
         }
 
         if image.info.get("icc_profile"):

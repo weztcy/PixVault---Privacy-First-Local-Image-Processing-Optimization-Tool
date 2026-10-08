@@ -1,4 +1,3 @@
-
 from pathlib import Path
 
 from PySide6.QtCore import QEvent, Qt, Signal
@@ -16,10 +15,10 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-
 # =====================
 # PREMIUM IMAGE TILE
 # =====================
+
 
 class ImageTileButton(QPushButton):
     def __init__(self, image_path, index, parent=None):
@@ -31,13 +30,9 @@ class ImageTileButton(QPushButton):
         self.setObjectName("image_list_tile")
         self.setProperty("selected", False)
 
-        self.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        self.setCursor(Qt.CursorShape.PointingHandCursor)
 
-        self.setFocusPolicy(
-            Qt.FocusPolicy.StrongFocus
-        )
+        self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
 
         self.setFixedHeight(86)
 
@@ -48,9 +43,7 @@ class ImageTileButton(QPushButton):
 
         self.setToolTip(str(self.image_path))
 
-        self.setAccessibleName(
-            f"Select image: {self.image_path.name}"
-        )
+        self.setAccessibleName(f"Select image: {self.image_path.name}")
 
         self.setup_ui()
 
@@ -61,36 +54,26 @@ class ImageTileButton(QPushButton):
     def setup_ui(self):
         layout = QHBoxLayout(self)
 
-        layout.setContentsMargins(
-            12, 10, 12, 10
-        )
+        layout.setContentsMargins(12, 10, 12, 10)
         layout.setSpacing(10)
 
         # File icon
 
         self.icon_label = QLabel("▧")
-        self.icon_label.setObjectName(
-            "image_tile_icon"
-        )
+        self.icon_label.setObjectName("image_tile_icon")
 
         self.icon_label.setFixedSize(36, 40)
 
-        self.icon_label.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.icon_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         # File information
 
         information_layout = QVBoxLayout()
         information_layout.setSpacing(5)
 
-        self.filename_label = QLabel(
-            self.image_path.name
-        )
+        self.filename_label = QLabel(self.image_path.name)
 
-        self.filename_label.setObjectName(
-            "image_tile_name"
-        )
+        self.filename_label.setObjectName("image_tile_name")
 
         self.filename_label.setWordWrap(False)
 
@@ -99,26 +82,15 @@ class ImageTileButton(QPushButton):
             QSizePolicy.Policy.Fixed,
         )
 
-        extension = (
-            self.image_path.suffix.lstrip(".").upper()
-            or "IMAGE"
-        )
+        extension = self.image_path.suffix.lstrip(".").upper() or "IMAGE"
 
-        self.metadata_label = QLabel(
-            f"{extension}  •  {index_text(self.image_index)}"
-        )
+        self.metadata_label = QLabel(f"{extension}  •  {index_text(self.image_index)}")
 
-        self.metadata_label.setObjectName(
-            "image_tile_metadata"
-        )
+        self.metadata_label.setObjectName("image_tile_metadata")
 
-        information_layout.addWidget(
-            self.filename_label
-        )
+        information_layout.addWidget(self.filename_label)
 
-        information_layout.addWidget(
-            self.metadata_label
-        )
+        information_layout.addWidget(self.metadata_label)
 
         information_layout.addStretch()
 
@@ -157,9 +129,7 @@ class ImageTileButton(QPushButton):
             available_width,
         )
 
-        self.filename_label.setText(
-            display_name
-        )
+        self.filename_label.setText(display_name)
 
 
 def index_text(index):
@@ -169,6 +139,7 @@ def index_text(index):
 # =====================
 # IMAGE LIST WIDGET
 # =====================
+
 
 class ImageListWidget(QWidget):
     image_selected = Signal(Path)
@@ -189,9 +160,7 @@ class ImageListWidget(QWidget):
 
         self._column_count = 0
 
-        self.setObjectName(
-            "image_list_widget"
-        )
+        self.setObjectName("image_list_widget")
 
         self.setup_ui()
         self.apply_styles()
@@ -205,9 +174,7 @@ class ImageListWidget(QWidget):
     def setup_ui(self):
         main_layout = QVBoxLayout(self)
 
-        main_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        main_layout.setContentsMargins(0, 0, 0, 0)
 
         main_layout.setSpacing(0)
 
@@ -217,17 +184,11 @@ class ImageListWidget(QWidget):
 
         self.card = QFrame()
 
-        self.card.setObjectName(
-            "image_list_card"
-        )
+        self.card.setObjectName("image_list_card")
 
-        card_layout = QVBoxLayout(
-            self.card
-        )
+        card_layout = QVBoxLayout(self.card)
 
-        card_layout.setContentsMargins(
-            20, 20, 20, 18
-        )
+        card_layout.setContentsMargins(20, 20, 20, 18)
 
         card_layout.setSpacing(14)
 
@@ -241,30 +202,17 @@ class ImageListWidget(QWidget):
         header_text = QVBoxLayout()
         header_text.setSpacing(6)
 
-        eyebrow = QLabel(
-            "IMAGE WORKSPACE"
-        )
+        eyebrow = QLabel("IMAGE WORKSPACE")
 
-        eyebrow.setObjectName(
-            "image_list_eyebrow"
-        )
+        eyebrow.setObjectName("image_list_eyebrow")
 
-        title = QLabel(
-            "Image Collection"
-        )
+        title = QLabel("Image Collection")
 
-        title.setObjectName(
-            "image_list_title"
-        )
+        title.setObjectName("image_list_title")
 
-        description = QLabel(
-            "Manage images added to "
-            "your processing queue."
-        )
+        description = QLabel("Manage images added to your processing queue.")
 
-        description.setObjectName(
-            "image_list_description"
-        )
+        description.setObjectName("image_list_description")
 
         description.setWordWrap(True)
 
@@ -274,17 +222,11 @@ class ImageListWidget(QWidget):
 
         # Image count
 
-        self.count_label = QLabel(
-            "0 IMAGES"
-        )
+        self.count_label = QLabel("0 IMAGES")
 
-        self.count_label.setObjectName(
-            "image_list_count"
-        )
+        self.count_label.setObjectName("image_list_count")
 
-        self.count_label.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.count_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         header.addLayout(
             header_text,
@@ -297,9 +239,7 @@ class ImageListWidget(QWidget):
             Qt.AlignmentFlag.AlignTop,
         )
 
-        card_layout.addLayout(
-            header
-        )
+        card_layout.addLayout(header)
 
         # =====================
         # IMAGE GRID SCROLL AREA
@@ -307,65 +247,39 @@ class ImageListWidget(QWidget):
 
         self.scroll = QScrollArea()
 
-        self.scroll.setObjectName(
-            "image_list_scroll"
-        )
+        self.scroll.setObjectName("image_list_scroll")
 
         self.scroll.setWidgetResizable(True)
 
-        self.scroll.setFrameShape(
-            QFrame.Shape.NoFrame
-        )
+        self.scroll.setFrameShape(QFrame.Shape.NoFrame)
 
         self.scroll.setFixedHeight(236)
 
-        self.scroll.setHorizontalScrollBarPolicy(
-            Qt.ScrollBarPolicy.ScrollBarAlwaysOff
-        )
+        self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
 
-        self.scroll.setVerticalScrollBarPolicy(
-            Qt.ScrollBarPolicy.ScrollBarAsNeeded
-        )
+        self.scroll.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
 
         # Grid container
 
         self.container = QWidget()
 
-        self.container.setObjectName(
-            "image_list_container"
-        )
+        self.container.setObjectName("image_list_container")
 
-        self.grid = QGridLayout(
-            self.container
-        )
+        self.grid = QGridLayout(self.container)
 
-        self.grid.setContentsMargins(
-            6, 6, 6, 6
-        )
+        self.grid.setContentsMargins(6, 6, 6, 6)
 
-        self.grid.setHorizontalSpacing(
-            self.GRID_SPACING
-        )
+        self.grid.setHorizontalSpacing(self.GRID_SPACING)
 
-        self.grid.setVerticalSpacing(
-            self.GRID_SPACING
-        )
+        self.grid.setVerticalSpacing(self.GRID_SPACING)
 
-        self.grid.setAlignment(
-            Qt.AlignmentFlag.AlignTop
-        )
+        self.grid.setAlignment(Qt.AlignmentFlag.AlignTop)
 
-        self.scroll.setWidget(
-            self.container
-        )
+        self.scroll.setWidget(self.container)
 
-        self.scroll.viewport().installEventFilter(
-            self
-        )
+        self.scroll.viewport().installEventFilter(self)
 
-        card_layout.addWidget(
-            self.scroll
-        )
+        card_layout.addWidget(self.scroll)
 
         # =====================
         # SELECTION STATUS
@@ -376,102 +290,66 @@ class ImageListWidget(QWidget):
 
         selection_icon = QLabel("●")
 
-        selection_icon.setObjectName(
-            "image_list_selection_icon"
-        )
+        selection_icon.setObjectName("image_list_selection_icon")
 
-        self.selection_label = QLabel(
-            "Select an image to inspect or remove it."
-        )
+        self.selection_label = QLabel("Select an image to inspect or remove it.")
 
-        self.selection_label.setObjectName(
-            "image_list_selection_text"
-        )
+        self.selection_label.setObjectName("image_list_selection_text")
 
         self.selection_label.setWordWrap(True)
 
-        selection_layout.addWidget(
-            selection_icon
-        )
+        selection_layout.addWidget(selection_icon)
 
         selection_layout.addWidget(
             self.selection_label,
             1,
         )
 
-        card_layout.addLayout(
-            selection_layout
-        )
+        card_layout.addLayout(selection_layout)
 
         # =====================
         # BUTTON BAR
         # =====================
 
-        self.button_layout = QBoxLayout(
-            QBoxLayout.Direction.LeftToRight
-        )
+        self.button_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight)
 
         self.button_layout.setSpacing(10)
 
         # Sort
 
-        self.sort_button = QPushButton(
-            "↕  Sort Images"
-        )
+        self.sort_button = QPushButton("↕  Sort Images")
 
-        self.sort_button.setObjectName(
-            "image_list_sort_button"
-        )
+        self.sort_button.setObjectName("image_list_sort_button")
 
         self.sort_button.setMinimumHeight(40)
 
-        self.sort_button.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        self.sort_button.setCursor(Qt.CursorShape.PointingHandCursor)
 
-        self.sort_button.clicked.connect(
-            self.show_sort_menu
-        )
+        self.sort_button.clicked.connect(self.show_sort_menu)
 
         # Remove selected
 
-        self.remove_button = QPushButton(
-            "✕  Remove Selected"
-        )
+        self.remove_button = QPushButton("✕  Remove Selected")
 
-        self.remove_button.setObjectName(
-            "image_list_remove_button"
-        )
+        self.remove_button.setObjectName("image_list_remove_button")
 
         self.remove_button.setMinimumHeight(40)
 
-        self.remove_button.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        self.remove_button.setCursor(Qt.CursorShape.PointingHandCursor)
 
-        self.remove_button.clicked.connect(
-            self.remove_selected
-        )
+        self.remove_button.clicked.connect(self.remove_selected)
 
         # Clear all
 
-        self.delete_all_button = QPushButton(
-            "Clear List"
-        )
+        self.delete_all_button = QPushButton("Clear List")
 
-        self.delete_all_button.setObjectName(
-            "image_list_clear_button"
-        )
+        self.delete_all_button.setObjectName("image_list_clear_button")
 
         self.delete_all_button.setMinimumHeight(40)
 
-        self.delete_all_button.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        self.delete_all_button.setCursor(Qt.CursorShape.PointingHandCursor)
 
-        self.delete_all_button.clicked.connect(
-            self.delete_all
-        )
+        self.delete_all_button.clicked.connect(self.delete_all)
 
         self.button_layout.addWidget(
             self.sort_button,
@@ -488,13 +366,9 @@ class ImageListWidget(QWidget):
             1,
         )
 
-        card_layout.addLayout(
-            self.button_layout
-        )
+        card_layout.addLayout(self.button_layout)
 
-        main_layout.addWidget(
-            self.card
-        )
+        main_layout.addWidget(self.card)
 
     # =====================
     # EMPTY STATE
@@ -503,58 +377,35 @@ class ImageListWidget(QWidget):
     def create_empty_state(self):
         frame = QFrame()
 
-        frame.setObjectName(
-            "image_list_empty_state"
-        )
+        frame.setObjectName("image_list_empty_state")
 
         frame.setMinimumHeight(175)
 
         layout = QVBoxLayout(frame)
 
-        layout.setContentsMargins(
-            18, 20, 18, 20
-        )
+        layout.setContentsMargins(18, 20, 18, 20)
 
         layout.setSpacing(9)
 
-        layout.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         icon = QLabel("▧")
 
-        icon.setObjectName(
-            "image_list_empty_icon"
-        )
+        icon.setObjectName("image_list_empty_icon")
 
-        icon.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        icon.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        title = QLabel(
-            "No Images Added"
-        )
+        title = QLabel("No Images Added")
 
-        title.setObjectName(
-            "image_list_empty_title"
-        )
+        title.setObjectName("image_list_empty_title")
 
-        title.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        title.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        subtitle = QLabel(
-            "Import images using the drop area "
-            "to see them here."
-        )
+        subtitle = QLabel("Import images using the drop area to see them here.")
 
-        subtitle.setObjectName(
-            "image_list_empty_description"
-        )
+        subtitle.setObjectName("image_list_empty_description")
 
-        subtitle.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        subtitle.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         subtitle.setWordWrap(True)
 
@@ -569,10 +420,7 @@ class ImageListWidget(QWidget):
     # =====================
 
     def set_images(self, images):
-        self.images = [
-            Path(image)
-            for image in images
-        ]
+        self.images = [Path(image) for image in images]
 
         self.selected_index = None
         self.selected_image = None
@@ -584,9 +432,7 @@ class ImageListWidget(QWidget):
     # =====================
 
     def refresh(self):
-        previous_selection = (
-            self.selected_image
-        )
+        previous_selection = self.selected_image
 
         self.clear_grid()
 
@@ -600,9 +446,7 @@ class ImageListWidget(QWidget):
         # =====================
 
         if not self.images:
-            empty_state = (
-                self.create_empty_state()
-            )
+            empty_state = self.create_empty_state()
 
             self.grid.addWidget(
                 empty_state,
@@ -616,9 +460,7 @@ class ImageListWidget(QWidget):
 
             self.update_action_states()
 
-            self.images_changed.emit(
-                self.images.copy()
-            )
+            self.images_changed.emit(self.images.copy())
 
             return
 
@@ -626,23 +468,16 @@ class ImageListWidget(QWidget):
         # CREATE IMAGE TILES
         # =====================
 
-        for index, image in enumerate(
-            self.images
-        ):
+        for index, image in enumerate(self.images):
             button = ImageTileButton(
                 image,
                 index,
                 self.container,
             )
 
-            button.clicked.connect(
-                lambda checked=False, i=index:
-                self.select_image(i)
-            )
+            button.clicked.connect(lambda checked=False, i=index: self.select_image(i))
 
-            self.buttons.append(
-                button
-            )
+            self.buttons.append(button)
 
         # Apply responsive layout
 
@@ -653,13 +488,8 @@ class ImageListWidget(QWidget):
         # RESTORE SELECTION
         # =====================
 
-        if (
-            previous_selection is not None
-            and previous_selection in self.images
-        ):
-            index = self.images.index(
-                previous_selection
-            )
+        if previous_selection is not None and previous_selection in self.images:
+            index = self.images.index(previous_selection)
 
             self.select_image(
                 index,
@@ -668,9 +498,7 @@ class ImageListWidget(QWidget):
 
         self.update_action_states()
 
-        self.images_changed.emit(
-            self.images.copy()
-        )
+        self.images_changed.emit(self.images.copy())
 
     # =====================
     # IMAGE SELECTION
@@ -681,20 +509,14 @@ class ImageListWidget(QWidget):
         index,
         emit_signal=True,
     ):
-        if not (
-            0 <= index < len(self.images)
-        ):
+        if not (0 <= index < len(self.images)):
             return
 
         # Clear previous selection
 
         if self.selected_index is not None:
-            if self.selected_index < len(
-                self.buttons
-            ):
-                previous_button = self.buttons[
-                    self.selected_index
-                ]
+            if self.selected_index < len(self.buttons):
+                previous_button = self.buttons[self.selected_index]
 
                 self.set_tile_selected(
                     previous_button,
@@ -705,9 +527,7 @@ class ImageListWidget(QWidget):
 
         self.selected_index = index
 
-        self.selected_image = self.images[
-            index
-        ]
+        self.selected_image = self.images[index]
 
         button = self.buttons[index]
 
@@ -721,9 +541,7 @@ class ImageListWidget(QWidget):
         # Notify image preview / info panel
 
         if emit_signal:
-            self.image_selected.emit(
-                self.selected_image
-            )
+            self.image_selected.emit(self.selected_image)
 
     # =====================
     # TILE SELECTED STATE
@@ -739,13 +557,9 @@ class ImageListWidget(QWidget):
             bool(selected),
         )
 
-        button.style().unpolish(
-            button
-        )
+        button.style().unpolish(button)
 
-        button.style().polish(
-            button
-        )
+        button.style().polish(button)
 
         button.update()
 
@@ -757,73 +571,41 @@ class ImageListWidget(QWidget):
         count = len(self.images)
 
         if count == 1:
-            self.count_label.setText(
-                "1 IMAGE"
-            )
+            self.count_label.setText("1 IMAGE")
         else:
-            self.count_label.setText(
-                f"{count} IMAGES"
-            )
+            self.count_label.setText(f"{count} IMAGES")
 
     # =====================
     # UPDATE BUTTON STATES
     # =====================
 
     def update_action_states(self):
-        has_images = bool(
-            self.images
-        )
+        has_images = bool(self.images)
 
-        has_selection = (
-            self.selected_index is not None
-        )
+        has_selection = self.selected_index is not None
 
-        self.sort_button.setEnabled(
-            len(self.images) > 1
-        )
+        self.sort_button.setEnabled(len(self.images) > 1)
 
-        self.remove_button.setEnabled(
-            has_selection
-        )
+        self.remove_button.setEnabled(has_selection)
 
-        self.delete_all_button.setEnabled(
-            has_images
-        )
+        self.delete_all_button.setEnabled(has_images)
 
-        if (
-            has_selection
-            and self.selected_image is not None
-        ):
-            filename = (
-                self.selected_image.name
-            )
+        if has_selection and self.selected_image is not None:
+            filename = self.selected_image.name
 
-            self.selection_label.setText(
-                f"Selected: {filename}"
-            )
+            self.selection_label.setText(f"Selected: {filename}")
 
-            self.selection_label.setToolTip(
-                str(self.selected_image)
-            )
+            self.selection_label.setToolTip(str(self.selected_image))
 
         elif has_images:
-            self.selection_label.setText(
-                "Select an image to inspect "
-                "or remove it."
-            )
+            self.selection_label.setText("Select an image to inspect or remove it.")
 
-            self.selection_label.setToolTip(
-                ""
-            )
+            self.selection_label.setToolTip("")
 
         else:
-            self.selection_label.setText(
-                "Your image collection is empty."
-            )
+            self.selection_label.setText("Your image collection is empty.")
 
-            self.selection_label.setToolTip(
-                ""
-            )
+            self.selection_label.setToolTip("")
 
     # =====================
     # CLEAR GRID WIDGETS
@@ -848,24 +630,16 @@ class ImageListWidget(QWidget):
     # =====================
 
     def calculate_columns(self):
-        viewport_width = (
-            self.scroll.viewport().width()
-        )
+        viewport_width = self.scroll.viewport().width()
 
         available_width = max(
             1,
             viewport_width - 12,
         )
 
-        item_width = (
-            self.MIN_TILE_WIDTH
-            + self.GRID_SPACING
-        )
+        item_width = self.MIN_TILE_WIDTH + self.GRID_SPACING
 
-        columns = (
-            available_width
-            + self.GRID_SPACING
-        ) // item_width
+        columns = (available_width + self.GRID_SPACING) // item_width
 
         return max(
             1,
@@ -888,15 +662,11 @@ class ImageListWidget(QWidget):
         # deleting the actual buttons.
 
         for button in self.buttons:
-            self.grid.removeWidget(
-                button
-            )
+            self.grid.removeWidget(button)
 
         # Reset previous column stretch
 
-        for column in range(
-            self.MAX_COLUMNS
-        ):
+        for column in range(self.MAX_COLUMNS):
             self.grid.setColumnStretch(
                 column,
                 1 if column < columns else 0,
@@ -904,9 +674,7 @@ class ImageListWidget(QWidget):
 
         # Reposition tiles
 
-        for index, button in enumerate(
-            self.buttons
-        ):
+        for index, button in enumerate(self.buttons):
             row = index // columns
             column = index % columns
 
@@ -927,11 +695,7 @@ class ImageListWidget(QWidget):
         watched,
         event,
     ):
-        if (
-            watched is self.scroll.viewport()
-            and event.type()
-            == QEvent.Type.Resize
-        ):
+        if watched is self.scroll.viewport() and event.type() == QEvent.Type.Resize:
             self.reflow_grid()
 
         return super().eventFilter(
@@ -953,13 +717,9 @@ class ImageListWidget(QWidget):
             return
 
         if self.width() < 470:
-            self.button_layout.setDirection(
-                QBoxLayout.Direction.TopToBottom
-            )
+            self.button_layout.setDirection(QBoxLayout.Direction.TopToBottom)
         else:
-            self.button_layout.setDirection(
-                QBoxLayout.Direction.LeftToRight
-            )
+            self.button_layout.setDirection(QBoxLayout.Direction.LeftToRight)
 
     # =====================
     # SORT MENU
@@ -971,22 +731,14 @@ class ImageListWidget(QWidget):
 
         menu = QMenu(self)
 
-        menu.setObjectName(
-            "image_list_sort_menu"
-        )
+        menu.setObjectName("image_list_sort_menu")
 
-        asc_action = menu.addAction(
-            "↑  Name: A to Z"
-        )
+        asc_action = menu.addAction("↑  Name: A to Z")
 
-        desc_action = menu.addAction(
-            "↓  Name: Z to A"
-        )
+        desc_action = menu.addAction("↓  Name: Z to A")
 
         action = menu.exec(
-            self.sort_button.mapToGlobal(
-                self.sort_button.rect().bottomLeft()
-            )
+            self.sort_button.mapToGlobal(self.sort_button.rect().bottomLeft())
         )
 
         if action == asc_action:
@@ -1003,15 +755,10 @@ class ImageListWidget(QWidget):
         if self.selected_index is None:
             return
 
-        if not (
-            0 <= self.selected_index
-            < len(self.images)
-        ):
+        if not (0 <= self.selected_index < len(self.images)):
             return
 
-        del self.images[
-            self.selected_index
-        ]
+        del self.images[self.selected_index]
 
         self.selected_index = None
         self.selected_image = None

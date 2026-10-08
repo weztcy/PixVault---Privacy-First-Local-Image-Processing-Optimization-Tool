@@ -3,6 +3,7 @@
 Parent pages already own the page scrollbar (as in ConvertPage).  The panel
 assembles independent cards and exposes the original get_settings() API.
 """
+
 from PySide6.QtCore import Signal
 from PySide6.QtWidgets import QVBoxLayout, QWidget
 
@@ -65,8 +66,11 @@ class ProcessingOptionsPanel(QWidget):
         self.emit_settings()
 
     def get_operations(self):
-        return [settings for card in self.cards.values()
-                if (settings := card.get_settings())]
+        return [
+            settings
+            for card in self.cards.values()
+            if (settings := card.get_settings())
+        ]
 
     def validate_dependencies(self):
         warnings = []
@@ -80,7 +84,12 @@ class ProcessingOptionsPanel(QWidget):
         removing_all = metadata.get("mode") == "all"
         removing_icc = removing_all or "icc_profile" in metadata.get("remove", [])
 
-        if colorspace and metadata and removing_icc and target not in ("srgb", "grayscale"):
+        if (
+            colorspace
+            and metadata
+            and removing_icc
+            and target not in ("srgb", "grayscale")
+        ):
             message = "Removing ICC profile may affect color accuracy."
             warnings.append(message)
             metadata_card.set_warning(message)

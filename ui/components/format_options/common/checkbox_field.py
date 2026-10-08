@@ -1,4 +1,3 @@
-
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import (
     QCheckBox,
@@ -35,19 +34,13 @@ class CheckboxField(QWidget):
         # =====================
 
         self.container = QFrame()
-        self.container.setObjectName(
-            "checkbox_field_container"
-        )
+        self.container.setObjectName("checkbox_field_container")
 
         self.container.setMinimumHeight(44)
 
-        container_layout = QHBoxLayout(
-            self.container
-        )
+        container_layout = QHBoxLayout(self.container)
 
-        container_layout.setContentsMargins(
-            14, 8, 14, 8
-        )
+        container_layout.setContentsMargins(14, 8, 14, 8)
 
         container_layout.setSpacing(10)
 
@@ -57,49 +50,35 @@ class CheckboxField(QWidget):
 
         self.checkbox = QCheckBox(text)
 
-        self.checkbox.setObjectName(
-            "premium_checkbox"
-        )
+        self.checkbox.setObjectName("premium_checkbox")
 
-        self.checkbox.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        self.checkbox.setCursor(Qt.CursorShape.PointingHandCursor)
 
-        self.checkbox.setChecked(
-            bool(default)
-        )
+        self.checkbox.setChecked(bool(default))
 
         self.checkbox.setMinimumHeight(26)
 
-        self.checkbox.setFocusPolicy(
-            Qt.FocusPolicy.StrongFocus
-        )
+        self.checkbox.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
 
         container_layout.addWidget(
             self.checkbox,
             1,
         )
 
-        main_layout.addWidget(
-            self.container
-        )
+        main_layout.addWidget(self.container)
 
         # =====================
         # SIGNAL CONNECTION
         # =====================
 
-        self.checkbox.toggled.connect(
-            self.changed
-        )
+        self.checkbox.toggled.connect(self.changed)
 
     # =====================
     # VALUE CHANGED
     # =====================
 
     def changed(self, checked=None):
-        self.value_changed.emit(
-            self.checkbox.isChecked()
-        )
+        self.value_changed.emit(self.checkbox.isChecked())
 
     # =====================
     # GET VALUE
@@ -113,9 +92,7 @@ class CheckboxField(QWidget):
     # =====================
 
     def set_value(self, value):
-        self.checkbox.setChecked(
-            bool(value)
-        )
+        self.checkbox.setChecked(bool(value))
 
     # =====================
     # PREMIUM STYLING

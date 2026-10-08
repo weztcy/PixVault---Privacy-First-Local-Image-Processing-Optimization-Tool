@@ -1,24 +1,35 @@
 """Crop controls using shared dropdown and number fields."""
-from ui.components.processing_options.base_processing_options import BaseProcessingOptions
+
+from ui.components.processing_options.base_processing_options import (
+    BaseProcessingOptions,
+)
 from ui.components.processing_options.common.dropdown_field import DropdownField
 from ui.components.processing_options.common.number_field import NumberField
 
 
 class CropOptions(BaseProcessingOptions):
     MODE_KEYS = {
-        "Aspect Ratio": "aspect_ratio", "Fixed Dimensions": "fixed",
-        "Percentage": "percentage", "Custom Coordinates": "coordinates",
+        "Aspect Ratio": "aspect_ratio",
+        "Fixed Dimensions": "fixed",
+        "Percentage": "percentage",
+        "Custom Coordinates": "coordinates",
     }
 
     def setup_ui(self):
         super().setup_ui()
-        self.mode_field = self.add_widget(DropdownField("Crop Mode", list(self.MODE_KEYS), "Aspect Ratio"))
-        self.ratio_field = self.add_widget(DropdownField(
-            "Aspect Ratio", ["1:1", "4:3", "16:9", "3:2", "21:9"], "1:1"
-        ))
+        self.mode_field = self.add_widget(
+            DropdownField("Crop Mode", list(self.MODE_KEYS), "Aspect Ratio")
+        )
+        self.ratio_field = self.add_widget(
+            DropdownField("Aspect Ratio", ["1:1", "4:3", "16:9", "3:2", "21:9"], "1:1")
+        )
         self.width_field = self.add_widget(NumberField("Width", 1, 100000, 1000, " px"))
-        self.height_field = self.add_widget(NumberField("Height", 1, 100000, 1000, " px"))
-        self.percentage_field = self.add_widget(NumberField("Percentage (%)", 1, 100, 100, " %"))
+        self.height_field = self.add_widget(
+            NumberField("Height", 1, 100000, 1000, " px")
+        )
+        self.percentage_field = self.add_widget(
+            NumberField("Percentage (%)", 1, 100, 100, " %")
+        )
         self.x_field = self.add_widget(NumberField("X", 0, 100000, 0, " px"))
         self.y_field = self.add_widget(NumberField("Y", 0, 100000, 0, " px"))
         self.mode = self.mode_field.combo
@@ -31,8 +42,14 @@ class CropOptions(BaseProcessingOptions):
         for name in ("ratio", "width", "height", "percentage", "x", "y"):
             setattr(self, name + "_label", getattr(self, name + "_field").label)
         self.mode.currentTextChanged.connect(self._on_mode_changed)
-        for field in (self.ratio_field, self.width_field, self.height_field,
-                      self.percentage_field, self.x_field, self.y_field):
+        for field in (
+            self.ratio_field,
+            self.width_field,
+            self.height_field,
+            self.percentage_field,
+            self.x_field,
+            self.y_field,
+        ):
             field.value_changed.connect(self.emit_settings)
         self.update_ui()
 
@@ -77,7 +94,11 @@ class CropOptions(BaseProcessingOptions):
         self.update_ui()
 
     def update_capability(self):
-        self.show_warning("SVG crop requires vector clipping support." if self.current_format == "SVG" else "")
+        self.show_warning(
+            "SVG crop requires vector clipping support."
+            if self.current_format == "SVG"
+            else ""
+        )
 
     def validate(self):
         if self.current_format == "SVG":
@@ -86,10 +107,23 @@ class CropOptions(BaseProcessingOptions):
 
     def set_defaults(self, settings):
         s = settings or {}
-        label = next((label for label, key in self.MODE_KEYS.items() if key == s.get("mode")), "Aspect Ratio")
+        label = next(
+            (label for label, key in self.MODE_KEYS.items() if key == s.get("mode")),
+            "Aspect Ratio",
+        )
         self.mode.setCurrentText(label)
         self.ratio.setCurrentText(str(s.get("ratio", "1:1")))
-        for name, default in (("width", 1000), ("height", 1000), ("percentage", 100), ("x", 0), ("y", 0)):
-            value = s.get("value", default) if name == "percentage" else s.get(name, default)
+        for name, default in (
+            ("width", 1000),
+            ("height", 1000),
+            ("percentage", 100),
+            ("x", 0),
+            ("y", 0),
+        ):
+            value = (
+                s.get("value", default)
+                if name == "percentage"
+                else s.get(name, default)
+            )
             getattr(self, name).setValue(int(value))
         self.update_ui()

@@ -40,7 +40,12 @@ class CropPage(QWidget):
     # Match the formats listed by FormatSupportInfo("crop"). The current batch
     # pipeline needs one explicit output format, even for keep-source batches.
     OUTPUT_FORMATS = [
-        "Same as source", "JPEG", "PNG", "WEBP", "BMP", "TIFF",
+        "Same as source",
+        "JPEG",
+        "PNG",
+        "WEBP",
+        "BMP",
+        "TIFF",
     ]
     SOURCE_FORMATS = {
         ".jpg": "JPEG",
@@ -113,7 +118,8 @@ class CropPage(QWidget):
         # 01 / IMPORT AND REVIEW
         self.layout.addWidget(
             self.create_section_header(
-                "01", "Import & Organize",
+                "01",
+                "Import & Organize",
                 "Add images, manage the queue, and inspect selected files.",
             )
         )
@@ -153,7 +159,8 @@ class CropPage(QWidget):
         # 02 / CROP SETTINGS & OUTPUT
         self.layout.addWidget(
             self.create_section_header(
-                "02", "Configure Crop",
+                "02",
+                "Configure Crop",
                 "Choose crop dimensions or proportions and an output folder.",
             )
         )
@@ -163,14 +170,18 @@ class CropPage(QWidget):
 
         self.settings_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight)
         self.settings_layout.setSpacing(16)
-        self.settings_layout.addWidget(self.settings_box, 6)
-        self.settings_layout.addWidget(self.output_selector, 5)
+        self.settings_layout.addWidget(self.settings_box, 6, Qt.AlignmentFlag.AlignTop)
+
+        self.settings_layout.addWidget(
+            self.output_selector, 5, Qt.AlignmentFlag.AlignTop
+        )
         self.layout.addLayout(self.settings_layout)
 
         # 03 / PROCESS & EXPORT
         self.layout.addWidget(
             self.create_section_header(
-                "03", "Process & Export",
+                "03",
+                "Process & Export",
                 "Crop the selected images and monitor export status.",
             )
         )
@@ -196,7 +207,8 @@ class CropPage(QWidget):
         heading.addWidget(
             self.text(
                 "Precisely crop images while keeping your files processed locally.",
-                "heroDescription", True,
+                "heroDescription",
+                True,
             )
         )
         layout.addLayout(heading, 1)
@@ -243,7 +255,8 @@ class CropPage(QWidget):
             self.text(
                 "Choose a format, then set an aspect ratio, fixed size, "
                 "percentage, or custom coordinates.",
-                "description", True,
+                "description",
+                True,
             )
         )
         layout.addSpacing(5)
@@ -269,7 +282,8 @@ class CropPage(QWidget):
             self.text(
                 "Aspect ratio, fixed dimensions, and percentage crop from the "
                 "center. Custom coordinates use a top-left X/Y position.",
-                "hint", True,
+                "hint",
+                True,
             )
         )
 
@@ -281,9 +295,7 @@ class CropPage(QWidget):
 
     def create_action_card(self):
         card = role(QFrame(), "card")
-        self.action_layout = QBoxLayout(
-            QBoxLayout.Direction.LeftToRight, card
-        )
+        self.action_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight, card)
         self.action_layout.setContentsMargins(20, 20, 20, 20)
         self.action_layout.setSpacing(18)
 
@@ -359,9 +371,7 @@ class CropPage(QWidget):
             self.show_preview(current)
 
         if hasattr(self.image_list, "select_image"):
-            self.image_list.select_image(
-                self.images.index(current), emit_signal=False
-            )
+            self.image_list.select_image(self.images.index(current), emit_signal=False)
 
     def show_preview(self, image):
         if not image:
@@ -382,8 +392,7 @@ class CropPage(QWidget):
         if not self.images:
             return None
         formats = {
-            self.SOURCE_FORMATS.get(Path(image).suffix.lower())
-            for image in self.images
+            self.SOURCE_FORMATS.get(Path(image).suffix.lower()) for image in self.images
         }
         if len(formats) == 1:
             return next(iter(formats))
@@ -392,9 +401,7 @@ class CropPage(QWidget):
     def selected_output_format(self):
         selection = self.format_box.currentText()
         return (
-            self.source_format()
-            if selection == "Same as source"
-            else selection.upper()
+            self.source_format() if selection == "Same as source" else selection.upper()
         )
 
     def change_format(self, _format_name):
@@ -494,24 +501,25 @@ class CropPage(QWidget):
             )
             return
         if not self.output_folder:
-            QMessageBox.warning(
-                self, "Crop Images", "Please select an output folder."
-            )
+            QMessageBox.warning(self, "Crop Images", "Please select an output folder.")
             return
         if self.batch_service.is_running():
             QMessageBox.warning(
-                self, "Processing Busy",
+                self,
+                "Processing Busy",
                 "Another processing task is running. Finish it before cropping.",
             )
             return
 
         unsupported = [
-            Path(image).name for image in self.images
+            Path(image).name
+            for image in self.images
             if Path(image).suffix.lower() not in self.SOURCE_FORMATS
         ]
         if unsupported:
             QMessageBox.warning(
-                self, "Unsupported Crop Input",
+                self,
+                "Unsupported Crop Input",
                 "The crop workspace accepts JPEG, PNG, WEBP, BMP, and TIFF. "
                 "Remove unsupported files from the queue: "
                 + ", ".join(unsupported[:5])

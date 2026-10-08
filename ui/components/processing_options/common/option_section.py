@@ -37,9 +37,7 @@ class OptionSection(QWidget):
     def setup_ui(self):
         self.main_layout = QVBoxLayout(self)
 
-        self.main_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        self.main_layout.setContentsMargins(0, 0, 0, 0)
         self.main_layout.setSpacing(0)
 
         # =====================
@@ -47,22 +45,16 @@ class OptionSection(QWidget):
         # =====================
 
         self.panel = QFrame()
-        self.panel.setObjectName(
-            "option_section_panel"
-        )
+        self.panel.setObjectName("option_section_panel")
 
         self.panel.setSizePolicy(
             QSizePolicy.Policy.Expanding,
             QSizePolicy.Policy.Preferred,
         )
 
-        self.panel_layout = QVBoxLayout(
-            self.panel
-        )
+        self.panel_layout = QVBoxLayout(self.panel)
 
-        self.panel_layout.setContentsMargins(
-            1, 1, 1, 1
-        )
+        self.panel_layout.setContentsMargins(1, 1, 1, 1)
         self.panel_layout.setSpacing(0)
 
         # =====================
@@ -70,29 +62,19 @@ class OptionSection(QWidget):
         # =====================
 
         self.header = QFrame()
-        self.header.setObjectName(
-            "option_section_header"
-        )
+        self.header.setObjectName("option_section_header")
 
-        header_layout = QHBoxLayout(
-            self.header
-        )
+        header_layout = QHBoxLayout(self.header)
 
-        header_layout.setContentsMargins(
-            14, 7, 14, 7
-        )
+        header_layout.setContentsMargins(14, 7, 14, 7)
         header_layout.setSpacing(12)
 
         # Emerald accent
 
         self.accent = QFrame()
-        self.accent.setObjectName(
-            "option_section_accent"
-        )
+        self.accent.setObjectName("option_section_accent")
 
-        self.accent.setFixedSize(
-            3, 23
-        )
+        self.accent.setFixedSize(3, 23)
 
         header_layout.addWidget(
             self.accent,
@@ -107,62 +89,38 @@ class OptionSection(QWidget):
         if self.collapsible:
             self.toggle_button = QToolButton()
 
-            self.toggle_button.setObjectName(
-                "option_section_toggle"
-            )
+            self.toggle_button.setObjectName("option_section_toggle")
 
-            self.toggle_button.setText(
-                str(self.title)
-            )
+            self.toggle_button.setText(str(self.title))
 
-            self.toggle_button.setCheckable(
-                True
-            )
+            self.toggle_button.setCheckable(True)
 
-            self.toggle_button.setChecked(
-                True
-            )
+            self.toggle_button.setChecked(True)
 
-            self.toggle_button.setArrowType(
-                Qt.ArrowType.DownArrow
-            )
+            self.toggle_button.setArrowType(Qt.ArrowType.DownArrow)
 
             self.toggle_button.setToolButtonStyle(
                 Qt.ToolButtonStyle.ToolButtonTextBesideIcon
             )
 
-            self.toggle_button.setAutoRaise(
-                True
-            )
+            self.toggle_button.setAutoRaise(True)
 
-            self.toggle_button.setMinimumHeight(
-                36
-            )
+            self.toggle_button.setMinimumHeight(36)
 
             self.toggle_button.setSizePolicy(
                 QSizePolicy.Policy.Expanding,
                 QSizePolicy.Policy.Fixed,
             )
 
-            self.toggle_button.setCursor(
-                Qt.CursorShape.PointingHandCursor
-            )
+            self.toggle_button.setCursor(Qt.CursorShape.PointingHandCursor)
 
-            self.toggle_button.setFocusPolicy(
-                Qt.FocusPolicy.StrongFocus
-            )
+            self.toggle_button.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
 
-            self.toggle_button.setAccessibleName(
-                str(self.title)
-            )
+            self.toggle_button.setAccessibleName(str(self.title))
 
-            self.toggle_button.setToolTip(
-                "Expand or collapse this section"
-            )
+            self.toggle_button.setToolTip("Expand or collapse this section")
 
-            self.toggle_button.clicked.connect(
-                self.toggle
-            )
+            self.toggle_button.clicked.connect(self.toggle)
 
             header_layout.addWidget(
                 self.toggle_button,
@@ -174,34 +132,22 @@ class OptionSection(QWidget):
         # =====================
 
         else:
-            self.title_label = QLabel(
-                str(self.title)
-            )
+            self.title_label = QLabel(str(self.title))
 
-            self.title_label.setObjectName(
-                "option_section_title"
-            )
+            self.title_label.setObjectName("option_section_title")
 
-            self.title_label.setWordWrap(
-                True
-            )
+            self.title_label.setWordWrap(True)
 
-            self.title_label.setMinimumHeight(
-                36
-            )
+            self.title_label.setMinimumHeight(36)
 
-            self.title_label.setAlignment(
-                Qt.AlignmentFlag.AlignVCenter
-            )
+            self.title_label.setAlignment(Qt.AlignmentFlag.AlignVCenter)
 
             header_layout.addWidget(
                 self.title_label,
                 1,
             )
 
-        self.panel_layout.addWidget(
-            self.header
-        )
+        self.panel_layout.addWidget(self.header)
 
         # =====================
         # HEADER DIVIDER
@@ -209,17 +155,11 @@ class OptionSection(QWidget):
 
         self.divider = QFrame()
 
-        self.divider.setObjectName(
-            "option_section_divider"
-        )
+        self.divider.setObjectName("option_section_divider")
 
-        self.divider.setFixedHeight(
-            1
-        )
+        self.divider.setFixedHeight(1)
 
-        self.panel_layout.addWidget(
-            self.divider
-        )
+        self.panel_layout.addWidget(self.divider)
 
         # =====================
         # CONTENT CONTAINER
@@ -227,60 +167,42 @@ class OptionSection(QWidget):
 
         self.container = QFrame()
 
-        self.container.setObjectName(
-            "option_section_container"
-        )
+        self.container.setObjectName("option_section_container")
 
         self.container.setSizePolicy(
             QSizePolicy.Policy.Expanding,
             QSizePolicy.Policy.Preferred,
         )
 
-        self.container_layout = QVBoxLayout(
-            self.container
-        )
+        self.container_layout = QVBoxLayout(self.container)
 
-        self.container_layout.setContentsMargins(
-            16, 16, 16, 16
-        )
+        self.container_layout.setContentsMargins(16, 16, 16, 16)
 
-        self.container_layout.setSpacing(
-            12
-        )
+        self.container_layout.setSpacing(12)
 
-        self.panel_layout.addWidget(
-            self.container
-        )
+        self.panel_layout.addWidget(self.container)
 
         # =====================
         # MAIN ASSEMBLY
         # =====================
 
-        self.main_layout.addWidget(
-            self.panel
-        )
+        self.main_layout.addWidget(self.panel)
 
-        self.set_collapsed(
-            False
-        )
+        self.set_collapsed(False)
 
     # =====================
     # ADD WIDGET
     # =====================
 
     def add_widget(self, widget):
-        self.container_layout.addWidget(
-            widget
-        )
+        self.container_layout.addWidget(widget)
 
     # =====================
     # ADD LAYOUT
     # =====================
 
     def add_layout(self, layout):
-        self.container_layout.addLayout(
-            layout
-        )
+        self.container_layout.addLayout(layout)
 
     # =====================
     # TOGGLE SECTION
@@ -300,17 +222,13 @@ class OptionSection(QWidget):
 
         previous_state = self.collapsed
 
-        self.set_collapsed(
-            new_state
-        )
+        self.set_collapsed(new_state)
 
         # Preserve the original signal behavior:
         # emit only when toggling changes the state.
 
         if previous_state != self.collapsed:
-            self.collapsed_changed.emit(
-                self.collapsed
-            )
+            self.collapsed_changed.emit(self.collapsed)
 
     # =====================
     # SET COLLAPSED STATE
@@ -323,38 +241,24 @@ class OptionSection(QWidget):
 
         # Content visibility
 
-        self.container.setVisible(
-            not state
-        )
+        self.container.setVisible(not state)
 
-        self.divider.setVisible(
-            not state
-        )
+        self.divider.setVisible(not state)
 
         # Update toggle button appearance
 
         if self.collapsible:
-            self.toggle_button.setChecked(
-                not state
-            )
+            self.toggle_button.setChecked(not state)
 
             if state:
-                self.toggle_button.setArrowType(
-                    Qt.ArrowType.RightArrow
-                )
+                self.toggle_button.setArrowType(Qt.ArrowType.RightArrow)
 
-                self.toggle_button.setToolTip(
-                    "Expand this section"
-                )
+                self.toggle_button.setToolTip("Expand this section")
 
             else:
-                self.toggle_button.setArrowType(
-                    Qt.ArrowType.DownArrow
-                )
+                self.toggle_button.setArrowType(Qt.ArrowType.DownArrow)
 
-                self.toggle_button.setToolTip(
-                    "Collapse this section"
-                )
+                self.toggle_button.setToolTip("Collapse this section")
 
         # Update card state for QSS
 
@@ -372,13 +276,9 @@ class OptionSection(QWidget):
             self.panel,
             self.header,
         ):
-            widget.style().unpolish(
-                widget
-            )
+            widget.style().unpolish(widget)
 
-            widget.style().polish(
-                widget
-            )
+            widget.style().polish(widget)
 
             widget.update()
 
@@ -387,9 +287,7 @@ class OptionSection(QWidget):
     # =====================
 
     def set_enabled(self, state):
-        self.setEnabled(
-            bool(state)
-        )
+        self.setEnabled(bool(state))
 
     # =====================
     # PREMIUM STYLING

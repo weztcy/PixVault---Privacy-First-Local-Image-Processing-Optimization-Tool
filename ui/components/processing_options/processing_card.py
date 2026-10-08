@@ -1,4 +1,5 @@
 """Reusable processing toggle card, styled using the global PixVault roles."""
+
 from PySide6.QtCore import Signal
 from PySide6.QtWidgets import QFrame, QVBoxLayout, QWidget
 

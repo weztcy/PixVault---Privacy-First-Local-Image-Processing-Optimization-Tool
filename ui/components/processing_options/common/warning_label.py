@@ -1,4 +1,5 @@
 """A single reusable visual warning used throughout processing options."""
+
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QLabel
 

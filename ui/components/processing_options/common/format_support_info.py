@@ -11,10 +11,10 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-
 # =====================
 # PREMIUM FORMAT CARD
 # =====================
+
 
 class FormatCard(QFrame):
     def __init__(self, format_name, parent=None):
@@ -35,36 +35,24 @@ class FormatCard(QFrame):
     def setup_ui(self):
         layout = QHBoxLayout(self)
 
-        layout.setContentsMargins(
-            12, 8, 12, 8
-        )
+        layout.setContentsMargins(12, 8, 12, 8)
         layout.setSpacing(9)
 
         # Accent indicator
 
         indicator = QLabel("◆")
-        indicator.setObjectName(
-            "format_indicator"
-        )
+        indicator.setObjectName("format_indicator")
 
         indicator.setFixedWidth(12)
-        indicator.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        indicator.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         # Format name
 
-        name = QLabel(
-            str(self.format_name).upper()
-        )
+        name = QLabel(str(self.format_name).upper())
 
-        name.setObjectName(
-            "format_name"
-        )
+        name.setObjectName("format_name")
 
-        name.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        name.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         layout.addWidget(indicator)
         layout.addWidget(name, 1)
@@ -73,6 +61,7 @@ class FormatCard(QFrame):
 # =====================
 # FORMAT SUPPORT INFO
 # =====================
+
 
 class FormatSupportInfo(QWidget):
     SUPPORT_DATA = {
@@ -153,13 +142,9 @@ class FormatSupportInfo(QWidget):
     def __init__(self, processor_name, parent=None):
         super().__init__(parent)
 
-        self.processor_name = str(
-            processor_name
-        ).strip().lower()
+        self.processor_name = str(processor_name).strip().lower()
 
-        self.setObjectName(
-            "format_support_info"
-        )
+        self.setObjectName("format_support_info")
 
         self.setup_ui()
         self.apply_styles()
@@ -172,47 +157,33 @@ class FormatSupportInfo(QWidget):
     def setup_ui(self):
         main_layout = QVBoxLayout(self)
 
-        main_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
 
         # Premium container
 
         self.main_card = QFrame()
-        self.main_card.setObjectName(
-            "format_support_card"
-        )
+        self.main_card.setObjectName("format_support_card")
 
         self.main_card.setSizePolicy(
             QSizePolicy.Policy.Expanding,
             QSizePolicy.Policy.Preferred,
         )
 
-        card_layout = QVBoxLayout(
-            self.main_card
-        )
+        card_layout = QVBoxLayout(self.main_card)
 
-        card_layout.setContentsMargins(
-            18, 18, 18, 16
-        )
+        card_layout.setContentsMargins(18, 18, 18, 16)
         card_layout.setSpacing(14)
 
         # Header
 
-        card_layout.addLayout(
-            self.create_header()
-        )
+        card_layout.addLayout(self.create_header())
 
         # Horizontal format browser
 
-        card_layout.addLayout(
-            self.create_format_browser()
-        )
+        card_layout.addLayout(self.create_format_browser())
 
-        main_layout.addWidget(
-            self.main_card
-        )
+        main_layout.addWidget(self.main_card)
 
     # =====================
     # HEADER
@@ -227,30 +198,17 @@ class FormatSupportInfo(QWidget):
         text_layout = QVBoxLayout()
         text_layout.setSpacing(5)
 
-        eyebrow = QLabel(
-            "FORMAT COMPATIBILITY"
-        )
+        eyebrow = QLabel("FORMAT COMPATIBILITY")
 
-        eyebrow.setObjectName(
-            "support_eyebrow"
-        )
+        eyebrow.setObjectName("support_eyebrow")
 
-        title = QLabel(
-            "Supported Formats"
-        )
+        title = QLabel("Supported Formats")
 
-        title.setObjectName(
-            "support_title"
-        )
+        title.setObjectName("support_title")
 
-        description = QLabel(
-            "Image formats listed for "
-            "this processing operation."
-        )
+        description = QLabel("Image formats listed for this processing operation.")
 
-        description.setObjectName(
-            "support_description"
-        )
+        description.setObjectName("support_description")
 
         description.setWordWrap(True)
 
@@ -260,17 +218,11 @@ class FormatSupportInfo(QWidget):
 
         # Format count badge
 
-        self.count_label = QLabel(
-            "0 FORMATS"
-        )
+        self.count_label = QLabel("0 FORMATS")
 
-        self.count_label.setObjectName(
-            "support_count"
-        )
+        self.count_label.setObjectName("support_count")
 
-        self.count_label.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.count_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.count_label.setMinimumHeight(32)
 
@@ -291,37 +243,8 @@ class FormatSupportInfo(QWidget):
     def create_format_browser(self):
         browser_layout = QHBoxLayout()
 
-        browser_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        browser_layout.setContentsMargins(0, 0, 0, 0)
         browser_layout.setSpacing(8)
-
-        # Previous button
-
-        self.previous_button = QPushButton("‹")
-        self.previous_button.setObjectName(
-            "format_scroll_button"
-        )
-
-        self.previous_button.setFixedSize(
-            32, 46
-        )
-
-        self.previous_button.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
-
-        self.previous_button.setAccessibleName(
-            "Scroll formats left"
-        )
-
-        self.previous_button.setToolTip(
-            "Previous formats"
-        )
-
-        self.previous_button.clicked.connect(
-            lambda: self.scroll_formats(-1)
-        )
 
         # =====================
         # SCROLL AREA
@@ -329,17 +252,11 @@ class FormatSupportInfo(QWidget):
 
         self.scroll_area = QScrollArea()
 
-        self.scroll_area.setObjectName(
-            "format_support_scroll"
-        )
+        self.scroll_area.setObjectName("format_support_scroll")
 
-        self.scroll_area.setWidgetResizable(
-            True
-        )
+        self.scroll_area.setWidgetResizable(True)
 
-        self.scroll_area.setFrameShape(
-            QFrame.Shape.NoFrame
-        )
+        self.scroll_area.setFrameShape(QFrame.Shape.NoFrame)
 
         self.scroll_area.setFixedHeight(76)
 
@@ -359,99 +276,40 @@ class FormatSupportInfo(QWidget):
 
         self.container = QWidget()
 
-        self.container.setObjectName(
-            "format_support_container"
-        )
+        self.container.setObjectName("format_support_container")
 
-        self.card_layout = QHBoxLayout(
-            self.container
-        )
+        self.card_layout = QHBoxLayout(self.container)
 
-        self.card_layout.setContentsMargins(
-            4, 6, 4, 6
-        )
+        self.card_layout.setContentsMargins(4, 6, 4, 6)
 
         self.card_layout.setSpacing(10)
 
         self.card_layout.setAlignment(
-            Qt.AlignmentFlag.AlignLeft
-            | Qt.AlignmentFlag.AlignVCenter
+            Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter
         )
 
         # Ensure the content retains its
         # minimum width so that horizontal
         # scrolling is available.
 
-        self.card_layout.setSizeConstraint(
-            QLayout.SizeConstraint.SetMinimumSize
-        )
+        self.card_layout.setSizeConstraint(QLayout.SizeConstraint.SetMinimumSize)
 
-        self.scroll_area.setWidget(
-            self.container
-        )
-
-        # =====================
-        # NEXT BUTTON
-        # =====================
-
-        self.next_button = QPushButton("›")
-
-        self.next_button.setObjectName(
-            "format_scroll_button"
-        )
-
-        self.next_button.setFixedSize(
-            32, 46
-        )
-
-        self.next_button.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
-
-        self.next_button.setAccessibleName(
-            "Scroll formats right"
-        )
-
-        self.next_button.setToolTip(
-            "Next formats"
-        )
-
-        self.next_button.clicked.connect(
-            lambda: self.scroll_formats(1)
-        )
+        self.scroll_area.setWidget(self.container)
 
         # =====================
         # ASSEMBLE BROWSER
         # =====================
 
         browser_layout.addWidget(
-            self.previous_button
-        )
-
-        browser_layout.addWidget(
             self.scroll_area,
             1,
-        )
-
-        browser_layout.addWidget(
-            self.next_button
         )
 
         # =====================
         # SCROLLBAR SIGNALS
         # =====================
 
-        scrollbar = (
-            self.scroll_area.horizontalScrollBar()
-        )
-
-        scrollbar.valueChanged.connect(
-            self.update_scroll_buttons
-        )
-
-        scrollbar.rangeChanged.connect(
-            self.update_scroll_buttons
-        )
+        scrollbar = self.scroll_area.horizontalScrollBar()
 
         return browser_layout
 
@@ -466,11 +324,9 @@ class FormatSupportInfo(QWidget):
 
         self.clear_cards()
 
-        processor_key = (
-            self.PROCESSOR_ALIASES.get(
-                self.processor_name,
-                self.processor_name,
-            )
+        processor_key = self.PROCESSOR_ALIASES.get(
+            self.processor_name,
+            self.processor_name,
         )
 
         formats = self.SUPPORT_DATA.get(
@@ -483,9 +339,7 @@ class FormatSupportInfo(QWidget):
         count = len(formats)
 
         self.count_label.setText(
-            f"{count} FORMAT"
-            if count == 1
-            else f"{count} FORMATS"
+            f"{count} FORMAT" if count == 1 else f"{count} FORMATS"
         )
 
         # =====================
@@ -493,20 +347,13 @@ class FormatSupportInfo(QWidget):
         # =====================
 
         if not formats:
-            empty_label = QLabel(
-                "No format information available "
-                "for this operation."
-            )
+            empty_label = QLabel("No format information available for this operation.")
 
-            empty_label.setObjectName(
-                "support_empty_label"
-            )
+            empty_label.setObjectName("support_empty_label")
 
             empty_label.setWordWrap(True)
 
-            self.card_layout.addWidget(
-                empty_label
-            )
+            self.card_layout.addWidget(empty_label)
 
         # =====================
         # CREATE FORMAT CARDS
@@ -519,9 +366,7 @@ class FormatSupportInfo(QWidget):
                     self.container,
                 )
 
-                self.card_layout.addWidget(
-                    card
-                )
+                self.card_layout.addWidget(card)
 
         # Push items to the left when
         # there is extra horizontal space.
@@ -530,11 +375,8 @@ class FormatSupportInfo(QWidget):
 
         # Reset horizontal position.
 
-        self.scroll_area.horizontalScrollBar().setValue(
-            0
-        )
+        self.scroll_area.horizontalScrollBar().setValue(0)
 
-        self.update_scroll_buttons()
 
     # =====================
     # CLEAR EXISTING CARDS
@@ -555,42 +397,16 @@ class FormatSupportInfo(QWidget):
     # =====================
 
     def scroll_formats(self, direction):
-        scrollbar = (
-            self.scroll_area.horizontalScrollBar()
-        )
+        scrollbar = self.scroll_area.horizontalScrollBar()
 
-        scrollbar.setValue(
-            scrollbar.value()
-            + (int(direction) * 240)
-        )
-
-    # =====================
-    # UPDATE SCROLL BUTTONS
-    # =====================
-
-    def update_scroll_buttons(self, *_args):
-        scrollbar = (
-            self.scroll_area.horizontalScrollBar()
-        )
-
-        self.previous_button.setEnabled(
-            scrollbar.value()
-            > scrollbar.minimum()
-        )
-
-        self.next_button.setEnabled(
-            scrollbar.value()
-            < scrollbar.maximum()
-        )
+        scrollbar.setValue(scrollbar.value() + (int(direction) * 240))
 
     # =====================
     # OPTIONAL PROCESSOR UPDATE
     # =====================
 
     def set_processor(self, processor_name):
-        self.processor_name = str(
-            processor_name
-        ).strip().lower()
+        self.processor_name = str(processor_name).strip().lower()
 
         self.refresh()
 

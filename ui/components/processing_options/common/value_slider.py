@@ -3,8 +3,8 @@ from PySide6.QtWidgets import (
     QFrame,
     QHBoxLayout,
     QLabel,
-    QSlider,
     QSizePolicy,
+    QSlider,
     QVBoxLayout,
     QWidget,
 )
@@ -26,24 +26,16 @@ class ValueSlider(QWidget):
         self.minimum = int(minimum)
         self.maximum = int(maximum)
 
-        self.default_value = (
-            int(value)
-            if value is not None
-            else self.minimum
-        )
+        self.default_value = int(value) if value is not None else self.minimum
 
         self.title = str(title)
 
-        self.setObjectName(
-            "value_slider_widget"
-        )
+        self.setObjectName("value_slider_widget")
 
         self.setup_ui(self.title)
         self.apply_styles()
 
-        self.set_value(
-            self.default_value
-        )
+        self.set_value(self.default_value)
 
     # =====================
     # MAIN USER INTERFACE
@@ -52,9 +44,7 @@ class ValueSlider(QWidget):
     def setup_ui(self, title):
         self.main_layout = QVBoxLayout(self)
 
-        self.main_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        self.main_layout.setContentsMargins(0, 0, 0, 0)
         self.main_layout.setSpacing(0)
 
         # =====================
@@ -63,22 +53,16 @@ class ValueSlider(QWidget):
 
         self.container = QFrame()
 
-        self.container.setObjectName(
-            "value_slider_card"
-        )
+        self.container.setObjectName("value_slider_card")
 
         self.container.setSizePolicy(
             QSizePolicy.Policy.Expanding,
             QSizePolicy.Policy.Preferred,
         )
 
-        container_layout = QVBoxLayout(
-            self.container
-        )
+        container_layout = QVBoxLayout(self.container)
 
-        container_layout.setContentsMargins(
-            16, 14, 16, 12
-        )
+        container_layout.setContentsMargins(16, 14, 16, 12)
 
         container_layout.setSpacing(10)
 
@@ -88,17 +72,13 @@ class ValueSlider(QWidget):
 
         header = QHBoxLayout()
 
-        header.setContentsMargins(
-            0, 0, 0, 0
-        )
+        header.setContentsMargins(0, 0, 0, 0)
 
         header.setSpacing(12)
 
         self.title_label = QLabel(title)
 
-        self.title_label.setObjectName(
-            "value_slider_title"
-        )
+        self.title_label.setObjectName("value_slider_title")
 
         self.title_label.setWordWrap(True)
 
@@ -113,13 +93,9 @@ class ValueSlider(QWidget):
 
         self.value_label = QLabel("0")
 
-        self.value_label.setObjectName(
-            "value_slider_badge"
-        )
+        self.value_label.setObjectName("value_slider_badge")
 
-        self.value_label.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.value_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.value_label.setMinimumWidth(52)
 
@@ -135,21 +111,15 @@ class ValueSlider(QWidget):
             0,
         )
 
-        container_layout.addLayout(
-            header
-        )
+        container_layout.addLayout(header)
 
         # =====================
         # PREMIUM SLIDER
         # =====================
 
-        self.slider = QSlider(
-            Qt.Orientation.Horizontal
-        )
+        self.slider = QSlider(Qt.Orientation.Horizontal)
 
-        self.slider.setObjectName(
-            "value_slider_control"
-        )
+        self.slider.setObjectName("value_slider_control")
 
         self.slider.setRange(
             self.minimum,
@@ -159,13 +129,9 @@ class ValueSlider(QWidget):
         # Synchronize limits with Qt's
         # actual accepted range.
 
-        self.minimum = (
-            self.slider.minimum()
-        )
+        self.minimum = self.slider.minimum()
 
-        self.maximum = (
-            self.slider.maximum()
-        )
+        self.maximum = self.slider.maximum()
 
         self.slider.setMinimumHeight(30)
 
@@ -174,29 +140,17 @@ class ValueSlider(QWidget):
             QSizePolicy.Policy.Fixed,
         )
 
-        self.slider.setFocusPolicy(
-            Qt.FocusPolicy.StrongFocus
-        )
+        self.slider.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
 
-        self.slider.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        self.slider.setCursor(Qt.CursorShape.PointingHandCursor)
 
-        self.slider.setTickPosition(
-            QSlider.TickPosition.NoTicks
-        )
+        self.slider.setTickPosition(QSlider.TickPosition.NoTicks)
 
-        self.slider.setAccessibleName(
-            self.title
-        )
+        self.slider.setAccessibleName(self.title)
 
-        self.title_label.setBuddy(
-            self.slider
-        )
+        self.title_label.setBuddy(self.slider)
 
-        container_layout.addWidget(
-            self.slider
-        )
+        container_layout.addWidget(self.slider)
 
         # =====================
         # RANGE INDICATORS
@@ -204,65 +158,41 @@ class ValueSlider(QWidget):
 
         range_layout = QHBoxLayout()
 
-        range_layout.setContentsMargins(
-            2, 0, 2, 0
-        )
+        range_layout.setContentsMargins(2, 0, 2, 0)
 
         range_layout.setSpacing(8)
 
-        self.minimum_label = QLabel(
-            str(self.minimum)
-        )
+        self.minimum_label = QLabel(str(self.minimum))
 
-        self.minimum_label.setObjectName(
-            "value_slider_range"
-        )
+        self.minimum_label.setObjectName("value_slider_range")
 
-        self.maximum_label = QLabel(
-            str(self.maximum)
-        )
+        self.maximum_label = QLabel(str(self.maximum))
 
-        self.maximum_label.setObjectName(
-            "value_slider_range"
-        )
+        self.maximum_label.setObjectName("value_slider_range")
 
-        self.maximum_label.setAlignment(
-            Qt.AlignmentFlag.AlignRight
-        )
+        self.maximum_label.setAlignment(Qt.AlignmentFlag.AlignRight)
 
-        range_layout.addWidget(
-            self.minimum_label
-        )
+        range_layout.addWidget(self.minimum_label)
 
         range_layout.addStretch()
 
-        range_layout.addWidget(
-            self.maximum_label
-        )
+        range_layout.addWidget(self.maximum_label)
 
-        container_layout.addLayout(
-            range_layout
-        )
+        container_layout.addLayout(range_layout)
 
         # =====================
         # ASSEMBLE COMPONENT
         # =====================
 
-        self.main_layout.addWidget(
-            self.container
-        )
+        self.main_layout.addWidget(self.container)
 
         # =====================
         # CONNECT SIGNAL
         # =====================
 
-        self.slider.valueChanged.connect(
-            self.on_value_changed
-        )
+        self.slider.valueChanged.connect(self.on_value_changed)
 
-        self.update_display(
-            self.slider.value()
-        )
+        self.update_display(self.slider.value())
 
     # =====================
     # UPDATE VALUE DISPLAY
@@ -271,17 +201,11 @@ class ValueSlider(QWidget):
     def update_display(self, value):
         actual_value = int(value)
 
-        self.value_label.setText(
-            str(actual_value)
-        )
+        self.value_label.setText(str(actual_value))
 
-        self.slider.setToolTip(
-            f"{self.title}: {actual_value}"
-        )
+        self.slider.setToolTip(f"{self.title}: {actual_value}")
 
-        self.value_label.setToolTip(
-            f"Current value: {actual_value}"
-        )
+        self.value_label.setToolTip(f"Current value: {actual_value}")
 
     # =====================
     # VALUE CHANGED
@@ -290,9 +214,7 @@ class ValueSlider(QWidget):
     def on_value_changed(self, value):
         self.update_display(value)
 
-        self.value_changed.emit(
-            int(value)
-        )
+        self.value_changed.emit(int(value))
 
     # =====================
     # GET CURRENT VALUE
@@ -306,26 +228,20 @@ class ValueSlider(QWidget):
     # =====================
 
     def set_value(self, value):
-        self.slider.setValue(
-            int(value)
-        )
+        self.slider.setValue(int(value))
 
         # Read the actual value from the
         # slider because Qt may clamp it
         # to the configured range.
 
-        self.update_display(
-            self.slider.value()
-        )
+        self.update_display(self.slider.value())
 
     # =====================
     # RESET TO DEFAULT
     # =====================
 
     def reset(self):
-        self.set_value(
-            self.default_value
-        )
+        self.set_value(self.default_value)
 
     # =====================
     # UPDATE RANGE
@@ -341,28 +257,18 @@ class ValueSlider(QWidget):
             int(maximum),
         )
 
-        self.minimum = (
-            self.slider.minimum()
-        )
+        self.minimum = self.slider.minimum()
 
-        self.maximum = (
-            self.slider.maximum()
-        )
+        self.maximum = self.slider.maximum()
 
-        self.minimum_label.setText(
-            str(self.minimum)
-        )
+        self.minimum_label.setText(str(self.minimum))
 
-        self.maximum_label.setText(
-            str(self.maximum)
-        )
+        self.maximum_label.setText(str(self.maximum))
 
         # Update display if the slider
         # value was clamped by the new range.
 
-        self.update_display(
-            self.slider.value()
-        )
+        self.update_display(self.slider.value())
 
     # =====================
     # OPTIONAL DEFAULT UPDATE

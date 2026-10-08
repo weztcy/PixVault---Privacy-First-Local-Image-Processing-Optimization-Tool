@@ -1,4 +1,3 @@
-
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QColor
 from PySide6.QtWidgets import (
@@ -42,39 +41,27 @@ class PrivacyPage(QWidget):
         self.container.setObjectName("privacy_container")
 
         self.content_layout = QVBoxLayout(self.container)
-        self.content_layout.setContentsMargins(
-            30, 28, 30, 30
-        )
+        self.content_layout.setContentsMargins(30, 28, 30, 30)
         self.content_layout.setSpacing(22)
 
         # Header
-        self.content_layout.addWidget(
-            self.create_header()
-        )
+        self.content_layout.addWidget(self.create_header())
 
         # Information cards
         cards_layout = QHBoxLayout()
         cards_layout.setSpacing(18)
 
-        cards_layout.addWidget(
-            self.create_local_card(), 1
-        )
+        cards_layout.addWidget(self.create_local_card(), 1)
 
-        cards_layout.addWidget(
-            self.create_data_card(), 1
-        )
+        cards_layout.addWidget(self.create_data_card(), 1)
 
         self.content_layout.addLayout(cards_layout)
 
         # Lifecycle
-        self.content_layout.addWidget(
-            self.create_lifecycle_card()
-        )
+        self.content_layout.addWidget(self.create_lifecycle_card())
 
         # Footer
-        self.content_layout.addWidget(
-            self.create_footer()
-        )
+        self.content_layout.addWidget(self.create_footer())
 
         self.content_layout.addStretch()
 
@@ -233,8 +220,7 @@ class PrivacyPage(QWidget):
         )
 
         description = self.create_label(
-            "Image processing is designed "
-            "to run directly on your device.",
+            "Image processing is designed to run directly on your device.",
             "privacy_card_description",
         )
 
@@ -279,8 +265,7 @@ class PrivacyPage(QWidget):
         )
 
         description = self.create_label(
-            "Maintain control over your "
-            "source images and output files.",
+            "Maintain control over your source images and output files.",
             "privacy_card_description",
         )
 
@@ -328,8 +313,7 @@ class PrivacyPage(QWidget):
         )
 
         description = self.create_label(
-            "A simple, transparent workflow "
-            "from source image to final output.",
+            "A simple, transparent workflow from source image to final output.",
             "privacy_card_description",
         )
 
@@ -439,9 +423,7 @@ class PrivacyPage(QWidget):
             "privacy_footer_text",
         )
 
-        right.setAlignment(
-            Qt.AlignmentFlag.AlignRight
-        )
+        right.setAlignment(Qt.AlignmentFlag.AlignRight)
 
         layout.addWidget(left)
         layout.addStretch()

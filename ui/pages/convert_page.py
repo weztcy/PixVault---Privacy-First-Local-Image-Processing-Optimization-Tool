@@ -30,8 +30,17 @@ from ui.styles.pixvault_theme import apply_page_theme, role
 
 class ConvertPage(QWidget):
     OUTPUT_FORMATS = [
-        "JPEG", "PNG", "WEBP", "AVIF", "GIF", "BMP",
-        "TIFF", "HEIC", "HEIF", "ICO", "SVG",
+        "JPEG",
+        "PNG",
+        "WEBP",
+        "AVIF",
+        "GIF",
+        "BMP",
+        "TIFF",
+        "HEIC",
+        "HEIF",
+        "ICO",
+        "SVG",
     ]
 
     def __init__(self, image_service, batch_service):
@@ -94,7 +103,8 @@ class ConvertPage(QWidget):
         # 01 / IMPORT AND REVIEW
         self.layout.addWidget(
             self.create_section_header(
-                "01", "Import & Organize",
+                "01",
+                "Import & Organize",
                 "Add images, manage the queue, and inspect selected files.",
             )
         )
@@ -137,7 +147,8 @@ class ConvertPage(QWidget):
         # 02 / CONVERSION SETTINGS
         self.layout.addWidget(
             self.create_section_header(
-                "02", "Configure Conversion",
+                "02",
+                "Configure Conversion",
                 "Choose a format, customize its options, and select an output folder.",
             )
         )
@@ -147,14 +158,18 @@ class ConvertPage(QWidget):
 
         self.settings_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight)
         self.settings_layout.setSpacing(16)
-        self.settings_layout.addWidget(self.settings_box, 6)
-        self.settings_layout.addWidget(self.output_selector, 5)
+        self.settings_layout.addWidget(self.settings_box, 6, Qt.AlignmentFlag.AlignTop)
+
+        self.settings_layout.addWidget(
+            self.output_selector, 5, Qt.AlignmentFlag.AlignTop
+        )
         self.layout.addLayout(self.settings_layout)
 
         # 03 / EXPORT
         self.layout.addWidget(
             self.create_section_header(
-                "03", "Process & Export",
+                "03",
+                "Process & Export",
                 "Convert the collection and monitor the export status.",
             )
         )
@@ -180,7 +195,8 @@ class ConvertPage(QWidget):
         heading.addWidget(
             self.text(
                 "Transform images into your preferred format with local processing.",
-                "heroDescription", True,
+                "heroDescription",
+                True,
             )
         )
         layout.addLayout(heading, 1)
@@ -223,7 +239,8 @@ class ConvertPage(QWidget):
         layout.addWidget(
             self.text(
                 "Customize the output format and its encoding settings.",
-                "description", True,
+                "description",
+                True,
             )
         )
         layout.addSpacing(5)
@@ -245,7 +262,8 @@ class ConvertPage(QWidget):
         layout.addWidget(
             self.text(
                 "Options automatically follow the selected format.",
-                "hint", True,
+                "hint",
+                True,
             )
         )
         self.format_options = FormatOptionsPanel()
@@ -255,9 +273,7 @@ class ConvertPage(QWidget):
 
     def create_action_card(self):
         card = role(QFrame(), "card")
-        self.action_layout = QBoxLayout(
-            QBoxLayout.Direction.LeftToRight, card
-        )
+        self.action_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight, card)
         self.action_layout.setContentsMargins(20, 20, 20, 20)
         self.action_layout.setSpacing(18)
 
@@ -369,7 +385,9 @@ class ConvertPage(QWidget):
     def update_queue_state(self):
         count = len(self.images)
         noun = "image" if count == 1 else "images"
-        self.image_count_label.setText(f"{count} IMAGE" if count == 1 else f"{count} IMAGES")
+        self.image_count_label.setText(
+            f"{count} IMAGE" if count == 1 else f"{count} IMAGES"
+        )
 
         if count == 0:
             self.queue_summary.setText(
@@ -414,14 +432,19 @@ class ConvertPage(QWidget):
         self.images = self.image_list.get_images()
 
         if not self.images:
-            QMessageBox.warning(self, "Convert Images", "Please import at least one image.")
+            QMessageBox.warning(
+                self, "Convert Images", "Please import at least one image."
+            )
             return
         if not self.output_folder:
-            QMessageBox.warning(self, "Convert Images", "Please select an output folder.")
+            QMessageBox.warning(
+                self, "Convert Images", "Please select an output folder."
+            )
             return
         if self.batch_service.is_running():
             QMessageBox.warning(
-                self, "Processing Busy",
+                self,
+                "Processing Busy",
                 "Another processing task is running. Finish it before converting.",
             )
             return

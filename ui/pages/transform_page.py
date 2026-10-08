@@ -40,7 +40,12 @@ class TransformPage(QWidget):
     # Match the format compatibility shown by FormatSupportInfo("transform").
     # The current pipeline requires one explicit output format per batch.
     OUTPUT_FORMATS = [
-        "Same as source", "JPEG", "PNG", "WEBP", "BMP", "TIFF",
+        "Same as source",
+        "JPEG",
+        "PNG",
+        "WEBP",
+        "BMP",
+        "TIFF",
     ]
     SOURCE_FORMATS = {
         ".jpg": "JPEG",
@@ -113,7 +118,8 @@ class TransformPage(QWidget):
         # 01 / IMPORT AND REVIEW
         self.layout.addWidget(
             self.create_section_header(
-                "01", "Import & Organize",
+                "01",
+                "Import & Organize",
                 "Add images, manage the queue, and inspect selected files.",
             )
         )
@@ -152,7 +158,8 @@ class TransformPage(QWidget):
         # 02 / TRANSFORM SETTINGS & OUTPUT
         self.layout.addWidget(
             self.create_section_header(
-                "02", "Configure Transform",
+                "02",
+                "Configure Transform",
                 "Choose rotation, flipping, output format, and destination.",
             )
         )
@@ -162,14 +169,18 @@ class TransformPage(QWidget):
 
         self.settings_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight)
         self.settings_layout.setSpacing(16)
-        self.settings_layout.addWidget(self.settings_box, 6)
-        self.settings_layout.addWidget(self.output_selector, 5)
+        self.settings_layout.addWidget(self.settings_box, 6, Qt.AlignmentFlag.AlignTop)
+
+        self.settings_layout.addWidget(
+            self.output_selector, 5, Qt.AlignmentFlag.AlignTop
+        )
         self.layout.addLayout(self.settings_layout)
 
         # 03 / PROCESS & EXPORT
         self.layout.addWidget(
             self.create_section_header(
-                "03", "Process & Export",
+                "03",
+                "Process & Export",
                 "Apply transforms to your collection and monitor export progress.",
             )
         )
@@ -195,7 +206,8 @@ class TransformPage(QWidget):
         heading.addWidget(
             self.text(
                 "Rotate and flip images with secure local processing.",
-                "heroDescription", True,
+                "heroDescription",
+                True,
             )
         )
         layout.addLayout(heading, 1)
@@ -239,7 +251,8 @@ class TransformPage(QWidget):
         layout.addWidget(
             self.text(
                 "Choose rotation and flip operations for the selected images.",
-                "description", True,
+                "description",
+                True,
             )
         )
         layout.addSpacing(5)
@@ -265,7 +278,8 @@ class TransformPage(QWidget):
                 "Choose a preset rotation (clockwise/counterclockwise) or a "
                 "custom angle, then optionally flip horizontally or vertically. "
                 "The flip is applied after rotation.",
-                "hint", True,
+                "hint",
+                True,
             )
         )
 
@@ -281,9 +295,7 @@ class TransformPage(QWidget):
 
     def create_action_card(self):
         card = role(QFrame(), "card")
-        self.action_layout = QBoxLayout(
-            QBoxLayout.Direction.LeftToRight, card
-        )
+        self.action_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight, card)
         self.action_layout.setContentsMargins(20, 20, 20, 20)
         self.action_layout.setSpacing(18)
 
@@ -360,9 +372,7 @@ class TransformPage(QWidget):
             self.show_preview(current)
 
         if hasattr(self.image_list, "select_image"):
-            self.image_list.select_image(
-                self.images.index(current), emit_signal=False
-            )
+            self.image_list.select_image(self.images.index(current), emit_signal=False)
 
     def show_preview(self, image):
         if not image:
@@ -382,8 +392,7 @@ class TransformPage(QWidget):
         if not self.images:
             return None
         formats = {
-            self.SOURCE_FORMATS.get(Path(image).suffix.lower())
-            for image in self.images
+            self.SOURCE_FORMATS.get(Path(image).suffix.lower()) for image in self.images
         }
         if len(formats) == 1:
             return next(iter(formats))
@@ -392,9 +401,7 @@ class TransformPage(QWidget):
     def selected_output_format(self):
         selection = self.format_box.currentText()
         return (
-            self.source_format()
-            if selection == "Same as source"
-            else selection.upper()
+            self.source_format() if selection == "Same as source" else selection.upper()
         )
 
     def change_format(self, _format_name):
@@ -432,7 +439,10 @@ class TransformPage(QWidget):
             if not -360 <= angle <= 360:
                 raise ValueError("Rotation angle must be between -360° and 360°.")
         if operation.get("flip", "none") not in {
-            "none", "horizontal", "vertical", "both"
+            "none",
+            "horizontal",
+            "vertical",
+            "both",
         }:
             raise ValueError("Invalid flip option.")
 
@@ -503,18 +513,21 @@ class TransformPage(QWidget):
             return
         if self.batch_service.is_running():
             QMessageBox.warning(
-                self, "Processing Busy",
+                self,
+                "Processing Busy",
                 "Another processing task is running. Finish it before transforming.",
             )
             return
 
         unsupported = [
-            Path(image).name for image in self.images
+            Path(image).name
+            for image in self.images
             if Path(image).suffix.lower() not in self.SOURCE_FORMATS
         ]
         if unsupported:
             QMessageBox.warning(
-                self, "Unsupported Transform Input",
+                self,
+                "Unsupported Transform Input",
                 "This workspace supports JPEG, PNG, WEBP, BMP, and TIFF. "
                 "Remove unsupported files from the queue: "
                 + ", ".join(unsupported[:5])

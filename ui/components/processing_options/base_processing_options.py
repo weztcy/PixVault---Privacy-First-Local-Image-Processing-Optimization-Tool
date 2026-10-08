@@ -3,6 +3,7 @@
 UI composition is delegated to reusable controls in common/. Subclasses own
 feature behavior and preserve their historic public Qt control attributes.
 """
+
 from PySide6.QtCore import Signal
 from PySide6.QtWidgets import QVBoxLayout, QWidget
 
@@ -55,4 +56,3 @@ class BaseProcessingOptions(QWidget):
 
     def set_defaults(self, settings):
         """Load saved values when a subclass supports them."""
-        pass

@@ -102,7 +102,8 @@ class CompressPage(QWidget):
         # 01 / IMPORT AND REVIEW
         self.layout.addWidget(
             self.create_section_header(
-                "01", "Import & Organize",
+                "01",
+                "Import & Organize",
                 "Add images, manage the queue, and inspect selected files.",
             )
         )
@@ -141,7 +142,8 @@ class CompressPage(QWidget):
         # 02 / COMPRESSION SETTINGS
         self.layout.addWidget(
             self.create_section_header(
-                "02", "Configure Compression",
+                "02",
+                "Configure Compression",
                 "Adjust compression and choose where the results will be saved.",
             )
         )
@@ -151,14 +153,18 @@ class CompressPage(QWidget):
 
         self.settings_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight)
         self.settings_layout.setSpacing(16)
-        self.settings_layout.addWidget(self.settings_box, 6)
-        self.settings_layout.addWidget(self.output_selector, 5)
+        self.settings_layout.addWidget(self.settings_box, 6, Qt.AlignmentFlag.AlignTop)
+
+        self.settings_layout.addWidget(
+            self.output_selector, 5, Qt.AlignmentFlag.AlignTop
+        )
         self.layout.addLayout(self.settings_layout)
 
         # 03 / PROCESS AND EXPORT
         self.layout.addWidget(
             self.create_section_header(
-                "03", "Process & Export",
+                "03",
+                "Process & Export",
                 "Compress the selected collection and monitor export progress.",
             )
         )
@@ -184,7 +190,8 @@ class CompressPage(QWidget):
         heading.addWidget(
             self.text(
                 "Optimize image file sizes with private, local processing.",
-                "heroDescription", True,
+                "heroDescription",
+                True,
             )
         )
         layout.addLayout(heading, 1)
@@ -229,7 +236,8 @@ class CompressPage(QWidget):
         layout.addWidget(
             self.text(
                 "Select an output format and customize compression settings.",
-                "description", True,
+                "description",
+                True,
             )
         )
         layout.addSpacing(5)
@@ -259,9 +267,7 @@ class CompressPage(QWidget):
 
     def create_action_card(self):
         card = role(QFrame(), "card")
-        self.action_layout = QBoxLayout(
-            QBoxLayout.Direction.LeftToRight, card
-        )
+        self.action_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight, card)
         self.action_layout.setContentsMargins(20, 20, 20, 20)
         self.action_layout.setSpacing(18)
 
@@ -335,9 +341,7 @@ class CompressPage(QWidget):
             self.show_preview(current)
 
         if hasattr(self.image_list, "select_image"):
-            self.image_list.select_image(
-                self.images.index(current), emit_signal=False
-            )
+            self.image_list.select_image(self.images.index(current), emit_signal=False)
 
     def show_preview(self, image):
         if not image:
@@ -426,9 +430,7 @@ class CompressPage(QWidget):
         if fmt in {"JPEG", "WEBP"}:
             output_settings["quality"] = quality
         elif fmt == "PNG":
-            output_settings["compression"] = max(
-                0, min(9, round(quality * 9 / 100))
-            )
+            output_settings["compression"] = max(0, min(9, round(quality * 9 / 100)))
         elif fmt == "TIFF":
             output_settings.update({"compression": "JPEG", "quality": quality})
         else:
@@ -487,14 +489,19 @@ class CompressPage(QWidget):
         self.images = self.image_list.get_images()
 
         if not self.images:
-            QMessageBox.warning(self, "Compress Images", "Please import at least one image.")
+            QMessageBox.warning(
+                self, "Compress Images", "Please import at least one image."
+            )
             return
         if not self.output_folder:
-            QMessageBox.warning(self, "Compress Images", "Please select an output folder.")
+            QMessageBox.warning(
+                self, "Compress Images", "Please select an output folder."
+            )
             return
         if self.batch_service.is_running():
             QMessageBox.warning(
-                self, "Processing Busy",
+                self,
+                "Processing Busy",
                 "Another processing task is running. Finish it before compressing.",
             )
             return
@@ -609,7 +616,6 @@ class CompressPage(QWidget):
 
     def apply_styles(self):
         apply_page_theme(self)
-
 
         self.start_button.setEnabled(True)
 

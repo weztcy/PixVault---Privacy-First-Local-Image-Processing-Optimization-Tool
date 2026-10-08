@@ -4,11 +4,11 @@ PixVault ICC Color Space Engine
 
 from io import BytesIO
 from pathlib import Path
+
 from PIL import ImageCms
 
 
 class ColorSpaceProcessor:
-
     PROFILE_DIR = Path(__file__).parent / "profiles"
 
     PROFILE_FILES = {
@@ -28,9 +28,7 @@ class ColorSpaceProcessor:
 
     def process(self, image, settings):
         return self.convert_colorspace(
-            image,
-            settings.get("target", "srgb"),
-            settings.get("intent", "perceptual")
+            image, settings.get("target", "srgb"), settings.get("intent", "perceptual")
         )
 
     def load_profile(self, target):
@@ -64,10 +62,7 @@ class ColorSpaceProcessor:
             dst,
             image.mode,
             mode,
-            renderingIntent=self.INTENTS.get(
-                intent,
-                ImageCms.Intent.PERCEPTUAL
-            )
+            renderingIntent=self.INTENTS.get(intent, ImageCms.Intent.PERCEPTUAL),
         )
 
         result = ImageCms.applyTransform(image, transform)

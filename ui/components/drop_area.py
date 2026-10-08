@@ -1,4 +1,3 @@
-
 from pathlib import Path
 
 from PySide6.QtCore import Qt, Signal
@@ -51,9 +50,7 @@ class DropArea(QWidget):
             True,
         )
 
-        self.setCursor(
-            QCursor(Qt.CursorShape.PointingHandCursor)
-        )
+        self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
         self.setProperty("drag_active", False)
 
@@ -74,63 +71,41 @@ class DropArea(QWidget):
     def setup_ui(self):
         layout = QVBoxLayout(self)
 
-        layout.setContentsMargins(
-            20, 20, 20, 20
-        )
+        layout.setContentsMargins(20, 20, 20, 20)
 
         layout.setSpacing(10)
 
-        layout.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         # =====================
         # UPLOAD ICON
         # =====================
 
         icon_container = QFrame()
-        icon_container.setObjectName(
-            "drop_icon_container"
-        )
+        icon_container.setObjectName("drop_icon_container")
 
         icon_container.setFixedSize(56, 56)
 
-        icon_layout = QVBoxLayout(
-            icon_container
-        )
+        icon_layout = QVBoxLayout(icon_container)
 
-        icon_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        icon_layout.setContentsMargins(0, 0, 0, 0)
 
         self.upload_icon = QLabel("↥")
-        self.upload_icon.setObjectName(
-            "drop_upload_icon"
-        )
+        self.upload_icon.setObjectName("drop_upload_icon")
 
-        self.upload_icon.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.upload_icon.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        icon_layout.addWidget(
-            self.upload_icon
-        )
+        icon_layout.addWidget(self.upload_icon)
 
         # =====================
         # TITLE
         # =====================
 
-        self.label = QLabel(
-            "Drag & Drop Images or Folders"
-        )
+        self.label = QLabel("Drag & Drop Images or Folders")
 
-        self.label.setObjectName(
-            "drop_title"
-        )
+        self.label.setObjectName("drop_title")
 
-        self.label.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.label.setWordWrap(True)
 
@@ -139,17 +114,12 @@ class DropArea(QWidget):
         # =====================
 
         self.description = QLabel(
-            "Drop your files here, or choose "
-            "images and folders from your device."
+            "Drop your files here, or choose images and folders from your device."
         )
 
-        self.description.setObjectName(
-            "drop_description"
-        )
+        self.description.setObjectName("drop_description")
 
-        self.description.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.description.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.description.setWordWrap(True)
 
@@ -159,57 +129,35 @@ class DropArea(QWidget):
 
         action_layout = QHBoxLayout()
 
-        action_layout.setContentsMargins(
-            0, 4, 0, 4
-        )
+        action_layout.setContentsMargins(0, 4, 0, 4)
 
         action_layout.setSpacing(10)
 
-        self.browse_button = QPushButton(
-            "Browse Images"
-        )
+        self.browse_button = QPushButton("Browse Images")
 
-        self.browse_button.setObjectName(
-            "drop_browse_button"
-        )
+        self.browse_button.setObjectName("drop_browse_button")
 
         self.browse_button.setMinimumHeight(38)
 
-        self.browse_button.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        self.browse_button.setCursor(Qt.CursorShape.PointingHandCursor)
 
-        self.browse_button.clicked.connect(
-            self.open_file_dialog
-        )
+        self.browse_button.clicked.connect(self.open_file_dialog)
 
-        self.folder_button = QPushButton(
-            "Select Folder"
-        )
+        self.folder_button = QPushButton("Select Folder")
 
-        self.folder_button.setObjectName(
-            "drop_folder_button"
-        )
+        self.folder_button.setObjectName("drop_folder_button")
 
         self.folder_button.setMinimumHeight(38)
 
-        self.folder_button.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        self.folder_button.setCursor(Qt.CursorShape.PointingHandCursor)
 
-        self.folder_button.clicked.connect(
-            self.open_folder_dialog
-        )
+        self.folder_button.clicked.connect(self.open_folder_dialog)
 
         action_layout.addStretch()
 
-        action_layout.addWidget(
-            self.browse_button
-        )
+        action_layout.addWidget(self.browse_button)
 
-        action_layout.addWidget(
-            self.folder_button
-        )
+        action_layout.addWidget(self.folder_button)
 
         action_layout.addStretch()
 
@@ -223,13 +171,9 @@ class DropArea(QWidget):
             "HEIC  ·  HEIF  ·  ICO  ·  SVG"
         )
 
-        self.formats_label.setObjectName(
-            "drop_formats"
-        )
+        self.formats_label.setObjectName("drop_formats")
 
-        self.formats_label.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.formats_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.formats_label.setWordWrap(True)
 
@@ -287,23 +231,17 @@ class DropArea(QWidget):
         self.update()
 
         if active:
-            self.label.setText(
-                "Release to Import Images"
-            )
+            self.label.setText("Release to Import Images")
 
             self.description.setText(
-                "Your images will be added "
-                "to the processing workspace."
+                "Your images will be added to the processing workspace."
             )
 
         else:
-            self.label.setText(
-                "Drag & Drop Images or Folders"
-            )
+            self.label.setText("Drag & Drop Images or Folders")
 
             self.description.setText(
-                "Drop your files here, or choose "
-                "images and folders from your device."
+                "Drop your files here, or choose images and folders from your device."
             )
 
     # =====================
@@ -311,10 +249,7 @@ class DropArea(QWidget):
     # =====================
 
     def mousePressEvent(self, event):
-        if (
-            event.button()
-            == Qt.MouseButton.LeftButton
-        ):
+        if event.button() == Qt.MouseButton.LeftButton:
             self.open_file_dialog()
             event.accept()
             return
@@ -346,10 +281,7 @@ class DropArea(QWidget):
         for file in files:
             path = Path(file)
 
-            if (
-                path.is_file()
-                and self.is_supported_image(path)
-            ):
+            if path.is_file() and self.is_supported_image(path):
                 result.append(path)
 
         self.emit_files(result)
@@ -395,10 +327,7 @@ class DropArea(QWidget):
             if path.is_dir():
                 return True
 
-            if (
-                path.is_file()
-                and self.is_supported_image(path)
-            ):
+            if path.is_file() and self.is_supported_image(path):
                 return True
 
         return False
@@ -411,9 +340,7 @@ class DropArea(QWidget):
         self,
         event: QDragEnterEvent,
     ):
-        if self.has_supported_content(
-            event.mimeData()
-        ):
+        if self.has_supported_content(event.mimeData()):
             event.acceptProposedAction()
             self.set_drag_active(True)
         else:
@@ -428,9 +355,7 @@ class DropArea(QWidget):
         self,
         event: QDragMoveEvent,
     ):
-        if self.has_supported_content(
-            event.mimeData()
-        ):
+        if self.has_supported_content(event.mimeData()):
             event.acceptProposedAction()
         else:
             event.ignore()
@@ -456,9 +381,7 @@ class DropArea(QWidget):
     ):
         self.set_drag_active(False)
 
-        if not self.has_supported_content(
-            event.mimeData()
-        ):
+        if not self.has_supported_content(event.mimeData()):
             event.ignore()
             return
 
@@ -468,18 +391,14 @@ class DropArea(QWidget):
             if not url.isLocalFile():
                 continue
 
-            path = Path(
-                url.toLocalFile()
-            )
+            path = Path(url.toLocalFile())
 
             if path.is_file():
                 if self.is_supported_image(path):
                     files.append(path)
 
             elif path.is_dir():
-                files.extend(
-                    self.scan_folder(path)
-                )
+                files.extend(self.scan_folder(path))
 
         self.emit_files(files)
 
@@ -499,10 +418,7 @@ class DropArea(QWidget):
 
         try:
             for file in folder.rglob("*"):
-                if (
-                    file.is_file()
-                    and self.is_supported_image(file)
-                ):
+                if file.is_file() and self.is_supported_image(file):
                     result.append(file)
 
         except OSError:
@@ -519,10 +435,7 @@ class DropArea(QWidget):
     def is_supported_image(self, path):
         path = Path(path)
 
-        return (
-            path.suffix.lower()
-            in self.SUPPORTED_EXTENSIONS
-        )
+        return path.suffix.lower() in self.SUPPORTED_EXTENSIONS
 
     # =====================
     # EMIT IMPORTED FILES
@@ -535,17 +448,10 @@ class DropArea(QWidget):
         # Remove duplicate paths while
         # preserving the original order.
 
-        unique_files = list(
-            dict.fromkeys(
-                Path(file)
-                for file in files
-            )
-        )
+        unique_files = list(dict.fromkeys(Path(file) for file in files))
 
         if unique_files:
-            self.files_dropped.emit(
-                unique_files
-            )
+            self.files_dropped.emit(unique_files)
 
     # =====================
     # PREMIUM STYLING

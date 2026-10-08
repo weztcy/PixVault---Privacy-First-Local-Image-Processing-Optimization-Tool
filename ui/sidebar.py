@@ -1,4 +1,3 @@
-
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QButtonGroup,
@@ -14,7 +13,6 @@ from PySide6.QtWidgets import (
 
 
 class Sidebar(QWidget):
-
     SECTION_SPACING = 24
     BUTTON_SPACING = 6
     HEADER_SPACING = 12
@@ -54,9 +52,7 @@ class Sidebar(QWidget):
 
         self.scroll_area.setWidgetResizable(True)
 
-        self.scroll_area.setFrameShape(
-            QFrame.Shape.NoFrame
-        )
+        self.scroll_area.setFrameShape(QFrame.Shape.NoFrame)
 
         self.scroll_area.setHorizontalScrollBarPolicy(
             Qt.ScrollBarPolicy.ScrollBarAlwaysOff
@@ -67,9 +63,7 @@ class Sidebar(QWidget):
         )
 
         self.nav_container = QWidget()
-        self.nav_container.setObjectName(
-            "sidebar_nav_container"
-        )
+        self.nav_container.setObjectName("sidebar_nav_container")
 
         layout = QVBoxLayout(self.nav_container)
 
@@ -152,9 +146,7 @@ class Sidebar(QWidget):
 
         layout.addStretch()
 
-        self.scroll_area.setWidget(
-            self.nav_container
-        )
+        self.scroll_area.setWidget(self.nav_container)
 
         main_layout.addWidget(
             self.scroll_area,
@@ -181,32 +173,19 @@ class Sidebar(QWidget):
     ):
 
         if not first:
-            layout.addSpacing(
-                self.SECTION_SPACING
-                - self.BUTTON_SPACING
-            )
+            layout.addSpacing(self.SECTION_SPACING - self.BUTTON_SPACING)
 
         label = QLabel(text)
 
-        label.setObjectName(
-            "sidebar_section"
-        )
+        label.setObjectName("sidebar_section")
 
-        label.setAlignment(
-            Qt.AlignmentFlag.AlignLeft
-            | Qt.AlignmentFlag.AlignVCenter
-        )
+        label.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
 
-        label.setContentsMargins(
-            12, 0, 0, 0
-        )
+        label.setContentsMargins(12, 0, 0, 0)
 
         layout.addWidget(label)
 
-        layout.addSpacing(
-            self.HEADER_SPACING
-            - self.BUTTON_SPACING
-        )
+        layout.addSpacing(self.HEADER_SPACING - self.BUTTON_SPACING)
 
     # =====================
     # NAVIGATION BUTTON
@@ -221,9 +200,7 @@ class Sidebar(QWidget):
 
         button = QPushButton(text)
 
-        button.setObjectName(
-            "sidebar_nav_button"
-        )
+        button.setObjectName("sidebar_nav_button")
 
         button.setProperty(
             "page_key",
@@ -232,9 +209,7 @@ class Sidebar(QWidget):
 
         button.setCheckable(True)
 
-        button.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        button.setCursor(Qt.CursorShape.PointingHandCursor)
 
         button.setSizePolicy(
             QSizePolicy.Policy.Expanding,
@@ -243,13 +218,9 @@ class Sidebar(QWidget):
 
         button.setMinimumHeight(42)
 
-        button.setFocusPolicy(
-            Qt.FocusPolicy.StrongFocus
-        )
+        button.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
 
-        self.button_group.addButton(
-            button
-        )
+        self.button_group.addButton(button)
 
         self.buttons[key] = button
 
@@ -266,9 +237,7 @@ class Sidebar(QWidget):
         page_name,
     ):
 
-        button = self.buttons.get(
-            page_name
-        )
+        button = self.buttons.get(page_name)
 
         if button is not None:
             button.setChecked(True)
@@ -282,11 +251,7 @@ class Sidebar(QWidget):
         workspace,
     ):
 
-        workspace.currentChanged.connect(
-            lambda index: self.sync_workspace(
-                workspace
-            )
-        )
+        workspace.currentChanged.connect(lambda index: self.sync_workspace(workspace))
 
         self.sync_workspace(workspace)
 
@@ -295,12 +260,9 @@ class Sidebar(QWidget):
         workspace,
     ):
 
-        current_widget = (
-            workspace.currentWidget()
-        )
+        current_widget = workspace.currentWidget()
 
         for name, page in workspace.pages.items():
-
             if page is current_widget:
                 self.set_active_page(name)
                 return
@@ -313,33 +275,21 @@ class Sidebar(QWidget):
 
         footer_container = QWidget()
 
-        footer_container.setObjectName(
-            "sidebar_footer_container"
-        )
+        footer_container.setObjectName("sidebar_footer_container")
 
-        outer_layout = QVBoxLayout(
-            footer_container
-        )
+        outer_layout = QVBoxLayout(footer_container)
 
-        outer_layout.setContentsMargins(
-            12, 12, 12, 16
-        )
+        outer_layout.setContentsMargins(12, 12, 12, 16)
 
         outer_layout.setSpacing(0)
 
         footer = QFrame()
 
-        footer.setObjectName(
-            "sidebar_footer_card"
-        )
+        footer.setObjectName("sidebar_footer_card")
 
-        footer_layout = QVBoxLayout(
-            footer
-        )
+        footer_layout = QVBoxLayout(footer)
 
-        footer_layout.setContentsMargins(
-            14, 12, 14, 12
-        )
+        footer_layout.setContentsMargins(14, 12, 14, 12)
 
         footer_layout.setSpacing(6)
 
@@ -350,51 +300,31 @@ class Sidebar(QWidget):
 
         indicator = QLabel("●")
 
-        indicator.setObjectName(
-            "sidebar_status_indicator"
-        )
+        indicator.setObjectName("sidebar_status_indicator")
 
-        status = QLabel(
-            "LOCAL PROCESSING"
-        )
+        status = QLabel("LOCAL PROCESSING")
 
-        status.setObjectName(
-            "sidebar_status_title"
-        )
+        status.setObjectName("sidebar_status_title")
 
-        status_layout.addWidget(
-            indicator
-        )
+        status_layout.addWidget(indicator)
 
-        status_layout.addWidget(
-            status
-        )
+        status_layout.addWidget(status)
 
         status_layout.addStretch()
 
         # Description
 
-        description = QLabel(
-            "Your files stay on your device"
-        )
+        description = QLabel("Your files stay on your device")
 
-        description.setObjectName(
-            "sidebar_footer_description"
-        )
+        description.setObjectName("sidebar_footer_description")
 
         description.setWordWrap(True)
 
-        footer_layout.addLayout(
-            status_layout
-        )
+        footer_layout.addLayout(status_layout)
 
-        footer_layout.addWidget(
-            description
-        )
+        footer_layout.addWidget(description)
 
-        outer_layout.addWidget(
-            footer
-        )
+        outer_layout.addWidget(footer)
 
         return footer_container
 

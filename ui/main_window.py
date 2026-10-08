@@ -1,4 +1,3 @@
-
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QFrame,
@@ -14,7 +13,6 @@ from PySide6.QtWidgets import (
 from services.batch_service import BatchService
 from services.history_service import HistoryService
 from services.image_service import ImageService
-
 from ui.sidebar import Sidebar
 from ui.workspace import Workspace
 
@@ -25,9 +23,7 @@ class MainWindow(QMainWindow):
 
         self.setObjectName("pixvault_main_window")
 
-        self.setWindowTitle(
-            "PixVault | Local Image Studio"
-        )
+        self.setWindowTitle("PixVault | Local Image Studio")
 
         self.resize(1280, 800)
 
@@ -56,9 +52,7 @@ class MainWindow(QMainWindow):
 
         main_layout = QVBoxLayout(container)
 
-        main_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        main_layout.setContentsMargins(0, 0, 0, 0)
 
         main_layout.setSpacing(0)
 
@@ -79,9 +73,7 @@ class MainWindow(QMainWindow):
 
         content_layout = QHBoxLayout(content)
 
-        content_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        content_layout.setContentsMargins(0, 0, 0, 0)
 
         content_layout.setSpacing(0)
 
@@ -108,9 +100,7 @@ class MainWindow(QMainWindow):
             self.history_service,
         )
 
-        self.workspace.setObjectName(
-            "main_workspace"
-        )
+        self.workspace.setObjectName("main_workspace")
 
         self.workspace.setSizePolicy(
             QSizePolicy.Policy.Expanding,
@@ -121,9 +111,7 @@ class MainWindow(QMainWindow):
         # CONTENT LAYOUT
         # =====================
 
-        content_layout.addWidget(
-            self.sidebar
-        )
+        content_layout.addWidget(self.sidebar)
 
         content_layout.addWidget(
             self.workspace,
@@ -146,9 +134,7 @@ class MainWindow(QMainWindow):
         # Keep sidebar active state synchronized
         # with workspace page changes.
 
-        self.sidebar.bind_workspace(
-            self.workspace
-        )
+        self.sidebar.bind_workspace(self.workspace)
 
     # =====================
     # PREMIUM HEADER
@@ -157,17 +143,13 @@ class MainWindow(QMainWindow):
     def create_header(self):
         header = QFrame()
 
-        header.setObjectName(
-            "main_header"
-        )
+        header.setObjectName("main_header")
 
         header.setFixedHeight(76)
 
         layout = QHBoxLayout(header)
 
-        layout.setContentsMargins(
-            22, 0, 26, 0
-        )
+        layout.setContentsMargins(22, 0, 26, 0)
 
         layout.setSpacing(14)
 
@@ -177,17 +159,11 @@ class MainWindow(QMainWindow):
 
         brand_icon = QLabel("◈")
 
-        brand_icon.setObjectName(
-            "main_brand_icon"
-        )
+        brand_icon.setObjectName("main_brand_icon")
 
-        brand_icon.setFixedSize(
-            42, 42
-        )
+        brand_icon.setFixedSize(42, 42)
 
-        brand_icon.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        brand_icon.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         # =====================
         # BRAND INFORMATION
@@ -195,35 +171,21 @@ class MainWindow(QMainWindow):
 
         brand_layout = QVBoxLayout()
 
-        brand_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        brand_layout.setContentsMargins(0, 0, 0, 0)
 
         brand_layout.setSpacing(3)
 
-        brand_title = QLabel(
-            "PIXVAULT"
-        )
+        brand_title = QLabel("PIXVAULT")
 
-        brand_title.setObjectName(
-            "main_brand_title"
-        )
+        brand_title.setObjectName("main_brand_title")
 
-        brand_subtitle = QLabel(
-            "LOCAL IMAGE STUDIO"
-        )
+        brand_subtitle = QLabel("LOCAL IMAGE STUDIO")
 
-        brand_subtitle.setObjectName(
-            "main_brand_subtitle"
-        )
+        brand_subtitle.setObjectName("main_brand_subtitle")
 
-        brand_layout.addWidget(
-            brand_title
-        )
+        brand_layout.addWidget(brand_title)
 
-        brand_layout.addWidget(
-            brand_subtitle
-        )
+        brand_layout.addWidget(brand_subtitle)
 
         # =====================
         # HEADER RIGHT SIDE
@@ -234,8 +196,7 @@ class MainWindow(QMainWindow):
         right_layout.setSpacing(16)
 
         right_layout.setAlignment(
-            Qt.AlignmentFlag.AlignRight
-            | Qt.AlignmentFlag.AlignVCenter
+            Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter
         )
 
         # Application information
@@ -244,41 +205,23 @@ class MainWindow(QMainWindow):
 
         app_info.setSpacing(3)
 
-        app_info.setAlignment(
-            Qt.AlignmentFlag.AlignRight
-        )
+        app_info.setAlignment(Qt.AlignmentFlag.AlignRight)
 
-        info_title = QLabel(
-            "Image Processing Workspace"
-        )
+        info_title = QLabel("Image Processing Workspace")
 
-        info_title.setObjectName(
-            "main_header_info"
-        )
+        info_title.setObjectName("main_header_info")
 
-        info_title.setAlignment(
-            Qt.AlignmentFlag.AlignRight
-        )
+        info_title.setAlignment(Qt.AlignmentFlag.AlignRight)
 
-        info_subtitle = QLabel(
-            "Private • Local • Secure"
-        )
+        info_subtitle = QLabel("Private • Local • Secure")
 
-        info_subtitle.setObjectName(
-            "main_header_subtitle"
-        )
+        info_subtitle.setObjectName("main_header_subtitle")
 
-        info_subtitle.setAlignment(
-            Qt.AlignmentFlag.AlignRight
-        )
+        info_subtitle.setAlignment(Qt.AlignmentFlag.AlignRight)
 
-        app_info.addWidget(
-            info_title
-        )
+        app_info.addWidget(info_title)
 
-        app_info.addWidget(
-            info_subtitle
-        )
+        app_info.addWidget(info_subtitle)
 
         # =====================
         # LOCAL STATUS
@@ -286,31 +229,21 @@ class MainWindow(QMainWindow):
 
         status_card = self.create_status_card()
 
-        right_layout.addLayout(
-            app_info
-        )
+        right_layout.addLayout(app_info)
 
-        right_layout.addWidget(
-            status_card
-        )
+        right_layout.addWidget(status_card)
 
         # =====================
         # HEADER ASSEMBLY
         # =====================
 
-        layout.addWidget(
-            brand_icon
-        )
+        layout.addWidget(brand_icon)
 
-        layout.addLayout(
-            brand_layout
-        )
+        layout.addLayout(brand_layout)
 
         layout.addStretch()
 
-        layout.addLayout(
-            right_layout
-        )
+        layout.addLayout(right_layout)
 
         return header
 
@@ -321,15 +254,11 @@ class MainWindow(QMainWindow):
     def create_status_card(self):
         card = QFrame()
 
-        card.setObjectName(
-            "main_status_card"
-        )
+        card.setObjectName("main_status_card")
 
         layout = QHBoxLayout(card)
 
-        layout.setContentsMargins(
-            14, 9, 14, 9
-        )
+        layout.setContentsMargins(14, 9, 14, 9)
 
         layout.setSpacing(10)
 
@@ -337,13 +266,9 @@ class MainWindow(QMainWindow):
 
         indicator = QLabel("●")
 
-        indicator.setObjectName(
-            "main_status_indicator"
-        )
+        indicator.setObjectName("main_status_indicator")
 
-        indicator.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        indicator.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         # Status information
 
@@ -351,37 +276,21 @@ class MainWindow(QMainWindow):
 
         text_layout.setSpacing(3)
 
-        status_title = QLabel(
-            "LOCAL PROCESSING"
-        )
+        status_title = QLabel("LOCAL PROCESSING")
 
-        status_title.setObjectName(
-            "main_status_title"
-        )
+        status_title.setObjectName("main_status_title")
 
-        status_description = QLabel(
-            "On-device operations"
-        )
+        status_description = QLabel("On-device operations")
 
-        status_description.setObjectName(
-            "main_status_description"
-        )
+        status_description.setObjectName("main_status_description")
 
-        text_layout.addWidget(
-            status_title
-        )
+        text_layout.addWidget(status_title)
 
-        text_layout.addWidget(
-            status_description
-        )
+        text_layout.addWidget(status_description)
 
-        layout.addWidget(
-            indicator
-        )
+        layout.addWidget(indicator)
 
-        layout.addLayout(
-            text_layout
-        )
+        layout.addLayout(text_layout)
 
         return card
 
@@ -406,17 +315,13 @@ class MainWindow(QMainWindow):
         }
 
         for button_name, page_name in routes.items():
-
-            button = self.sidebar.buttons.get(
-                button_name
-            )
+            button = self.sidebar.buttons.get(button_name)
 
             if button is None:
                 continue
 
             button.clicked.connect(
-                lambda checked=False, name=page_name:
-                self.workspace.show_page(name)
+                lambda checked=False, name=page_name: self.workspace.show_page(name)
             )
 
     # =====================
@@ -424,9 +329,7 @@ class MainWindow(QMainWindow):
     # =====================
 
     def show_page(self, page_name):
-        self.workspace.show_page(
-            page_name
-        )
+        self.workspace.show_page(page_name)
 
     # =====================
     # WINDOW CLOSE EVENT
@@ -443,15 +346,11 @@ class MainWindow(QMainWindow):
             "Batch processing is still running.\n\n"
             "Do you want to cancel processing "
             "and exit PixVault?",
-            (
-                QMessageBox.StandardButton.Yes
-                | QMessageBox.StandardButton.No
-            ),
+            (QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No),
             QMessageBox.StandardButton.No,
         )
 
         if reply == QMessageBox.StandardButton.Yes:
-
             self.batch_service.cancel()
 
             event.accept()

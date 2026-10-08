@@ -1,14 +1,10 @@
-
 from pathlib import Path
 
 from PIL import Image
-
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QColor
 from PySide6.QtWidgets import (
     QApplication,
     QFrame,
-    QGraphicsDropShadowEffect,
     QGroupBox,
     QHBoxLayout,
     QLabel,
@@ -40,22 +36,16 @@ class ImageInfoPanel(QWidget):
     def setup_ui(self):
         main_layout = QVBoxLayout(self)
 
-        main_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
 
         # Scroll Area
 
         self.scroll_area = QScrollArea()
-        self.scroll_area.setObjectName(
-            "image_info_scroll"
-        )
+        self.scroll_area.setObjectName("image_info_scroll")
 
         self.scroll_area.setWidgetResizable(True)
-        self.scroll_area.setFrameShape(
-            QFrame.Shape.NoFrame
-        )
+        self.scroll_area.setFrameShape(QFrame.Shape.NoFrame)
 
         self.scroll_area.setHorizontalScrollBarPolicy(
             Qt.ScrollBarPolicy.ScrollBarAlwaysOff
@@ -64,29 +54,21 @@ class ImageInfoPanel(QWidget):
         # Main Container
 
         self.container = QWidget()
-        self.container.setObjectName(
-            "image_info_container"
-        )
+        self.container.setObjectName("image_info_container")
 
         layout = QVBoxLayout(self.container)
 
-        layout.setContentsMargins(
-            4, 4, 4, 4
-        )
+        layout.setContentsMargins(4, 4, 4, 4)
         layout.setSpacing(16)
 
         # Header
 
-        layout.addWidget(
-            self.create_header()
-        )
+        layout.addWidget(self.create_header())
 
         # Information Card
 
         self.info_box = QGroupBox()
-        self.info_box.setObjectName(
-            "image_info_box"
-        )
+        self.info_box.setObjectName("image_info_box")
 
         self.setup_info_card()
 
@@ -94,19 +76,13 @@ class ImageInfoPanel(QWidget):
 
         # Footer
 
-        layout.addWidget(
-            self.create_footer()
-        )
+        layout.addWidget(self.create_footer())
 
         layout.addStretch()
 
-        self.scroll_area.setWidget(
-            self.container
-        )
+        self.scroll_area.setWidget(self.container)
 
-        main_layout.addWidget(
-            self.scroll_area
-        )
+        main_layout.addWidget(self.scroll_area)
 
     # =====================
     # COMMON HELPERS
@@ -142,39 +118,27 @@ class ImageInfoPanel(QWidget):
     # =====================
 
     def create_header(self):
-        header = self.create_card(
-            "image_info_header"
-        )
+        header = self.create_card("image_info_header")
 
         layout = QHBoxLayout(header)
 
-        layout.setContentsMargins(
-            20, 18, 20, 18
-        )
+        layout.setContentsMargins(20, 18, 20, 18)
         layout.setSpacing(14)
 
         # Icon
 
         icon_box = QFrame()
-        icon_box.setObjectName(
-            "image_info_icon_box"
-        )
+        icon_box.setObjectName("image_info_icon_box")
 
         icon_box.setFixedSize(46, 46)
 
         icon_layout = QVBoxLayout(icon_box)
-        icon_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        icon_layout.setContentsMargins(0, 0, 0, 0)
 
         icon = QLabel("◈")
-        icon.setObjectName(
-            "image_info_icon"
-        )
+        icon.setObjectName("image_info_icon")
 
-        icon.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        icon.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         icon_layout.addWidget(icon)
 
@@ -214,9 +178,7 @@ class ImageInfoPanel(QWidget):
     def setup_info_card(self):
         layout = QVBoxLayout(self.info_box)
 
-        layout.setContentsMargins(
-            22, 22, 22, 22
-        )
+        layout.setContentsMargins(22, 22, 22, 22)
         layout.setSpacing(20)
 
         # =====================
@@ -240,17 +202,11 @@ class ImageInfoPanel(QWidget):
             False,
         )
 
-        self.status_label.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        overview_header.addWidget(
-            overview_title
-        )
+        overview_header.addWidget(overview_title)
         overview_header.addStretch()
-        overview_header.addWidget(
-            self.status_label
-        )
+        overview_header.addWidget(self.status_label)
 
         self.name_label = self.create_label(
             "-",
@@ -261,21 +217,15 @@ class ImageInfoPanel(QWidget):
             Qt.TextInteractionFlag.TextSelectableByMouse
         )
 
-        overview_layout.addLayout(
-            overview_header
-        )
+        overview_layout.addLayout(overview_header)
 
-        overview_layout.addWidget(
-            self.name_label
-        )
+        overview_layout.addWidget(self.name_label)
 
         layout.addLayout(overview_layout)
 
         # Divider
 
-        layout.addWidget(
-            self.create_divider()
-        )
+        layout.addWidget(self.create_divider())
 
         # =====================
         # IMAGE STATISTICS
@@ -284,36 +234,24 @@ class ImageInfoPanel(QWidget):
         stats_layout = QHBoxLayout()
         stats_layout.setSpacing(10)
 
-        format_card, self.format_label = (
-            self.create_stat_card(
-                "FORMAT",
-                "image_info_format",
-            )
+        format_card, self.format_label = self.create_stat_card(
+            "FORMAT",
+            "image_info_format",
         )
 
-        size_card, self.size_label = (
-            self.create_stat_card(
-                "FILE SIZE",
-                "image_info_size",
-            )
+        size_card, self.size_label = self.create_stat_card(
+            "FILE SIZE",
+            "image_info_size",
         )
 
-        resolution_card, self.resolution_label = (
-            self.create_stat_card(
-                "RESOLUTION",
-                "image_info_resolution",
-            )
+        resolution_card, self.resolution_label = self.create_stat_card(
+            "RESOLUTION",
+            "image_info_resolution",
         )
 
-        stats_layout.addWidget(
-            format_card, 1
-        )
-        stats_layout.addWidget(
-            size_card, 1
-        )
-        stats_layout.addWidget(
-            resolution_card, 1
-        )
+        stats_layout.addWidget(format_card, 1)
+        stats_layout.addWidget(size_card, 1)
+        stats_layout.addWidget(resolution_card, 1)
 
         layout.addLayout(stats_layout)
 
@@ -331,25 +269,13 @@ class ImageInfoPanel(QWidget):
         properties_layout = QHBoxLayout()
         properties_layout.setSpacing(10)
 
-        mode_card, self.mode_label = (
-            self.create_property_card(
-                "COLOR MODE"
-            )
-        )
+        mode_card, self.mode_label = self.create_property_card("COLOR MODE")
 
-        depth_card, self.depth_label = (
-            self.create_property_card(
-                "BIT DEPTH"
-            )
-        )
+        depth_card, self.depth_label = self.create_property_card("BIT DEPTH")
 
-        properties_layout.addWidget(
-            mode_card, 1
-        )
+        properties_layout.addWidget(mode_card, 1)
 
-        properties_layout.addWidget(
-            depth_card, 1
-        )
+        properties_layout.addWidget(depth_card, 1)
 
         layout.addLayout(properties_layout)
 
@@ -357,9 +283,7 @@ class ImageInfoPanel(QWidget):
         # FILE LOCATION
         # =====================
 
-        layout.addWidget(
-            self.create_divider()
-        )
+        layout.addWidget(self.create_divider())
 
         location_header = QHBoxLayout()
         location_header.setSpacing(10)
@@ -369,48 +293,32 @@ class ImageInfoPanel(QWidget):
             "image_info_section_label",
         )
 
-        self.copy_button = QPushButton(
-            "Copy Path"
-        )
+        self.copy_button = QPushButton("Copy Path")
 
-        self.copy_button.setObjectName(
-            "image_info_copy_button"
-        )
+        self.copy_button.setObjectName("image_info_copy_button")
 
-        self.copy_button.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        self.copy_button.setCursor(Qt.CursorShape.PointingHandCursor)
 
         self.copy_button.setMinimumHeight(30)
         self.copy_button.setEnabled(False)
 
-        self.copy_button.clicked.connect(
-            self.copy_path
-        )
+        self.copy_button.clicked.connect(self.copy_path)
 
-        location_header.addWidget(
-            location_title
-        )
+        location_header.addWidget(location_title)
 
         location_header.addStretch()
 
-        location_header.addWidget(
-            self.copy_button
-        )
+        location_header.addWidget(self.copy_button)
 
         layout.addLayout(location_header)
 
         # Path Container
 
-        path_card = self.create_card(
-            "image_info_path_card"
-        )
+        path_card = self.create_card("image_info_path_card")
 
         path_layout = QVBoxLayout(path_card)
 
-        path_layout.setContentsMargins(
-            14, 12, 14, 12
-        )
+        path_layout.setContentsMargins(14, 12, 14, 12)
 
         self.path_label = self.create_label(
             "-",
@@ -421,9 +329,7 @@ class ImageInfoPanel(QWidget):
             Qt.TextInteractionFlag.TextSelectableByMouse
         )
 
-        path_layout.addWidget(
-            self.path_label
-        )
+        path_layout.addWidget(self.path_label)
 
         layout.addWidget(path_card)
 
@@ -438,9 +344,7 @@ class ImageInfoPanel(QWidget):
 
         self.error_label.setVisible(False)
 
-        layout.addWidget(
-            self.error_label
-        )
+        layout.addWidget(self.error_label)
 
     # =====================
     # STATISTICS CARD
@@ -451,17 +355,13 @@ class ImageInfoPanel(QWidget):
         title,
         object_name,
     ):
-        card = self.create_card(
-            "image_info_stat_card"
-        )
+        card = self.create_card("image_info_stat_card")
 
         card.setMinimumHeight(90)
 
         layout = QVBoxLayout(card)
 
-        layout.setContentsMargins(
-            13, 14, 13, 14
-        )
+        layout.setContentsMargins(13, 14, 13, 14)
         layout.setSpacing(10)
 
         title_label = self.create_label(
@@ -495,15 +395,11 @@ class ImageInfoPanel(QWidget):
     # =====================
 
     def create_property_card(self, title):
-        card = self.create_card(
-            "image_info_property_card"
-        )
+        card = self.create_card("image_info_property_card")
 
         layout = QVBoxLayout(card)
 
-        layout.setContentsMargins(
-            14, 14, 14, 14
-        )
+        layout.setContentsMargins(14, 14, 14, 14)
         layout.setSpacing(9)
 
         title_label = self.create_label(
@@ -532,13 +428,9 @@ class ImageInfoPanel(QWidget):
     def create_divider(self):
         divider = QFrame()
 
-        divider.setObjectName(
-            "image_info_divider"
-        )
+        divider.setObjectName("image_info_divider")
 
-        divider.setFrameShape(
-            QFrame.Shape.HLine
-        )
+        divider.setFrameShape(QFrame.Shape.HLine)
 
         divider.setFixedHeight(1)
 
@@ -553,9 +445,7 @@ class ImageInfoPanel(QWidget):
 
         layout = QHBoxLayout(footer)
 
-        layout.setContentsMargins(
-            6, 4, 6, 4
-        )
+        layout.setContentsMargins(6, 4, 6, 4)
         layout.setSpacing(8)
 
         icon = self.create_label(
@@ -565,8 +455,7 @@ class ImageInfoPanel(QWidget):
         )
 
         text = self.create_label(
-            "Image properties are read "
-            "from the selected file.",
+            "Image properties are read from the selected file.",
             "image_info_footer_text",
         )
 
@@ -580,22 +469,16 @@ class ImageInfoPanel(QWidget):
     # =====================
 
     def set_status(self, state, text):
-        self.status_label.setText(
-            str(text)
-        )
+        self.status_label.setText(str(text))
 
         self.status_label.setProperty(
             "image_state",
             str(state),
         )
 
-        self.status_label.style().unpolish(
-            self.status_label
-        )
+        self.status_label.style().unpolish(self.status_label)
 
-        self.status_label.style().polish(
-            self.status_label
-        )
+        self.status_label.style().polish(self.status_label)
 
         self.status_label.update()
 
@@ -608,9 +491,7 @@ class ImageInfoPanel(QWidget):
             self.clear()
             return
 
-        self.current_image = Path(
-            image_path
-        ).expanduser()
+        self.current_image = Path(image_path).expanduser()
 
         self.load_information()
 
@@ -630,25 +511,16 @@ class ImageInfoPanel(QWidget):
 
         # Basic file information
 
-        self.name_label.setText(
-            file.name
-        )
+        self.name_label.setText(file.name)
 
-        self.path_label.setText(
-            str(file)
-        )
+        self.path_label.setText(str(file))
 
-        self.path_label.setToolTip(
-            str(file)
-        )
+        self.path_label.setToolTip(str(file))
 
         # Validate source
 
         if not file.is_file():
-            self.show_error(
-                "The selected image file "
-                "does not exist."
-            )
+            self.show_error("The selected image file does not exist.")
             return
 
         try:
@@ -656,33 +528,20 @@ class ImageInfoPanel(QWidget):
 
             file_size = file.stat().st_size
 
-            self.size_label.setText(
-                self.format_size(file_size)
-            )
+            self.size_label.setText(self.format_size(file_size))
 
             # Image properties
 
             with Image.open(file) as image:
-                image_format = (
-                    image.format or "Unknown"
-                )
+                image_format = image.format or "Unknown"
 
-                self.format_label.setText(
-                    str(image_format).upper()
-                )
+                self.format_label.setText(str(image_format).upper())
 
-                self.resolution_label.setText(
-                    f"{image.width:,} × "
-                    f"{image.height:,}"
-                )
+                self.resolution_label.setText(f"{image.width:,} × {image.height:,}")
 
-                self.mode_label.setText(
-                    str(image.mode)
-                )
+                self.mode_label.setText(str(image.mode))
 
-                self.depth_label.setText(
-                    self.get_bit_depth(image)
-                )
+                self.depth_label.setText(self.get_bit_depth(image))
 
             # Update status
 
@@ -691,9 +550,7 @@ class ImageInfoPanel(QWidget):
                 "IMAGE LOADED",
             )
 
-            self.copy_button.setEnabled(
-                True
-            )
+            self.copy_button.setEnabled(True)
 
             self.error_label.hide()
 
@@ -710,15 +567,11 @@ class ImageInfoPanel(QWidget):
             "UNAVAILABLE",
         )
 
-        self.error_label.setText(
-            f"Unable to read image: {message}"
-        )
+        self.error_label.setText(f"Unable to read image: {message}")
 
         self.error_label.show()
 
-        self.copy_button.setEnabled(
-            self.current_image is not None
-        )
+        self.copy_button.setEnabled(self.current_image is not None)
 
     # =====================
     # BIT DEPTH
@@ -786,20 +639,14 @@ class ImageInfoPanel(QWidget):
         if self.current_image is None:
             return
 
-        clipboard = (
-            QApplication.clipboard()
-        )
+        clipboard = QApplication.clipboard()
 
         if clipboard is None:
             return
 
-        clipboard.setText(
-            str(self.current_image)
-        )
+        clipboard.setText(str(self.current_image))
 
-        self.copy_button.setText(
-            "Copied ✓"
-        )
+        self.copy_button.setText("Copied ✓")
 
     # =====================
     # RESET DISPLAY
@@ -816,9 +663,7 @@ class ImageInfoPanel(QWidget):
 
         self.path_label.setToolTip("")
 
-        self.copy_button.setText(
-            "Copy Path"
-        )
+        self.copy_button.setText("Copy Path")
 
         self.copy_button.setEnabled(False)
 

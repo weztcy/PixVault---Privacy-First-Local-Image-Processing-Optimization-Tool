@@ -1,6 +1,10 @@
 """DPI and DPCM controls (horizontal and vertical can be linked)."""
+
 from PySide6.QtCore import QSignalBlocker
-from ui.components.processing_options.base_processing_options import BaseProcessingOptions
+
+from ui.components.processing_options.base_processing_options import (
+    BaseProcessingOptions,
+)
 from ui.components.processing_options.common.checkbox_field import CheckboxField
 from ui.components.processing_options.common.dropdown_field import DropdownField
 from ui.components.processing_options.common.number_field import NumberField
@@ -9,10 +13,18 @@ from ui.components.processing_options.common.number_field import NumberField
 class DPIOptions(BaseProcessingOptions):
     def setup_ui(self):
         super().setup_ui()
-        self.unit_field = self.add_widget(DropdownField("Resolution Unit", ["DPI", "DPCM"], "DPI"))
-        self.horizontal_field = self.add_widget(NumberField("Horizontal Resolution", 1, 10000, 300))
-        self.vertical_field = self.add_widget(NumberField("Vertical Resolution", 1, 10000, 300))
-        self.link_field = self.add_widget(CheckboxField("Keep Horizontal and Vertical Linked", True))
+        self.unit_field = self.add_widget(
+            DropdownField("Resolution Unit", ["DPI", "DPCM"], "DPI")
+        )
+        self.horizontal_field = self.add_widget(
+            NumberField("Horizontal Resolution", 1, 10000, 300)
+        )
+        self.vertical_field = self.add_widget(
+            NumberField("Vertical Resolution", 1, 10000, 300)
+        )
+        self.link_field = self.add_widget(
+            CheckboxField("Keep Horizontal and Vertical Linked", True)
+        )
         self.unit = self.unit_field.combo
         self.horizontal = self.horizontal_field.spin
         self.vertical = self.vertical_field.spin
@@ -41,8 +53,10 @@ class DPIOptions(BaseProcessingOptions):
 
     def get_settings(self):
         return {
-            "type": "dpi", "unit": self.unit.currentText().lower(),
-            "horizontal": self.horizontal.value(), "vertical": self.vertical.value(),
+            "type": "dpi",
+            "unit": self.unit.currentText().lower(),
+            "horizontal": self.horizontal.value(),
+            "vertical": self.vertical.value(),
             "linked": self.link.isChecked(),
         }
 
@@ -57,9 +71,18 @@ class DPIOptions(BaseProcessingOptions):
 
     def update_capability(self):
         supported = self.current_format not in ("SVG", "ICO")
-        for field in (self.unit_field, self.horizontal_field, self.vertical_field, self.link_field):
+        for field in (
+            self.unit_field,
+            self.horizontal_field,
+            self.vertical_field,
+            self.link_field,
+        ):
             field.setEnabled(supported)
-        self.show_warning("This output format does not support DPI information." if not supported else "")
+        self.show_warning(
+            "This output format does not support DPI information."
+            if not supported
+            else ""
+        )
 
     def validate(self):
         if self.current_format in ("SVG", "ICO"):

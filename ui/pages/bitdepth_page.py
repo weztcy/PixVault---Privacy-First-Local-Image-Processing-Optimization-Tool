@@ -104,7 +104,8 @@ class BitDepthPage(QWidget):
         # 01 / IMPORT & ORGANIZE
         self.layout.addWidget(
             self.create_section_header(
-                "01", "Import & Organize",
+                "01",
+                "Import & Organize",
                 "Add images, manage the queue, and inspect selected files.",
             )
         )
@@ -142,7 +143,8 @@ class BitDepthPage(QWidget):
         # 02 / BIT DEPTH SETTINGS
         self.layout.addWidget(
             self.create_section_header(
-                "02", "Configure Bit Depth",
+                "02",
+                "Configure Bit Depth",
                 "Choose an output format, bit depth, and destination folder.",
             )
         )
@@ -151,14 +153,18 @@ class BitDepthPage(QWidget):
         self.output_folder = self.output_selector.get_output_folder()
         self.settings_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight)
         self.settings_layout.setSpacing(16)
-        self.settings_layout.addWidget(self.settings_box, 6)
-        self.settings_layout.addWidget(self.output_selector, 5)
+        self.settings_layout.addWidget(self.settings_box, 6, Qt.AlignmentFlag.AlignTop)
+
+        self.settings_layout.addWidget(
+            self.output_selector, 5, Qt.AlignmentFlag.AlignTop
+        )
         self.layout.addLayout(self.settings_layout)
 
         # 03 / PROCESS & EXPORT
         self.layout.addWidget(
             self.create_section_header(
-                "03", "Process & Export",
+                "03",
+                "Process & Export",
                 "Apply bit-depth settings and monitor batch export progress.",
             )
         )
@@ -184,7 +190,8 @@ class BitDepthPage(QWidget):
         heading.addWidget(
             self.text(
                 "Prepare image bit depth for your workflow with local processing.",
-                "heroDescription", True,
+                "heroDescription",
+                True,
             )
         )
         layout.addLayout(heading, 1)
@@ -227,7 +234,8 @@ class BitDepthPage(QWidget):
         layout.addWidget(
             self.text(
                 "Select the precision of the exported image.",
-                "description", True,
+                "description",
+                True,
             )
         )
         layout.addSpacing(5)
@@ -251,20 +259,20 @@ class BitDepthPage(QWidget):
         layout.addWidget(
             self.text(
                 "8-bit is broadly supported; 16-bit requires grayscale input.",
-                "hint", True,
+                "hint",
+                True,
             )
         )
 
         self.bitdepth_options = BitDepthOptions()
         role(self.bitdepth_options.bit_depth, "field")
         self.bitdepth_options.bit_depth.setMinimumHeight(44)
-        self.bitdepth_options.bit_depth.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        self.bitdepth_options.bit_depth.setCursor(Qt.CursorShape.PointingHandCursor)
         for label in self.bitdepth_options.findChildren(QLabel):
             role(
                 label,
-                "errorText" if label is self.bitdepth_options.warning_label
+                "errorText"
+                if label is self.bitdepth_options.warning_label
                 else "fieldTitle",
             )
         layout.addWidget(self.bitdepth_options)
@@ -273,7 +281,8 @@ class BitDepthPage(QWidget):
             "Current encoder support: 8-bit PNG/TIFF; conversion from 8-bit "
             "grayscale to 16-bit grayscale PNG/TIFF. 16-bit RGB and 32-bit "
             "output are not yet supported.",
-            "hint", True,
+            "hint",
+            True,
         )
         layout.addWidget(self.capability_hint)
         self.encoding_hint = self.text("", "hint", True)
@@ -283,18 +292,14 @@ class BitDepthPage(QWidget):
 
     def create_action_card(self):
         card = role(QFrame(), "card")
-        self.action_layout = QBoxLayout(
-            QBoxLayout.Direction.LeftToRight, card
-        )
+        self.action_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight, card)
         self.action_layout.setContentsMargins(20, 20, 20, 20)
         self.action_layout.setSpacing(18)
 
         summary = QVBoxLayout()
         summary.setSpacing(6)
         summary.addWidget(self.text("Ready to Adjust Bit Depth?", "cardTitle"))
-        self.queue_summary = self.text(
-            "Add images to begin.", "description", True
-        )
+        self.queue_summary = self.text("Add images to begin.", "description", True)
         summary.addWidget(self.queue_summary)
         self.action_layout.addLayout(summary, 1)
 
@@ -360,9 +365,7 @@ class BitDepthPage(QWidget):
             current = self.images[0]
             self.show_preview(current)
         if hasattr(self.image_list, "select_image"):
-            self.image_list.select_image(
-                self.images.index(current), emit_signal=False
-            )
+            self.image_list.select_image(self.images.index(current), emit_signal=False)
 
     def show_preview(self, image):
         if not image:
@@ -382,8 +385,7 @@ class BitDepthPage(QWidget):
         if not self.images:
             return None
         formats = {
-            self.SOURCE_FORMATS.get(Path(path).suffix.lower())
-            for path in self.images
+            self.SOURCE_FORMATS.get(Path(path).suffix.lower()) for path in self.images
         }
         return next(iter(formats)) if len(formats) == 1 else None
 
@@ -411,9 +413,7 @@ class BitDepthPage(QWidget):
                 "Choose an explicit output format for mixed PNG/TIFF batches."
             )
         else:
-            self.format_hint.setText(
-                f"All images will be exported as {output_format}."
-            )
+            self.format_hint.setText(f"All images will be exported as {output_format}.")
         self.bitdepth_options.set_format(output_format or "PNG")
         self.disable_unimplemented_depths()
         self.update_queue_state()
@@ -460,13 +460,15 @@ class BitDepthPage(QWidget):
     def validate_inputs(self, depth):
         """Raise useful errors before starting a background worker."""
         invalid = [
-            path.name for path in self.images
+            path.name
+            for path in self.images
             if path.suffix.lower() not in self.SOURCE_FORMATS
         ]
         if invalid:
             raise ValueError(
                 "Bit Depth currently supports PNG and TIFF inputs. "
-                "Unsupported: " + ", ".join(invalid[:5])
+                "Unsupported: "
+                + ", ".join(invalid[:5])
                 + (" ..." if len(invalid) > 5 else "")
             )
         if depth == 16:
@@ -483,7 +485,8 @@ class BitDepthPage(QWidget):
             if not_grayscale:
                 raise ValueError(
                     "16-bit output currently requires 8-bit grayscale (L) sources. "
-                    "Unsupported color images: " + ", ".join(not_grayscale[:5])
+                    "Unsupported color images: "
+                    + ", ".join(not_grayscale[:5])
                     + (" ..." if len(not_grayscale) > 5 else "")
                 )
 
@@ -574,18 +577,15 @@ class BitDepthPage(QWidget):
             return
         self.images = [Path(image) for image in self.image_list.get_images()]
         if not self.images:
-            QMessageBox.warning(
-                self, "Bit Depth", "Please import at least one image."
-            )
+            QMessageBox.warning(self, "Bit Depth", "Please import at least one image.")
             return
         if not self.output_folder:
-            QMessageBox.warning(
-                self, "Bit Depth", "Please select an output folder."
-            )
+            QMessageBox.warning(self, "Bit Depth", "Please select an output folder.")
             return
         if self.batch_service.is_running():
             QMessageBox.warning(
-                self, "Processing Busy",
+                self,
+                "Processing Busy",
                 "Another batch is running. Finish it before starting this batch.",
             )
             return
@@ -679,7 +679,8 @@ class BitDepthPage(QWidget):
         width = self.scroll_area.viewport().width()
         direction = (
             QBoxLayout.Direction.LeftToRight
-            if width >= 960 else QBoxLayout.Direction.TopToBottom
+            if width >= 960
+            else QBoxLayout.Direction.TopToBottom
         )
         for layout in (
             self.import_layout,
@@ -691,7 +692,8 @@ class BitDepthPage(QWidget):
 
         action_direction = (
             QBoxLayout.Direction.LeftToRight
-            if width >= 620 else QBoxLayout.Direction.TopToBottom
+            if width >= 620
+            else QBoxLayout.Direction.TopToBottom
         )
         if self.action_layout.direction() != action_direction:
             self.action_layout.setDirection(action_direction)

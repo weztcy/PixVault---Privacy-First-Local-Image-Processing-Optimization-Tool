@@ -1,6 +1,8 @@
 """Reusable titled group of premium CheckboxField widgets."""
+
 from PySide6.QtCore import Signal
-from PySide6.QtWidgets import QFrame, QLabel, QVBoxLayout, QWidget
+from PySide6.QtWidgets import QLabel, QVBoxLayout, QWidget
+
 from .checkbox_field import CheckboxField
 
 

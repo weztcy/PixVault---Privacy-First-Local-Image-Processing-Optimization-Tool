@@ -39,8 +39,14 @@ class ResizePage(QWidget):
     # One output format is required by the current ImagePipeline for each batch.
     # "Same as source" is available when the batch has one supported format.
     OUTPUT_FORMATS = [
-        "Same as source", "JPEG", "PNG", "WEBP", "AVIF",
-        "BMP", "TIFF", "HEIC",
+        "Same as source",
+        "JPEG",
+        "PNG",
+        "WEBP",
+        "AVIF",
+        "BMP",
+        "TIFF",
+        "HEIC",
     ]
     SOURCE_FORMATS = {
         ".jpg": "JPEG",
@@ -119,7 +125,8 @@ class ResizePage(QWidget):
         # 01 / IMPORT AND REVIEW
         self.layout.addWidget(
             self.create_section_header(
-                "01", "Import & Organize",
+                "01",
+                "Import & Organize",
                 "Add images, manage the queue, and inspect selected files.",
             )
         )
@@ -159,7 +166,8 @@ class ResizePage(QWidget):
         # 02 / RESIZE SETTINGS
         self.layout.addWidget(
             self.create_section_header(
-                "02", "Configure Resize",
+                "02",
+                "Configure Resize",
                 "Set dimensions, resampling, and the output destination.",
             )
         )
@@ -169,14 +177,18 @@ class ResizePage(QWidget):
 
         self.settings_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight)
         self.settings_layout.setSpacing(16)
-        self.settings_layout.addWidget(self.settings_box, 6)
-        self.settings_layout.addWidget(self.output_selector, 5)
+        self.settings_layout.addWidget(self.settings_box, 6, Qt.AlignmentFlag.AlignTop)
+
+        self.settings_layout.addWidget(
+            self.output_selector, 5, Qt.AlignmentFlag.AlignTop
+        )
         self.layout.addLayout(self.settings_layout)
 
         # 03 / PROCESS AND EXPORT
         self.layout.addWidget(
             self.create_section_header(
-                "03", "Process & Export",
+                "03",
+                "Process & Export",
                 "Resize your collection and monitor export progress.",
             )
         )
@@ -202,7 +214,8 @@ class ResizePage(QWidget):
         heading.addWidget(
             self.text(
                 "Adjust image dimensions and resolution with local processing.",
-                "heroDescription", True,
+                "heroDescription",
+                True,
             )
         )
         layout.addLayout(heading, 1)
@@ -248,7 +261,8 @@ class ResizePage(QWidget):
         layout.addWidget(
             self.text(
                 "Choose an output format and adjust image dimensions and resampling.",
-                "description", True,
+                "description",
+                True,
             )
         )
         layout.addSpacing(5)
@@ -273,7 +287,8 @@ class ResizePage(QWidget):
         layout.addWidget(
             self.text(
                 "Choose exact size, one dimension, longest/shortest side, or percentage.",
-                "hint", True,
+                "hint",
+                True,
             )
         )
 
@@ -286,9 +301,7 @@ class ResizePage(QWidget):
 
     def create_action_card(self):
         card = role(QFrame(), "card")
-        self.action_layout = QBoxLayout(
-            QBoxLayout.Direction.LeftToRight, card
-        )
+        self.action_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight, card)
         self.action_layout.setContentsMargins(20, 20, 20, 20)
         self.action_layout.setSpacing(18)
 
@@ -400,9 +413,7 @@ class ResizePage(QWidget):
             self.show_preview(current)
 
         if hasattr(self.image_list, "select_image"):
-            self.image_list.select_image(
-                self.images.index(current), emit_signal=False
-            )
+            self.image_list.select_image(self.images.index(current), emit_signal=False)
 
     def show_preview(self, image):
         if not image:
@@ -422,8 +433,7 @@ class ResizePage(QWidget):
         if not self.images:
             return None
         formats = {
-            self.SOURCE_FORMATS.get(Path(image).suffix.lower())
-            for image in self.images
+            self.SOURCE_FORMATS.get(Path(image).suffix.lower()) for image in self.images
         }
         if len(formats) == 1:
             return next(iter(formats))
@@ -432,9 +442,7 @@ class ResizePage(QWidget):
     def selected_output_format(self):
         selection = self.format_box.currentText()
         return (
-            self.source_format()
-            if selection == "Same as source"
-            else selection.upper()
+            self.source_format() if selection == "Same as source" else selection.upper()
         )
 
     def build_config(self):
@@ -523,7 +531,8 @@ class ResizePage(QWidget):
             return
         if self.batch_service.is_running():
             QMessageBox.warning(
-                self, "Processing Busy",
+                self,
+                "Processing Busy",
                 "Another processing task is running. Finish it before resizing.",
             )
             return
@@ -531,7 +540,8 @@ class ResizePage(QWidget):
         # SVG may be previewed in the UI, but ImagePipeline uses PIL.Image.open.
         if any(Path(image).suffix.lower() == ".svg" for image in self.images):
             QMessageBox.warning(
-                self, "Unsupported Resize Input",
+                self,
+                "Unsupported Resize Input",
                 "SVG inputs cannot be resized by the current raster pipeline. "
                 "Remove SVG files from the queue and try again.",
             )
@@ -647,7 +657,6 @@ class ResizePage(QWidget):
 
     def apply_styles(self):
         apply_page_theme(self)
-
 
         self.start_button.setEnabled(True)
 

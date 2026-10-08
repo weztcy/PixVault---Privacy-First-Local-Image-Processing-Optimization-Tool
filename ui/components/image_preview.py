@@ -1,8 +1,6 @@
-
 from pathlib import Path
 
 from PIL import Image, ImageOps
-
 from PySide6.QtCore import QEvent, QRectF, QSize, Qt
 from PySide6.QtGui import (
     QImage,
@@ -50,17 +48,13 @@ class ImagePreview(QWidget):
     def setup_ui(self):
         main_layout = QVBoxLayout(self)
 
-        main_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
 
         # Main panel
 
         self.card = QFrame()
-        self.card.setObjectName(
-            "image_preview_card"
-        )
+        self.card.setObjectName("image_preview_card")
 
         self.card.setSizePolicy(
             QSizePolicy.Policy.Expanding,
@@ -69,16 +63,12 @@ class ImagePreview(QWidget):
 
         card_layout = QVBoxLayout(self.card)
 
-        card_layout.setContentsMargins(
-            20, 20, 20, 18
-        )
+        card_layout.setContentsMargins(20, 20, 20, 18)
         card_layout.setSpacing(16)
 
         # Header
 
-        card_layout.addLayout(
-            self.create_header()
-        )
+        card_layout.addLayout(self.create_header())
 
         # Preview canvas
 
@@ -89,13 +79,9 @@ class ImagePreview(QWidget):
 
         # Footer
 
-        card_layout.addWidget(
-            self.create_footer()
-        )
+        card_layout.addWidget(self.create_footer())
 
-        main_layout.addWidget(
-            self.card
-        )
+        main_layout.addWidget(self.card)
 
     # =====================
     # HEADER
@@ -108,23 +94,15 @@ class ImagePreview(QWidget):
         # Header icon
 
         icon_box = QFrame()
-        icon_box.setObjectName(
-            "image_preview_icon_box"
-        )
+        icon_box.setObjectName("image_preview_icon_box")
         icon_box.setFixedSize(44, 44)
 
         icon_layout = QVBoxLayout(icon_box)
-        icon_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        icon_layout.setContentsMargins(0, 0, 0, 0)
 
         icon = QLabel("▧")
-        icon.setObjectName(
-            "image_preview_header_icon"
-        )
-        icon.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        icon.setObjectName("image_preview_header_icon")
+        icon.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         icon_layout.addWidget(icon)
 
@@ -134,21 +112,13 @@ class ImagePreview(QWidget):
         text_layout.setSpacing(4)
 
         eyebrow = QLabel("VISUAL WORKSPACE")
-        eyebrow.setObjectName(
-            "image_preview_eyebrow"
-        )
+        eyebrow.setObjectName("image_preview_eyebrow")
 
         title = QLabel("Image Preview")
-        title.setObjectName(
-            "image_preview_title"
-        )
+        title.setObjectName("image_preview_title")
 
-        subtitle = QLabel(
-            "Inspect your selected image."
-        )
-        subtitle.setObjectName(
-            "image_preview_subtitle"
-        )
+        subtitle = QLabel("Inspect your selected image.")
+        subtitle.setObjectName("image_preview_subtitle")
 
         text_layout.addWidget(eyebrow)
         text_layout.addWidget(title)
@@ -157,13 +127,9 @@ class ImagePreview(QWidget):
         # Status badge
 
         self.status_label = QLabel("NO IMAGE")
-        self.status_label.setObjectName(
-            "image_preview_status"
-        )
+        self.status_label.setObjectName("image_preview_status")
 
-        self.status_label.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.status_label.setProperty(
             "preview_state",
@@ -187,11 +153,9 @@ class ImagePreview(QWidget):
 
     def create_canvas(self):
         canvas = QFrame()
-        canvas.setObjectName(
-            "image_preview_canvas"
-        )
+        canvas.setObjectName("image_preview_canvas")
 
-        canvas.setMinimumHeight(260)
+        canvas.setMinimumHeight(470)
 
         canvas.setSizePolicy(
             QSizePolicy.Policy.Expanding,
@@ -200,9 +164,7 @@ class ImagePreview(QWidget):
 
         layout = QVBoxLayout(canvas)
 
-        layout.setContentsMargins(
-            12, 12, 12, 12
-        )
+        layout.setContentsMargins(12, 12, 12, 12)
         layout.setSpacing(0)
 
         # Stack lets us switch between
@@ -210,9 +172,7 @@ class ImagePreview(QWidget):
         # changing the surrounding layout.
 
         self.preview_stack = QStackedWidget()
-        self.preview_stack.setObjectName(
-            "image_preview_stack"
-        )
+        self.preview_stack.setObjectName("image_preview_stack")
 
         # Empty / error state
 
@@ -221,31 +181,19 @@ class ImagePreview(QWidget):
         # Actual image page
 
         self.image_page = QWidget()
-        self.image_page.setObjectName(
-            "image_preview_image_page"
-        )
+        self.image_page.setObjectName("image_preview_image_page")
 
-        image_layout = QVBoxLayout(
-            self.image_page
-        )
+        image_layout = QVBoxLayout(self.image_page)
 
-        image_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        image_layout.setContentsMargins(0, 0, 0, 0)
         image_layout.setSpacing(0)
 
         self.preview_label = QLabel()
-        self.preview_label.setObjectName(
-            "image_preview_display"
-        )
+        self.preview_label.setObjectName("image_preview_display")
 
-        self.preview_label.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.preview_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.preview_label.setMinimumSize(
-            0, 0
-        )
+        self.preview_label.setMinimumSize(0, 0)
 
         # Ignored size policy prevents a large
         # pixmap from forcing the workspace
@@ -256,29 +204,17 @@ class ImagePreview(QWidget):
             QSizePolicy.Policy.Ignored,
         )
 
-        self.preview_label.setScaledContents(
-            False
-        )
+        self.preview_label.setScaledContents(False)
 
-        self.preview_label.installEventFilter(
-            self
-        )
+        self.preview_label.installEventFilter(self)
 
-        image_layout.addWidget(
-            self.preview_label
-        )
+        image_layout.addWidget(self.preview_label)
 
-        self.preview_stack.addWidget(
-            self.empty_page
-        )
+        self.preview_stack.addWidget(self.empty_page)
 
-        self.preview_stack.addWidget(
-            self.image_page
-        )
+        self.preview_stack.addWidget(self.image_page)
 
-        layout.addWidget(
-            self.preview_stack
-        )
+        layout.addWidget(self.preview_stack)
 
         return canvas
 
@@ -288,80 +224,51 @@ class ImagePreview(QWidget):
 
     def create_empty_state(self):
         page = QWidget()
-        page.setObjectName(
-            "image_preview_empty_page"
-        )
+        page.setObjectName("image_preview_empty_page")
 
         layout = QVBoxLayout(page)
 
-        layout.setContentsMargins(
-            16, 20, 16, 20
-        )
+        layout.setContentsMargins(16, 20, 16, 20)
         layout.setSpacing(12)
 
-        layout.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         # Placeholder icon
 
         icon_box = QFrame()
-        icon_box.setObjectName(
-            "image_preview_empty_icon_box"
-        )
+        icon_box.setObjectName("image_preview_empty_icon_box")
 
-        icon_box.setFixedSize(
-            72, 72
-        )
+        icon_box.setFixedSize(72, 72)
 
-        icon_layout = QVBoxLayout(
-            icon_box
-        )
+        icon_layout = QVBoxLayout(icon_box)
 
-        icon_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        icon_layout.setContentsMargins(0, 0, 0, 0)
 
         icon = QLabel("▧")
-        icon.setObjectName(
-            "image_preview_empty_icon"
-        )
+        icon.setObjectName("image_preview_empty_icon")
 
-        icon.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        icon.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         icon_layout.addWidget(icon)
 
         # Placeholder title
 
-        self.empty_title = QLabel(
-            "No Image Selected"
-        )
+        self.empty_title = QLabel("No Image Selected")
 
-        self.empty_title.setObjectName(
-            "image_preview_empty_title"
-        )
+        self.empty_title.setObjectName("image_preview_empty_title")
 
-        self.empty_title.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.empty_title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.empty_title.setWordWrap(True)
 
         # Placeholder description
 
         self.empty_description = QLabel(
-            "Select an image from your collection "
-            "to display its preview here."
+            "Select an image from your collection to display its preview here."
         )
 
-        self.empty_description.setObjectName(
-            "image_preview_empty_description"
-        )
+        self.empty_description.setObjectName("image_preview_empty_description")
 
-        self.empty_description.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.empty_description.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.empty_description.setWordWrap(True)
 
         layout.addStretch()
@@ -372,13 +279,9 @@ class ImagePreview(QWidget):
             Qt.AlignmentFlag.AlignHCenter,
         )
 
-        layout.addWidget(
-            self.empty_title
-        )
+        layout.addWidget(self.empty_title)
 
-        layout.addWidget(
-            self.empty_description
-        )
+        layout.addWidget(self.empty_description)
 
         layout.addStretch()
 
@@ -390,33 +293,23 @@ class ImagePreview(QWidget):
 
     def create_footer(self):
         footer = QFrame()
-        footer.setObjectName(
-            "image_preview_footer"
-        )
+        footer.setObjectName("image_preview_footer")
 
         layout = QHBoxLayout(footer)
 
-        layout.setContentsMargins(
-            13, 11, 13, 11
-        )
+        layout.setContentsMargins(13, 11, 13, 11)
         layout.setSpacing(12)
 
         # File icon
 
         file_icon = QLabel("◇")
-        file_icon.setObjectName(
-            "image_preview_file_icon"
-        )
+        file_icon.setObjectName("image_preview_file_icon")
 
         # Filename
 
-        self.file_label = QLabel(
-            "No file selected"
-        )
+        self.file_label = QLabel("No file selected")
 
-        self.file_label.setObjectName(
-            "image_preview_filename"
-        )
+        self.file_label.setObjectName("image_preview_filename")
 
         self.file_label.setWordWrap(True)
 
@@ -427,24 +320,16 @@ class ImagePreview(QWidget):
         # Image dimensions
 
         self.resolution_label = QLabel("-")
-        self.resolution_label.setObjectName(
-            "image_preview_resolution"
-        )
+        self.resolution_label.setObjectName("image_preview_resolution")
 
-        self.resolution_label.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.resolution_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         # File format
 
         self.format_label = QLabel("-")
-        self.format_label.setObjectName(
-            "image_preview_format"
-        )
+        self.format_label.setObjectName("image_preview_format")
 
-        self.format_label.setAlignment(
-            Qt.AlignmentFlag.AlignCenter
-        )
+        self.format_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         layout.addWidget(file_icon)
         layout.addWidget(self.file_label, 1)
@@ -458,22 +343,16 @@ class ImagePreview(QWidget):
     # =====================
 
     def set_status(self, state, text):
-        self.status_label.setText(
-            str(text)
-        )
+        self.status_label.setText(str(text))
 
         self.status_label.setProperty(
             "preview_state",
             str(state),
         )
 
-        self.status_label.style().unpolish(
-            self.status_label
-        )
+        self.status_label.style().unpolish(self.status_label)
 
-        self.status_label.style().polish(
-            self.status_label
-        )
+        self.status_label.style().polish(self.status_label)
 
         self.status_label.update()
 
@@ -494,57 +373,38 @@ class ImagePreview(QWidget):
 
         self.preview_label.clear()
 
-        self.current_image = Path(
-            image_path
-        ).expanduser()
+        self.current_image = Path(image_path).expanduser()
 
         file = self.current_image
 
         # Footer metadata
 
-        self.file_label.setText(
-            file.name
-        )
+        self.file_label.setText(file.name)
 
-        self.file_label.setToolTip(
-            str(file)
-        )
+        self.file_label.setToolTip(str(file))
 
-        self.format_label.setText(
-            file.suffix.lstrip(".").upper()
-            or "IMAGE"
-        )
+        self.format_label.setText(file.suffix.lstrip(".").upper() or "IMAGE")
 
         self.resolution_label.setText("-")
 
         if not file.is_file():
-            self.show_unavailable(
-                "The selected image file "
-                "could not be found."
-            )
+            self.show_unavailable("The selected image file could not be found.")
             return
 
         try:
-            if (
-                file.suffix.lower() == ".svg"
-                and QSvgRenderer is not None
-            ):
+            if file.suffix.lower() == ".svg" and QSvgRenderer is not None:
                 self.load_svg(file)
 
             else:
                 self.load_raster(file)
 
         except Exception as error:
-            self.show_unavailable(
-                str(error)
-            )
+            self.show_unavailable(str(error))
             return
 
         # Display image
 
-        self.preview_stack.setCurrentWidget(
-            self.image_page
-        )
+        self.preview_stack.setCurrentWidget(self.image_page)
 
         self.set_status(
             "loaded",
@@ -562,9 +422,7 @@ class ImagePreview(QWidget):
         # Auto-transform handles supported
         # EXIF orientation metadata.
 
-        reader = QImageReader(
-            str(file)
-        )
+        reader = QImageReader(str(file))
 
         reader.setAutoTransform(True)
 
@@ -578,29 +436,17 @@ class ImagePreview(QWidget):
         # Pillow is used as a fallback.
 
         if qt_image.isNull():
-            qt_image = self.load_with_pillow(
-                file
-            )
+            qt_image = self.load_with_pillow(file)
 
         if qt_image.isNull():
-            raise ValueError(
-                "This image format could not "
-                "be decoded."
-            )
+            raise ValueError("This image format could not be decoded.")
 
-        self._original_pixmap = (
-            QPixmap.fromImage(qt_image)
-        )
+        self._original_pixmap = QPixmap.fromImage(qt_image)
 
         if self._original_pixmap.isNull():
-            raise ValueError(
-                "Unable to create an image preview."
-            )
+            raise ValueError("Unable to create an image preview.")
 
-        self.resolution_label.setText(
-            f"{qt_image.width():,} × "
-            f"{qt_image.height():,}"
-        )
+        self.resolution_label.setText(f"{qt_image.width():,} × {qt_image.height():,}")
 
     # =====================
     # PILLOW FALLBACK
@@ -610,9 +456,7 @@ class ImagePreview(QWidget):
         with Image.open(file) as image:
             # Apply EXIF orientation if present.
 
-            image = ImageOps.exif_transpose(
-                image
-            )
+            image = ImageOps.exif_transpose(image)
 
             # Convert unsupported color modes
             # to a format Qt can display.
@@ -641,15 +485,10 @@ class ImagePreview(QWidget):
     # =====================
 
     def load_svg(self, file):
-        renderer = QSvgRenderer(
-            str(file)
-        )
+        renderer = QSvgRenderer(str(file))
 
         if not renderer.isValid():
-            raise ValueError(
-                "This SVG file is invalid "
-                "or cannot be rendered."
-            )
+            raise ValueError("This SVG file is invalid or cannot be rendered.")
 
         self._svg_renderer = renderer
 
@@ -657,13 +496,10 @@ class ImagePreview(QWidget):
 
         if image_size.isValid():
             self.resolution_label.setText(
-                f"{image_size.width():,} × "
-                f"{image_size.height():,}"
+                f"{image_size.width():,} × {image_size.height():,}"
             )
         else:
-            self.resolution_label.setText(
-                "Vector image"
-            )
+            self.resolution_label.setText("Vector image")
 
     # =====================
     # RESPONSIVE IMAGE RENDER
@@ -672,25 +508,17 @@ class ImagePreview(QWidget):
     def update_scaled_preview(self):
         target_size = self.preview_label.size()
 
-        if (
-            target_size.width() <= 0
-            or target_size.height() <= 0
-        ):
+        if target_size.width() <= 0 or target_size.height() <= 0:
             return
 
         # Render SVG directly to the current
         # display size to keep edges sharp.
 
         if self._svg_renderer is not None:
-            self.render_svg_preview(
-                target_size
-            )
+            self.render_svg_preview(target_size)
             return
 
-        if (
-            self._original_pixmap is None
-            or self._original_pixmap.isNull()
-        ):
+        if self._original_pixmap is None or self._original_pixmap.isNull():
             return
 
         # Scale from original image data,
@@ -703,9 +531,7 @@ class ImagePreview(QWidget):
             Qt.TransformationMode.SmoothTransformation,
         )
 
-        self.preview_label.setPixmap(
-            scaled
-        )
+        self.preview_label.setPixmap(scaled)
 
     # =====================
     # RENDER SVG
@@ -722,18 +548,13 @@ class ImagePreview(QWidget):
         if not source_size.isValid():
             view_box = renderer.viewBoxF()
 
-            if (
-                view_box.width() > 0
-                and view_box.height() > 0
-            ):
+            if view_box.width() > 0 and view_box.height() > 0:
                 source_size = QSize(
                     max(1, int(view_box.width())),
                     max(1, int(view_box.height())),
                 )
             else:
-                source_size = QSize(
-                    1600, 900
-                )
+                source_size = QSize(1600, 900)
 
         scaled_size = source_size.scaled(
             target_size,
@@ -743,13 +564,9 @@ class ImagePreview(QWidget):
         if scaled_size.isEmpty():
             return
 
-        pixmap = QPixmap(
-            scaled_size
-        )
+        pixmap = QPixmap(scaled_size)
 
-        pixmap.fill(
-            Qt.GlobalColor.transparent
-        )
+        pixmap.fill(Qt.GlobalColor.transparent)
 
         painter = QPainter(pixmap)
 
@@ -770,20 +587,14 @@ class ImagePreview(QWidget):
 
         painter.end()
 
-        self.preview_label.setPixmap(
-            pixmap
-        )
+        self.preview_label.setPixmap(pixmap)
 
     # =====================
     # HANDLE PREVIEW RESIZE
     # =====================
 
     def eventFilter(self, watched, event):
-        if (
-            watched is self.preview_label
-            and event.type()
-            == QEvent.Type.Resize
-        ):
+        if watched is self.preview_label and event.type() == QEvent.Type.Resize:
             self.update_scaled_preview()
 
         return super().eventFilter(
@@ -801,17 +612,11 @@ class ImagePreview(QWidget):
 
         self.preview_label.clear()
 
-        self.empty_title.setText(
-            "Preview Unavailable"
-        )
+        self.empty_title.setText("Preview Unavailable")
 
-        self.empty_description.setText(
-            str(message)
-        )
+        self.empty_description.setText(str(message))
 
-        self.preview_stack.setCurrentWidget(
-            self.empty_page
-        )
+        self.preview_stack.setCurrentWidget(self.empty_page)
 
         self.set_status(
             "error",
@@ -830,27 +635,20 @@ class ImagePreview(QWidget):
 
         self.preview_label.clear()
 
-        self.empty_title.setText(
-            "No Image Selected"
-        )
+        self.empty_title.setText("No Image Selected")
 
         self.empty_description.setText(
-            "Select an image from your collection "
-            "to display its preview here."
+            "Select an image from your collection to display its preview here."
         )
 
-        self.file_label.setText(
-            "No file selected"
-        )
+        self.file_label.setText("No file selected")
 
         self.file_label.setToolTip("")
 
         self.resolution_label.setText("-")
         self.format_label.setText("-")
 
-        self.preview_stack.setCurrentWidget(
-            self.empty_page
-        )
+        self.preview_stack.setCurrentWidget(self.empty_page)
 
         self.set_status(
             "empty",

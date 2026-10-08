@@ -1,4 +1,3 @@
-
 from pathlib import Path
 
 from PySide6.QtCore import Qt, QUrl, Signal
@@ -24,9 +23,7 @@ class ExportProgress(QWidget):
 
         self.output_folder = None
 
-        self.setObjectName(
-            "export_progress_widget"
-        )
+        self.setObjectName("export_progress_widget")
 
         self.setup_ui()
         self.apply_styles()
@@ -40,17 +37,13 @@ class ExportProgress(QWidget):
     def setup_ui(self):
         main_layout = QVBoxLayout(self)
 
-        main_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
 
         # Main card
 
         self.container = QFrame()
-        self.container.setObjectName(
-            "export_progress_card"
-        )
+        self.container.setObjectName("export_progress_card")
 
         self.container.setSizePolicy(
             QSizePolicy.Policy.Expanding,
@@ -58,9 +51,7 @@ class ExportProgress(QWidget):
         )
 
         layout = QVBoxLayout(self.container)
-        layout.setContentsMargins(
-            22, 22, 22, 22
-        )
+        layout.setContentsMargins(22, 22, 22, 22)
         layout.setSpacing(18)
 
         # =====================
@@ -74,22 +65,13 @@ class ExportProgress(QWidget):
         title_layout.setSpacing(6)
 
         eyebrow = QLabel("EXPORT WORKFLOW")
-        eyebrow.setObjectName(
-            "export_eyebrow"
-        )
+        eyebrow.setObjectName("export_eyebrow")
 
         title = QLabel("Export Progress")
-        title.setObjectName(
-            "export_title"
-        )
+        title.setObjectName("export_title")
 
-        description = QLabel(
-            "Monitor image processing "
-            "and export activity."
-        )
-        description.setObjectName(
-            "export_description"
-        )
+        description = QLabel("Monitor image processing and export activity.")
+        description.setObjectName("export_description")
         description.setWordWrap(True)
 
         title_layout.addWidget(eyebrow)
@@ -101,34 +83,20 @@ class ExportProgress(QWidget):
         # =====================
 
         self.status_badge = QFrame()
-        self.status_badge.setObjectName(
-            "export_status_badge"
-        )
+        self.status_badge.setObjectName("export_status_badge")
 
-        badge_layout = QHBoxLayout(
-            self.status_badge
-        )
-        badge_layout.setContentsMargins(
-            12, 7, 12, 7
-        )
+        badge_layout = QHBoxLayout(self.status_badge)
+        badge_layout.setContentsMargins(12, 7, 12, 7)
         badge_layout.setSpacing(8)
 
         self.status_indicator = QLabel("●")
-        self.status_indicator.setObjectName(
-            "export_status_indicator"
-        )
+        self.status_indicator.setObjectName("export_status_indicator")
 
         self.status_label = QLabel("Ready")
-        self.status_label.setObjectName(
-            "export_status_text"
-        )
+        self.status_label.setObjectName("export_status_text")
 
-        badge_layout.addWidget(
-            self.status_indicator
-        )
-        badge_layout.addWidget(
-            self.status_label
-        )
+        badge_layout.addWidget(self.status_indicator)
+        badge_layout.addWidget(self.status_label)
 
         header.addLayout(title_layout, 1)
         header.addWidget(
@@ -146,37 +114,24 @@ class ExportProgress(QWidget):
         progress_header = QHBoxLayout()
         progress_header.setSpacing(10)
 
-        progress_title = QLabel(
-            "OVERALL PROGRESS"
-        )
-        progress_title.setObjectName(
-            "export_section_label"
-        )
+        progress_title = QLabel("OVERALL PROGRESS")
+        progress_title.setObjectName("export_section_label")
 
         self.percentage_label = QLabel("0%")
-        self.percentage_label.setObjectName(
-            "export_percentage"
-        )
+        self.percentage_label.setObjectName("export_percentage")
 
         self.percentage_label.setAlignment(
-            Qt.AlignmentFlag.AlignRight
-            | Qt.AlignmentFlag.AlignVCenter
+            Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter
         )
 
-        progress_header.addWidget(
-            progress_title
-        )
+        progress_header.addWidget(progress_title)
         progress_header.addStretch()
-        progress_header.addWidget(
-            self.percentage_label
-        )
+        progress_header.addWidget(self.percentage_label)
 
         # Progress bar
 
         self.progress_bar = QProgressBar()
-        self.progress_bar.setObjectName(
-            "export_progress_bar"
-        )
+        self.progress_bar.setObjectName("export_progress_bar")
 
         self.progress_bar.setRange(0, 100)
         self.progress_bar.setValue(0)
@@ -201,25 +156,17 @@ class ExportProgress(QWidget):
         # Current file
 
         file_card = QFrame()
-        file_card.setObjectName(
-            "export_info_card"
-        )
+        file_card.setObjectName("export_info_card")
 
         file_layout = QVBoxLayout(file_card)
-        file_layout.setContentsMargins(
-            14, 12, 14, 12
-        )
+        file_layout.setContentsMargins(14, 12, 14, 12)
         file_layout.setSpacing(8)
 
         file_title = QLabel("CURRENT FILE")
-        file_title.setObjectName(
-            "export_info_title"
-        )
+        file_title.setObjectName("export_info_title")
 
         self.file_label = QLabel("File: -")
-        self.file_label.setObjectName(
-            "export_file_label"
-        )
+        self.file_label.setObjectName("export_file_label")
 
         self.file_label.setWordWrap(True)
         self.file_label.setTextInteractionFlags(
@@ -232,44 +179,24 @@ class ExportProgress(QWidget):
         # File counter
 
         counter_card = QFrame()
-        counter_card.setObjectName(
-            "export_info_card"
-        )
+        counter_card.setObjectName("export_info_card")
 
-        counter_layout = QVBoxLayout(
-            counter_card
-        )
+        counter_layout = QVBoxLayout(counter_card)
 
-        counter_layout.setContentsMargins(
-            14, 12, 14, 12
-        )
+        counter_layout.setContentsMargins(14, 12, 14, 12)
         counter_layout.setSpacing(8)
 
-        counter_title = QLabel(
-            "FILES PROCESSED"
-        )
-        counter_title.setObjectName(
-            "export_info_title"
-        )
+        counter_title = QLabel("FILES PROCESSED")
+        counter_title.setObjectName("export_info_title")
 
         self.counter_label = QLabel("0 / 0")
-        self.counter_label.setObjectName(
-            "export_counter_label"
-        )
+        self.counter_label.setObjectName("export_counter_label")
 
-        counter_layout.addWidget(
-            counter_title
-        )
-        counter_layout.addWidget(
-            self.counter_label
-        )
+        counter_layout.addWidget(counter_title)
+        counter_layout.addWidget(self.counter_label)
 
-        information_layout.addWidget(
-            file_card, 3
-        )
-        information_layout.addWidget(
-            counter_card, 2
-        )
+        information_layout.addWidget(file_card, 3)
+        information_layout.addWidget(counter_card, 2)
 
         layout.addLayout(information_layout)
 
@@ -280,35 +207,22 @@ class ExportProgress(QWidget):
         footer = QHBoxLayout()
         footer.setSpacing(12)
 
-        footer_text = QLabel(
-            "Output files are saved to "
-            "your selected folder."
-        )
-        footer_text.setObjectName(
-            "export_footer_text"
-        )
+        footer_text = QLabel("Output files are saved to your selected folder.")
+        footer_text.setObjectName("export_footer_text")
         footer_text.setWordWrap(True)
 
         # Open output folder
 
-        self.open_button = QPushButton(
-            "Open Output Folder  ↗"
-        )
+        self.open_button = QPushButton("Open Output Folder  ↗")
 
-        self.open_button.setObjectName(
-            "export_open_button"
-        )
+        self.open_button.setObjectName("export_open_button")
 
         self.open_button.setMinimumHeight(40)
         self.open_button.setEnabled(False)
 
-        self.open_button.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        self.open_button.setCursor(Qt.CursorShape.PointingHandCursor)
 
-        self.open_button.clicked.connect(
-            self.open_folder
-        )
+        self.open_button.clicked.connect(self.open_folder)
 
         footer.addWidget(footer_text, 1)
         footer.addWidget(self.open_button)
@@ -317,9 +231,7 @@ class ExportProgress(QWidget):
 
         # Assemble main component
 
-        main_layout.addWidget(
-            self.container
-        )
+        main_layout.addWidget(self.container)
 
     # =====================
     # STATUS MANAGEMENT
@@ -356,15 +268,11 @@ class ExportProgress(QWidget):
             self.open_button.setToolTip("")
             return
 
-        self.output_folder = Path(
-            folder
-        ).expanduser()
+        self.output_folder = Path(folder).expanduser()
 
         self.open_button.setEnabled(True)
 
-        self.open_button.setToolTip(
-            str(self.output_folder)
-        )
+        self.open_button.setToolTip(str(self.output_folder))
 
     # =====================
     # UPDATE PROGRESS
@@ -380,9 +288,7 @@ class ExportProgress(QWidget):
         if total <= 0:
             return
 
-        percentage = int(
-            (current / total) * 100
-        )
+        percentage = int((current / total) * 100)
 
         percentage = max(
             0,
@@ -391,42 +297,27 @@ class ExportProgress(QWidget):
 
         # Update progress bar
 
-        self.progress_bar.setValue(
-            percentage
-        )
+        self.progress_bar.setValue(percentage)
 
-        self.percentage_label.setText(
-            f"{percentage}%"
-        )
+        self.percentage_label.setText(f"{percentage}%")
 
         # Update file information
 
-        self.file_label.setText(
-            f"File: {filename}"
-        )
+        self.file_label.setText(f"File: {filename}")
 
-        self.file_label.setToolTip(
-            str(filename)
-        )
+        self.file_label.setToolTip(str(filename))
 
-        self.counter_label.setText(
-            f"{current} / {total}"
-        )
+        self.counter_label.setText(f"{current} / {total}")
 
         # Determine status appearance
 
         status_text = str(status)
         normalized = status_text.lower()
 
-        if (
-            "fail" in normalized
-            or "error" in normalized
-        ):
+        if "fail" in normalized or "error" in normalized:
             state = "failed"
 
-        elif (
-            "cancel" in normalized
-        ):
+        elif "cancel" in normalized:
             state = "cancelled"
 
         else:
@@ -444,17 +335,11 @@ class ExportProgress(QWidget):
     def finished(self):
         self.progress_bar.setValue(100)
 
-        self.percentage_label.setText(
-            "100%"
-        )
+        self.percentage_label.setText("100%")
 
-        self.file_label.setText(
-            "All files finished"
-        )
+        self.file_label.setText("All files finished")
 
-        self.file_label.setToolTip(
-            "All files finished"
-        )
+        self.file_label.setToolTip("All files finished")
 
         self.set_status(
             "completed",
@@ -466,13 +351,9 @@ class ExportProgress(QWidget):
     # =====================
 
     def failed(self, error):
-        self.file_label.setText(
-            str(error)
-        )
+        self.file_label.setText(str(error))
 
-        self.file_label.setToolTip(
-            str(error)
-        )
+        self.file_label.setToolTip(str(error))
 
         self.set_status(
             "failed",
@@ -486,19 +367,13 @@ class ExportProgress(QWidget):
     def reset(self):
         self.progress_bar.setValue(0)
 
-        self.percentage_label.setText(
-            "0%"
-        )
+        self.percentage_label.setText("0%")
 
-        self.file_label.setText(
-            "File: -"
-        )
+        self.file_label.setText("File: -")
 
         self.file_label.setToolTip("")
 
-        self.counter_label.setText(
-            "0 / 0"
-        )
+        self.counter_label.setText("0 / 0")
 
         self.set_status(
             "ready",
@@ -519,26 +394,19 @@ class ExportProgress(QWidget):
             QMessageBox.warning(
                 self,
                 "Output Folder Unavailable",
-                "The selected output folder "
-                "does not exist yet:\n\n"
-                f"{folder}",
+                f"The selected output folder does not exist yet:\n\n{folder}",
             )
             return
 
         self.open_folder_requested.emit()
 
-        success = QDesktopServices.openUrl(
-            QUrl.fromLocalFile(
-                str(folder.resolve())
-            )
-        )
+        success = QDesktopServices.openUrl(QUrl.fromLocalFile(str(folder.resolve())))
 
         if not success:
             QMessageBox.warning(
                 self,
                 "Open Folder Failed",
-                "Unable to open the "
-                "selected output folder.",
+                "Unable to open the selected output folder.",
             )
 
     # =====================

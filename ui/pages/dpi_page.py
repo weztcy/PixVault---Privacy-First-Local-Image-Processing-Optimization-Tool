@@ -109,7 +109,8 @@ class DPIPage(QWidget):
         # 01 / IMPORT & REVIEW
         self.layout.addWidget(
             self.create_section_header(
-                "01", "Import & Organize",
+                "01",
+                "Import & Organize",
                 "Add images, manage the queue, and inspect selected files.",
             )
         )
@@ -148,7 +149,8 @@ class DPIPage(QWidget):
         # 02 / DPI SETTINGS AND OUTPUT
         self.layout.addWidget(
             self.create_section_header(
-                "02", "Configure DPI",
+                "02",
+                "Configure DPI",
                 "Set the horizontal and vertical print resolution and export destination.",
             )
         )
@@ -157,14 +159,18 @@ class DPIPage(QWidget):
         self.output_folder = self.output_selector.get_output_folder()
         self.settings_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight)
         self.settings_layout.setSpacing(16)
-        self.settings_layout.addWidget(self.settings_box, 6)
-        self.settings_layout.addWidget(self.output_selector, 5)
+        self.settings_layout.addWidget(self.settings_box, 6, Qt.AlignmentFlag.AlignTop)
+
+        self.settings_layout.addWidget(
+            self.output_selector, 5, Qt.AlignmentFlag.AlignTop
+        )
         self.layout.addLayout(self.settings_layout)
 
         # 03 / PROCESS & EXPORT
         self.layout.addWidget(
             self.create_section_header(
-                "03", "Process & Export",
+                "03",
+                "Process & Export",
                 "Apply resolution settings to the batch and monitor export progress.",
             )
         )
@@ -190,7 +196,8 @@ class DPIPage(QWidget):
         heading.addWidget(
             self.text(
                 "Set image print resolution metadata using local processing.",
-                "heroDescription", True,
+                "heroDescription",
+                True,
             )
         )
         layout.addLayout(heading, 1)
@@ -234,7 +241,8 @@ class DPIPage(QWidget):
         layout.addWidget(
             self.text(
                 "Choose the resolution unit and horizontal/vertical values.",
-                "description", True,
+                "description",
+                True,
             )
         )
         layout.addSpacing(5)
@@ -259,7 +267,8 @@ class DPIPage(QWidget):
             self.text(
                 "DPI controls print density; it does not resize image pixels. "
                 "DPCM values are converted to DPI for processing.",
-                "hint", True,
+                "hint",
+                True,
             )
         )
 
@@ -281,9 +290,7 @@ class DPIPage(QWidget):
 
     def create_action_card(self):
         card = role(QFrame(), "card")
-        self.action_layout = QBoxLayout(
-            QBoxLayout.Direction.LeftToRight, card
-        )
+        self.action_layout = QBoxLayout(QBoxLayout.Direction.LeftToRight, card)
         self.action_layout.setContentsMargins(20, 20, 20, 20)
         self.action_layout.setSpacing(18)
 
@@ -360,9 +367,7 @@ class DPIPage(QWidget):
             current = self.images[0]
             self.show_preview(current)
         if hasattr(self.image_list, "select_image"):
-            self.image_list.select_image(
-                self.images.index(current), emit_signal=False
-            )
+            self.image_list.select_image(self.images.index(current), emit_signal=False)
 
     def show_preview(self, image):
         if not image:
@@ -382,8 +387,7 @@ class DPIPage(QWidget):
         if not self.images:
             return None
         formats = {
-            self.SOURCE_FORMATS.get(Path(image).suffix.lower())
-            for image in self.images
+            self.SOURCE_FORMATS.get(Path(image).suffix.lower()) for image in self.images
         }
         if len(formats) == 1:
             return next(iter(formats))
@@ -392,9 +396,7 @@ class DPIPage(QWidget):
     def selected_output_format(self):
         selection = self.format_box.currentText()
         return (
-            self.source_format()
-            if selection == "Same as source"
-            else selection.upper()
+            self.source_format() if selection == "Same as source" else selection.upper()
         )
 
     def change_format(self, _format_name):
@@ -494,29 +496,28 @@ class DPIPage(QWidget):
             return
         self.images = [Path(path) for path in self.image_list.get_images()]
         if not self.images:
-            QMessageBox.warning(
-                self, "DPI", "Please import at least one image."
-            )
+            QMessageBox.warning(self, "DPI", "Please import at least one image.")
             return
         if not self.output_folder:
-            QMessageBox.warning(
-                self, "DPI", "Please select an output folder."
-            )
+            QMessageBox.warning(self, "DPI", "Please select an output folder.")
             return
         if self.batch_service.is_running():
             QMessageBox.warning(
-                self, "Processing Busy",
+                self,
+                "Processing Busy",
                 "Another processing task is running. Finish it before adjusting DPI.",
             )
             return
 
         unsupported = [
-            Path(path).name for path in self.images
+            Path(path).name
+            for path in self.images
             if Path(path).suffix.lower() not in self.SOURCE_FORMATS
         ]
         if unsupported:
             QMessageBox.warning(
-                self, "Unsupported DPI Input",
+                self,
+                "Unsupported DPI Input",
                 "This workspace supports JPEG, PNG, and TIFF inputs. "
                 "Remove unsupported files: "
                 + ", ".join(unsupported[:5])

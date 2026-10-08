@@ -1,7 +1,6 @@
-
 from PySide6.QtCore import (
-    Qt,
     QPointF,
+    Qt,
     Signal,
 )
 from PySide6.QtGui import (
@@ -19,10 +18,10 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-
 # =====================
 # PREMIUM COMBO BOX
 # =====================
+
 
 class PremiumComboBox(QComboBox):
     def __init__(self, parent=None):
@@ -30,13 +29,9 @@ class PremiumComboBox(QComboBox):
 
         self.setObjectName("premium_dropdown")
 
-        self.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
+        self.setCursor(Qt.CursorShape.PointingHandCursor)
 
-        self.setFocusPolicy(
-            Qt.FocusPolicy.StrongFocus
-        )
+        self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
 
         self.setMinimumHeight(44)
 
@@ -46,19 +41,13 @@ class PremiumComboBox(QComboBox):
 
         view = QListView(self)
 
-        view.setObjectName(
-            "premium_dropdown_view"
-        )
+        view.setObjectName("premium_dropdown_view")
 
-        view.setFrameShape(
-            QListView.Shape.NoFrame
-        )
+        view.setFrameShape(QListView.Shape.NoFrame)
 
         view.setSpacing(2)
 
-        view.setVerticalScrollMode(
-            QAbstractItemView.ScrollMode.ScrollPerPixel
-        )
+        view.setVerticalScrollMode(QAbstractItemView.ScrollMode.ScrollPerPixel)
 
         self.setView(view)
 
@@ -77,9 +66,7 @@ class PremiumComboBox(QComboBox):
 
         painter = QPainter(self)
 
-        painter.setRenderHint(
-            QPainter.RenderHint.Antialiasing
-        )
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
 
         if not self.isEnabled():
             arrow_color = QColor("#64748b")
@@ -92,13 +79,9 @@ class PremiumComboBox(QComboBox):
 
         pen = QPen(arrow_color)
         pen.setWidthF(1.8)
-        pen.setCapStyle(
-            Qt.PenCapStyle.RoundCap
-        )
+        pen.setCapStyle(Qt.PenCapStyle.RoundCap)
 
-        pen.setJoinStyle(
-            Qt.PenJoinStyle.RoundJoin
-        )
+        pen.setJoinStyle(Qt.PenJoinStyle.RoundJoin)
 
         painter.setPen(pen)
 
@@ -121,6 +104,7 @@ class PremiumComboBox(QComboBox):
 # =====================
 # DROPDOWN FIELD
 # =====================
+
 
 class DropdownField(QWidget):
     value_changed = Signal(str)
@@ -155,9 +139,7 @@ class DropdownField(QWidget):
     ):
         main_layout = QVBoxLayout(self)
 
-        main_layout.setContentsMargins(
-            0, 0, 0, 0
-        )
+        main_layout.setContentsMargins(0, 0, 0, 0)
 
         main_layout.setSpacing(9)
 
@@ -167,23 +149,17 @@ class DropdownField(QWidget):
 
         header_layout = QHBoxLayout()
 
-        header_layout.setContentsMargins(
-            2, 0, 2, 0
-        )
+        header_layout.setContentsMargins(2, 0, 2, 0)
 
         header_layout.setSpacing(8)
 
         self.label = QLabel(title)
 
-        self.label.setObjectName(
-            "dropdown_field_label"
-        )
+        self.label.setObjectName("dropdown_field_label")
 
         self.label.setWordWrap(True)
 
-        header_layout.addWidget(
-            self.label
-        )
+        header_layout.addWidget(self.label)
 
         header_layout.addStretch()
 
@@ -193,38 +169,26 @@ class DropdownField(QWidget):
 
         self.combo = PremiumComboBox()
 
-        self.combo.setAccessibleName(
-            str(title)
-        )
+        self.combo.setAccessibleName(str(title))
 
-        self.combo.addItems(
-            items
-        )
+        self.combo.addItems(items)
 
         if default is not None:
-            self.combo.setCurrentText(
-                str(default)
-            )
+            self.combo.setCurrentText(str(default))
 
         # =====================
         # ASSEMBLE LAYOUT
         # =====================
 
-        main_layout.addLayout(
-            header_layout
-        )
+        main_layout.addLayout(header_layout)
 
-        main_layout.addWidget(
-            self.combo
-        )
+        main_layout.addWidget(self.combo)
 
         # =====================
         # SIGNAL CONNECTION
         # =====================
 
-        self.combo.currentTextChanged.connect(
-            self.value_changed.emit
-        )
+        self.combo.currentTextChanged.connect(self.value_changed.emit)
 
     # =====================
     # GET VALUE
@@ -238,9 +202,7 @@ class DropdownField(QWidget):
     # =====================
 
     def set_value(self, value):
-        self.combo.setCurrentText(
-            str(value)
-        )
+        self.combo.setCurrentText(str(value))
 
     # =====================
     # PREMIUM STYLING
