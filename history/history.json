@@ -2878,5 +2878,460 @@
         ],
         "status": "failed",
         "error": "Unsupported TIFF compression: JPEG"
+    },
+    {
+        "id": "40b7cdd7-2302-46b6-b73c-7f595819852d",
+        "timestamp": "2026-10-08 22:16:43",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\profile2.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\profile2_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 5,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "0dbde4c0-9b16-4b4e-a076-50517c0b6f6d",
+        "timestamp": "2026-10-08 22:34:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\profile2.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\profile2_compressed_001.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 256,
+                "unit": "kb",
+                "priority": "size"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "82ff4582-7e1d-41c5-9d0e-08e3a05e138a",
+        "timestamp": "2026-10-08 22:46:25",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\profile2.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\profile2_compressed_002.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 85,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3e9bbab6-4115-4ba0-bce9-600fd917ad67",
+        "timestamp": "2026-10-09 00:34:55",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 20,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "7f533dfa-6f9f-48ac-b42c-2008df5318e8",
+        "timestamp": "2026-10-09 00:35:11",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed_001.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 1,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "a594d5fe-daf2-42b5-a24d-fde1aea4c09b",
+        "timestamp": "2026-10-09 00:35:32",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 1,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ccda82f1-3cc4-4ebd-b038-81a1cad3a905",
+        "timestamp": "2026-10-09 00:35:49",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed.png",
+        "format": "PNG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 100,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "ce9e9139-8697-454f-92d8-e579b2f3c46b",
+        "timestamp": "2026-10-09 00:36:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 100,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "04691c19-24a7-46ec-a9f0-815d34aaca11",
+        "timestamp": "2026-10-09 00:36:26",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed_001.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 10,
+                "optimize": true
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "80b14b44-e6a0-4cb6-b967-a532215798e0",
+        "timestamp": "2026-10-09 00:36:53",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed_002.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 500,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "abd55bb9-2835-498c-8fe7-9dd1c37ee13b",
+        "timestamp": "2026-10-09 00:37:08",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed_003.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 200,
+                "unit": "kb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "64fc9617-95e1-4c23-866b-f1780853ae1a",
+        "timestamp": "2026-10-09 00:37:21",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed_004.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 2,
+                "unit": "mb",
+                "priority": "balanced"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "75f54495-f0eb-4756-bd53-1954b335a1d6",
+        "timestamp": "2026-10-09 00:37:31",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed_005.jpg",
+        "format": "JPEG",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 2,
+                "unit": "mb",
+                "priority": "size"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "c21ef286-7019-41a8-8c1c-87ce424f77cd",
+        "timestamp": "2026-10-09 00:39:09",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 200,
+                "unit": "kb",
+                "priority": "size"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "320f30a3-b39a-433e-a4fe-b815bfacddc4",
+        "timestamp": "2026-10-09 00:39:29",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed_001.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 1000,
+                "unit": "kb",
+                "priority": "size"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "48399fd9-5346-4077-acf3-a332a7d8e27d",
+        "timestamp": "2026-10-09 00:39:49",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed_002.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 5000,
+                "unit": "kb",
+                "priority": "size"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "eb1cb313-3ef9-4310-90da-8d2c0839a79a",
+        "timestamp": "2026-10-09 00:40:05",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 5000,
+                "unit": "kb",
+                "priority": "size"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "611d3424-6f00-4430-9e6f-4fa03fc6cc87",
+        "timestamp": "2026-10-09 00:40:10",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Untitled design.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Untitled design_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 5,
+                "optimize": true
+            }
+        ],
+        "status": "failed",
+        "error": "Unsupported TIFF compression: JPEG"
+    },
+    {
+        "id": "59ad4285-1ac5-43bd-9d0d-42feebbb362a",
+        "timestamp": "2026-10-09 00:42:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 5000,
+                "unit": "kb",
+                "priority": "size"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "1ac5fe2d-8d8e-4294-a0e8-a51d41a98a62",
+        "timestamp": "2026-10-09 00:42:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 5000,
+                "unit": "kb",
+                "priority": "size"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "8ea99852-8165-4c7c-990a-d995ecf7b2d7",
+        "timestamp": "2026-10-09 00:42:28",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 5000,
+                "unit": "kb",
+                "priority": "size"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "60bf2ad6-d64f-45bd-a5bb-fa32a12b54fb",
+        "timestamp": "2026-10-09 00:42:29",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_compressed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "target_size",
+                "size": 5000,
+                "unit": "kb",
+                "priority": "size"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "3f10c03b-0d7a-4637-ac33-a51421a25e81",
+        "timestamp": "2026-10-09 00:42:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\file_example_PNG_2100kB.png",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_PNG_2100kB_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 5,
+                "optimize": true
+            }
+        ],
+        "status": "failed",
+        "error": "Unsupported TIFF compression: JPEG"
+    },
+    {
+        "id": "9f49f230-4407-4a81-9a43-2ce8b4167779",
+        "timestamp": "2026-10-09 00:42:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample_1280\u00d7853.tiff",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample_1280\u00d7853_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 5,
+                "optimize": true
+            }
+        ],
+        "status": "failed",
+        "error": "Unsupported TIFF compression: JPEG"
+    },
+    {
+        "id": "03443237-b474-4bb5-b810-c15b4c955a2d",
+        "timestamp": "2026-10-09 00:42:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-city-park-400x300.webp",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-city-park-400x300_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 5,
+                "optimize": true
+            }
+        ],
+        "status": "failed",
+        "error": "Unsupported TIFF compression: JPEG"
+    },
+    {
+        "id": "844b2268-2e2b-4dd5-982c-684d16fad619",
+        "timestamp": "2026-10-09 00:42:37",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\sample\\sample-photo-3840x2160.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\sample-photo-3840x2160_processed.tiff",
+        "format": "TIFF",
+        "operations": [
+            {
+                "type": "compression",
+                "mode": "quality",
+                "quality": 5,
+                "optimize": true
+            }
+        ],
+        "status": "failed",
+        "error": "Unsupported TIFF compression: JPEG"
     }
 ]

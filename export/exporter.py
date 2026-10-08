@@ -39,6 +39,10 @@ class Exporter:
 
         export_settings["format"] = format_name
 
+        compression = getattr(image, "info", {}).get("compression", {})
+        if compression:
+            export_settings.update(compression)
+
         output_path = self.naming.generate(source_path, output_folder, export_settings)
 
         output_path = Path(output_path)

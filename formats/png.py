@@ -96,6 +96,12 @@ class PNGEncoder(BaseEncoder):
         output = Path(output_path)
         output.parent.mkdir(parents=True, exist_ok=True)
 
+        # Target size metadata is handled by TargetSizeOptimizer before final save.
+
+        compression = image.info.get("compression", {})
+        if compression.get("mode") == "target_size":
+            settings["compression"] = 9
+
         depth = int(settings.get("bit_depth", image.info.get(BIT_DEPTH_INFO_KEY, 8)))
         if depth not in (8, 16):
             raise ValueError("PNG supports 8 or 16 bits per channel, not 32.")

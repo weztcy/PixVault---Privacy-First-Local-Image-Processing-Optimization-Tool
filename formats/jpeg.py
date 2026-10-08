@@ -11,6 +11,12 @@ class JPEGEncoder(BaseEncoder):
         output = Path(output_path)
         output.parent.mkdir(parents=True, exist_ok=True)
 
+        # Target size metadata is handled by TargetSizeOptimizer before final save.
+
+        compression = image.info.get("compression", {})
+        if compression.get("mode") == "quality":
+            settings["quality"] = compression.get("quality", settings.get("quality", 85))
+
         quality = max(1, min(95, int(settings.get("quality", 85))))
 
         # Preserve CMYK when requested

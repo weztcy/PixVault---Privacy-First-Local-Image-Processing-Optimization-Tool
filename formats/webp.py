@@ -10,6 +10,12 @@ class WEBPEncoder(BaseEncoder):
 
         output.parent.mkdir(parents=True, exist_ok=True)
 
+        # Target size metadata is handled by TargetSizeOptimizer before final save.
+
+        compression = image.info.get("compression", {})
+        if compression.get("mode") == "quality":
+            settings["quality"] = compression.get("quality", settings.get("quality", 85))
+
         lossless = settings.get("lossless", False)
 
         quality = settings.get("quality", 85)

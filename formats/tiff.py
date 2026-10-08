@@ -117,9 +117,15 @@ class TIFFEncoder(BaseEncoder):
 
         output = Path(output_path)
         output.parent.mkdir(parents=True, exist_ok=True)
+
+        # Target size metadata is handled by TargetSizeOptimizer before final save.
         depth = int(settings.get("bit_depth", image.info.get(BIT_DEPTH_INFO_KEY, 8)))
         if depth not in (8, 16, 32):
             raise ValueError("TIFF bit depth must be 8, 16 or 32 bits per channel.")
+        compression_info = image.info.get("compression", {})
+        if compression_info.get("mode") == "target_size":
+            settings["compression"] = "deflate"
+
         compression = _compression_name(settings.get("compression", "LZW"))
         dpi = settings.get("dpi", 300)
         dpi = (float(dpi), float(dpi)) if isinstance(dpi, (int, float)) else tuple(dpi)

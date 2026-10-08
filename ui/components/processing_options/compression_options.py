@@ -266,95 +266,96 @@ class CompressionOptions(BaseProcessingOptions):
 
 
 
-    def update_capability(self):
+def update_capability(self):
+
+    format_name = (
+        self.current_format
+        or
+        ""
+    )
 
 
-        format_name = (
-            self.current_format
-            or
-            ""
+    model = self.mode.model()
+
+
+    quality_item = model.item(0)
+
+    target_item = model.item(1)
+
+
+
+    quality_supported = (
+        format_name
+        in
+        self.QUALITY_SUPPORTED
+    )
+
+
+    target_supported = (
+        format_name
+        in
+        self.TARGET_SIZE_SUPPORTED
+    )
+
+
+
+    if quality_item:
+
+        quality_item.setEnabled(
+            quality_supported
         )
 
 
-        model = self.mode.model()
 
+    if target_item:
 
-        quality_item = model.item(0)
-
-        target_item = model.item(1)
-
-
-
-        quality_supported = (
-            format_name
-            in
-            self.QUALITY_SUPPORTED
-        )
-
-
-        target_supported = (
-            format_name
-            in
-            self.TARGET_SIZE_SUPPORTED
+        target_item.setEnabled(
+            target_supported
         )
 
 
 
-        if quality_item:
+    current_mode = self.mode.currentText()
 
-            quality_item.setEnabled(
-                quality_supported
+
+
+    if current_mode == "Quality":
+
+
+        if not quality_supported:
+
+            self.show_warning(
+                f"{format_name} does not support quality compression."
+            )
+
+
+        else:
+
+            self.show_warning(
+                ""
             )
 
 
 
-        if target_item:
+    elif current_mode == "Target File Size":
 
-            target_item.setEnabled(
-                target_supported
+
+        if not target_supported:
+
+            self.show_warning(
+                f"{format_name} does not support target file size compression."
+            )
+
+
+        else:
+
+            self.show_warning(
+                "Target size compression enabled."
             )
 
 
 
-        current_mode = self.mode.currentText()
-
-
-
-        if current_mode == "Quality":
-
-
-            if not quality_supported:
-
-                self.show_warning(
-                    f"{format_name} does not support quality compression."
-                )
-
-            else:
-
-                self.show_warning(
-                    ""
-                )
-
-
-
-        elif current_mode == "Target File Size":
-
-
-            if not target_supported:
-
-                self.show_warning(
-                    f"{format_name} does not support target file size compression."
-                )
-
-            else:
-
-                self.show_warning(
-                    "Target size requires final encoder integration."
-                )
-
-
-
-        self.update_ui()
+    self.update_ui()
 
 
 
