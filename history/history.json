@@ -1,1 +1,50 @@
-[]
+[
+    {
+        "id": "69781b43-6ec7-479e-a4fb-2aa0abd92e30",
+        "timestamp": "2026-10-08 10:24:16",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Apple-iPhone-15.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Apple-iPhone-15_cropped.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "21:9"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "b32139bf-81eb-45cc-a3ff-4a9dcd195d66",
+        "timestamp": "2026-10-08 10:24:16",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\Apple-iPhone-15-Black.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\Apple-iPhone-15-Black_cropped.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "21:9"
+            }
+        ],
+        "status": "success",
+        "error": null
+    },
+    {
+        "id": "89b3f0cc-56c0-4731-a589-14e191b7dc9d",
+        "timestamp": "2026-10-08 10:24:16",
+        "source": "C:\\Users\\yohan\\OneDrive\\Pictures\\file_example_JPG_100kB.jpg",
+        "output": "C:\\Users\\yohan\\OneDrive\\Pictures\\PixVault Export\\file_example_JPG_100kB_cropped.webp",
+        "format": "WEBP",
+        "operations": [
+            {
+                "type": "crop",
+                "mode": "aspect_ratio",
+                "ratio": "21:9"
+            }
+        ],
+        "status": "success",
+        "error": null
+    }
+]

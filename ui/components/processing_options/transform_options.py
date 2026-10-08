@@ -1,110 +1,69 @@
-from PySide6.QtWidgets import QComboBox, QLabel, QSpinBox
-
-from ui.components.processing_options.base_processing_options import (
-    BaseProcessingOptions,
-)
+"""Rotation and flip settings built exclusively from shared field controls."""
+from ui.components.processing_options.base_processing_options import BaseProcessingOptions
+from ui.components.processing_options.common.dropdown_field import DropdownField
+from ui.components.processing_options.common.number_field import NumberField
 
 
 class TransformOptions(BaseProcessingOptions):
-    def __init__(self):
-
-        super().__init__()
+    ROTATIONS = ["None", "90° Clockwise", "180°", "90° Counterclockwise", "Custom Angle"]
+    FLIPS = ["None", "Horizontal", "Vertical", "Both"]
+    ROTATION_VALUES = {"None": "none", "90° Clockwise": 90,
+                       "180°": 180, "90° Counterclockwise": -90}
+    FLIP_VALUES = {"None": "none", "Horizontal": "horizontal",
+                   "Vertical": "vertical", "Both": "both"}
 
     def setup_ui(self):
-
         super().setup_ui()
-
-        # =====================
-        # ROTATION
-        # =====================
-
-        self.add_widget(QLabel("Rotation"))
-
-        self.rotation = QComboBox()
-
-        self.rotation.addItems(
-            ["None", "90° Clockwise", "180°", "90° Counterclockwise", "Custom Angle"]
-        )
-
-        self.add_widget(self.rotation)
-
-        # =====================
-        # CUSTOM ANGLE
-        # =====================
-
-        self.angle_label = QLabel("Custom Angle")
-
-        self.angle = QSpinBox()
-
-        self.angle.setRange(-360, 360)
-
-        self.angle.setValue(0)
-
-        self.add_widget(self.angle_label)
-
-        self.add_widget(self.angle)
-
-        # =====================
-        # FLIP
-        # =====================
-
-        self.add_widget(QLabel("Flip"))
-
-        self.flip = QComboBox()
-
-        self.flip.addItems(["None", "Horizontal", "Vertical", "Both"])
-
-        self.add_widget(self.flip)
-
-        self.rotation.currentTextChanged.connect(self.update_ui)
-
+        self.rotation_field = self.add_widget(DropdownField("Rotation", self.ROTATIONS, "None"))
+        self.angle_field = self.add_widget(NumberField("Custom Angle", -360, 360, 0, "°"))
+        self.flip_field = self.add_widget(DropdownField("Flip", self.FLIPS, "None"))
+        self.rotation = self.rotation_field.combo
+        self.angle = self.angle_field.spin
+        self.angle_label = self.angle_field.label
+        self.flip = self.flip_field.combo
+        self.rotation.currentTextChanged.connect(self._rotation_changed)
+        self.angle_field.value_changed.connect(self.emit_settings)
+        self.flip_field.value_changed.connect(self.emit_settings)
         self.update_ui()
 
+    def _rotation_changed(self, *_args):
+        self.update_ui()
+        self.emit_settings()
+
     def update_ui(self):
-
-        custom = self.rotation.currentText() == "Custom Angle"
-
-        self.angle_label.setVisible(custom)
-
-        self.angle.setVisible(custom)
+        self.angle_field.setVisible(self.rotation.currentText() == "Custom Angle")
 
     def get_settings(self):
-
-        rotation_map = {
-            "None": "none",
-            "90° Clockwise": 90,
-            "180°": 180,
-            "90° Counterclockwise": -90,
-            "Custom Angle": self.angle.value(),
-        }
-
-        flip_map = {
-            "None": "none",
-            "Horizontal": "horizontal",
-            "Vertical": "vertical",
-            "Both": "both",
-        }
-
+        rotation = self.rotation.currentText()
         return {
             "type": "transform",
-            "rotation": rotation_map[self.rotation.currentText()],
-            "flip": flip_map[self.flip.currentText()],
+            "rotation": self.angle.value() if rotation == "Custom Angle" else self.ROTATION_VALUES[rotation],
+            "flip": self.FLIP_VALUES[self.flip.currentText()],
         }
 
     def reset(self):
-
         self.rotation.setCurrentText("None")
-
         self.angle.setValue(0)
-
         self.flip.setCurrentText("None")
-
         self.update_ui()
 
     def update_capability(self):
+        self.show_warning("SVG uses vector transforms rather than pixel transforms."
+                          if self.current_format == "SVG" else "")
 
+    def validate(self):
         if self.current_format == "SVG":
-            self.show_warning("SVG uses vector transform instead of pixel transform.")
+            return False, "The raster transform backend cannot directly process SVG files."
+        return True, ""
 
-        else:
-            self.show_warning("")
+    def set_defaults(self, settings):
+        s = settings or {}
+        rotation = s.get("rotation", "none")
+        label = next((name for name, value in self.ROTATION_VALUES.items() if value == rotation), None)
+        if label is None:
+            label = "Custom Angle"
+            self.angle.setValue(int(float(rotation)))
+        self.rotation.setCurrentText(label)
+        flip = next((name for name, value in self.FLIP_VALUES.items() if value == s.get("flip", "none")), "None")
+        self.flip.setCurrentText(flip)
+        self.update_ui()

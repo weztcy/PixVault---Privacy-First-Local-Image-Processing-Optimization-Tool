@@ -1,118 +1,101 @@
-from PySide6.QtWidgets import QComboBox, QLabel
-
-from ui.components.processing_options.base_processing_options import (
-    BaseProcessingOptions,
-)
+"""Color-space UI expressed using reusable DropdownField controls."""
+from ui.components.processing_options.base_processing_options import BaseProcessingOptions
+from ui.components.processing_options.common.dropdown_field import DropdownField
 
 
 class ColorSpaceOptions(BaseProcessingOptions):
     COLOR_SPACES = ["sRGB", "Adobe RGB", "Display P3", "CMYK", "Grayscale"]
-
     RENDERING_INTENTS = [
-        "Perceptual",
-        "Relative Colorimetric",
-        "Saturation",
-        "Absolute Colorimetric",
+        "Perceptual", "Relative Colorimetric", "Saturation", "Absolute Colorimetric",
     ]
-
-    def __init__(self):
-
-        super().__init__()
+    TARGET_KEYS = {
+        "sRGB": "sRGB", "Adobe RGB": "adobe_rgb", "Display P3": "display_p3",
+        "CMYK": "cmyk", "Grayscale": "grayscale",
+    }
+    INTENT_KEYS = {
+        "Perceptual": "perceptual", "Relative Colorimetric": "relative_colorimetric",
+        "Saturation": "saturation", "Absolute Colorimetric": "absolute_colorimetric",
+    }
+    LIMITED = {
+        "WEBP": {"Adobe RGB", "Display P3", "CMYK"},
+        "GIF": {"Adobe RGB", "Display P3", "CMYK"},
+        "BMP": {"Adobe RGB", "Display P3", "CMYK"},
+        "ICO": {"Adobe RGB", "Display P3", "CMYK"},
+        "PNG": {"CMYK"}, "AVIF": {"CMYK"},
+        "HEIC": {"CMYK"}, "HEIF": {"CMYK"},
+    }
 
     def setup_ui(self):
-
         super().setup_ui()
-
-        # =====================
-        # COLOR SPACE
-        # =====================
-
-        self.add_widget(QLabel("Color Space"))
-
-        self.color_space = QComboBox()
-
-        self.color_space.addItems(self.COLOR_SPACES)
-
-        self.color_space.setCurrentText("sRGB")
-
-        self.add_widget(self.color_space)
-
-        # =====================
-        # RENDERING INTENT
-        # =====================
-
-        self.intent_label = QLabel("Rendering Intent")
-
-        self.intent = QComboBox()
-
-        self.intent.addItems(self.RENDERING_INTENTS)
-
-        self.intent.setCurrentText("Perceptual")
-
-        self.add_widget(self.intent_label)
-
-        self.add_widget(self.intent)
-
-        self.color_space.currentTextChanged.connect(self.update_ui)
-
+        self.color_space_field = self.add_widget(
+            DropdownField("Color Space", self.COLOR_SPACES, "sRGB")
+        )
+        self.intent_field = self.add_widget(
+            DropdownField("Rendering Intent", self.RENDERING_INTENTS, "Perceptual")
+        )
+        self.color_space = self.color_space_field.combo
+        self.intent = self.intent_field.combo
+        self.intent_label = self.intent_field.label
+        self.color_space.currentTextChanged.connect(self._on_target_changed)
+        self.intent.currentTextChanged.connect(self.emit_settings)
         self.update_ui()
 
+    def _on_target_changed(self, *_args):
+        self.update_capability()
+        self.emit_settings()
+
     def update_ui(self):
-
-        grayscale = self.color_space.currentText() == "Grayscale"
-
-        self.intent.setEnabled(not grayscale)
-
-        self.intent_label.setEnabled(not grayscale)
+        # Grayscale bypasses ICC transforms; no rendering intent needed.
+        self.intent_field.setEnabled(self.color_space.currentText() != "Grayscale")
 
     def get_settings(self):
-
+        target = self.color_space.currentText()
+        # Backend processing/colorspace.py consumes `intent`, not `rendering_intent`.
         return {
             "type": "colorspace",
-            "target": self.color_space.currentText(),
-            "rendering_intent": self.intent.currentText()
-            if self.intent.isEnabled()
-            else None,
+            "target": self.TARGET_KEYS[target],
+            "intent": self.INTENT_KEYS[self.intent.currentText()],
         }
 
     def reset(self):
-
         self.color_space.setCurrentText("sRGB")
-
         self.intent.setCurrentText("Perceptual")
-
+        self.update_capability()
         self.update_ui()
 
     def update_capability(self):
-
-        unsupported = {}
-
-        if (
-            self.current_format == "WEBP"
-            or self.current_format == "GIF"
-            or self.current_format in ["BMP", "ICO"]
-        ):
-            unsupported = {"Adobe RGB", "Display P3", "CMYK"}
-
-        elif (
-            self.current_format in ["PNG"]
-            or self.current_format in ["AVIF"]
-            or self.current_format in ["HEIC", "HEIF"]
-        ):
-            unsupported = {"CMYK"}
-
-        for index in range(self.color_space.count()):
-            item = self.color_space.itemText(index)
-
-            enabled = item not in unsupported
-
-            self.color_space.model().item(index).setEnabled(enabled)
-
-        if self.color_space.currentText() in unsupported:
+        restricted = self.LIMITED.get(self.current_format, set())
+        model = self.color_space.model()
+        for i in range(self.color_space.count()):
+            item = model.item(i)
+            if item is not None:
+                item.setEnabled(self.color_space.itemText(i) not in restricted)
+        if self.color_space.currentText() in restricted:
             self.color_space.setCurrentText("sRGB")
-
-        if unsupported:
+        if self.color_space.currentText() in ("Adobe RGB", "Display P3", "CMYK"):
+            self.show_warning("This destination needs ICC profile support in the backend.")
+        elif restricted:
             self.show_warning(f"{self.current_format} has limited color space support.")
-
         else:
             self.show_warning("")
+        self.update_ui()
+
+    def validate(self):
+        target = self.color_space.currentText()
+        if target in self.LIMITED.get(self.current_format, set()):
+            return False, f"{self.current_format} cannot use {target}."
+        if target in ("Adobe RGB", "Display P3", "CMYK"):
+            return False, "ICC conversion to this space is not implemented in processing/colorspace.py."
+        return True, ""
+
+    def set_defaults(self, settings):
+        settings = settings or {}
+        key = str(settings.get("target", "sRGB")).strip().lower().replace(" ", "_")
+        target = next((label for label, value in self.TARGET_KEYS.items()
+                       if value.lower() == key), "sRGB")
+        self.color_space.setCurrentText(target)
+        intent_key = str(settings.get("intent", settings.get("rendering_intent", "perceptual"))).lower().replace(" ", "_")
+        intent = next((label for label, value in self.INTENT_KEYS.items()
+                       if value == intent_key), "Perceptual")
+        self.intent.setCurrentText(intent)
+        self.update_capability()

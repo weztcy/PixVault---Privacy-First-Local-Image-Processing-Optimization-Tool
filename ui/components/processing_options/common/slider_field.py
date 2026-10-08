@@ -1,3 +1,4 @@
+
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import (
     QFrame,
@@ -10,7 +11,7 @@ from PySide6.QtWidgets import (
 )
 
 
-class ValueSlider(QWidget):
+class SliderField(QWidget):
     value_changed = Signal(int)
 
     def __init__(
@@ -18,53 +19,46 @@ class ValueSlider(QWidget):
         title,
         minimum,
         maximum,
-        value=None,
-        parent=None,
+        default,
     ):
-        super().__init__(parent)
+        super().__init__()
 
-        self.minimum = int(minimum)
-        self.maximum = int(maximum)
+        self.setObjectName("slider_field")
 
-        self.default_value = (
-            int(value)
-            if value is not None
-            else self.minimum
+        self.title = title
+
+        self.setup_ui(
+            minimum,
+            maximum,
+            default,
         )
 
-        self.title = str(title)
-
-        self.setObjectName(
-            "value_slider_widget"
-        )
-
-        self.setup_ui(self.title)
         self.apply_styles()
 
-        self.set_value(
-            self.default_value
-        )
-
     # =====================
-    # MAIN USER INTERFACE
+    # USER INTERFACE
     # =====================
 
-    def setup_ui(self, title):
-        self.main_layout = QVBoxLayout(self)
+    def setup_ui(
+        self,
+        minimum,
+        maximum,
+        default,
+    ):
+        main_layout = QVBoxLayout(self)
 
-        self.main_layout.setContentsMargins(
+        main_layout.setContentsMargins(
             0, 0, 0, 0
         )
-        self.main_layout.setSpacing(0)
+        main_layout.setSpacing(0)
 
         # =====================
-        # MAIN CONTAINER
+        # FIELD CONTAINER
         # =====================
 
         self.container = QFrame()
-
         self.container.setObjectName(
-            "value_slider_card"
+            "slider_field_container"
         )
 
         self.container.setSizePolicy(
@@ -79,64 +73,60 @@ class ValueSlider(QWidget):
         container_layout.setContentsMargins(
             16, 14, 16, 12
         )
-
-        container_layout.setSpacing(10)
+        container_layout.setSpacing(12)
 
         # =====================
         # HEADER
         # =====================
 
-        header = QHBoxLayout()
+        header_layout = QHBoxLayout()
 
-        header.setContentsMargins(
+        header_layout.setContentsMargins(
             0, 0, 0, 0
         )
+        header_layout.setSpacing(12)
 
-        header.setSpacing(12)
+        # Field Title
 
-        self.title_label = QLabel(title)
-
-        self.title_label.setObjectName(
-            "value_slider_title"
+        self.label = QLabel(
+            str(self.title)
         )
 
-        self.title_label.setWordWrap(True)
-
-        self.title_label.setSizePolicy(
-            QSizePolicy.Policy.Expanding,
-            QSizePolicy.Policy.Preferred,
+        self.label.setObjectName(
+            "slider_field_label"
         )
 
-        # =====================
-        # CURRENT VALUE BADGE
-        # =====================
+        self.label.setWordWrap(True)
+
+        # Current Value Badge
 
         self.value_label = QLabel("0")
 
         self.value_label.setObjectName(
-            "value_slider_badge"
+            "slider_value_badge"
         )
 
         self.value_label.setAlignment(
             Qt.AlignmentFlag.AlignCenter
         )
 
-        self.value_label.setMinimumWidth(52)
-
+        self.value_label.setMinimumWidth(48)
         self.value_label.setMinimumHeight(30)
 
-        header.addWidget(
-            self.title_label,
+        # Header Assembly
+
+        header_layout.addWidget(
+            self.label,
             1,
         )
 
-        header.addWidget(
+        header_layout.addWidget(
             self.value_label,
             0,
         )
 
         container_layout.addLayout(
-            header
+            header_layout
         )
 
         # =====================
@@ -148,23 +138,12 @@ class ValueSlider(QWidget):
         )
 
         self.slider.setObjectName(
-            "value_slider_control"
+            "premium_slider"
         )
 
         self.slider.setRange(
-            self.minimum,
-            self.maximum,
-        )
-
-        # Synchronize limits with Qt's
-        # actual accepted range.
-
-        self.minimum = (
-            self.slider.minimum()
-        )
-
-        self.maximum = (
-            self.slider.maximum()
+            minimum,
+            maximum,
         )
 
         self.slider.setMinimumHeight(30)
@@ -178,20 +157,29 @@ class ValueSlider(QWidget):
             Qt.FocusPolicy.StrongFocus
         )
 
-        self.slider.setCursor(
-            Qt.CursorShape.PointingHandCursor
-        )
-
         self.slider.setTickPosition(
             QSlider.TickPosition.NoTicks
         )
 
-        self.slider.setAccessibleName(
-            self.title
+        self.slider.setCursor(
+            Qt.CursorShape.PointingHandCursor
         )
 
-        self.title_label.setBuddy(
+        self.slider.setAccessibleName(
+            str(self.title)
+        )
+
+        self.label.setBuddy(
             self.slider
+        )
+
+        # Set initial value before connecting
+        # the signal to avoid initial emission.
+
+        self.slider.setValue(default)
+
+        self.value_label.setText(
+            str(self.slider.value())
         )
 
         container_layout.addWidget(
@@ -207,23 +195,22 @@ class ValueSlider(QWidget):
         range_layout.setContentsMargins(
             2, 0, 2, 0
         )
-
         range_layout.setSpacing(8)
 
         self.minimum_label = QLabel(
-            str(self.minimum)
+            str(self.slider.minimum())
         )
 
         self.minimum_label.setObjectName(
-            "value_slider_range"
+            "slider_range_label"
         )
 
         self.maximum_label = QLabel(
-            str(self.maximum)
+            str(self.slider.maximum())
         )
 
         self.maximum_label.setObjectName(
-            "value_slider_range"
+            "slider_range_label"
         )
 
         self.maximum_label.setAlignment(
@@ -248,50 +235,44 @@ class ValueSlider(QWidget):
         # ASSEMBLE COMPONENT
         # =====================
 
-        self.main_layout.addWidget(
+        main_layout.addWidget(
             self.container
         )
 
         # =====================
-        # CONNECT SIGNAL
+        # SIGNAL CONNECTION
         # =====================
 
         self.slider.valueChanged.connect(
-            self.on_value_changed
+            self.update_value
         )
 
-        self.update_display(
+        self.update_tooltip(
             self.slider.value()
-        )
-
-    # =====================
-    # UPDATE VALUE DISPLAY
-    # =====================
-
-    def update_display(self, value):
-        actual_value = int(value)
-
-        self.value_label.setText(
-            str(actual_value)
-        )
-
-        self.slider.setToolTip(
-            f"{self.title}: {actual_value}"
-        )
-
-        self.value_label.setToolTip(
-            f"Current value: {actual_value}"
         )
 
     # =====================
     # VALUE CHANGED
     # =====================
 
-    def on_value_changed(self, value):
-        self.update_display(value)
+    def update_value(self, value):
+        self.value_label.setText(
+            str(value)
+        )
+
+        self.update_tooltip(value)
 
         self.value_changed.emit(
-            int(value)
+            value
+        )
+
+    # =====================
+    # TOOLTIP
+    # =====================
+
+    def update_tooltip(self, value):
+        self.slider.setToolTip(
+            f"{self.title}: {value}"
         )
 
     # =====================
@@ -310,25 +291,8 @@ class ValueSlider(QWidget):
             int(value)
         )
 
-        # Read the actual value from the
-        # slider because Qt may clamp it
-        # to the configured range.
-
-        self.update_display(
-            self.slider.value()
-        )
-
     # =====================
-    # RESET TO DEFAULT
-    # =====================
-
-    def reset(self):
-        self.set_value(
-            self.default_value
-        )
-
-    # =====================
-    # UPDATE RANGE
+    # OPTIONAL RANGE UPDATE
     # =====================
 
     def set_range(
@@ -337,39 +301,25 @@ class ValueSlider(QWidget):
         maximum,
     ):
         self.slider.setRange(
-            int(minimum),
-            int(maximum),
-        )
-
-        self.minimum = (
-            self.slider.minimum()
-        )
-
-        self.maximum = (
-            self.slider.maximum()
+            minimum,
+            maximum,
         )
 
         self.minimum_label.setText(
-            str(self.minimum)
+            str(self.slider.minimum())
         )
 
         self.maximum_label.setText(
-            str(self.maximum)
+            str(self.slider.maximum())
         )
 
-        # Update display if the slider
-        # value was clamped by the new range.
+        self.value_label.setText(
+            str(self.slider.value())
+        )
 
-        self.update_display(
+        self.update_tooltip(
             self.slider.value()
         )
-
-    # =====================
-    # OPTIONAL DEFAULT UPDATE
-    # =====================
-
-    def set_default_value(self, value):
-        self.default_value = int(value)
 
     # =====================
     # PREMIUM STYLING
@@ -382,67 +332,85 @@ class ValueSlider(QWidget):
                MAIN COMPONENT
             ========================= */
 
-            QWidget#value_slider_widget {
+            QWidget#slider_field {
                 background: transparent;
                 border: none;
             }
 
             /* =========================
-               PREMIUM CONTAINER
+               FIELD CONTAINER
             ========================= */
 
-            QFrame#value_slider_card {
+            QFrame#slider_field_container {
                 background-color: #1b2940;
 
                 border: 1px solid #304259;
                 border-radius: 11px;
             }
 
-            QFrame#value_slider_card:hover {
-                background-color: #1e2e45;
+            QFrame#slider_field_container:hover {
+                background-color: #1e2d44;
 
                 border: 1px solid #426273;
             }
 
+            QFrame#slider_field_container:disabled {
+                background-color: #151e2d;
+
+                border: 1px solid #253348;
+            }
+
             /* =========================
-               TITLE
+               FIELD TITLE
             ========================= */
 
-            QLabel#value_slider_title {
+            QLabel#slider_field_label {
+                color: #d5deea;
+
                 background: transparent;
                 border: none;
-
-                color: #d5deea;
 
                 font-family: "Segoe UI";
                 font-size: 12px;
                 font-weight: 600;
             }
 
+            QLabel#slider_field_label:disabled {
+                color: #64748b;
+            }
+
             /* =========================
-               CURRENT VALUE BADGE
+               VALUE BADGE
             ========================= */
 
-            QLabel#value_slider_badge {
+            QLabel#slider_value_badge {
                 background-color: #173a40;
 
                 color: #5eead4;
 
-                border: 1px solid #28665f;
+                border: 1px solid #285d60;
                 border-radius: 8px;
 
-                padding: 5px 10px;
+                padding: 4px 10px;
 
                 font-family: "Segoe UI";
                 font-size: 12px;
                 font-weight: 700;
             }
 
+            QLabel#slider_value_badge:disabled {
+                background-color: #202b3b;
+
+                color: #64748b;
+
+                border: 1px solid #354459;
+            }
+
             /* =========================
                SLIDER BASE
             ========================= */
 
-            QSlider#value_slider_control {
+            QSlider#premium_slider {
                 background: transparent;
                 border: none;
             }
@@ -451,7 +419,7 @@ class ValueSlider(QWidget):
                SLIDER TRACK
             ========================= */
 
-            QSlider#value_slider_control::groove:horizontal {
+            QSlider#premium_slider::groove:horizontal {
                 background-color: #304259;
 
                 height: 6px;
@@ -461,10 +429,10 @@ class ValueSlider(QWidget):
             }
 
             /* =========================
-               ACTIVE TRACK
+               ACTIVE PROGRESS TRACK
             ========================= */
 
-            QSlider#value_slider_control::sub-page:horizontal {
+            QSlider#premium_slider::sub-page:horizontal {
                 background-color: #5eead4;
 
                 border: none;
@@ -475,7 +443,7 @@ class ValueSlider(QWidget):
                INACTIVE TRACK
             ========================= */
 
-            QSlider#value_slider_control::add-page:horizontal {
+            QSlider#premium_slider::add-page:horizontal {
                 background-color: #304259;
 
                 border: none;
@@ -486,7 +454,7 @@ class ValueSlider(QWidget):
                SLIDER HANDLE
             ========================= */
 
-            QSlider#value_slider_control::handle:horizontal {
+            QSlider#premium_slider::handle:horizontal {
                 background-color: #5eead4;
 
                 border: 3px solid #101b2d;
@@ -499,20 +467,20 @@ class ValueSlider(QWidget):
             }
 
             /* =========================
-               HOVER STATE
+               HANDLE HOVER
             ========================= */
 
-            QSlider#value_slider_control::handle:horizontal:hover {
+            QSlider#premium_slider::handle:horizontal:hover {
                 background-color: #99f6e4;
 
                 border: 3px solid #173a40;
             }
 
             /* =========================
-               PRESSED STATE
+               HANDLE PRESSED
             ========================= */
 
-            QSlider#value_slider_control::handle:horizontal:pressed {
+            QSlider#premium_slider::handle:horizontal:pressed {
                 background-color: #2dd4bf;
 
                 border: 3px solid #285d60;
@@ -522,77 +490,51 @@ class ValueSlider(QWidget):
                KEYBOARD FOCUS
             ========================= */
 
-            QSlider#value_slider_control:focus::handle:horizontal {
+            QSlider#premium_slider:focus::handle:horizontal {
                 background-color: #99f6e4;
 
                 border: 3px solid #285d60;
             }
 
             /* =========================
+               DISABLED SLIDER
+            ========================= */
+
+            QSlider#premium_slider::groove:horizontal:disabled {
+                background-color: #263348;
+            }
+
+            QSlider#premium_slider::sub-page:horizontal:disabled {
+                background-color: #42615f;
+            }
+
+            QSlider#premium_slider::add-page:horizontal:disabled {
+                background-color: #263348;
+            }
+
+            QSlider#premium_slider::handle:horizontal:disabled {
+                background-color: #64748b;
+
+                border: 3px solid #202b3b;
+            }
+
+            /* =========================
                MINIMUM / MAXIMUM LABELS
             ========================= */
 
-            QLabel#value_slider_range {
+            QLabel#slider_range_label {
+                color: #64748b;
+
                 background: transparent;
                 border: none;
-
-                color: #64748b;
 
                 font-family: "Segoe UI";
                 font-size: 10px;
                 font-weight: 500;
             }
 
-            /* =========================
-               DISABLED CONTAINER
-            ========================= */
-
-            QFrame#value_slider_card:disabled {
-                background-color: #151e2d;
-
-                border: 1px solid #253348;
-            }
-
-            /* =========================
-               DISABLED LABELS
-            ========================= */
-
-            QLabel#value_slider_title:disabled {
-                color: #64748b;
-            }
-
-            QLabel#value_slider_badge:disabled {
-                background-color: #202b3b;
-
-                color: #64748b;
-
-                border: 1px solid #354459;
-            }
-
-            QLabel#value_slider_range:disabled {
+            QLabel#slider_range_label:disabled {
                 color: #475569;
-            }
-
-            /* =========================
-               DISABLED SLIDER
-            ========================= */
-
-            QSlider#value_slider_control::groove:horizontal:disabled {
-                background-color: #263348;
-            }
-
-            QSlider#value_slider_control::sub-page:horizontal:disabled {
-                background-color: #42615f;
-            }
-
-            QSlider#value_slider_control::add-page:horizontal:disabled {
-                background-color: #263348;
-            }
-
-            QSlider#value_slider_control::handle:horizontal:disabled {
-                background-color: #64748b;
-
-                border: 3px solid #202b3b;
             }
             """
         )
